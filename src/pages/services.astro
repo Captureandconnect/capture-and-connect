@@ -1,0 +1,153 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceDetail from '../components/sections/ServiceDetail.astro';
+import CtaBlock from '../components/sections/CtaBlock.astro';
+import { services } from '../data/services';
+---
+
+<BaseLayout
+  title="Services"
+  description="Capture & Connect offers Social Media Management, Content Creation, and Growth Strategy for artists, brands, and event organisers. One team, one system, zero gaps."
+>
+
+  <!-- Page Hero -->
+  <section class="pt-40 pb-20 text-center">
+    <div class="container mx-auto px-6 md:px-12 max-w-4xl" data-stagger>
+
+      <!-- Label -->
+      <p class="text-xs font-semibold tracking-widest uppercase text-white/40 mb-6">
+        Our Services
+      </p>
+
+      <!-- H1 -->
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black italic uppercase tracking-tight text-white leading-none mb-8">
+        Everything your brand needs to grow
+      </h1>
+
+      <!-- Subtitle -->
+      <p class="text-base sm:text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">
+        From strategy to content creation to daily management. One team. One system. Zero gaps.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- Services -->
+  <div>
+    {services.map((service, index) => (
+      <ServiceDetail
+        service={service}
+        reversed={index % 2 !== 0}
+      />
+    ))}
+  </div>
+
+  <!-- Why Choose Us -->
+  <section class="py-24 md:py-32 border-b border-white/[0.04]">
+    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+
+      <!-- Section label -->
+      <div class="text-center mb-16" data-animate>
+        <p class="text-xs font-semibold tracking-widest uppercase text-white/40 mb-4">
+          Why Us
+        </p>
+        <h2 class="text-3xl md:text-4xl font-bold italic tracking-tight text-white">
+          Built different. Built for results.
+        </h2>
+      </div>
+
+      <!-- Three columns -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+        data-stagger
+      >
+
+        <!-- All In-House -->
+        <div class="flex flex-col gap-5 p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl">
+          <!-- Icon -->
+          <div class="w-12 h-12 flex items-center justify-center bg-white/[0.04] border border-white/[0.08] rounded-lg shrink-0">
+            <svg
+              class="w-5 h-5 text-white/60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold italic text-white tracking-tight">
+            All In-House
+          </h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            No freelancers, no delays. One team handles everything from strategy to final edit.
+          </p>
+        </div>
+
+        <!-- Built for Virality -->
+        <div class="flex flex-col gap-5 p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl">
+          <!-- Icon -->
+          <div class="w-12 h-12 flex items-center justify-center bg-white/[0.04] border border-white/[0.08] rounded-lg shrink-0">
+            <svg
+              class="w-5 h-5 text-white/60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold italic text-white tracking-tight">
+            Built for Virality
+          </h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            We don't just create content. We engineer it for reach, shares, and real growth.
+          </p>
+        </div>
+
+        <!-- Artist & Event Experts -->
+        <div class="flex flex-col gap-5 p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl">
+          <!-- Icon -->
+          <div class="w-12 h-12 flex items-center justify-center bg-white/[0.04] border border-white/[0.08] rounded-lg shrink-0">
+            <svg
+              class="w-5 h-5 text-white/60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold italic text-white tracking-tight">
+            Artist &amp; Event Experts
+          </h3>
+          <p class="text-sm text-white/50 leading-relaxed">
+            We've worked with the biggest names in the scene. We know what works.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaBlock
+    headline="Let's build your content engine"
+    subtext="Book a free strategy call and see how we'd grow your brand."
+    buttonText="Book a Free Strategy Call"
+  />
+
+</BaseLayout>

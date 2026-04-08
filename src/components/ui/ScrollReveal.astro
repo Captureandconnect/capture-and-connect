@@ -1,0 +1,21 @@
+---
+interface Props {
+  animation?: 'fade-up' | 'fade-in' | 'slide-left' | 'slide-right' | 'stagger';
+  delay?: number;
+  class?: string;
+}
+
+const {
+  animation = 'fade-up',
+  delay,
+  class: className = '',
+} = Astro.props;
+---
+
+<div
+  class={['opacity-0', className].join(' ')}
+  data-reveal={animation}
+  data-delay={delay !== undefined ? delay : undefined}
+>
+  <slot />
+</div>

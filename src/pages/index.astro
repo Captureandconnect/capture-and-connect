@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import ServicesOverview from '../components/sections/ServicesOverview.astro';
+import ResultsHighlight from '../components/sections/ResultsHighlight.astro';
+import PortfolioPreview from '../components/sections/PortfolioPreview.astro';
+import HowWeWork from '../components/sections/HowWeWork.astro';
+import CtaBlock from '../components/sections/CtaBlock.astro';
+import Lightbox from '../components/ui/Lightbox.astro';
+---
+
+<BaseLayout
+  title="Home"
+  description="Capture & Connect is a premium content agency for artists, brands, and event organisers. We create scroll-stopping visuals, short-form video, and campaign content that builds real audiences."
+>
+  <HeroSection />
+
+  <div class="py-24">
+    <ServicesOverview />
+  </div>
+
+  <div class="py-24">
+    <ResultsHighlight />
+  </div>
+
+  <div class="py-24">
+    <PortfolioPreview />
+  </div>
+
+  <div class="py-24">
+    <HowWeWork />
+  </div>
+
+  <CtaBlock
+    headline="Ready to grow?"
+    subtext="Stop blending in. Let's build content that makes your brand impossible to ignore — and turns viewers into loyal fans."
+    buttonText="Book a Free Call"
+  />
+
+  <Lightbox />
+</BaseLayout>

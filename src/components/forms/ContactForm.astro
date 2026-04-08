@@ -1,0 +1,145 @@
+---
+// ContactForm.astro — Premium dark contact form for Capture & Connect
+// Cloudflare Pages Forms: data-static-form-name attribute
+---
+
+<form
+  method="POST"
+  data-static-form-name="contact"
+  class="w-full space-y-6"
+>
+  <!-- Honeypot — hidden from humans, catches bots -->
+  <div class="hidden" aria-hidden="true">
+    <label for="website">Website (leave blank)</label>
+    <input
+      type="text"
+      id="website"
+      name="website"
+      tabindex="-1"
+      autocomplete="off"
+    />
+  </div>
+
+  <!-- Name -->
+  <div class="flex flex-col gap-2">
+    <label
+      for="name"
+      class="text-xs font-semibold tracking-widest uppercase text-white/60"
+    >
+      Name <span class="text-white/30">*</span>
+    </label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      required
+      placeholder="Your name"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200"
+    />
+  </div>
+
+  <!-- Email -->
+  <div class="flex flex-col gap-2">
+    <label
+      for="email"
+      class="text-xs font-semibold tracking-widest uppercase text-white/60"
+    >
+      Email <span class="text-white/30">*</span>
+    </label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      placeholder="your@email.com"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200"
+    />
+  </div>
+
+  <!-- Company (optional) -->
+  <div class="flex flex-col gap-2">
+    <label
+      for="company"
+      class="text-xs font-semibold tracking-widest uppercase text-white/60"
+    >
+      Company <span class="text-white/30 normal-case tracking-normal text-[10px]">(optional)</span>
+    </label>
+    <input
+      type="text"
+      id="company"
+      name="company"
+      placeholder="Your company or brand"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200"
+    />
+  </div>
+
+  <!-- Service interested in (optional) -->
+  <div class="flex flex-col gap-2">
+    <label
+      for="service"
+      class="text-xs font-semibold tracking-widest uppercase text-white/60"
+    >
+      Service interested in <span class="text-white/30 normal-case tracking-normal text-[10px]">(optional)</span>
+    </label>
+    <div class="relative">
+      <select
+        id="service"
+        name="service"
+        class="w-full appearance-none bg-transparent border border-white/10 rounded-lg px-4 py-3 text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 cursor-pointer"
+      >
+        <option value="" class="bg-[#0a0a0a] text-white/40">Select a service…</option>
+        <option value="social-media-management" class="bg-[#0a0a0a] text-white">Social Media Management</option>
+        <option value="content-creation" class="bg-[#0a0a0a] text-white">Content Creation</option>
+        <option value="growth-strategy" class="bg-[#0a0a0a] text-white">Growth Strategy</option>
+        <option value="full-package" class="bg-[#0a0a0a] text-white">Full Package</option>
+        <option value="other" class="bg-[#0a0a0a] text-white">Other</option>
+      </select>
+      <!-- Chevron icon -->
+      <div class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/30">
+        <svg
+          class="w-4 h-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Message -->
+  <div class="flex flex-col gap-2">
+    <label
+      for="message"
+      class="text-xs font-semibold tracking-widest uppercase text-white/60"
+    >
+      Message <span class="text-white/30">*</span>
+    </label>
+    <textarea
+      id="message"
+      name="message"
+      required
+      rows="4"
+      placeholder="Tell us about your project, goals, or any questions you have…"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 resize-none"
+    ></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button
+    type="submit"
+    class="w-full bg-white text-black font-bold tracking-wide py-4 rounded-lg hover:bg-white/90 active:scale-[0.98] transition-all duration-200 text-sm uppercase"
+  >
+    Send Message
+  </button>
+
+  <!-- Response note -->
+  <p class="text-center text-xs text-white/30 tracking-wide pt-1">
+    We'll get back to you within 24 hours.
+  </p>
+</form>

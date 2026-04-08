@@ -1,0 +1,81 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import VideoCard from '../components/ui/VideoCard.astro';
+import Tag from '../components/ui/Tag.astro';
+import Lightbox from '../components/ui/Lightbox.astro';
+import CtaBlock from '../components/sections/CtaBlock.astro';
+import { portfolioItems } from '../data/portfolio.ts';
+
+const categories = [
+  { label: 'All',     value: 'all' },
+  { label: 'Events',  value: 'events' },
+  { label: 'Artists', value: 'artists' },
+  { label: 'Brands',  value: 'brands' },
+] as const;
+---
+
+<BaseLayout
+  title="Portfolio"
+  description="Browse the full Capture & Connect portfolio — event aftermovies, artist promos, and brand campaigns built for impact. Real results, real reach."
+>
+
+  <!-- ── Hero ─────────────────────────────────────────────────────────── -->
+  <section class="pt-40 pb-16 text-center px-6">
+    <p class="text-white/40 text-xs font-semibold tracking-widest uppercase mb-5">
+      Our Work
+    </p>
+    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black italic tracking-tight text-white leading-none mb-6">
+      Content that speaks<br class="hidden sm:block" /> for itself
+    </h1>
+    <p class="text-white/50 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
+      Event aftermovies, artist promos, brand campaigns — all built for impact.
+    </p>
+  </section>
+
+  <!-- ── Filter tabs ───────────────────────────────────────────────────── -->
+  <div class="flex flex-wrap justify-center gap-2.5 px-6 pb-12">
+    {categories.map(({ label, value }, i) => (
+      <Tag
+        label={label}
+        active={i === 0}
+        data-filter={value}
+        role="button"
+        tabindex="0"
+      />
+    ))}
+  </div>
+
+  <!-- ── Portfolio grid ────────────────────────────────────────────────── -->
+  <section
+    id="portfolio-grid"
+    class="max-w-7xl mx-auto px-6 lg:px-8 pb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+  >
+    {portfolioItems.map((item) => (
+      <div data-category={item.category}>
+        <VideoCard
+          title={item.title}
+          category={item.category}
+          thumbnail={item.thumbnail}
+          video={item.video}
+          stats={item.stats}
+        />
+      </div>
+    ))}
+  </section>
+
+  <!-- ── Lightbox ───────────────────────────────────────────────────────── -->
+  <Lightbox />
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────── -->
+  <CtaBlock
+    headline="Like what you see?"
+    subtext="Let's create something for your brand."
+    buttonText="Book a Free Call"
+  />
+
+</BaseLayout>
+
+<script>
+  import { init } from '../scripts/portfolio-filter.ts';
+  init();
+</script>

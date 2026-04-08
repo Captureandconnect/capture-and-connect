@@ -1,0 +1,108 @@
+---
+// PortfolioPreview.astro — Portfolio preview for home page
+import VideoCard from '../ui/VideoCard.astro';
+import { portfolioItems } from '../../data/portfolio';
+
+// Show up to 6 featured items, fall back to first 6 if not enough featured
+const featured = portfolioItems.filter((item) => item.featured);
+const previewItems = featured.length >= 6 ? featured.slice(0, 6) : [
+  ...featured,
+  ...portfolioItems.filter((item) => !item.featured).slice(0, 6 - featured.length),
+].slice(0, 6);
+---
+
+<section
+  class="py-24 md:py-32 bg-black"
+  aria-labelledby="portfolio-heading"
+>
+  <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+
+    <!-- Section header -->
+    <div
+      class="opacity-0 mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-6"
+      data-reveal="fade-up"
+    >
+      <div>
+        <span class="text-sm uppercase tracking-[0.25em] text-white/40 font-medium block mb-4">
+          Portfolio
+        </span>
+        <h2
+          id="portfolio-heading"
+          class="text-4xl md:text-6xl font-black italic leading-none tracking-tight text-white"
+        >
+          Selected Work
+        </h2>
+      </div>
+      <a
+        href="/portfolio"
+        class="hidden md:inline-flex items-center gap-2 text-sm uppercase tracking-wider text-white/40 hover:text-white transition-colors duration-200 font-medium group/link shrink-0 mb-2"
+        aria-label="View all portfolio work"
+      >
+        View all work
+        <svg
+          class="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Portfolio grid: 2 rows × 3 columns on desktop -->
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5"
+      data-reveal="stagger"
+    >
+      {previewItems.map((item) => (
+        <VideoCard
+          title={item.title}
+          category={item.category}
+          thumbnail={item.thumbnail}
+          video={item.video}
+          stats={item.stats}
+        />
+      ))}
+    </div>
+
+    <!-- Mobile: View All CTA -->
+    <div
+      class="opacity-0 mt-10 flex justify-center md:hidden"
+      data-reveal="fade-up"
+    >
+      <a
+        href="/portfolio"
+        class="inline-flex items-center gap-2 px-8 py-4 bg-transparent text-white border border-white/30 font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white hover:text-black hover:border-white rounded-none"
+      >
+        View All Work
+        <svg
+          class="w-4 h-4"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- Desktop: bottom "View All Work" link -->
+    <div
+      class="opacity-0 mt-12 hidden md:flex justify-center"
+      data-reveal="fade-up"
+    >
+      <a
+        href="/portfolio"
+        class="inline-flex items-center gap-2 text-sm uppercase tracking-wider text-white/40 hover:text-white transition-colors duration-200 font-medium group/link"
+      >
+        View All Work →
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  number: string;
+  label: string;
+  description?: string;
+  class?: string;
+}
+
+const {
+  number,
+  label,
+  description,
+  class: className = '',
+} = Astro.props;
+---
+
+<div
+  class={['flex flex-col gap-2', className].join(' ')}
+  data-reveal="fade-up"
+>
+  <span
+    class="text-5xl md:text-7xl font-bold text-white leading-none tracking-tight"
+    data-count={number}
+  >
+    {number}
+  </span>
+
+  <span class="text-sm uppercase tracking-wider text-[var(--color-text-muted,rgba(255,255,255,0.5))] font-medium mt-1">
+    {label}
+  </span>
+
+  {description && (
+    <p class="text-sm text-[var(--color-text-muted,rgba(255,255,255,0.5))] leading-relaxed max-w-xs">
+      {description}
+    </p>
+  )}
+</div>

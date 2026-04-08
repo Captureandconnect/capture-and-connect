@@ -1,0 +1,115 @@
+---
+// HowWeWork.astro — Process section for home page
+
+const steps = [
+  {
+    number: '01',
+    title: 'Discovery',
+    description: 'We learn your brand, audience and goals',
+  },
+  {
+    number: '02',
+    title: 'Strategy',
+    description: 'We create a content plan built for growth',
+  },
+  {
+    number: '03',
+    title: 'Create',
+    description: 'We shoot, edit and optimize every piece',
+  },
+  {
+    number: '04',
+    title: 'Grow',
+    description: 'We post, analyze and scale what works',
+  },
+];
+---
+
+<section
+  class="py-24 md:py-32 bg-black border-t border-white/[0.04]"
+  aria-labelledby="process-heading"
+>
+  <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+
+    <!-- Section header -->
+    <div
+      class="opacity-0 mb-16 md:mb-20 max-w-2xl"
+      data-reveal="fade-up"
+    >
+      <span class="text-sm uppercase tracking-[0.25em] text-white/40 font-medium block mb-4">
+        Process
+      </span>
+      <h2
+        id="process-heading"
+        class="text-4xl md:text-6xl font-black italic leading-none tracking-tight text-white"
+      >
+        How We Work
+      </h2>
+    </div>
+
+    <!-- Steps grid with connecting line on desktop -->
+    <div class="relative">
+
+      <!-- Desktop connecting line -->
+      <div
+        class="hidden md:block absolute top-[2.1rem] left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px bg-white/10 pointer-events-none"
+        aria-hidden="true"
+      ></div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8"
+        data-reveal="stagger"
+      >
+        {steps.map((step) => (
+          <div class="opacity-0 flex flex-col gap-5 relative" data-reveal="fade-up">
+
+            <!-- Step number with dot on the line -->
+            <div class="flex flex-col items-start md:items-center gap-3">
+              <!-- Circle marker on connecting line -->
+              <div class="relative flex items-center justify-center">
+                <div class="w-[1.125rem] h-[1.125rem] rounded-full border border-white/20 bg-black flex items-center justify-center z-10">
+                  <div class="w-1.5 h-1.5 rounded-full bg-white/60"></div>
+                </div>
+              </div>
+
+              <!-- Large step number -->
+              <span class="text-[4rem] md:text-[5rem] font-black leading-none tracking-tighter text-white/[0.06] select-none block md:text-center">
+                {step.number}
+              </span>
+            </div>
+
+            <!-- Text content -->
+            <div class="flex flex-col gap-2 md:text-center">
+              <h3 class="text-lg font-bold text-white tracking-tight">
+                {step.title}
+              </h3>
+              <p class="text-sm text-white/45 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div
+      class="opacity-0 mt-20 pt-12 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+      data-reveal="fade-up"
+    >
+      <p class="text-white/40 text-sm leading-relaxed max-w-sm">
+        From first call to first post — most clients see results within 30 days.
+      </p>
+      <a
+        href="https://wa.me/31641011159?text=Hi%2C%20I'm%20interested%20in%20working%20with%20Capture%20%26%20Connect."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none shrink-0"
+      >
+        Start the Process
+      </a>
+    </div>
+
+  </div>
+</section>

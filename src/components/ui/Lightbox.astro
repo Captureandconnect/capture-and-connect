@@ -1,0 +1,182 @@
+---
+// Lightbox — no props needed; content is populated via JS from VideoCard data attributes
+---
+
+<div
+  id="lightbox"
+  data-lightbox
+  class="fixed inset-0 z-[60] hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Video lightbox"
+>
+  <!-- Backdrop -->
+  <div
+    id="lightbox-backdrop"
+    class="absolute inset-0 bg-black/95 backdrop-blur-sm"
+  />
+
+  <!-- Content -->
+  <div class="relative z-10 flex flex-col h-full max-w-5xl mx-auto px-4 py-6 md:py-10">
+    <!-- Close button -->
+    <div class="flex justify-end mb-4 shrink-0">
+      <button
+        id="lightbox-close"
+        class="flex items-center justify-center w-10 h-10 border border-white/20 text-white/70 hover:text-white hover:border-white/50 transition-all duration-200 rounded-sm"
+        aria-label="Close lightbox"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Video player -->
+    <div class="relative w-full bg-black aspect-video shrink-0 overflow-hidden rounded-sm">
+      <video
+        id="lightbox-video"
+        class="w-full h-full object-contain"
+        controls
+        playsinline
+        preload="metadata"
+        aria-label="Portfolio video"
+      >
+        <p class="text-white/50 text-sm p-4">Your browser does not support the video element.</p>
+      </video>
+
+      <!-- Placeholder when no video -->
+      <div id="lightbox-image-fallback" class="absolute inset-0 hidden">
+        <img
+          id="lightbox-thumbnail"
+          src=""
+          alt=""
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Meta info -->
+    <div class="mt-5 flex flex-col gap-2 shrink-0">
+      <div class="flex items-start justify-between gap-4 flex-wrap">
+        <div>
+          <h2
+            id="lightbox-title"
+            class="text-white text-xl md:text-2xl font-bold leading-snug"
+          ></h2>
+          <p
+            id="lightbox-category"
+            class="text-[var(--color-text-muted,rgba(255,255,255,0.5))] text-xs uppercase tracking-widest font-medium mt-1"
+          ></p>
+        </div>
+        <span
+          id="lightbox-stats"
+          class="text-white/60 text-sm border border-white/10 bg-white/5 px-3 py-1 rounded-full font-medium shrink-0 hidden"
+        ></span>
+      </div>
+
+      <p
+        id="lightbox-description"
+        class="text-[var(--color-text-muted,rgba(255,255,255,0.5))] text-sm leading-relaxed hidden"
+      ></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const lightbox = document.getElementById('lightbox') as HTMLElement;
+  const backdrop = document.getElementById('lightbox-backdrop') as HTMLElement;
+  const closeBtn = document.getElementById('lightbox-close') as HTMLButtonElement;
+  const videoEl = document.getElementById('lightbox-video') as HTMLVideoElement;
+  const imgFallback = document.getElementById('lightbox-image-fallback') as HTMLElement;
+  const thumbnailEl = document.getElementById('lightbox-thumbnail') as HTMLImageElement;
+  const titleEl = document.getElementById('lightbox-title') as HTMLElement;
+  const categoryEl = document.getElementById('lightbox-category') as HTMLElement;
+  const statsEl = document.getElementById('lightbox-stats') as HTMLElement;
+  const descEl = document.getElementById('lightbox-description') as HTMLElement;
+
+  function openLightbox(data: {
+    title?: string;
+    category?: string;
+    video?: string;
+    thumbnail?: string;
+    stats?: string;
+    description?: string;
+  }) {
+    titleEl.textContent = data.title ?? '';
+    categoryEl.textContent = data.category ?? '';
+
+    if (data.stats) {
+      statsEl.textContent = data.stats;
+      statsEl.classList.remove('hidden');
+    } else {
+      statsEl.classList.add('hidden');
+    }
+
+    if (data.description) {
+      descEl.textContent = data.description;
+      descEl.classList.remove('hidden');
+    } else {
+      descEl.classList.add('hidden');
+    }
+
+    if (data.video) {
+      videoEl.src = data.video;
+      videoEl.classList.remove('hidden');
+      imgFallback.classList.add('hidden');
+      videoEl.play().catch(() => {});
+    } else if (data.thumbnail) {
+      videoEl.removeAttribute('src');
+      videoEl.classList.add('hidden');
+      thumbnailEl.src = data.thumbnail;
+      thumbnailEl.alt = data.title ?? '';
+      imgFallback.classList.remove('hidden');
+    }
+
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Trap focus
+    setTimeout(() => closeBtn.focus(), 50);
+  }
+
+  function closeLightbox() {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+
+    videoEl.pause();
+    videoEl.removeAttribute('src');
+    videoEl.load();
+  }
+
+  // Trigger open from VideoCard cards
+  document.addEventListener('click', (e) => {
+    const trigger = (e.target as HTMLElement).closest('[data-lightbox-trigger]') as HTMLElement | null;
+    if (!trigger) return;
+
+    openLightbox({
+      title: trigger.dataset.title,
+      category: trigger.dataset.category,
+      video: trigger.dataset.video,
+      thumbnail: trigger.dataset.thumbnail,
+      stats: trigger.dataset.stats,
+      description: trigger.dataset.description,
+    });
+  });
+
+  // Close via button
+  closeBtn?.addEventListener('click', closeLightbox);
+
+  // Close via backdrop click
+  backdrop?.addEventListener('click', closeLightbox);
+
+  // Close via Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+      closeLightbox();
+    }
+  });
+
+  // Expose globally for manual use
+  (window as any).openLightbox = openLightbox;
+  (window as any).closeLightbox = closeLightbox;
+</script>

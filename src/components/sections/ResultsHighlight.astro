@@ -1,0 +1,92 @@
+---
+// ResultsHighlight.astro — Big numbers section for home page
+import StatCard from '../ui/StatCard.astro';
+
+const stats = [
+  {
+    number: '20M+',
+    label: 'Views Generated',
+    description: 'Organic reach across all client accounts combined.',
+  },
+  {
+    number: '150+',
+    label: 'Projects Delivered',
+    description: 'From single Reels to full campaign rollouts.',
+  },
+  {
+    number: '3x',
+    label: 'Average Growth',
+    description: 'Average follower growth within the first 90 days.',
+  },
+  {
+    number: '50+',
+    label: 'Happy Clients',
+    description: 'Artists, events, and brands across the Netherlands.',
+  },
+];
+---
+
+<section
+  class="py-24 md:py-32 bg-[#080808]"
+  aria-labelledby="results-heading"
+>
+  <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+
+    <!-- Section header -->
+    <div
+      class="opacity-0 mb-16 md:mb-20 max-w-2xl"
+      data-reveal="fade-up"
+    >
+      <span class="text-sm uppercase tracking-[0.25em] text-white/40 font-medium block mb-4">
+        Results
+      </span>
+      <h2
+        id="results-heading"
+        class="text-4xl md:text-6xl font-black italic leading-none tracking-tight text-white"
+      >
+        Numbers Don't Lie
+      </h2>
+    </div>
+
+    <!-- Stats grid -->
+    <div
+      class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12"
+      data-reveal="stagger"
+    >
+      {stats.map((stat) => (
+        <StatCard
+          number={stat.number}
+          label={stat.label}
+          description={stat.description}
+        />
+      ))}
+    </div>
+
+    <!-- Divider line -->
+    <div
+      class="opacity-0 mt-20 pt-12 border-t border-white/[0.06] flex flex-col md:flex-row items-start md:items-center justify-between gap-6"
+      data-reveal="fade-up"
+    >
+      <p class="text-white/40 text-sm max-w-md leading-relaxed">
+        Real results from real clients. Every number above reflects organic reach and performance, no paid shortcuts.
+      </p>
+      <a
+        href="/results"
+        class="inline-flex items-center gap-2 text-sm uppercase tracking-wider text-white/40 hover:text-white transition-colors duration-200 font-medium group/link shrink-0"
+      >
+        See case studies
+        <svg
+          class="w-4 h-4 transition-transform duration-200 group-hover/link:translate-x-1"
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.5"
+          aria-hidden="true"
+        >
+          <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

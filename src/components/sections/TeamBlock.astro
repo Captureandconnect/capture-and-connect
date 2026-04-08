@@ -1,0 +1,125 @@
+---
+// TeamBlock.astro — About page Ryan section
+
+const WHATSAPP_URL =
+  'https://wa.me/31641011159?text=Hi%2C%20I\'m%20interested%20in%20working%20with%20Capture%20%26%20Connect.';
+---
+
+<section
+  class="py-24 md:py-32 bg-black"
+  aria-labelledby="team-heading"
+>
+  <div class="container mx-auto px-6 md:px-12 max-w-7xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+      <!-- Photo: left column -->
+      <div
+        class="opacity-0 relative"
+        data-reveal="slide-left"
+      >
+        <!-- Photo placeholder — replace with actual image of Ryan -->
+        <div class="relative w-full aspect-[3/4] max-w-md mx-auto md:mx-0 rounded-xl overflow-hidden bg-[#0a0a0a] border border-white/[0.06]">
+
+          <!-- Placeholder silhouette -->
+          <div class="absolute inset-0 flex flex-col items-center justify-end pb-12 gap-3">
+            <div class="w-24 h-24 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center">
+              <svg
+                class="w-10 h-10 text-white/20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+              >
+                <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5.33 0-8 2.67-8 4v1h16v-1c0-1.33-2.67-4-8-4z" />
+              </svg>
+            </div>
+            <span class="text-xs text-white/20 uppercase tracking-wider">Photo coming soon</span>
+          </div>
+
+          <!-- Gradient overlay -->
+          <div
+            class="absolute inset-0 pointer-events-none"
+            style="background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%);"
+          ></div>
+
+          <!-- Corner accents -->
+          <div class="absolute top-5 left-5 w-8 h-8 border-t-2 border-l-2 border-white/10"></div>
+          <div class="absolute bottom-5 right-5 w-8 h-8 border-b-2 border-r-2 border-white/10"></div>
+
+        </div>
+      </div>
+
+      <!-- Text: right column -->
+      <div
+        class="opacity-0 flex flex-col gap-8"
+        data-reveal="slide-right"
+      >
+
+        <!-- Label -->
+        <span class="text-sm uppercase tracking-[0.25em] text-white/40 font-medium">
+          The Team
+        </span>
+
+        <!-- Name + title -->
+        <div class="flex flex-col gap-2">
+          <h2
+            id="team-heading"
+            class="text-3xl md:text-4xl font-black italic leading-tight tracking-tight text-white"
+          >
+            Ryan van der Niet
+          </h2>
+          <p class="text-sm uppercase tracking-wider text-white/40 font-medium">
+            Founder &amp; Creative Director
+          </p>
+        </div>
+
+        <!-- Story paragraphs -->
+        <div class="flex flex-col gap-5">
+
+          <p class="text-base text-white/60 leading-relaxed">
+            Ryan started as a videographer with a camera and a passion for the event and music scene —
+            capturing the energy of stages, crowds, and late nights before anyone asked him to.
+          </p>
+
+          <p class="text-base text-white/60 leading-relaxed">
+            Over the years, he worked alongside major artists and festivals across the Netherlands,
+            building a reputation for content that felt real, high-energy, and built for the scroll.
+          </p>
+
+          <p class="text-base text-white/60 leading-relaxed">
+            That's what led him to build Capture &amp; Connect — an agency that gives brands, artists, and
+            events a complete content solution: from filming and editing to posting and growing.
+          </p>
+
+          <p class="text-base text-white/60 leading-relaxed">
+            Today, Ryan leads a team of creatives focused on one thing: turning content into results.
+            Every project is personal, every number is real.
+          </p>
+
+        </div>
+
+        <!-- Social proof / CTA -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 pt-2">
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
+          >
+            Work With Ryan
+          </a>
+
+          <!-- Divider -->
+          <div class="hidden sm:block w-px h-6 bg-white/10" aria-hidden="true"></div>
+
+          <!-- Quick credential -->
+          <p class="text-xs text-white/30 leading-relaxed">
+            Based in the Netherlands<br />
+            Serving artists &amp; brands worldwide
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>

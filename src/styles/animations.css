@@ -1,0 +1,226 @@
+/* ============================================================
+   Capture & Connect — Animation System
+   Keyframes + utility classes for entrance and ambient motion.
+   ============================================================ */
+
+/* ============================================================
+   Keyframe Definitions
+   ============================================================ */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  from {
+    background-position: -200% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes revealUp {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(10px);
+  }
+  to {
+    clip-path: inset(0% 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+/* ============================================================
+   Utility Animation Classes
+   ============================================================ */
+
+.animate-fade-up {
+  animation: fadeUp var(--duration-slow, 600ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--duration-slow, 600ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft var(--duration-slow, 600ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--duration-slow, 600ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.animate-pulse-soft {
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--duration-slow, 600ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.animate-reveal-up {
+  animation: revealUp var(--duration-slow, 600ms) var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) both;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-accent-bg, rgba(255, 255, 255, 0.05)) 50%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ============================================================
+   Animation Delay Modifiers
+   Apply alongside animate-* classes to stagger children.
+   ============================================================ */
+
+.delay-100  { animation-delay: 100ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-1000 { animation-delay: 1000ms; }
+
+/* ============================================================
+   Duration Modifiers
+   ============================================================ */
+
+.duration-fast   { animation-duration: var(--duration-fast,   150ms); }
+.duration-normal { animation-duration: var(--duration-normal, 300ms); }
+.duration-slow   { animation-duration: var(--duration-slow,   600ms); }
+.duration-xslow  { animation-duration: var(--duration-xslow, 1000ms); }
+
+/* ============================================================
+   WhatsApp / CTA Pulse Button
+   Ambient draw-attention effect for floating action buttons.
+   ============================================================ */
+
+.btn-pulse {
+  animation: pulse 2.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ============================================================
+   Hover Transitions — Shared baseline
+   ============================================================ */
+
+.transition-base {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: var(--duration-normal, 300ms);
+  transition-timing-function: var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.transition-fast {
+  transition-property: color, background-color, border-color, opacity, transform, box-shadow;
+  transition-duration: var(--duration-fast, 150ms);
+  transition-timing-function: var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+/* ============================================================
+   Reduced Motion — Disable all animations for accessibility
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-pulse-soft,
+  .animate-float,
+  .animate-scale-in,
+  .animate-reveal-up,
+  .animate-shimmer,
+  .btn-pulse {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
