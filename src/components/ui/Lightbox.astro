@@ -44,6 +44,15 @@
         <p class="text-white/50 text-sm p-4">Your browser does not support the video element.</p>
       </video>
 
+      <!-- YouTube embed -->
+      <iframe
+        id="lightbox-youtube"
+        class="w-full h-full absolute inset-0 hidden"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+
       <!-- Placeholder when no video -->
       <div id="lightbox-image-fallback" class="absolute inset-0 hidden">
         <img
@@ -87,12 +96,23 @@
   const backdrop = document.getElementById('lightbox-backdrop') as HTMLElement;
   const closeBtn = document.getElementById('lightbox-close') as HTMLButtonElement;
   const videoEl = document.getElementById('lightbox-video') as HTMLVideoElement;
+  const youtubeEl = document.getElementById('lightbox-youtube') as HTMLIFrameElement;
   const imgFallback = document.getElementById('lightbox-image-fallback') as HTMLElement;
   const thumbnailEl = document.getElementById('lightbox-thumbnail') as HTMLImageElement;
   const titleEl = document.getElementById('lightbox-title') as HTMLElement;
   const categoryEl = document.getElementById('lightbox-category') as HTMLElement;
   const statsEl = document.getElementById('lightbox-stats') as HTMLElement;
   const descEl = document.getElementById('lightbox-description') as HTMLElement;
+
+  function getYouTubeId(url: string): string | null {
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : null;
+  }
+
+  function getInstagramId(url: string): string | null {
+    const match = url.match(/instagram\.com\/(?:reel|p)\/([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : null;
+  }
 
   function openLightbox(data: {
     title?: string;
@@ -119,14 +139,26 @@
       descEl.classList.add('hidden');
     }
 
+    // Hide all media first
+    videoEl.classList.add('hidden');
+    youtubeEl.classList.add('hidden');
+    imgFallback.classList.add('hidden');
+
     if (data.video) {
-      videoEl.src = data.video;
-      videoEl.classList.remove('hidden');
-      imgFallback.classList.add('hidden');
-      videoEl.play().catch(() => {});
+      const ytId = getYouTubeId(data.video);
+      const igId = getInstagramId(data.video);
+      if (ytId) {
+        youtubeEl.src = `https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0`;
+        youtubeEl.classList.remove('hidden');
+      } else if (igId) {
+        youtubeEl.src = `https://www.instagram.com/reel/${igId}/embed/`;
+        youtubeEl.classList.remove('hidden');
+      } else {
+        videoEl.src = data.video;
+        videoEl.classList.remove('hidden');
+        videoEl.play().catch(() => {});
+      }
     } else if (data.thumbnail) {
-      videoEl.removeAttribute('src');
-      videoEl.classList.add('hidden');
       thumbnailEl.src = data.thumbnail;
       thumbnailEl.alt = data.title ?? '';
       imgFallback.classList.remove('hidden');
@@ -134,8 +166,6 @@
 
     lightbox.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-
-    // Trap focus
     setTimeout(() => closeBtn.focus(), 50);
   }
 
@@ -146,6 +176,7 @@
     videoEl.pause();
     videoEl.removeAttribute('src');
     videoEl.load();
+    youtubeEl.src = '';
   }
 
   // Trigger open from VideoCard cards

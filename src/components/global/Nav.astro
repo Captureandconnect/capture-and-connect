@@ -28,12 +28,7 @@ const currentPath = Astro.url.pathname;
         aria-label="Capture & Connect — Home"
       >
         <span class="text-white font-black italic tracking-tight text-lg lg:text-xl uppercase leading-none select-none">
-          CAPTURE
-          <span
-            class="font-light not-italic"
-            style="font-family: 'Georgia', serif; letter-spacing: -0.02em;"
-          >&amp;</span>
-          CONNECT
+          CAPTURE<span class="font-normal">&thinsp;&amp;&thinsp;</span>CONNECT
         </span>
       </a>
 
@@ -75,14 +70,14 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile hamburger -->
       <button
         id="nav-hamburger"
-        class="lg:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 focus:outline-none"
+        style="display:flex;flex-direction:column;justify-content:center;width:32px;height:32px;gap:6px;cursor:pointer;background:none;border:none;padding:0;"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
-        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-        <span class="hamburger-line block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
-        <span class="hamburger-line block w-4 h-0.5 bg-white transition-all duration-300 origin-center self-end"></span>
+        <span id="hb1" style="display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;"></span>
+        <span id="hb2" style="display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;"></span>
+        <span id="hb3" style="display:block;width:16px;height:2px;background:#fff;transition:all 0.3s ease;"></span>
       </button>
     </div>
   </div>
@@ -138,22 +133,8 @@ const currentPath = Astro.url.pathname;
   /* Hide hamburger on desktop */
   @media (min-width: 1024px) {
     #nav-hamburger {
-      display: none;
+      display: none !important;
     }
-  }
-
-  /* Hamburger open state */
-  header.menu-open .hamburger-line:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  header.menu-open .hamburger-line:nth-child(2) {
-    opacity: 0;
-    transform: scaleX(0);
-  }
-  header.menu-open .hamburger-line:nth-child(3) {
-    width: 1.5rem;
-    transform: translateY(-8px) rotate(-45deg);
-    align-self: auto;
   }
 
   /* Mobile link entrance animation */
@@ -190,6 +171,10 @@ const currentPath = Astro.url.pathname;
   // Hamburger toggle
   let menuOpen = false;
 
+  const hb1 = document.getElementById('hb1') as HTMLElement;
+  const hb2 = document.getElementById('hb2') as HTMLElement;
+  const hb3 = document.getElementById('hb3') as HTMLElement;
+
   const openMenu = () => {
     menuOpen = true;
     header.classList.add('menu-open');
@@ -198,6 +183,11 @@ const currentPath = Astro.url.pathname;
     mobileMenu.setAttribute('aria-hidden', 'false');
     hamburger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    // Animate to cross
+    hb1.style.transform = 'translateY(8px) rotate(45deg)';
+    hb2.style.opacity = '0';
+    hb3.style.width = '24px';
+    hb3.style.transform = 'translateY(-8px) rotate(-45deg)';
   };
 
   const closeMenu = () => {
@@ -208,6 +198,11 @@ const currentPath = Astro.url.pathname;
     mobileMenu.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    // Animate back to hamburger
+    hb1.style.transform = 'none';
+    hb2.style.opacity = '1';
+    hb3.style.width = '16px';
+    hb3.style.transform = 'none';
   };
 
   hamburger.addEventListener('click', () => {

@@ -14,13 +14,13 @@ export const portfolioItems: PortfolioItem[] = [
   // ── Events ──────────────────────────────────────────────────────────────
   {
     id: 'event-001',
-    title: 'Mainstage Aftermovie',
+    title: 'Festival Aftermovie',
     category: 'events',
     thumbnail: '/images/portfolio/event-mainstage-aftermovie.jpg',
-    video: '/videos/portfolio/event-mainstage-aftermovie.mp4',
+    video: 'https://www.youtube.com/watch?v=wMICv0W9h8o',
     stats: '2.4M views',
     description:
-      'Full festival aftermovie captured across two stages and a 12-hour lineup. Delivered in 48 hours post-event.',
+      'Full festival aftermovie captured across multiple stages. High-energy cinematic edit delivered post-event.',
     client: 'Festival Client',
     featured: true,
   },
@@ -55,7 +55,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'The Dope Doctor — Viral Promo',
     category: 'artists',
     thumbnail: '/images/portfolio/artist-the-dope-doctor.jpg',
-    video: '/videos/portfolio/artist-the-dope-doctor.mp4',
+    video: 'https://www.instagram.com/reel/DKcUyZgog7I/',
     stats: '20M+ views',
     description:
       'Artist promo content for The Dope Doctor that crossed 20 million views organically — no paid boost.',

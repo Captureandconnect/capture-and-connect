@@ -90,11 +90,11 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 export const aggregateStats = [
-  { value: '20M+', label: 'Views Generated' },
-  { value: '4.7M', label: 'Single Campaign Impressions' },
-  { value: '40x', label: 'Best Follower Growth' },
+  { value: '65M+', label: 'Views' },
+  { value: '500+', label: 'Projects' },
+  { value: '2x', label: 'Average Growth in Reach' },
+  { value: '150+', label: 'Happy Clients' },
   { value: '320%', label: 'Peak ROAS' },
-  { value: '3', label: 'Viral Campaigns' },
 ];
 
 export const featuredCaseStudies = caseStudies.filter((cs) => cs.featured);
