@@ -37,25 +37,12 @@
 }
 
 /* ============================================================
-   CSS Custom Properties — Single Source of Truth
-   Changing --color-accent here updates the entire site.
+   CSS Custom Properties — Motion & Spacing
+   Colors are defined in @theme above (single source of truth).
+   Change --color-accent there to re-skin the entire site.
    ============================================================ */
 
 :root {
-  /* --- Color system (dark mode only) --- */
-  --color-bg:           #000000;
-  --color-surface:      #0a0a0a;
-  --color-surface-2:    #111111;
-  --color-border:       #1a1a1a;
-  --color-text:         #ffffff;
-  --color-text-muted:   #888888;
-  --color-text-dim:     #444444;
-
-  /* Accent — placeholder white. Replace this ONE value to re-skin the entire site. */
-  --color-accent:       #ffffff;
-  --color-accent-hover: rgba(255, 255, 255, 0.8);
-  --color-accent-bg:    rgba(255, 255, 255, 0.05);
-
   /* --- Spacing --- */
   --section-gap: clamp(5rem, 10vw, 10rem);
 

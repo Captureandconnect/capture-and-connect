@@ -12,7 +12,7 @@ interface Props {
 }
 
 const { title, description, ogImage = '/og-default.jpg' } = Astro.props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://captureandconnect.com');
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://captureandconnect.nl');
 const pageTitle = `${title} | Capture & Connect`;
 ---
 

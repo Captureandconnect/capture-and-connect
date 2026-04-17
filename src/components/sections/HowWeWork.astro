@@ -10,12 +10,12 @@ const steps = [
   {
     number: '02',
     title: 'Strategy',
-    description: 'We plan the shoots, formats and content roadmap',
+    description: 'We plan the shoots, content roadmap and digital presence',
   },
   {
     number: '03',
-    title: 'Capture',
-    description: 'We film, photograph and edit cinematic content',
+    title: 'Create',
+    description: 'We film, edit, design your website and build your brand online',
   },
   {
     number: '04',
@@ -26,7 +26,7 @@ const steps = [
 ---
 
 <section
-  class="py-24 md:py-32 bg-black border-t border-white/[0.04]"
+  class="py-16 md:py-20 bg-black border-t border-white/[0.04]"
   aria-labelledby="process-heading"
 >
   <div class="container mx-auto px-6 md:px-12 max-w-7xl">
@@ -52,7 +52,7 @@ const steps = [
 
       <!-- Desktop connecting line -->
       <div
-        class="hidden md:block absolute top-[2.1rem] left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px bg-white/10 pointer-events-none"
+        class="hidden md:block absolute top-[2.1rem] left-[calc(12.5%+1rem)] right-[calc(12.5%+1rem)] h-px bg-white/20 pointer-events-none"
         aria-hidden="true"
       ></div>
 
@@ -67,13 +67,13 @@ const steps = [
             <div class="flex flex-col items-start md:items-center gap-3">
               <!-- Circle marker on connecting line -->
               <div class="relative flex items-center justify-center">
-                <div class="w-[1.125rem] h-[1.125rem] rounded-full border border-white/20 bg-black flex items-center justify-center z-10">
-                  <div class="w-1.5 h-1.5 rounded-full bg-white/60"></div>
+                <div class="w-[1.125rem] h-[1.125rem] rounded-full border border-white/30 bg-black flex items-center justify-center z-10">
+                  <div class="w-1.5 h-1.5 rounded-full bg-white/80"></div>
                 </div>
               </div>
 
               <!-- Large step number -->
-              <span class="text-[4rem] md:text-[5rem] font-black leading-none tracking-tighter text-white/[0.06] select-none block md:text-center">
+              <span class="text-[4rem] md:text-[5rem] font-black leading-none tracking-tighter text-white/[0.15] select-none block md:text-center">
                 {step.number}
               </span>
             </div>
@@ -83,7 +83,7 @@ const steps = [
               <h3 class="text-lg font-bold text-white tracking-tight">
                 {step.title}
               </h3>
-              <p class="text-sm text-white/45 leading-relaxed">
+              <p class="text-sm text-white/60 leading-relaxed">
                 {step.description}
               </p>
             </div>
@@ -98,8 +98,8 @@ const steps = [
       class="opacity-0 mt-20 pt-12 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
       data-reveal="fade-up"
     >
-      <p class="text-white/40 text-sm leading-relaxed max-w-sm">
-        From first call to first post, most clients see results within 30 days.
+      <p class="text-white/55 text-sm leading-relaxed max-w-sm">
+        From first call to first post or website launch, most clients see results within 30 days.
       </p>
       <a
         href="mailto:info@captureandconnect.nl"

@@ -1,7 +1,7 @@
 export interface PortfolioItem {
   id: string;
   title: string;
-  category: 'events' | 'artists' | 'brands';
+  category: 'content-creation' | 'social-media';
   thumbnail: string;
   video?: string;
   stats?: string;
@@ -11,11 +11,11 @@ export interface PortfolioItem {
 }
 
 export const portfolioItems: PortfolioItem[] = [
-  // ── Events ──────────────────────────────────────────────────────────────
+  // ── Content Creation ──────────────────────────────────────────────────
   {
-    id: 'event-001',
+    id: 'content-001',
     title: 'Festival Aftermovie',
-    category: 'events',
+    category: 'content-creation',
     thumbnail: '/images/portfolio/event-mainstage-aftermovie.jpg',
     video: 'https://www.youtube.com/watch?v=wMICv0W9h8o',
     stats: '2.4M views',
@@ -25,9 +25,9 @@ export const portfolioItems: PortfolioItem[] = [
     featured: true,
   },
   {
-    id: 'event-002',
+    id: 'content-002',
     title: 'Club Night Highlights',
-    category: 'events',
+    category: 'content-creation',
     thumbnail: '/images/portfolio/event-club-night.jpg',
     video: '/videos/portfolio/event-club-night.mp4',
     stats: '850K reach',
@@ -37,9 +37,9 @@ export const portfolioItems: PortfolioItem[] = [
     featured: false,
   },
   {
-    id: 'event-003',
+    id: 'content-003',
     title: 'Outdoor Stage Recap',
-    category: 'events',
+    category: 'content-creation',
     thumbnail: '/images/portfolio/event-outdoor-stage.jpg',
     video: '/videos/portfolio/event-outdoor-stage.mp4',
     stats: '1.1M impressions',
@@ -48,12 +48,10 @@ export const portfolioItems: PortfolioItem[] = [
     client: 'Outdoor Festival',
     featured: false,
   },
-
-  // ── Artists ─────────────────────────────────────────────────────────────
   {
-    id: 'artist-001',
+    id: 'content-004',
     title: 'The Dope Doctor, Viral Promo',
-    category: 'artists',
+    category: 'content-creation',
     thumbnail: '/images/portfolio/artist-the-dope-doctor.jpg',
     video: 'https://www.instagram.com/reel/DKcUyZgog7I/',
     stats: '20M+ views',
@@ -63,9 +61,9 @@ export const portfolioItems: PortfolioItem[] = [
     featured: true,
   },
   {
-    id: 'artist-002',
+    id: 'content-005',
     title: 'Major Conspiracy, Visual Identity',
-    category: 'artists',
+    category: 'content-creation',
     thumbnail: '/images/portfolio/artist-major-conspiracy.jpg',
     video: '/videos/portfolio/artist-major-conspiracy.mp4',
     stats: '3.2M reach',
@@ -75,9 +73,9 @@ export const portfolioItems: PortfolioItem[] = [
     featured: true,
   },
   {
-    id: 'artist-003',
+    id: 'content-006',
     title: 'DJ Profile Series',
-    category: 'artists',
+    category: 'content-creation',
     thumbnail: '/images/portfolio/artist-dj-profile.jpg',
     video: '/videos/portfolio/artist-dj-profile.mp4',
     stats: '640K views',
@@ -87,11 +85,11 @@ export const portfolioItems: PortfolioItem[] = [
     featured: false,
   },
 
-  // ── Brands ───────────────────────────────────────────────────────────────
+  // ── Social Media Management ───────────────────────────────────────────
   {
-    id: 'brand-001',
+    id: 'social-001',
     title: 'Hard Dance Store, Launch Campaign',
-    category: 'brands',
+    category: 'social-media',
     thumbnail: '/images/portfolio/brand-hard-dance-store.jpg',
     video: '/videos/portfolio/brand-hard-dance-store.mp4',
     stats: '4.7M impressions',
@@ -101,9 +99,9 @@ export const portfolioItems: PortfolioItem[] = [
     featured: false,
   },
   {
-    id: 'brand-002',
+    id: 'social-002',
     title: 'Merch Brand Launch',
-    category: 'brands',
+    category: 'social-media',
     thumbnail: '/images/portfolio/brand-merch-launch.jpg',
     video: '/videos/portfolio/brand-merch-launch.mp4',
     stats: '1.8M reach',
@@ -112,17 +110,7 @@ export const portfolioItems: PortfolioItem[] = [
     client: 'Merch Brand',
     featured: false,
   },
-  {
-    id: 'brand-003',
-    title: 'E-Commerce Product Content',
-    category: 'brands',
-    thumbnail: '/images/portfolio/brand-ecom-product.jpg',
-    stats: '320% ROAS',
-    description:
-      'Short-form product content series built for paid social, scroll-stopping hooks, direct conversion focus.',
-    client: 'E-Commerce Brand',
-    featured: false,
-  },
+
 ];
 
 export const featuredPortfolioItems = portfolioItems.filter((item) => item.featured);

@@ -1,22 +1,97 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import VideoCard from '../components/ui/VideoCard.astro';
-import Tag from '../components/ui/Tag.astro';
 import Lightbox from '../components/ui/Lightbox.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import { portfolioItems } from '../data/portfolio.ts';
 
-const categories = [
-  { label: 'All',     value: 'all' },
-  { label: 'Events',  value: 'events' },
-  { label: 'Artists', value: 'artists' },
-  { label: 'Brands',  value: 'brands' },
+const mediaSections = [
+  {
+    id: 'content-creation',
+    label: 'Content Creation',
+    description: 'Cinematic event coverage, festival aftermovies, artist visuals and high-energy edits.',
+    ctaText: 'Book Your Shoot',
+    ctaNote: 'From single Reels to full event coverage.',
+  },
+  {
+    id: 'social-media',
+    label: 'Social Media',
+    description: 'Full social media management, content calendars and community-driven campaigns.',
+    ctaText: 'Grow Your Socials',
+    ctaNote: 'Consistent posting, real growth, zero guesswork.',
+  },
 ] as const;
+
+const growthFeatures = [
+  {
+    title: 'Platform-Specific Roadmaps',
+    description: 'Custom growth plans for Instagram, TikTok and YouTube based on your niche, audience and goals.',
+    icon: 'M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0 0 21 18.382V7.618a1 1 0 0 0-.553-.894L15 4m0 13V4m0 0L9 7',
+  },
+  {
+    title: 'Viral Content Formats',
+    description: 'We research what works on each platform right now and build your content around proven formats.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    title: 'Audience Targeting',
+    description: 'Deep analysis of your ideal audience. We map out who they are, where they scroll and what makes them stop.',
+    icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm14 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  },
+  {
+    title: 'Monthly Strategy Sessions',
+    description: 'Regular check-ins to review performance, adjust the plan and double down on what drives results.',
+    icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z',
+  },
+  {
+    title: 'Competitor Analysis',
+    description: 'We benchmark your brand against competitors and find the gaps you can own.',
+    icon: 'M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
+  },
+  {
+    title: 'Brand Positioning',
+    description: 'We define your tone of voice, visual identity and content pillars so everything you post feels like you.',
+    icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A2 2 0 0 1 3 12V7a4 4 0 0 1 4-4z',
+  },
+];
+
+const webDesignFeatures = [
+  {
+    title: 'Custom Design',
+    description: 'No templates. Every website is designed from scratch to match your brand, your style and your goals.',
+    icon: 'M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zM4 13a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zM16 13a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6z',
+  },
+  {
+    title: 'Mobile-First',
+    description: 'Your audience scrolls on their phone. Every site we build looks and feels perfect on any screen size.',
+    icon: 'M12 18h.01M8 21h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z',
+  },
+  {
+    title: 'Lightning Fast',
+    description: 'Optimized for speed and SEO. Your site loads instantly and ranks where it should.',
+    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
+  },
+  {
+    title: 'Landing Pages',
+    description: 'Campaign-specific landing pages and microsites built to convert traffic into leads and sales.',
+    icon: 'M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122',
+  },
+  {
+    title: 'Domain & Hosting',
+    description: 'We handle the technical setup. Domain registration, hosting configuration, SSL, everything.',
+    icon: 'M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9',
+  },
+  {
+    title: 'Fully Yours',
+    description: 'No subscriptions, no lock-in. We build it, hand it over and you own everything.',
+    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
+  },
+];
 ---
 
 <BaseLayout
   title="Portfolio"
-  description="Browse the full Capture & Connect portfolio, event aftermovies, artist promos, and brand campaigns built for impact. Real results, real reach."
+  description="Browse the full Capture & Connect portfolio. Content creation, social media management, growth strategy and web design, all built for impact."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────── -->
@@ -28,39 +103,185 @@ const categories = [
       Content that speaks<br class="hidden sm:block" /> for itself
     </h1>
     <p class="text-white/50 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
-      Event aftermovies, artist promos, brand campaigns, all built for impact.
+      Content creation, social media, growth strategy and web design, all built for impact.
     </p>
   </section>
 
-  <!-- ── Filter tabs ───────────────────────────────────────────────────── -->
-  <div class="flex flex-wrap justify-center gap-2.5 px-6 pb-12">
-    {categories.map(({ label, value }, i) => (
-      <Tag
-        label={label}
-        active={i === 0}
-        data-filter={value}
-        role="button"
-        tabindex="0"
-      />
-    ))}
-  </div>
-
-  <!-- ── Portfolio grid ────────────────────────────────────────────────── -->
-  <section
-    id="portfolio-grid"
-    class="max-w-7xl mx-auto px-6 lg:px-8 pb-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+  <!-- ── Sticky navigation tabs ───────────────────────────────────────── -->
+  <nav
+    id="portfolio-nav"
+    class="sticky top-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300"
   >
-    {portfolioItems.map((item) => (
-      <div data-category={item.category}>
-        <VideoCard
-          title={item.title}
-          category={item.category}
-          thumbnail={item.thumbnail}
-          video={item.video}
-          stats={item.stats}
-        />
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 overflow-x-auto scrollbar-hide">
+      <div class="flex gap-1 py-3 min-w-max">
+        {[
+          { id: 'content-creation', label: 'Content Creation' },
+          { id: 'social-media', label: 'Social Media' },
+          { id: 'growth-strategy', label: 'Growth Strategy' },
+          { id: 'web-design', label: 'Web Design' },
+        ].map((tab, i) => (
+          <a
+            href={`#${tab.id}`}
+            class:list={[
+              'portfolio-tab inline-flex items-center px-4 py-2 text-sm font-medium tracking-wide border rounded-full transition-all duration-200 cursor-pointer select-none whitespace-nowrap',
+              i === 0
+                ? 'border-white text-white bg-white/10'
+                : 'border-white/20 text-white/50 hover:border-white/50 hover:text-white/80',
+            ]}
+            data-tab={tab.id}
+          >
+            {tab.label}
+          </a>
+        ))}
       </div>
-    ))}
+    </div>
+  </nav>
+
+  <!-- ── Media sections (Content Creation & Social Media) ───────────── -->
+  {mediaSections.map((section) => {
+    const items = portfolioItems.filter((item) => item.category === section.id);
+
+    return (
+      <section
+        id={section.id}
+        class="portfolio-section py-14 md:py-18 border-b border-white/[0.04] scroll-mt-16"
+      >
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+          <div class="mb-12 md:mb-16 max-w-2xl" data-reveal="fade-up">
+            <h2 class="text-3xl md:text-5xl font-black italic leading-none tracking-tight text-white mb-4">
+              {section.label}
+            </h2>
+            <p class="text-white/50 text-base sm:text-lg leading-relaxed">
+              {section.description}
+            </p>
+          </div>
+
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+            data-reveal="stagger"
+          >
+            {items.map((item) => (
+              <VideoCard
+                title={item.title}
+                category={item.category}
+                thumbnail={item.thumbnail}
+                video={item.video}
+                stats={item.stats}
+              />
+            ))}
+          </div>
+
+          <!-- CTA -->
+          <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6" data-reveal="fade-up">
+            <a
+              href="mailto:info@captureandconnect.nl"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
+            >
+              {section.ctaText}
+            </a>
+            <p class="text-white/40 text-sm">{section.ctaNote}</p>
+          </div>
+
+        </div>
+      </section>
+    );
+  })}
+
+  <!-- ── Growth Strategy ──────────────────────────────────────────────── -->
+  <section
+    id="growth-strategy"
+    class="portfolio-section py-14 md:py-18 border-b border-white/[0.04] scroll-mt-16"
+  >
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="mb-12 md:mb-16 max-w-2xl" data-reveal="fade-up">
+        <h2 class="text-3xl md:text-5xl font-black italic leading-none tracking-tight text-white mb-4">
+          Growth Strategy
+        </h2>
+        <p class="text-white/50 text-base sm:text-lg leading-relaxed">
+          Data-backed strategy that turns content into reach, revenue and real growth. We identify what works, double down on it and cut everything else.
+        </p>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="stagger">
+        {growthFeatures.map((feature) => (
+          <div
+            class="flex flex-col gap-4 bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.04]"
+            data-reveal="fade-up"
+          >
+            <div class="w-10 h-10 flex items-center justify-center bg-white/[0.06] border border-white/[0.10] rounded-lg">
+              <svg class="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={feature.icon} />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight">{feature.title}</h3>
+            <p class="text-sm text-white/50 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6" data-reveal="fade-up">
+        <a
+          href="mailto:info@captureandconnect.nl"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
+        >
+          Get Your Growth Plan
+        </a>
+        <p class="text-white/40 text-sm">Every strategy is custom-built for your brand and goals.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Web Design ───────────────────────────────────────────────────── -->
+  <section
+    id="web-design"
+    class="portfolio-section py-14 md:py-18 border-b border-white/[0.04] scroll-mt-16"
+  >
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+
+      <div class="mb-12 md:mb-16 max-w-2xl" data-reveal="fade-up">
+        <h2 class="text-3xl md:text-5xl font-black italic leading-none tracking-tight text-white mb-4">
+          Web Design
+        </h2>
+        <p class="text-white/50 text-base sm:text-lg leading-relaxed">
+          Custom websites that match your brand identity. Fast, mobile-first and built to convert visitors into clients.
+        </p>
+      </div>
+
+      <!-- Feature cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="stagger">
+        {webDesignFeatures.map((feature) => (
+          <div
+            class="flex flex-col gap-4 bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.04]"
+            data-reveal="fade-up"
+          >
+            <div class="w-10 h-10 flex items-center justify-center bg-white/[0.06] border border-white/[0.10] rounded-lg">
+              <svg class="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d={feature.icon} />
+              </svg>
+            </div>
+            <h3 class="text-lg font-bold text-white tracking-tight">{feature.title}</h3>
+            <p class="text-sm text-white/50 leading-relaxed">{feature.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6" data-reveal="fade-up">
+        <a
+          href="mailto:info@captureandconnect.nl"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
+        >
+          Start Your Website
+        </a>
+        <p class="text-white/40 text-sm">From first sketch to live in as little as two weeks.</p>
+      </div>
+
+    </div>
   </section>
 
   <!-- ── Lightbox ───────────────────────────────────────────────────────── -->
@@ -70,12 +291,72 @@ const categories = [
   <CtaBlock
     headline="Like what you see?"
     subtext="Let's create something for your brand."
-    buttonText="Book a Free Call"
+    buttonText="Get In Touch"
   />
 
 </BaseLayout>
 
+<style>
+  /* Hide scrollbar on tab nav */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
 <script>
-  import { init } from '../scripts/portfolio-filter.ts';
-  init();
+  const tabs = document.querySelectorAll<HTMLAnchorElement>('.portfolio-tab');
+  const sections = document.querySelectorAll<HTMLElement>('.portfolio-section');
+
+  if (tabs.length && sections.length) {
+    const activeClasses = ['border-white', 'text-white', 'bg-white/10'];
+    const inactiveClasses = ['border-white/20', 'text-white/50', 'hover:border-white/50', 'hover:text-white/80'];
+
+    function setActiveTab(activeId: string) {
+      tabs.forEach((tab) => {
+        const isActive = tab.dataset.tab === activeId;
+        if (isActive) {
+          tab.classList.remove(...inactiveClasses);
+          tab.classList.add(...activeClasses);
+        } else {
+          tab.classList.remove(...activeClasses);
+          tab.classList.add(...inactiveClasses);
+        }
+      });
+    }
+
+    // Smooth scroll on click
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = tab.dataset.tab;
+        if (!targetId) return;
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+          setActiveTab(targetId);
+        }
+      });
+    });
+
+    // Update active tab on scroll
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveTab(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -60% 0px',
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+  }
 </script>

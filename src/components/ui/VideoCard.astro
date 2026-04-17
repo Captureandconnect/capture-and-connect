@@ -16,6 +16,14 @@ const {
   stats,
   class: className = '',
 } = Astro.props;
+
+const categoryLabels: Record<string, string> = {
+  'content-creation': 'Content Creation',
+  'social-media': 'Social Media',
+  'growth-strategy': 'Growth Strategy',
+  'web-design': 'Web Design',
+};
+const categoryLabel = categoryLabels[category] ?? category;
 ---
 
 <div
@@ -68,7 +76,7 @@ const {
   <!-- Category tag -->
   <div class="absolute top-3 left-3">
     <span class="bg-black/50 backdrop-blur-sm border border-white/10 text-white/70 text-xs uppercase tracking-wider px-2.5 py-1 rounded-full font-medium">
-      {category}
+      {categoryLabel}
     </span>
   </div>
 
