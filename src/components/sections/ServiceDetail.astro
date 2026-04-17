@@ -105,51 +105,479 @@ const { service, reversed = false } = Astro.props;
 
       </div>
 
-      <!-- Visual placeholder -->
+      <!-- Animated visual -->
       <div
-        class="opacity-0 relative"
+        class="opacity-0 relative w-full aspect-[4/3]"
         data-reveal={reversed ? 'slide-left' : 'slide-right'}
       >
-        <div
-          class="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-[#0a0a0a] border border-white/[0.06] flex items-center justify-center"
-        >
-          <!-- Placeholder content — replace with actual image/video when available -->
-          <div class="absolute inset-0 flex flex-col items-center justify-center gap-4 p-8">
-            <div
-              class="w-16 h-16 rounded-full border border-white/10 flex items-center justify-center opacity-30"
-            >
-              <svg
-                class="w-7 h-7 text-white"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-                aria-hidden="true"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
+          {/* Content Creation — camera viewfinder with recording pulse */}
+          {service.id === 'content-creation' && (
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="absolute inset-0 service-gradient service-gradient--content"></div>
+              <div class="viewfinder">
+                <div class="viewfinder-corner viewfinder-corner--tl"></div>
+                <div class="viewfinder-corner viewfinder-corner--tr"></div>
+                <div class="viewfinder-corner viewfinder-corner--bl"></div>
+                <div class="viewfinder-corner viewfinder-corner--br"></div>
+                <div class="viewfinder-crosshair"></div>
+                <div class="rec-dot"></div>
+                <span class="rec-label">REC</span>
+                <span class="viewfinder-timecode">00:02:47</span>
+                <span class="viewfinder-res">4K</span>
+              </div>
             </div>
-            <span class="text-xs text-white/20 uppercase tracking-wider text-center">
-              {service.title}
-            </span>
-          </div>
+          )}
 
-          <!-- Subtle gradient overlay -->
-          <div
-            class="absolute inset-0 pointer-events-none"
-            style="background: radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 70%);"
-          ></div>
+          {/* Social Media — floating engagement metrics */}
+          {service.id === 'social-media-management' && (
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="absolute inset-0 service-gradient service-gradient--social"></div>
+              <div class="relative flex flex-col items-center gap-5">
+                <div class="phone-frame">
+                  <div class="phone-notch"></div>
+                  <div class="phone-line phone-line-1"></div>
+                  <div class="phone-line phone-line-2"></div>
+                  <div class="phone-line phone-line-3"></div>
+                  <div class="phone-bar"></div>
+                </div>
+                <div class="floating-metrics">
+                  <span class="metric metric-1">+12.4K</span>
+                  <span class="metric metric-2">+847</span>
+                  <span class="metric metric-3">+3.2K</span>
+                </div>
+              </div>
+            </div>
+          )}
 
-          <!-- Corner accents -->
-          <div class="absolute top-4 left-4 w-6 h-6 border-t border-l border-white/10"></div>
-          <div class="absolute top-4 right-4 w-6 h-6 border-t border-r border-white/10"></div>
-          <div class="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-white/10"></div>
-          <div class="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-white/10"></div>
-        </div>
+          {/* Growth Strategy — rising chart */}
+          {service.id === 'growth-strategy' && (
+            <div class="absolute inset-0 flex items-center justify-center p-8">
+              <div class="absolute inset-0 service-gradient service-gradient--growth"></div>
+              <div class="relative w-full max-w-md">
+                <!-- Stats row -->
+                <div class="flex items-end justify-between mb-6">
+                  <div>
+                    <div class="chart-label">+214%</div>
+                    <span class="text-[11px] text-white/20 tracking-widest uppercase">Average growth</span>
+                  </div>
+                  <div class="flex gap-4">
+                    <div class="text-right">
+                      <div class="text-sm font-bold text-white/40">65M+</div>
+                      <span class="text-[9px] text-white/15 tracking-wider uppercase">Views</span>
+                    </div>
+                    <div class="text-right">
+                      <div class="text-sm font-bold text-white/40">150+</div>
+                      <span class="text-[9px] text-white/15 tracking-wider uppercase">Clients</span>
+                    </div>
+                  </div>
+                </div>
+                <svg class="w-full" viewBox="0 0 240 100" fill="none" preserveAspectRatio="xMidYMid meet">
+                  <!-- Subtle grid -->
+                  <line x1="10" y1="25" x2="230" y2="25" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 6" />
+                  <line x1="10" y1="50" x2="230" y2="50" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 6" />
+                  <line x1="10" y1="75" x2="230" y2="75" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 6" />
+                  <defs>
+                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="rgba(34,197,94,0.15)" />
+                      <stop offset="100%" stop-color="rgba(34,197,94,0)" />
+                    </linearGradient>
+                    <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stop-color="rgba(255,255,255,0.15)" />
+                      <stop offset="100%" stop-color="rgba(255,255,255,0.6)" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Fill area -->
+                  <path class="chart-fill" d="M10 90 C50 88 70 78 100 60 S160 30 195 18 L225 12 V95 H10 Z" fill="url(#chartGradient)" />
+                  <!-- Main line -->
+                  <path class="chart-line" d="M10 90 C50 88 70 78 100 60 S160 30 195 18 L225 12" stroke="url(#lineGradient)" stroke-width="2" stroke-linecap="round" />
+                  <!-- End dot -->
+                  <circle cx="225" cy="12" r="12" fill="rgba(34,197,94,0.08)" class="chart-dot-glow" />
+                  <circle cx="225" cy="12" r="6" fill="rgba(34,197,94,0.15)" class="chart-dot-glow" />
+                  <circle class="chart-dot" cx="225" cy="12" r="3" fill="white" opacity="0.8" />
+                </svg>
+                <!-- Bottom axis -->
+                <div class="flex justify-between mt-2 px-1">
+                  <span class="text-[9px] text-white/15 tracking-widest">W1</span>
+                  <span class="text-[9px] text-white/15 tracking-widest">W4</span>
+                  <span class="text-[9px] text-white/15 tracking-widest">W8</span>
+                  <span class="text-[9px] text-white/15 tracking-widest">W12</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Web Design — browser wireframe building */}
+          {service.id === 'web-design' && (
+            <div class="absolute inset-0 flex items-center justify-center p-10">
+              <div class="absolute inset-0 service-gradient service-gradient--web"></div>
+              <div class="browser-frame">
+                <div class="browser-bar">
+                  <div class="browser-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-url"></div>
+                </div>
+                <div class="browser-content">
+                  <div class="wire-hero"></div>
+                  <div class="wire-cols">
+                    <div class="wire-col wire-col-1"></div>
+                    <div class="wire-col wire-col-2"></div>
+                    <div class="wire-col wire-col-3"></div>
+                  </div>
+                  <div class="wire-block"></div>
+                </div>
+              </div>
+            </div>
+          )}
       </div>
 
     </div>
   </div>
 </section>
+
+<style>
+  /* ── Shared ──────────────────────────────────────────────── */
+  .service-gradient { pointer-events: none; }
+  .service-gradient--content {
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 40%, rgba(255,255,255,0.05) 0%, transparent 60%),
+      radial-gradient(circle at 20% 80%, rgba(255,255,255,0.02) 0%, transparent 40%);
+  }
+  .service-gradient--social {
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 40%, rgba(139,92,246,0.08) 0%, transparent 60%),
+      radial-gradient(circle at 80% 80%, rgba(236,72,153,0.05) 0%, transparent 40%);
+  }
+  .service-gradient--growth {
+    background:
+      radial-gradient(ellipse 80% 70% at 60% 50%, rgba(34,197,94,0.07) 0%, transparent 60%),
+      radial-gradient(circle at 20% 70%, rgba(34,197,94,0.03) 0%, transparent 40%);
+  }
+  .service-gradient--web {
+    background:
+      radial-gradient(ellipse 80% 70% at 50% 40%, rgba(59,130,246,0.07) 0%, transparent 60%),
+      radial-gradient(circle at 80% 80%, rgba(99,102,241,0.04) 0%, transparent 40%);
+  }
+
+  /* ── Content Creation: Viewfinder ────────────────────────── */
+  .viewfinder {
+    position: relative;
+    width: 280px;
+    height: 180px;
+  }
+  .viewfinder-corner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-color: rgba(255,255,255,0.5);
+  }
+  .viewfinder-corner--tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+  .viewfinder-corner--tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+  .viewfinder-corner--bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+  .viewfinder-corner--br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+  .viewfinder-crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    animation: crosshair-breathe 5s ease-in-out infinite;
+  }
+  .viewfinder-crosshair::before,
+  .viewfinder-crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.1);
+  }
+  .viewfinder-crosshair::before {
+    top: 50%; left: -12px; right: -12px; height: 1px;
+    transform: translateY(-50%);
+  }
+  .viewfinder-crosshair::after {
+    left: 50%; top: -12px; bottom: -12px; width: 1px;
+    transform: translateX(-50%);
+  }
+  @keyframes crosshair-breathe {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.9; }
+  }
+  .rec-dot {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(239,68,68,0.5);
+    animation: rec-pulse 2s ease-in-out infinite;
+  }
+  .rec-label {
+    position: absolute;
+    top: 10px;
+    right: 26px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: rgba(239,68,68,0.8);
+    animation: rec-pulse 2s ease-in-out infinite;
+  }
+  .viewfinder-timecode {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.25);
+    font-variant-numeric: tabular-nums;
+  }
+  .viewfinder-res {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 1px 6px;
+    border-radius: 3px;
+  }
+  @keyframes rec-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+  }
+
+  /* ── Social Media: Phone + Metrics ───────────────────────── */
+  .phone-frame {
+    width: 100px;
+    height: 180px;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    position: relative;
+    padding: 28px 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 0 40px rgba(139,92,246,0.08), 0 8px 32px rgba(0,0,0,0.4);
+  }
+  .phone-notch {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 5px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+  }
+  .phone-line {
+    height: 7px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, rgba(139,92,246,0.15), rgba(236,72,153,0.1));
+    animation: phone-shimmer 2.5s ease-in-out infinite;
+  }
+  .phone-line-1 { width: 100%; animation-delay: 0s; }
+  .phone-line-2 { width: 70%; animation-delay: 0.4s; }
+  .phone-line-3 { width: 85%; animation-delay: 0.8s; }
+  .phone-bar {
+    margin-top: auto;
+    height: 24px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(139,92,246,0.2), rgba(236,72,153,0.15));
+    animation: phone-shimmer 2.5s ease-in-out infinite 1.2s;
+  }
+  @keyframes phone-shimmer {
+    0%, 100% { opacity: 0.4; transform: scaleX(0.95); }
+    50% { opacity: 1; transform: scaleX(1); }
+  }
+
+  .floating-metrics {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .metric {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.04);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 6px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .metric-1 {
+    top: 15%;
+    right: 2%;
+    animation: float-metric 4s ease-in-out infinite;
+  }
+  .metric-2 {
+    bottom: 25%;
+    right: -2%;
+    animation: float-metric 4s ease-in-out infinite 1.3s;
+  }
+  .metric-3 {
+    top: 50%;
+    left: -2%;
+    animation: float-metric 4s ease-in-out infinite 2.6s;
+  }
+  @keyframes float-metric {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(-10px); opacity: 1; }
+  }
+
+  /* ── Growth Strategy: Chart ──────────────────────────────── */
+  .chart-line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    animation: draw-line 3s cubic-bezier(0.16,1,0.3,1) forwards;
+    filter: drop-shadow(0 0 6px rgba(34,197,94,0.4));
+  }
+  .chart-fill {
+    opacity: 0;
+    animation: fade-in-chart 1.5s ease-out 2.2s forwards;
+  }
+  .chart-dot {
+    opacity: 0;
+    animation: chart-dot-appear 0.6s ease-out 2.8s forwards;
+    filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
+  }
+  .chart-dot-glow {
+    opacity: 0;
+    animation: fade-in-chart 1s ease-out 2.6s forwards;
+  }
+  .chart-label {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    color: rgba(255,255,255,0.7);
+    line-height: 1;
+    opacity: 0;
+    animation: label-rise 0.8s cubic-bezier(0.16,1,0.3,1) 3s forwards;
+  }
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+  @keyframes fade-in-chart {
+    to { opacity: 1; }
+  }
+  @keyframes chart-dot-appear {
+    0% { opacity: 0; r: 0; }
+    100% { opacity: 0.8; r: 5; }
+  }
+  @keyframes label-rise {
+    0% { opacity: 0; transform: translateY(12px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Web Design: Browser wireframe ───────────────────────── */
+  .browser-frame {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.015);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 60px rgba(59,130,246,0.05);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+  }
+  .browser-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .browser-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+  }
+  .browser-dots span:first-child { background: rgba(255,95,87,0.5); }
+  .browser-dots span:nth-child(2) { background: rgba(255,189,46,0.5); }
+  .browser-dots span:last-child { background: rgba(39,201,63,0.5); }
+  .browser-url {
+    flex: 1;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+  }
+  .browser-url::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+    animation: url-shimmer 3s ease-in-out infinite 1.5s;
+  }
+  @keyframes url-shimmer {
+    0% { left: -100%; }
+    100% { left: 200%; }
+  }
+  .browser-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .wire-hero {
+    height: 60px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(99,102,241,0.04));
+    animation: wire-build 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    transform-origin: left;
+  }
+  .wire-cols {
+    display: flex;
+    gap: 12px;
+  }
+  .wire-col {
+    flex: 1;
+    height: 42px;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.03);
+    animation: wire-build 1.2s cubic-bezier(0.16,1,0.3,1) forwards;
+    transform-origin: left;
+  }
+  .wire-col-1 { animation-delay: 0.2s; opacity: 0; }
+  .wire-col-2 { animation-delay: 0.4s; opacity: 0; }
+  .wire-col-3 { animation-delay: 0.6s; opacity: 0; }
+  .wire-block {
+    height: 30px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, rgba(59,130,246,0.06), rgba(255,255,255,0.03));
+    animation: wire-build 1.2s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;
+    opacity: 0;
+    transform-origin: left;
+  }
+  @keyframes wire-build {
+    0% { opacity: 0; transform: scaleX(0) translateX(-8px); }
+    100% { opacity: 1; transform: scaleX(1) translateX(0); }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .eq-bar, .rec-dot, .rec-label, .phone-line, .phone-bar,
+    .metric, .chart-line, .chart-fill, .chart-dot, .chart-label,
+    .wire-hero, .wire-col, .wire-block, .viewfinder-crosshair,
+    .browser-url::after {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+      stroke-dashoffset: 0 !important;
+    }
+  }
+</style>
