@@ -9,8 +9,6 @@ interface Props {
 
 const { service, reversed = false } = Astro.props;
 
-const WHATSAPP_URL =
-  'https://wa.me/31641011159?text=Hi%2C%20I\'m%20interested%20in%20working%20with%20Capture%20%26%20Connect.';
 ---
 
 <section
@@ -37,11 +35,11 @@ const WHATSAPP_URL =
           <svg
             class="w-7 h-7 text-white/60"
             viewBox="0 0 24 24"
-            fill={service.id === 'growth-strategy' ? 'none' : 'currentColor'}
-            stroke={service.id === 'growth-strategy' ? 'currentColor' : 'none'}
-            stroke-width={service.id === 'growth-strategy' ? '2' : undefined}
-            stroke-linecap={service.id === 'growth-strategy' ? 'round' : undefined}
-            stroke-linejoin={service.id === 'growth-strategy' ? 'round' : undefined}
+            fill={['growth-strategy', 'web-design'].includes(service.id) ? 'none' : 'currentColor'}
+            stroke={['growth-strategy', 'web-design'].includes(service.id) ? 'currentColor' : 'none'}
+            stroke-width={['growth-strategy', 'web-design'].includes(service.id) ? '2' : undefined}
+            stroke-linecap={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
+            stroke-linejoin={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
             aria-hidden="true"
           >
             <path d={service.icon} />
@@ -86,9 +84,7 @@ const WHATSAPP_URL =
         <!-- CTA -->
         <div class="pt-2">
           <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:info@captureandconnect.nl"
             class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
           >
             Get Started

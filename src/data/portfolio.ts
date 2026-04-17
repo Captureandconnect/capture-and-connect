@@ -32,7 +32,7 @@ export const portfolioItems: PortfolioItem[] = [
     video: '/videos/portfolio/event-club-night.mp4',
     stats: '850K reach',
     description:
-      'High-energy edit of a sold-out club night — crowd energy, lighting, and booth shots cut to the drop.',
+      'High-energy edit of a sold-out club night, crowd energy, lighting, and booth shots cut to the drop.',
     client: 'Event Promoter',
     featured: false,
   },
@@ -52,25 +52,25 @@ export const portfolioItems: PortfolioItem[] = [
   // ── Artists ─────────────────────────────────────────────────────────────
   {
     id: 'artist-001',
-    title: 'The Dope Doctor — Viral Promo',
+    title: 'The Dope Doctor, Viral Promo',
     category: 'artists',
     thumbnail: '/images/portfolio/artist-the-dope-doctor.jpg',
     video: 'https://www.instagram.com/reel/DKcUyZgog7I/',
     stats: '20M+ views',
     description:
-      'Artist promo content for The Dope Doctor that crossed 20 million views organically — no paid boost.',
+      'Artist promo content for The Dope Doctor that crossed 20 million views organically, no paid boost.',
     client: 'The Dope Doctor',
     featured: true,
   },
   {
     id: 'artist-002',
-    title: 'Major Conspiracy — Visual Identity',
+    title: 'Major Conspiracy, Visual Identity',
     category: 'artists',
     thumbnail: '/images/portfolio/artist-major-conspiracy.jpg',
     video: '/videos/portfolio/artist-major-conspiracy.mp4',
     stats: '3.2M reach',
     description:
-      'Full visual rollout for Major Conspiracy — cover art direction, live edits, and a launch reel series.',
+      'Full visual rollout for Major Conspiracy, cover art direction, live edits, and a launch reel series.',
     client: 'Major Conspiracy',
     featured: true,
   },
@@ -90,13 +90,13 @@ export const portfolioItems: PortfolioItem[] = [
   // ── Brands ───────────────────────────────────────────────────────────────
   {
     id: 'brand-001',
-    title: 'Hard Dance Store — Launch Campaign',
+    title: 'Hard Dance Store, Launch Campaign',
     category: 'brands',
     thumbnail: '/images/portfolio/brand-hard-dance-store.jpg',
     video: '/videos/portfolio/brand-hard-dance-store.mp4',
     stats: '4.7M impressions',
     description:
-      'Full content campaign for Hard Dance Store — product drops, lifestyle content, and community-driven UGC hooks.',
+      'Full content campaign for Hard Dance Store, product drops, lifestyle content, and community-driven UGC hooks.',
     client: 'Hard Dance Store',
     featured: false,
   },
@@ -108,7 +108,7 @@ export const portfolioItems: PortfolioItem[] = [
     video: '/videos/portfolio/brand-merch-launch.mp4',
     stats: '1.8M reach',
     description:
-      'Zero-to-launch content strategy for a new artist merch brand — from identity to first viral drop.',
+      'Zero-to-launch content strategy for a new artist merch brand, from identity to first viral drop.',
     client: 'Merch Brand',
     featured: false,
   },
@@ -119,7 +119,7 @@ export const portfolioItems: PortfolioItem[] = [
     thumbnail: '/images/portfolio/brand-ecom-product.jpg',
     stats: '320% ROAS',
     description:
-      'Short-form product content series built for paid social — scroll-stopping hooks, direct conversion focus.',
+      'Short-form product content series built for paid social, scroll-stopping hooks, direct conversion focus.',
     client: 'E-Commerce Brand',
     featured: false,
   },

@@ -17,7 +17,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Artist',
     headline: 'From 0 to 20M views in 48 hours',
     problem:
-      'The artist had strong music but zero social traction — no viral moment, no algorithm momentum.',
+      'The artist had strong music but zero social traction, no viral moment, no algorithm momentum.',
     approach:
       'We identified the right hook format for the track, shot a single high-energy promo clip, and timed the release to peak platform activity.',
     result:
@@ -38,7 +38,7 @@ export const caseStudies: CaseStudy[] = [
     problem:
       'The festival had a loyal crowd but almost no social reach beyond existing attendees.',
     approach:
-      'We deployed a multi-cam crew across the full event, then edited and released a phased content drop — teasers pre-event, live content during, and the aftermovie 24 hours after.',
+      'We deployed a multi-cam crew across the full event, then edited and released a phased content drop, teasers pre-event, live content during, and the aftermovie 24 hours after.',
     result:
       'The aftermovie and surrounding content generated 4.7 million impressions in seven days, doubling the festival\'s follower count.',
     stats: [
@@ -74,7 +74,7 @@ export const caseStudies: CaseStudy[] = [
     category: 'Brand',
     headline: 'Content-first e-commerce: 320% ROAS from organic hooks',
     problem:
-      'Hard Dance Store was spending on ads but losing money — creative was generic and not converting.',
+      'Hard Dance Store was spending on ads but losing money, creative was generic and not converting.',
     approach:
       'We scrapped the old ad formats and built a new content system using native-style short-form hooks, community shoutouts, and product drop hype videos.',
     result:

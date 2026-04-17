@@ -24,7 +24,7 @@ import { services } from '../../data/services';
 
     <!-- Cards grid -->
     <div
-      class="grid grid-cols-1 md:grid-cols-3 gap-8"
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
       data-reveal="stagger"
     >
       {services.map((service) => (
@@ -36,11 +36,11 @@ import { services } from '../../data/services';
             <svg
               class="w-6 h-6 text-white/70"
               viewBox="0 0 24 24"
-              fill={service.id === 'growth-strategy' ? 'none' : 'currentColor'}
-              stroke={service.id === 'growth-strategy' ? 'currentColor' : 'none'}
-              stroke-width={service.id === 'growth-strategy' ? '2' : undefined}
-              stroke-linecap={service.id === 'growth-strategy' ? 'round' : undefined}
-              stroke-linejoin={service.id === 'growth-strategy' ? 'round' : undefined}
+              fill={['growth-strategy', 'web-design'].includes(service.id) ? 'none' : 'currentColor'}
+              stroke={['growth-strategy', 'web-design'].includes(service.id) ? 'currentColor' : 'none'}
+              stroke-width={['growth-strategy', 'web-design'].includes(service.id) ? '2' : undefined}
+              stroke-linecap={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
+              stroke-linejoin={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
               aria-hidden="true"
             >
               <path d={service.icon} />

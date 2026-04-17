@@ -8,9 +8,6 @@ const navLinks = [
   { label: 'Contact', href: '/contact' },
 ];
 
-const waLink =
-  "https://wa.me/31641011159?text=Hi%2C%20I'm%20interested%20in%20working%20with%20Capture%20%26%20Connect.";
-
 const currentPath = Astro.url.pathname;
 ---
 
@@ -58,26 +55,25 @@ const currentPath = Astro.url.pathname;
       <!-- Desktop CTA -->
       <div class="hidden lg:flex items-center">
         <a
-          href={waLink}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="mailto:info@captureandconnect.nl"
           class="inline-flex items-center gap-2 bg-white text-black text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-white/90 active:scale-95 transition-all duration-200"
         >
-          Book a Call
+          Get In Touch
         </a>
       </div>
 
       <!-- Mobile hamburger -->
       <button
         id="nav-hamburger"
-        style="display:flex;flex-direction:column;justify-content:center;width:32px;height:32px;gap:6px;cursor:pointer;background:none;border:none;padding:0;"
+        class="hamburger lg:hidden relative flex flex-col items-center justify-center w-10 h-10"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
+        type="button"
       >
-        <span id="hb1" style="display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;"></span>
-        <span id="hb2" style="display:block;width:24px;height:2px;background:#fff;transition:all 0.3s ease;"></span>
-        <span id="hb3" style="display:block;width:16px;height:2px;background:#fff;transition:all 0.3s ease;"></span>
+        <span class="hamburger-line hamburger-line--top"></span>
+        <span class="hamburger-line hamburger-line--mid"></span>
+        <span class="hamburger-line hamburger-line--bot"></span>
       </button>
     </div>
   </div>
@@ -110,13 +106,11 @@ const currentPath = Astro.url.pathname;
     })}
 
     <a
-      href={waLink}
-      target="_blank"
-      rel="noopener noreferrer"
+      href="mailto:info@captureandconnect.nl"
       class="mobile-nav-link mt-4 inline-flex items-center gap-2 bg-white text-black text-lg font-semibold px-8 py-4 rounded-full hover:bg-white/90 transition-all duration-200 translate-y-4 opacity-0"
       style={`--delay: ${navLinks.length * 60}ms`}
     >
-      Book a Call
+      Get In Touch
     </a>
   </nav>
 </div>
@@ -130,11 +124,50 @@ const currentPath = Astro.url.pathname;
     border-bottom: 1px solid rgb(255 255 255 / 0.06);
   }
 
-  /* Hide hamburger on desktop */
-  @media (min-width: 1024px) {
-    #nav-hamburger {
-      display: none !important;
-    }
+  /* Hamburger lines */
+  .hamburger {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .hamburger-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 1px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    position: absolute;
+  }
+
+  .hamburger-line--top {
+    transform: translateY(-7px);
+  }
+
+  .hamburger-line--mid {
+    /* centered by default */
+  }
+
+  .hamburger-line--bot {
+    width: 16px;
+    transform: translateY(7px);
+  }
+
+  /* Open state — X shape */
+  .hamburger.active .hamburger-line--top {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.active .hamburger-line--mid {
+    opacity: 0;
+  }
+
+  .hamburger.active .hamburger-line--bot {
+    width: 24px;
+    transform: rotate(-45deg);
   }
 
   /* Mobile link entrance animation */
@@ -171,38 +204,26 @@ const currentPath = Astro.url.pathname;
   // Hamburger toggle
   let menuOpen = false;
 
-  const hb1 = document.getElementById('hb1') as HTMLElement;
-  const hb2 = document.getElementById('hb2') as HTMLElement;
-  const hb3 = document.getElementById('hb3') as HTMLElement;
-
   const openMenu = () => {
     menuOpen = true;
+    hamburger.classList.add('active');
     header.classList.add('menu-open');
     mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
     mobileMenu.classList.add('open', 'opacity-100');
     mobileMenu.setAttribute('aria-hidden', 'false');
     hamburger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
-    // Animate to cross
-    hb1.style.transform = 'translateY(8px) rotate(45deg)';
-    hb2.style.opacity = '0';
-    hb3.style.width = '24px';
-    hb3.style.transform = 'translateY(-8px) rotate(-45deg)';
   };
 
   const closeMenu = () => {
     menuOpen = false;
+    hamburger.classList.remove('active');
     header.classList.remove('menu-open');
     mobileMenu.classList.add('opacity-0', 'pointer-events-none');
     mobileMenu.classList.remove('open', 'opacity-100');
     mobileMenu.setAttribute('aria-hidden', 'true');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
-    // Animate back to hamburger
-    hb1.style.transform = 'none';
-    hb2.style.opacity = '1';
-    hb3.style.width = '16px';
-    hb3.style.transform = 'none';
   };
 
   hamburger.addEventListener('click', () => {

@@ -52,4 +52,19 @@ export const services: Service[] = [
     ],
     icon: 'M3 17l6-6 4 4 8-8M17 7h4v4',
   },
+  {
+    id: 'web-design',
+    title: 'Web Design & Development',
+    description:
+      'Custom websites that match your brand identity. Fast, mobile-first and built to convert visitors into clients.',
+    bullets: [
+      'Custom website design & development',
+      'Mobile-first, responsive layouts',
+      'SEO optimization & fast load times',
+      'Landing pages & campaign microsites',
+      'Domain setup & hosting configuration',
+      'Delivered ready to go, fully yours',
+    ],
+    icon: 'M3 3h18a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm6 18h6m-3-4v4',
+  },
 ];

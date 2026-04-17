@@ -170,7 +170,7 @@
 .duration-xslow  { animation-duration: var(--duration-xslow, 1000ms); }
 
 /* ============================================================
-   WhatsApp / CTA Pulse Button
+   CTA Pulse Button
    Ambient draw-attention effect for floating action buttons.
    ============================================================ */
 
