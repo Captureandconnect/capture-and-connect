@@ -39,7 +39,7 @@ async function sendSmtpEmail(env: Env, options: {
   const socket = connect({
     hostname: env.SMTP_HOST,
     port: Number(env.SMTP_PORT),
-  });
+  }, { secureTransport: 'starttls' });
 
   let reader = socket.readable.getReader();
   let writer = socket.writable.getWriter();
