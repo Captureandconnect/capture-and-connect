@@ -1,11 +1,11 @@
 ---
-// ContactForm.astro — Premium dark contact form for Capture & Connect
-// Cloudflare Pages Forms: data-static-form-name attribute
+// ContactForm.astro — Contact form with JS submit to Pages Function
 ---
 
 <form
+  id="contact-form"
   method="POST"
-  data-static-form-name="contact"
+  action="/api/contact"
   class="w-full space-y-6"
 >
   <!-- Honeypot — hidden from humans, catches bots -->
@@ -88,11 +88,11 @@
         class="w-full appearance-none bg-transparent border border-white/10 rounded-lg px-4 py-3 text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 cursor-pointer"
       >
         <option value="" class="bg-[#0a0a0a] text-white/40">Select a service…</option>
-        <option value="social-media-management" class="bg-[#0a0a0a] text-white">Social Media Management</option>
-        <option value="content-creation" class="bg-[#0a0a0a] text-white">Content Creation</option>
-        <option value="growth-strategy" class="bg-[#0a0a0a] text-white">Growth Strategy</option>
-        <option value="full-package" class="bg-[#0a0a0a] text-white">Full Package</option>
-        <option value="other" class="bg-[#0a0a0a] text-white">Other</option>
+        <option value="Social Media Management" class="bg-[#0a0a0a] text-white">Social Media Management</option>
+        <option value="Content Creation" class="bg-[#0a0a0a] text-white">Content Creation</option>
+        <option value="Web Design & Development" class="bg-[#0a0a0a] text-white">Web Design & Development</option>
+        <option value="Full Package" class="bg-[#0a0a0a] text-white">Full Package</option>
+        <option value="Other" class="bg-[#0a0a0a] text-white">Other</option>
       </select>
       <!-- Chevron icon -->
       <div class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/30">
@@ -132,14 +132,59 @@
 
   <!-- Submit -->
   <button
+    id="submit-btn"
     type="submit"
     class="w-full bg-white text-black font-bold tracking-wide py-4 rounded-lg hover:bg-white/90 active:scale-[0.98] transition-all duration-200 text-sm uppercase"
   >
     Send Message
   </button>
 
+  <!-- Status message -->
+  <p id="form-status" class="text-center text-xs tracking-wide pt-1 hidden"></p>
+
   <!-- Response note -->
-  <p class="text-center text-xs text-white/30 tracking-wide pt-1">
+  <p id="form-note" class="text-center text-xs text-white/30 tracking-wide pt-1">
     We'll get back to you within 24 hours.
   </p>
 </form>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const status = document.getElementById('form-status') as HTMLParagraphElement;
+  const note = document.getElementById('form-note') as HTMLParagraphElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    btn.classList.add('opacity-60');
+    status.classList.add('hidden');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        body: new FormData(form),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        status.textContent = 'Message sent! We\'ll get back to you soon.';
+        status.className = 'text-center text-sm text-green-400 tracking-wide pt-1';
+        note.classList.add('hidden');
+        form.reset();
+        btn.textContent = 'Sent!';
+      } else {
+        throw new Error(data.error || 'Something went wrong');
+      }
+    } catch (err: any) {
+      status.textContent = err.message || 'Something went wrong. Please try again.';
+      status.className = 'text-center text-sm text-red-400 tracking-wide pt-1';
+      btn.textContent = 'Send Message';
+      btn.disabled = false;
+      btn.classList.remove('opacity-60');
+    }
+  });
+</script>

@@ -79,6 +79,7 @@
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     tab-size: 4;
+    background-color: #000000;
   }
 
   body {

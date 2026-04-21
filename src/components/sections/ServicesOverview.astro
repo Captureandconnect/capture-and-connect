@@ -36,11 +36,11 @@ import { services } from '../../data/services';
             <svg
               class="w-6 h-6 text-white/70"
               viewBox="0 0 24 24"
-              fill={['growth-strategy', 'web-design'].includes(service.id) ? 'none' : 'currentColor'}
-              stroke={['growth-strategy', 'web-design'].includes(service.id) ? 'currentColor' : 'none'}
-              stroke-width={['growth-strategy', 'web-design'].includes(service.id) ? '2' : undefined}
-              stroke-linecap={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
-              stroke-linejoin={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
+              fill={service.id === 'web-design' ? 'none' : 'currentColor'}
+              stroke={service.id === 'web-design' ? 'currentColor' : 'none'}
+              stroke-width={service.id === 'web-design' ? '2' : undefined}
+              stroke-linecap={service.id === 'web-design' ? 'round' : undefined}
+              stroke-linejoin={service.id === 'web-design' ? 'round' : undefined}
               aria-hidden="true"
             >
               <path d={service.icon} />

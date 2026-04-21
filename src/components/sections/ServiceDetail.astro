@@ -35,11 +35,11 @@ const { service, reversed = false } = Astro.props;
           <svg
             class="w-7 h-7 text-white/60"
             viewBox="0 0 24 24"
-            fill={['growth-strategy', 'web-design'].includes(service.id) ? 'none' : 'currentColor'}
-            stroke={['growth-strategy', 'web-design'].includes(service.id) ? 'currentColor' : 'none'}
-            stroke-width={['growth-strategy', 'web-design'].includes(service.id) ? '2' : undefined}
-            stroke-linecap={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
-            stroke-linejoin={['growth-strategy', 'web-design'].includes(service.id) ? 'round' : undefined}
+            fill={service.id === 'web-design' ? 'none' : 'currentColor'}
+            stroke={service.id === 'web-design' ? 'currentColor' : 'none'}
+            stroke-width={service.id === 'web-design' ? '2' : undefined}
+            stroke-linecap={service.id === 'web-design' ? 'round' : undefined}
+            stroke-linejoin={service.id === 'web-design' ? 'round' : undefined}
             aria-hidden="true"
           >
             <path d={service.icon} />
@@ -149,62 +149,6 @@ const { service, reversed = false } = Astro.props;
             </div>
           )}
 
-          {/* Growth Strategy — rising chart */}
-          {service.id === 'growth-strategy' && (
-            <div class="absolute inset-0 flex items-center justify-center p-8">
-              <div class="absolute inset-0 service-gradient service-gradient--growth"></div>
-              <div class="relative w-full max-w-md">
-                <!-- Stats row -->
-                <div class="flex items-end justify-between mb-6">
-                  <div>
-                    <div class="chart-label">+214%</div>
-                    <span class="text-[11px] text-white/20 tracking-widest uppercase">Average growth</span>
-                  </div>
-                  <div class="flex gap-4">
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-white/40">65M+</div>
-                      <span class="text-[9px] text-white/15 tracking-wider uppercase">Views</span>
-                    </div>
-                    <div class="text-right">
-                      <div class="text-sm font-bold text-white/40">150+</div>
-                      <span class="text-[9px] text-white/15 tracking-wider uppercase">Clients</span>
-                    </div>
-                  </div>
-                </div>
-                <svg class="w-full" viewBox="0 0 240 100" fill="none" preserveAspectRatio="xMidYMid meet">
-                  <!-- Subtle grid -->
-                  <line x1="10" y1="25" x2="230" y2="25" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 6" />
-                  <line x1="10" y1="50" x2="230" y2="50" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 6" />
-                  <line x1="10" y1="75" x2="230" y2="75" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="4 6" />
-                  <defs>
-                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stop-color="rgba(34,197,94,0.15)" />
-                      <stop offset="100%" stop-color="rgba(34,197,94,0)" />
-                    </linearGradient>
-                    <linearGradient id="lineGradient" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stop-color="rgba(255,255,255,0.15)" />
-                      <stop offset="100%" stop-color="rgba(255,255,255,0.6)" />
-                    </linearGradient>
-                  </defs>
-                  <!-- Fill area -->
-                  <path class="chart-fill" d="M10 90 C50 88 70 78 100 60 S160 30 195 18 L225 12 V95 H10 Z" fill="url(#chartGradient)" />
-                  <!-- Main line -->
-                  <path class="chart-line" d="M10 90 C50 88 70 78 100 60 S160 30 195 18 L225 12" stroke="url(#lineGradient)" stroke-width="2" stroke-linecap="round" />
-                  <!-- End dot -->
-                  <circle cx="225" cy="12" r="12" fill="rgba(34,197,94,0.08)" class="chart-dot-glow" />
-                  <circle cx="225" cy="12" r="6" fill="rgba(34,197,94,0.15)" class="chart-dot-glow" />
-                  <circle class="chart-dot" cx="225" cy="12" r="3" fill="white" opacity="0.8" />
-                </svg>
-                <!-- Bottom axis -->
-                <div class="flex justify-between mt-2 px-1">
-                  <span class="text-[9px] text-white/15 tracking-widest">W1</span>
-                  <span class="text-[9px] text-white/15 tracking-widest">W4</span>
-                  <span class="text-[9px] text-white/15 tracking-widest">W8</span>
-                  <span class="text-[9px] text-white/15 tracking-widest">W12</span>
-                </div>
-              </div>
-            </div>
-          )}
 
           {/* Web Design — browser wireframe building */}
           {service.id === 'web-design' && (
@@ -247,11 +191,6 @@ const { service, reversed = false } = Astro.props;
     background:
       radial-gradient(ellipse 80% 70% at 50% 40%, rgba(139,92,246,0.08) 0%, transparent 60%),
       radial-gradient(circle at 80% 80%, rgba(236,72,153,0.05) 0%, transparent 40%);
-  }
-  .service-gradient--growth {
-    background:
-      radial-gradient(ellipse 80% 70% at 60% 50%, rgba(34,197,94,0.07) 0%, transparent 60%),
-      radial-gradient(circle at 20% 70%, rgba(34,197,94,0.03) 0%, transparent 40%);
   }
   .service-gradient--web {
     background:
@@ -435,49 +374,6 @@ const { service, reversed = false } = Astro.props;
     50% { transform: translateY(-10px); opacity: 1; }
   }
 
-  /* ── Growth Strategy: Chart ──────────────────────────────── */
-  .chart-line {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    animation: draw-line 3s cubic-bezier(0.16,1,0.3,1) forwards;
-    filter: drop-shadow(0 0 6px rgba(34,197,94,0.4));
-  }
-  .chart-fill {
-    opacity: 0;
-    animation: fade-in-chart 1.5s ease-out 2.2s forwards;
-  }
-  .chart-dot {
-    opacity: 0;
-    animation: chart-dot-appear 0.6s ease-out 2.8s forwards;
-    filter: drop-shadow(0 0 8px rgba(255,255,255,0.5));
-  }
-  .chart-dot-glow {
-    opacity: 0;
-    animation: fade-in-chart 1s ease-out 2.6s forwards;
-  }
-  .chart-label {
-    font-size: 36px;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    color: rgba(255,255,255,0.7);
-    line-height: 1;
-    opacity: 0;
-    animation: label-rise 0.8s cubic-bezier(0.16,1,0.3,1) 3s forwards;
-  }
-  @keyframes draw-line {
-    to { stroke-dashoffset: 0; }
-  }
-  @keyframes fade-in-chart {
-    to { opacity: 1; }
-  }
-  @keyframes chart-dot-appear {
-    0% { opacity: 0; r: 0; }
-    100% { opacity: 0.8; r: 5; }
-  }
-  @keyframes label-rise {
-    0% { opacity: 0; transform: translateY(12px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
 
   /* ── Web Design: Browser wireframe ───────────────────────── */
   .browser-frame {

@@ -22,39 +22,6 @@ const mediaSections = [
   },
 ] as const;
 
-const growthFeatures = [
-  {
-    title: 'Platform-Specific Roadmaps',
-    description: 'Custom growth plans for Instagram, TikTok and YouTube based on your niche, audience and goals.',
-    icon: 'M9 20l-5.447-2.724A1 1 0 0 1 3 16.382V5.618a1 1 0 0 1 1.447-.894L9 7m0 13l6-3m-6 3V7m6 10l5.447 2.724A1 1 0 0 0 21 18.382V7.618a1 1 0 0 0-.553-.894L15 4m0 13V4m0 0L9 7',
-  },
-  {
-    title: 'Viral Content Formats',
-    description: 'We research what works on each platform right now and build your content around proven formats.',
-    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-  },
-  {
-    title: 'Audience Targeting',
-    description: 'Deep analysis of your ideal audience. We map out who they are, where they scroll and what makes them stop.',
-    icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm14 10v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
-  },
-  {
-    title: 'Monthly Strategy Sessions',
-    description: 'Regular check-ins to review performance, adjust the plan and double down on what drives results.',
-    icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z',
-  },
-  {
-    title: 'Competitor Analysis',
-    description: 'We benchmark your brand against competitors and find the gaps you can own.',
-    icon: 'M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z',
-  },
-  {
-    title: 'Brand Positioning',
-    description: 'We define your tone of voice, visual identity and content pillars so everything you post feels like you.',
-    icon: 'M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 0 1 0 2.828l-7 7a2 2 0 0 1-2.828 0l-7-7A2 2 0 0 1 3 12V7a4 4 0 0 1 4-4z',
-  },
-];
-
 const webDesignFeatures = [
   {
     title: 'Custom Design',
@@ -91,7 +58,7 @@ const webDesignFeatures = [
 
 <BaseLayout
   title="Portfolio"
-  description="Browse the full Capture & Connect portfolio. Content creation, social media management, growth strategy and web design, all built for impact."
+  description="Browse the full Capture & Connect portfolio. Content creation, social media management and web design, all built for impact."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────── -->
@@ -103,7 +70,7 @@ const webDesignFeatures = [
       Content that speaks<br class="hidden sm:block" /> for itself
     </h1>
     <p class="text-white/50 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
-      Content creation, social media, growth strategy and web design, all built for impact.
+      Content creation, social media and web design, all built for impact.
     </p>
   </section>
 
@@ -117,7 +84,6 @@ const webDesignFeatures = [
         {[
           { id: 'content-creation', label: 'Content Creation' },
           { id: 'social-media', label: 'Social Media' },
-          { id: 'growth-strategy', label: 'Growth Strategy' },
           { id: 'web-design', label: 'Web Design' },
         ].map((tab, i) => (
           <a
@@ -188,53 +154,6 @@ const webDesignFeatures = [
     );
   })}
 
-  <!-- ── Growth Strategy ──────────────────────────────────────────────── -->
-  <section
-    id="growth-strategy"
-    class="portfolio-section py-14 md:py-18 border-b border-white/[0.04] scroll-mt-16"
-  >
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-
-      <div class="mb-12 md:mb-16 max-w-2xl" data-reveal="fade-up">
-        <h2 class="text-3xl md:text-5xl font-black italic leading-none tracking-tight text-white mb-4">
-          Growth Strategy
-        </h2>
-        <p class="text-white/50 text-base sm:text-lg leading-relaxed">
-          Data-backed strategy that turns content into reach, revenue and real growth. We identify what works, double down on it and cut everything else.
-        </p>
-      </div>
-
-      <!-- Feature cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="stagger">
-        {growthFeatures.map((feature) => (
-          <div
-            class="flex flex-col gap-4 bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.04]"
-            data-reveal="fade-up"
-          >
-            <div class="w-10 h-10 flex items-center justify-center bg-white/[0.06] border border-white/[0.10] rounded-lg">
-              <svg class="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d={feature.icon} />
-              </svg>
-            </div>
-            <h3 class="text-lg font-bold text-white tracking-tight">{feature.title}</h3>
-            <p class="text-sm text-white/50 leading-relaxed">{feature.description}</p>
-          </div>
-        ))}
-      </div>
-
-      <!-- CTA -->
-      <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6" data-reveal="fade-up">
-        <a
-          href="mailto:info@captureandconnect.nl"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
-        >
-          Get Your Growth Plan
-        </a>
-        <p class="text-white/40 text-sm">Every strategy is custom-built for your brand and goals.</p>
-      </div>
-
-    </div>
-  </section>
 
   <!-- ── Web Design ───────────────────────────────────────────────────── -->
   <section

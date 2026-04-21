@@ -72,9 +72,7 @@ import { caseStudies, aggregateStats } from '../data/results';
       <!-- Case study cards -->
       <div class="flex flex-col gap-8">
         {caseStudies.map((study) => (
-          <div data-reveal="fade-up">
-            <CaseStudyCard study={study} />
-          </div>
+          <CaseStudyCard study={study} />
         ))}
       </div>
 

@@ -38,21 +38,6 @@ export const services: Service[] = [
     icon: 'M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zm0 6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8zm10 0a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4zm0 7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1z',
   },
   {
-    id: 'growth-strategy',
-    title: 'Growth Strategy',
-    description:
-      'Data-backed strategy that turns content into reach. We identify what works, double down on it, and cut everything else.',
-    bullets: [
-      'Platform-specific growth roadmaps',
-      'Viral content format research',
-      'Audience targeting & persona mapping',
-      'Brand positioning & tone-of-voice',
-      'Competitor analysis & benchmarking',
-      'Monthly strategy sessions & adjustments',
-    ],
-    icon: 'M3 17l6-6 4 4 8-8M17 7h4v4',
-  },
-  {
     id: 'web-design',
     title: 'Web Design & Development',
     description:
