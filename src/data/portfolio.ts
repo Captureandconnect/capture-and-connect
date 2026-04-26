@@ -17,7 +17,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'BKJN vs Partyraiser 2026',
     category: 'content-creation',
     thumbnail: '/images/portfolio/cover-majorconspiracy.jpg',
-    stats: '2026',
+    stats: 'Event 2026',
     description:
       'On-site coverage of BKJN vs Partyraiser 2026. Multi-cam crowd, stage and booth captures cut into recap reels and aftermovie.',
     client: 'BKJN vs Partyraiser',
@@ -27,8 +27,8 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-moh-austria-2026',
     title: 'Masters Of Hardcore Austria 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-majorconspiracy.jpg',
-    stats: '2026',
+    thumbnail: '/images/portfolio/cover-moh-austria.jpg',
+    stats: 'Event 2026',
     description:
       'Full event coverage at Masters Of Hardcore Austria. Stage energy, artist booth shots and high-impact recap edits.',
     client: 'Masters Of Hardcore',
@@ -38,8 +38,8 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-reverze-2026',
     title: 'Reverze 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-majorconspiracy.jpg',
-    stats: '2026',
+    thumbnail: '/images/portfolio/cover-festival-crowd.jpg',
+    stats: 'Event 2026',
     description:
       'On-site filming at Reverze 2026 — capturing the full-arena production design, crowd reactions and headliner sets.',
     client: 'Reverze',
@@ -49,8 +49,8 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-moh-2026',
     title: 'Masters Of Hardcore 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-majorconspiracy.jpg',
-    stats: '2026',
+    thumbnail: '/images/portfolio/cover-moh-2026.jpg',
+    stats: 'Event 2026',
     description:
       'Multi-cam coverage of the flagship Masters Of Hardcore edition. Mainstage recaps, artist clips and behind-the-scenes content.',
     client: 'Masters Of Hardcore',
@@ -60,8 +60,8 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-paaspop-2026',
     title: 'Paaspop 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-majorconspiracy.jpg',
-    stats: '2026',
+    thumbnail: '/images/portfolio/cover-dopedoctor.jpg',
+    stats: 'Event 2026',
     description:
       'Festival coverage at Paaspop 2026 — capturing crowd energy, multi-stage performances and artist moments.',
     client: 'Paaspop',
@@ -71,8 +71,8 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-rebirth-2026',
     title: 'Rebirth 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-majorconspiracy.jpg',
-    stats: '2026',
+    thumbnail: '/images/portfolio/cover-rave-lights.jpg',
+    stats: 'Event 2026',
     description:
       'Filming at Rebirth Festival 2026. Cinematic stage shots, crowd energy, and high-energy recap content.',
     client: 'Rebirth Festival',
@@ -84,7 +84,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'artist-dope-doctor-viral',
     title: 'The Dope Doctor — Viral Promo',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/avatar-dopedoctor.jpg',
+    thumbnail: '/images/portfolio/cover-dopedoctor-viral.jpg',
     video: 'https://www.instagram.com/reel/DKcUyZgog7I/',
     stats: '20M+ views',
     description:

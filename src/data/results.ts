@@ -32,30 +32,11 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'case-002',
-    client: 'Major Festival',
-    category: 'Event',
-    headline: 'One festival. 4.7M impressions in a week',
-    problem:
-      'The festival had a loyal crowd but almost no social reach beyond existing attendees.',
-    approach:
-      'We deployed a multi-cam crew across the full event, then edited and released a phased content drop, teasers pre-event, live content during, and the aftermovie 24 hours after.',
-    result:
-      'The aftermovie and surrounding content generated 4.7 million impressions in seven days, doubling the festival\'s follower count.',
-    stats: [
-      { label: 'Impressions', value: '4.7M' },
-      { label: 'Follower growth', value: '2x' },
-      { label: 'Saves & shares', value: '94K' },
-      { label: 'Aftermovie views', value: '1.2M' },
-    ],
-    featured: true,
-  },
-  {
-    id: 'case-003',
     client: 'Major Conspiracy',
     category: 'Artist Growth',
-    headline: 'DJ goes from 3K to 120K followers in 5 months',
+    headline: 'Uptempo duo goes from 3K to 120K followers in 5 months',
     problem:
-      'The DJ had consistent bookings and real talent but an almost invisible online presence.',
+      'The duo had consistent bookings and real talent but an almost invisible online presence.',
     approach:
       'We built a visual identity from scratch, launched a content system of weekly reels and behind-the-scenes stories, and optimized every post for platform reach.',
     result:
@@ -66,10 +47,10 @@ export const caseStudies: CaseStudy[] = [
       { label: 'Avg. Reel reach', value: '320K' },
       { label: 'Paid spend', value: '€0' },
     ],
-    featured: false,
+    featured: true,
   },
   {
-    id: 'case-004',
+    id: 'case-003',
     client: 'Hard Dance Store',
     category: 'Brand',
     headline: 'From generic ads to a content-first brand engine',
