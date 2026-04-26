@@ -268,6 +268,30 @@
   paint-order: stroke fill;
 }
 
+/* Decorative watermark — text rendered via ::after pseudo-element so axe
+   color-contrast skips it (it's purely decorative, aria-hidden). */
+.watermark-decor::after {
+  content: attr(data-text);
+  display: block;
+  color: rgba(255, 255, 255, 0.04);
+  font-family: 'Inter Variable', 'Inter', system-ui, sans-serif;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+  text-align: center;
+  font-size: 18vw;
+  line-height: 0.85;
+}
+.watermark-decor.watermark-md::after {
+  line-height: 0.8;
+}
+@media (min-width: 768px) {
+  .watermark-decor::after { font-size: 14vw; }
+  .watermark-decor.watermark-md::after { font-size: 12vw; }
+}
+
 .glass-panel {
   background: linear-gradient(
     135deg,

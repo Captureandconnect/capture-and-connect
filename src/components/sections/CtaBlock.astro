@@ -20,16 +20,13 @@ const {
 
 <section class="relative bg-[#020202] py-20 md:py-24 overflow-hidden border-t border-white/[0.05]">
 
-  <!-- Mouse-reactive watermark, smaller so it doesn't bloat the section -->
+  <!-- Mouse-reactive watermark, text via ::after pseudo-element -->
   <div
     id="cta-watermark"
-    class="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-center select-none transition-transform duration-700 ease-out will-change-transform opacity-[0.04]"
+    class="pointer-events-none absolute inset-x-0 bottom-0 select-none transition-transform duration-700 ease-out will-change-transform watermark-decor watermark-md translate-y-[18%]"
+    data-text="LET&rsquo;S GROW"
     aria-hidden="true"
-  >
-    <span aria-hidden="true" class="block text-[18vw] md:text-[12vw] leading-[0.8] font-black italic uppercase tracking-tighter text-white whitespace-nowrap translate-y-[18%]">
-      LET&rsquo;S GROW
-    </span>
-  </div>
+  ></div>
 
   <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
 
