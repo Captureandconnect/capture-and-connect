@@ -68,7 +68,33 @@ export const events: EventCard[] = [
     venue: 'Brabanthallen, Den Bosch',
     cover: '/images/portfolio/cover-majorconspiracy.jpg',
     tag: 'Festival · Indoor',
-    djs: [],
+    djs: [
+      {
+        name: 'Soulblast LIVE',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DUQtHjDjMuG/',
+      },
+      {
+        name: 'The Dope Doctor — FINAL X-RAY',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DUQmUXsCLv8/',
+      },
+      {
+        name: 'Revellers vs Screecher',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DUQ1Y4WjATR/',
+      },
+      {
+        name: 'Hardbouncer',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DUQ18QfjG59/',
+      },
+      {
+        name: 'Kroefoe vs Svenergy',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DUQtFnUjG_T/',
+      },
+    ],
   },
   {
     id: 'reverze-2026',
@@ -78,7 +104,18 @@ export const events: EventCard[] = [
     venue: 'Sportpaleis, Antwerpen',
     cover: '/images/portfolio/cover-reverze.jpg',
     tag: 'Festival · Belgium',
-    djs: [],
+    djs: [
+      {
+        name: 'Hysta LIVE',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DVV0ASeDbk_/',
+      },
+      {
+        name: 'Dimitri K vs Yoshiko',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DVWQfbADH2V/',
+      },
+    ],
   },
   {
     id: 'paaspop-2026',
@@ -88,7 +125,18 @@ export const events: EventCard[] = [
     venue: 'Schijndel, NL',
     cover: '/images/portfolio/cover-paaspop.jpg',
     tag: 'Festival · Outdoor',
-    djs: [],
+    djs: [
+      {
+        name: 'EZG LIVE',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DW1kEkqjHT9/',
+      },
+      {
+        name: 'Gezellige Uptempo',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWy4kjIjHOc/',
+      },
+    ],
   },
   {
     id: 'rebirth-2026',
