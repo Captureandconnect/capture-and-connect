@@ -1,6 +1,8 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
+import SoundToggle from '../components/global/SoundToggle.astro';
 
 import '../styles/global.css';
 import '../styles/animations.css';
@@ -73,6 +75,12 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
     <!-- Theme color -->
     <meta name="theme-color" content="#020202" />
 
+    <!-- Inter Variable preload — stable filename, served from /public/fonts -->
+    <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+
+    <!-- Cross-page crossfade transitions (Astro 4+) -->
+    <ClientRouter fallback="swap" />
+
     <!-- JSON-LD: Organization + WebSite + page-specific -->
     {allSchemas.map((schema) => (
       <script type="application/ld+json" set:html={JSON.stringify(schema)} />
@@ -80,6 +88,31 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
   </head>
 
   <body class="bg-[#020202] text-white font-sans antialiased overflow-x-hidden">
+    <!-- First-visit loader curtain (sessionStorage-gated, single tab session) -->
+    <div id="cnc-loader" class="cnc-loader" aria-hidden="true" hidden>
+      <div class="cnc-loader__mark">CAPTURE&amp;CONNECT</div>
+      <div class="cnc-loader__bar"></div>
+      <div class="cnc-loader__tag">Booting the studio</div>
+    </div>
+    <script is:inline>
+      (() => {
+        try {
+          const seen = sessionStorage.getItem('cnc-seen');
+          const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+          const saveData = navigator.connection && navigator.connection.saveData;
+          const el = document.getElementById('cnc-loader');
+          if (!el) return;
+          if (seen || reduced || saveData) return;
+          el.removeAttribute('hidden');
+          sessionStorage.setItem('cnc-seen', '1');
+          setTimeout(() => {
+            el.dataset.state = 'hide';
+            setTimeout(() => el.remove(), 600);
+          }, 1100);
+        } catch (_) {}
+      })();
+    </script>
+
     <!-- Skip-to-main link, visible only on keyboard focus -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
@@ -103,6 +136,7 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
       <slot />
     </main>
     <Footer />
+    <SoundToggle />
 
     <!-- GSAP animations — deferred to browser idle so they never block LCP -->
     <script>
@@ -111,6 +145,16 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
         (window as any).requestIdleCallback(loadAnimations, { timeout: 2000 });
       } else {
         setTimeout(loadAnimations, 200);
+      }
+    </script>
+
+    <!-- Click sounds — deferred idle load -->
+    <script>
+      const loadSound = () => import('../scripts/sound.ts');
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(loadSound, { timeout: 2000 });
+      } else {
+        setTimeout(loadSound, 200);
       }
     </script>
 

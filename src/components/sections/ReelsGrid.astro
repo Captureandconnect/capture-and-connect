@@ -4,114 +4,108 @@ import { reels } from '../../data/reels';
 if (reels.length === 0) return;
 ---
 
-<section class="reels-grid mt-16 md:mt-20">
+<section class="relative bg-[#020202] py-16 md:py-20 border-t border-white/[0.05]">
+  <div class="max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
 
-  <!-- Sub-header -->
-  <div class="flex items-end justify-between flex-wrap gap-4 mb-6 pb-5 border-b border-white/[0.06]">
-    <div class="flex items-baseline gap-4">
-      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// Reels</span>
-      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
-        <span class="w-3 h-px bg-white/20"></span>
-        Hover to preview · Tap to open on Instagram
+    <!-- Header strip -->
+    <div class="flex items-end justify-between flex-wrap gap-4 mb-6 pb-5 border-b border-white/[0.06]">
+      <div class="flex items-baseline gap-4">
+        <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// Reel Drops</span>
+        <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
+          <span class="w-3 h-px bg-white/20"></span>
+          Short-form · Tap to open on Instagram
+        </span>
+      </div>
+      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
+        {reels.length} {reels.length === 1 ? 'reel' : 'reels'}
       </span>
     </div>
-    <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
-      {reels.length} {reels.length === 1 ? 'reel' : 'reels'}
-    </span>
-  </div>
 
-  <!-- 9:16 grid -->
-  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4">
-    {reels.map((reel) => (
-      <a
-        href={reel.instagramUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="reel-tile group relative block overflow-hidden bg-[#070707] border border-white/[0.06] hover:border-white/30 transition-colors duration-500"
-        style="aspect-ratio: 9 / 16;"
-        aria-label={`${reel.artist} — ${reel.label}, opens on Instagram`}
-      >
-        <!-- Video element, paused by default -->
-        <video
-          class="reel-video absolute inset-0 w-full h-full object-cover"
-          src={reel.video}
-          poster={reel.poster}
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          aria-hidden="true"
-        ></video>
+    <!-- 9:16 vertical grid: 2 cols mobile, 3 cols md+ -->
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
+      {reels.map((reel) => {
+        const isPlaceholder = reel.url === '#';
+        const Tag = isPlaceholder ? 'div' : 'a';
+        return (
+          <Tag
+            {...(!isPlaceholder
+              ? { href: reel.url, target: '_blank', rel: 'noopener noreferrer' }
+              : {})}
+            class="reel-tile group relative block overflow-hidden bg-[#0a0a0a] border border-white/[0.06] hover:border-white/25 transition-colors duration-500 aspect-[9/16]"
+            aria-label={!isPlaceholder ? `@${reel.account} — ${reel.caption}` : undefined}
+          >
+            {reel.thumbnail ? (
+              <img
+                src={reel.thumbnail}
+                alt=""
+                width="540"
+                height="960"
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 w-full h-full object-cover reel-img transition-transform duration-700"
+              />
+            ) : (
+              <>
+                <div class="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-white/[0.02]"></div>
+                <div class="absolute inset-0 reel-grain opacity-[0.03]"></div>
+              </>
+            )}
 
-        <!-- Bottom gradient + label -->
-        <div class="absolute inset-x-0 bottom-0 p-4 md:p-5 pt-12 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10">
-          <div class="flex items-end justify-between gap-3">
-            <div class="min-w-0">
-              <span class="block font-mono text-[9px] md:text-[10px] text-white/65 uppercase tracking-[0.2em] truncate">
-                {reel.artist}
-              </span>
-              <span class="block text-[14px] md:text-base font-black italic tracking-tight text-white truncate mt-1">
-                {reel.label}
-              </span>
-            </div>
-            <span class="shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" class="group-hover:stroke-black stroke-white/80 transition-colors duration-500">
-                <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- Persistent dark vignette so text is always legible -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent pointer-events-none"></div>
+
+            <!-- Top-left: id + type label -->
+            <span class="absolute top-3 left-3 font-mono text-[10px] text-white/65 uppercase tracking-[0.2em] z-10">
+              {reel.id} // REEL
+            </span>
+
+            <!-- Top-right: play icon -->
+            <span class="absolute top-3 right-3 z-10" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="11" cy="11" r="10" stroke="white" stroke-opacity="0.55" stroke-width="1.25"/>
+                <polygon points="9,7.5 15.5,11 9,14.5" fill="white" fill-opacity="0.9"/>
               </svg>
             </span>
-          </div>
-        </div>
 
-        <!-- Top corner: play indicator -->
-        <span class="absolute top-3 right-3 z-10 font-mono text-[9px] text-white/65 uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm px-2 py-1 rounded-sm">
-          ▶ IG
-        </span>
-      </a>
-    ))}
+            <!-- Bottom overlay: account + caption + views -->
+            <div class="reel-overlay absolute inset-x-0 bottom-0 z-10 p-3 md:p-4 pt-10 flex items-end justify-between gap-2 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-400">
+              <div class="min-w-0">
+                <span class="block font-mono text-[10px] text-white uppercase tracking-[0.18em] truncate">
+                  @{reel.account}
+                </span>
+                <span class="block text-[13px] font-black italic text-white truncate mt-0.5">
+                  {reel.caption}
+                </span>
+              </div>
+              {reel.views && (
+                <span class="shrink-0 font-mono text-[10px] text-white/65 tabular-nums">
+                  {reel.views}
+                </span>
+              )}
+            </div>
+          </Tag>
+        );
+      })}
+    </div>
+
   </div>
 </section>
 
 <style>
   .reel-tile { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease; }
+
   @media (hover: hover) {
-    .reel-tile:hover { transform: translateY(-3px); }
+    .reel-tile:hover .reel-img { transform: scale(1.03); }
+    .reel-tile:hover { border-color: rgba(255, 255, 255, 0.25); }
+  }
+
+  @media (hover: none) {
+    .reel-tile:active .reel-img { transform: scale(1.03); }
+  }
+
+  .reel-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px 128px;
   }
 </style>
-
-<script>
-  // Play on hover (desktop) + autoplay when in viewport (mobile)
-  const tiles = document.querySelectorAll<HTMLElement>('.reel-tile');
-  const isTouch = window.matchMedia('(hover: none)').matches;
-
-  tiles.forEach((tile) => {
-    const video = tile.querySelector<HTMLVideoElement>('.reel-video');
-    if (!video) return;
-
-    if (isTouch) {
-      // Mobile: play whichever reel is most in view
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting && e.intersectionRatio > 0.6) {
-              video.play().catch(() => {});
-            } else {
-              video.pause();
-            }
-          });
-        },
-        { threshold: [0, 0.6, 1] }
-      );
-      io.observe(tile);
-    } else {
-      // Desktop: hover to play
-      tile.addEventListener('mouseenter', () => {
-        video.currentTime = 0;
-        video.play().catch(() => {});
-      });
-      tile.addEventListener('mouseleave', () => {
-        video.pause();
-        video.currentTime = 0;
-      });
-    }
-  });
-</script>

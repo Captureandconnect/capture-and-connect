@@ -158,6 +158,54 @@
   const status = document.getElementById('form-status') as HTMLParagraphElement;
   const note = document.getElementById('form-note') as HTMLParagraphElement;
 
+  const CONFETTI_COLORS = ['#ffffff', '#aaaaaa', '#666666'];
+  let confettiFired = false;
+
+  async function fireConfetti() {
+    if (confettiFired) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    confettiFired = true;
+
+    const { default: confetti } = await import('canvas-confetti');
+
+    const panel = form.getBoundingClientRect();
+    const originX = (panel.left + panel.width / 2) / window.innerWidth;
+    const originY = (panel.bottom) / window.innerHeight;
+
+    confetti({
+      particleCount: 100,
+      origin: { x: originX, y: originY },
+      colors: CONFETTI_COLORS,
+      gravity: 1.2,
+      scalar: 0.9,
+      ticks: 200,
+      spread: 60,
+    });
+
+    setTimeout(() => {
+      confetti({
+        particleCount: 30,
+        origin: { x: Math.max(0, originX - 0.25), y: originY },
+        colors: CONFETTI_COLORS,
+        gravity: 1.2,
+        scalar: 0.9,
+        ticks: 200,
+        spread: 45,
+        angle: 60,
+      });
+      confetti({
+        particleCount: 30,
+        origin: { x: Math.min(1, originX + 0.25), y: originY },
+        colors: CONFETTI_COLORS,
+        gravity: 1.2,
+        scalar: 0.9,
+        ticks: 200,
+        spread: 45,
+        angle: 120,
+      });
+    }, 250);
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
@@ -180,6 +228,7 @@
         note.classList.add('hidden');
         form.reset();
         btn.textContent = 'Sent!';
+        fireConfetti();
       } else {
         throw new Error(data.error || 'Something went wrong');
       }

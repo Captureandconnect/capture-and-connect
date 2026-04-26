@@ -1,0 +1,90 @@
+---
+// SoundToggle — fixed bottom-right, desktop-only, glass-panel style.
+// Reads/writes localStorage key `cnc-sound`.
+---
+
+<!-- Hidden on touch/mobile via hidden md:block -->
+<div class="hidden md:block">
+  <button
+    id="sound-toggle"
+    type="button"
+    title="Click sounds"
+    aria-label="Toggle click sounds"
+    class="fixed bottom-5 right-5 z-50 w-10 h-10 rounded-full flex items-center justify-center backdrop-blur border border-white/[0.08] bg-white/[0.04] hover:bg-white/[0.08] transition-colors duration-300 cursor-pointer"
+  >
+    <!-- Speaker ON icon -->
+    <svg
+      id="sound-icon-on"
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="hidden text-white/70"
+      aria-hidden="true"
+    >
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+    </svg>
+
+    <!-- Speaker OFF / muted icon -->
+    <svg
+      id="sound-icon-off"
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.75"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="text-white/30"
+      aria-hidden="true"
+    >
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+      <line x1="23" y1="9" x2="17" y2="15"/>
+      <line x1="17" y1="9" x2="23" y2="15"/>
+    </svg>
+  </button>
+</div>
+
+<script>
+  const STORAGE_KEY = 'cnc-sound';
+  const btn = document.getElementById('sound-toggle') as HTMLButtonElement | null;
+  const iconOn = document.getElementById('sound-icon-on') as SVGElement | null;
+  const iconOff = document.getElementById('sound-icon-off') as SVGElement | null;
+
+  function applyState(on: boolean) {
+    if (!iconOn || !iconOff) return;
+    if (on) {
+      iconOn.classList.remove('hidden');
+      iconOff.classList.add('hidden');
+    } else {
+      iconOn.classList.add('hidden');
+      iconOff.classList.remove('hidden');
+    }
+  }
+
+  // Set initial icon state from localStorage
+  applyState(localStorage.getItem(STORAGE_KEY) === 'on');
+
+  btn?.addEventListener('click', () => {
+    const cncSound = (window as any).__cncSound;
+    let nowOn: boolean;
+    if (cncSound) {
+      nowOn = cncSound.toggle();
+    } else {
+      // sound.ts not loaded yet — just flip storage
+      const next = localStorage.getItem(STORAGE_KEY) !== 'on';
+      localStorage.setItem(STORAGE_KEY, next ? 'on' : 'off');
+      nowOn = next;
+    }
+    applyState(nowOn);
+  });
+</script>

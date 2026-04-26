@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lastUpdated = '26 april 2026';
+
+const sections = [
+  {
+    id: '01',
+    title: 'Wie zijn wij',
+    body: [
+      'Capture & Connect is een studio voor content, social media en webdesign, gevestigd in Nederland.',
+      'Voor alle privacyzaken kun je ons bereiken op info@captureandconnect.nl.',
+    ],
+    meta: [
+      { label: 'Handelsnaam', value: 'Capture & Connect' },
+      { label: 'KvK', value: '90315790' },
+      { label: 'BTW', value: 'NL004804916B78' },
+      { label: 'E-mail', value: 'info@captureandconnect.nl' },
+    ],
+  },
+  {
+    id: '02',
+    title: 'Welke gegevens we verzamelen',
+    body: [
+      'Wanneer je het contactformulier op deze site gebruikt, ontvangen wij je naam, e-mailadres, organisatie (optioneel) en het bericht dat je achterlaat.',
+      'Als je ons rechtstreeks mailt, ontvangen we de informatie die je in dat bericht zet.',
+      'Wij verkopen, verhuren of delen jouw persoonsgegevens niet met derden voor marketingdoeleinden.',
+    ],
+  },
+  {
+    id: '03',
+    title: 'Waarvoor we het gebruiken',
+    body: [
+      'We verwerken je gegevens uitsluitend om op je aanvraag te reageren, een mogelijke samenwerking in te schatten en deze op te volgen. De wettelijke grondslagen zijn jouw toestemming (je benadert ons) en ons gerechtvaardigd belang om onze onderneming te kunnen runnen.',
+    ],
+  },
+  {
+    id: '04',
+    title: 'Hoe lang we het bewaren',
+    body: [
+      'Aanvragen die niet leiden tot een opdracht worden binnen 12 maanden verwijderd.',
+      'Projectcorrespondentie met actieve en oud-klanten bewaren we voor de duur van de opdracht plus 7 jaar, conform de Nederlandse fiscale bewaarplicht.',
+    ],
+  },
+  {
+    id: '05',
+    title: 'Wie verwerkt het voor ons',
+    body: [
+      'We werken met een klein aantal vertrouwde leveranciers om onze site en e-mail te kunnen leveren. Zij verwerken gegevens uitsluitend in onze opdracht.',
+    ],
+    meta: [
+      { label: 'Hosting', value: 'Cloudflare Pages (EU/global edge)' },
+      { label: 'E-mail — info@', value: 'Hostnet (Nederland)' },
+      { label: 'E-mail — ryan@', value: 'Google Workspace' },
+      { label: 'Analytics', value: 'Cloudflare Web Analytics (cookieless)' },
+    ],
+  },
+  {
+    id: '06',
+    title: 'Cookies en tracking',
+    body: [
+      'Deze site gebruikt geen advertentiecookies, trackingpixels of analytics van derden die je profileren.',
+      'We gebruiken Cloudflare Web Analytics — cookieless en zonder fingerprinting. Alleen strikt noodzakelijke cookies om de site te leveren kunnen worden gezet.',
+    ],
+  },
+  {
+    id: '07',
+    title: 'Jouw rechten',
+    body: [
+      'Onder de AVG kun je ons vragen om je persoonsgegevens in te zien, te corrigeren of te verwijderen, de verwerking te beperken of bezwaar te maken, of een kopie te ontvangen in een overdraagbaar formaat.',
+      'Stuur je verzoek naar info@captureandconnect.nl en je krijgt binnen 30 dagen antwoord.',
+    ],
+  },
+  {
+    id: '08',
+    title: 'Klachten',
+    body: [
+      'Als je vindt dat we onzorgvuldig met je gegevens omgaan, neem dan eerst contact met ons op zodat we het kunnen rechtzetten.',
+      'Je hebt ook het recht een klacht in te dienen bij de Autoriteit Persoonsgegevens (autoriteitpersoonsgegevens.nl).',
+    ],
+  },
+  {
+    id: '09',
+    title: 'Wijzigingen',
+    body: [
+      'We werken dit beleid bij wanneer onze tools of processen veranderen. Belangrijke wijzigingen worden in de datum hieronder weergegeven.',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Privacy (NL)"
+  description="Hoe Capture & Connect persoonsgegevens verzamelt, gebruikt en beschermt. Cookieless analytics, geen tracking van derden."
+>
+
+  <section class="relative bg-[#020202] pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+        <div class="md:col-span-8">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="relative w-2 h-2 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+            </span>
+            009 // PRIVACY · NL
+          </span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Jouw data,<br/><span class="text-outline not-italic">netjes.</span>
+          </h1>
+        </div>
+        <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
+          Geen dark patterns. Geen tracking van derden. Klare taal: wat we verzamelen, waarom, en hoe je het laat verwijderen.
+        </p>
+      </div>
+      <div class="mt-10 flex flex-wrap items-center gap-3">
+        <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em]">Laatst bijgewerkt</span>
+        <span class="h-px flex-1 bg-white/10 max-w-[200px]"></span>
+        <span class="font-mono text-[10px] text-white/65 uppercase tracking-[0.25em]">{lastUpdated}</span>
+        <a href="/privacy" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.25em] transition-colors ml-auto">
+          EN ↗
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative bg-[#020202] pb-24 md:pb-32 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 pt-12 md:pt-16">
+      <div class="flex flex-col gap-8 md:gap-10 max-w-3xl">
+        {sections.map((s) => (
+          <article class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-8 md:pb-10 border-b border-white/[0.06] last:border-b-0">
+            <div class="md:col-span-3 flex items-baseline gap-3">
+              <span class="font-mono text-[10px] text-white/45 tracking-[0.25em]">{s.id}</span>
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">Sectie</span>
+            </div>
+            <div class="md:col-span-9 flex flex-col gap-4">
+              <h2 class="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-white leading-[0.95]">
+                {s.title}
+              </h2>
+              {s.body.map((p) => (
+                <p class="text-[15px] text-white/65 leading-relaxed">{p}</p>
+              ))}
+              {s.meta && (
+                <dl class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.15em]">
+                  {s.meta.map((m) => (
+                    <div class="flex items-baseline gap-3 py-1 border-b border-white/[0.05]">
+                      <dt class="text-white/45">{m.label}</dt>
+                      <dd class="ml-auto text-white/75">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
