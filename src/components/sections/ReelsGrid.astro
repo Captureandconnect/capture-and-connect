@@ -1,0 +1,117 @@
+---
+import { reels } from '../../data/reels';
+
+if (reels.length === 0) return;
+---
+
+<section class="reels-grid mt-16 md:mt-20">
+
+  <!-- Sub-header -->
+  <div class="flex items-end justify-between flex-wrap gap-4 mb-6 pb-5 border-b border-white/[0.06]">
+    <div class="flex items-baseline gap-4">
+      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// Reels</span>
+      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
+        <span class="w-3 h-px bg-white/20"></span>
+        Hover to preview · Tap to open on Instagram
+      </span>
+    </div>
+    <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
+      {reels.length} {reels.length === 1 ? 'reel' : 'reels'}
+    </span>
+  </div>
+
+  <!-- 9:16 grid -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 md:gap-4">
+    {reels.map((reel) => (
+      <a
+        href={reel.instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="reel-tile group relative block overflow-hidden bg-[#070707] border border-white/[0.06] hover:border-white/30 transition-colors duration-500"
+        style="aspect-ratio: 9 / 16;"
+        aria-label={`${reel.artist} — ${reel.label}, opens on Instagram`}
+      >
+        <!-- Video element, paused by default -->
+        <video
+          class="reel-video absolute inset-0 w-full h-full object-cover"
+          src={reel.video}
+          poster={reel.poster}
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        ></video>
+
+        <!-- Bottom gradient + label -->
+        <div class="absolute inset-x-0 bottom-0 p-4 md:p-5 pt-12 bg-gradient-to-t from-black/85 via-black/40 to-transparent z-10">
+          <div class="flex items-end justify-between gap-3">
+            <div class="min-w-0">
+              <span class="block font-mono text-[9px] md:text-[10px] text-white/65 uppercase tracking-[0.2em] truncate">
+                {reel.artist}
+              </span>
+              <span class="block text-[14px] md:text-base font-black italic tracking-tight text-white truncate mt-1">
+                {reel.label}
+              </span>
+            </div>
+            <span class="shrink-0 w-8 h-8 md:w-9 md:h-9 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-500">
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" class="group-hover:stroke-black stroke-white/80 transition-colors duration-500">
+                <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <!-- Top corner: play indicator -->
+        <span class="absolute top-3 right-3 z-10 font-mono text-[9px] text-white/65 uppercase tracking-[0.2em] bg-black/40 backdrop-blur-sm px-2 py-1 rounded-sm">
+          ▶ IG
+        </span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<style>
+  .reel-tile { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease; }
+  @media (hover: hover) {
+    .reel-tile:hover { transform: translateY(-3px); }
+  }
+</style>
+
+<script>
+  // Play on hover (desktop) + autoplay when in viewport (mobile)
+  const tiles = document.querySelectorAll<HTMLElement>('.reel-tile');
+  const isTouch = window.matchMedia('(hover: none)').matches;
+
+  tiles.forEach((tile) => {
+    const video = tile.querySelector<HTMLVideoElement>('.reel-video');
+    if (!video) return;
+
+    if (isTouch) {
+      // Mobile: play whichever reel is most in view
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && e.intersectionRatio > 0.6) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: [0, 0.6, 1] }
+      );
+      io.observe(tile);
+    } else {
+      // Desktop: hover to play
+      tile.addEventListener('mouseenter', () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+      tile.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
+  });
+</script>

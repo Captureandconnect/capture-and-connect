@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Lightbox from '../components/ui/Lightbox.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import EventsArchive from '../components/sections/EventsArchive.astro';
+import ReelsGrid from '../components/sections/ReelsGrid.astro';
 import { portfolioItems } from '../data/portfolio.ts';
 
 const mediaSections = [
@@ -299,6 +300,9 @@ const webDesignFeatures = [
 
           <!-- Events archive (content-creation only) -->
           {section.id === 'content-creation' && <EventsArchive />}
+
+          <!-- Reels grid (content-creation only, hides itself if data is empty) -->
+          {section.id === 'content-creation' && <ReelsGrid />}
 
           <!-- Section sub-header: artist work -->
           {section.id === 'content-creation' && items.length > 0 && (
