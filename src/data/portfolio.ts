@@ -38,7 +38,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-reverze-2026',
     title: 'Reverze 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-festival-crowd.jpg',
+    thumbnail: '/images/portfolio/cover-reverze.jpg',
     stats: 'Event 2026',
     description:
       'On-site filming at Reverze 2026 — capturing the full-arena production design, crowd reactions and headliner sets.',
@@ -60,7 +60,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-paaspop-2026',
     title: 'Paaspop 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-dopedoctor.jpg',
+    thumbnail: '/images/portfolio/cover-paaspop.jpg',
     stats: 'Event 2026',
     description:
       'Festival coverage at Paaspop 2026 — capturing crowd energy, multi-stage performances and artist moments.',
