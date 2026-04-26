@@ -13,10 +13,9 @@ export const services: Service[] = [
     description:
       'Cinematic event coverage, festival aftermovies, artist visuals and high-energy edits. We capture the moment and turn it into scroll-stopping content.',
     bullets: [
+      'Liveshots & multicam recording',
       'Event videography & aftermovies',
-      'Multi-cam live event & festival coverage',
       'Artist promo videos & visual identity',
-      'Professional photography on location',
       'Reels, TikToks & short-form edits',
       'Motion graphics & color grading',
     ],
@@ -28,11 +27,11 @@ export const services: Service[] = [
     description:
       'We run your Instagram, TikTok, and YouTube so you can focus on what you do. Consistent posting, real growth, zero guesswork.',
     bullets: [
+      'Monthly content day on location',
+      'Content calendar & scheduling',
       'Instagram, TikTok & YouTube management',
-      'Monthly content calendar & scheduling',
       'Community management & engagement',
       'Analytics reporting & performance reviews',
-      'Hashtag strategy & SEO optimization',
       'Story, Reel & post sequencing',
     ],
     icon: 'M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zm0 6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8zm10 0a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4zm0 7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1z',

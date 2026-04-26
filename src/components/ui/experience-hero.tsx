@@ -1,24 +1,12 @@
 "use client";
 
-import React, { useRef, useEffect, useState, lazy, Suspense } from "react";
+import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
-
-const ExperienceHero3D = lazy(() => import("./experience-hero-3d"));
 
 export const ExperienceHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const revealRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
-  const [enable3D, setEnable3D] = useState(false);
-
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px) and (pointer: fine)");
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setEnable3D(mq.matches && !reduced);
-    const onChange = (e: MediaQueryListEvent) => setEnable3D(e.matches && !reduced);
-    mq.addEventListener("change", onChange);
-    return () => mq.removeEventListener("change", onChange);
-  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -94,11 +82,6 @@ export const ExperienceHero = () => {
             }}
           />
         </div>
-        {enable3D && (
-          <Suspense fallback={null}>
-            <ExperienceHero3D />
-          </Suspense>
-        )}
       </div>
 
       <div
@@ -210,10 +193,8 @@ export const ExperienceHero = () => {
                 </div>
               ) : (
                 <p className="text-sm font-medium text-white/70 mt-3 leading-snug">
-                  Content · Social ·{" "}
-                  <span className="italic text-white">Web</span>. One team
-                  building <span className="italic text-white">narrative</span>{" "}
-                  systems for artists, events and brands.
+                  Content · Social · Web. One team building narrative systems
+                  for artists, events and brands.
                 </p>
               )}
             </div>
