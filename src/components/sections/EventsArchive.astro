@@ -51,8 +51,8 @@ import { events } from '../../data/events.ts';
                   {number} // {ev.tag}
                 </span>
                 <span class="bg-white/10 backdrop-blur-md border border-white/15 text-white text-[10px] font-mono uppercase tracking-[0.15em] px-2.5 py-1 rounded-full inline-flex items-center gap-1.5">
-                  <span class="font-bold">{ev.djs.length}</span>
-                  <span class="text-white/70">{ev.djs.length === 1 ? 'artist' : 'artists'}</span>
+                  <span class="font-bold">{ev.totalArtists ?? ev.djs.length}</span>
+                  <span class="text-white/70">{(ev.totalArtists ?? ev.djs.length) === 1 ? 'artist' : 'artists'}</span>
                 </span>
               </div>
 
@@ -98,7 +98,9 @@ import { events } from '../../data/events.ts';
               <div class="border-t border-white/[0.06] p-5 md:p-6 flex flex-col gap-4">
                 <div class="flex items-center justify-between">
                   <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">
-                    // Artists filmed
+                    {ev.totalArtists && ev.totalArtists > ev.djs.length
+                      ? `// ${ev.djs.length} of ${ev.totalArtists} publicly linked`
+                      : '// Artists filmed'}
                   </span>
                   <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
                     {ev.venue}

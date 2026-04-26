@@ -13,6 +13,9 @@ export interface EventCard {
   venue: string;
   cover: string;
   tag: string;
+  // Total artists filmed at the event. Use this when the public IG-linked
+  // subset in `djs` is smaller than the real count Ryan recorded.
+  totalArtists?: number;
   djs: EventDJ[];
 }
 
@@ -27,6 +30,7 @@ export const events: EventCard[] = [
     venue: 'Haaksbergen, NL',
     cover: '/images/portfolio/cover-rebirth.jpg',
     tag: 'Festival · Outdoor',
+    totalArtists: 7,
     djs: [
       {
         name: 'Revellers LIVE',
@@ -68,6 +72,7 @@ export const events: EventCard[] = [
     venue: 'Brabanthallen, Den Bosch',
     cover: '/images/portfolio/cover-majorconspiracy.jpg',
     tag: 'Festival · Indoor',
+    totalArtists: 7,
     djs: [
       {
         name: 'Soulblast LIVE',
@@ -104,6 +109,7 @@ export const events: EventCard[] = [
     venue: 'Salzburgring, AT',
     cover: '/images/portfolio/cover-moh-austria-v2.jpg',
     tag: 'Festival · Outdoor',
+    totalArtists: 5,
     djs: [
       {
         name: 'Lil Texas',
@@ -135,6 +141,7 @@ export const events: EventCard[] = [
     venue: 'Sportpaleis, Antwerpen',
     cover: '/images/portfolio/cover-reverze.jpg',
     tag: 'Festival · Belgium',
+    totalArtists: 3,
     djs: [
       {
         name: 'Hysta LIVE',
@@ -156,6 +163,7 @@ export const events: EventCard[] = [
     venue: 'Brabanthallen, Den Bosch',
     cover: '/images/portfolio/cover-moh-2026.jpg',
     tag: 'Festival · Indoor',
+    totalArtists: 5,
     djs: [
       {
         name: 'Furyan vs The Viper',
