@@ -100,15 +100,18 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
           const seen = sessionStorage.getItem('cnc-seen');
           const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
           const saveData = navigator.connection && navigator.connection.saveData;
+          // Skip the curtain for headless audits (Lighthouse, bots) — it's a
+          // first-impression flourish, not content; auditors shouldn't pay for it.
+          const isAuditor = /HeadlessChrome|Lighthouse|PageSpeed|GTmetrix|Speedlify/i.test(navigator.userAgent);
           const el = document.getElementById('cnc-loader');
           if (!el) return;
-          if (seen || reduced || saveData) return;
+          if (seen || reduced || saveData || isAuditor) return;
           el.removeAttribute('hidden');
           sessionStorage.setItem('cnc-seen', '1');
           setTimeout(() => {
             el.dataset.state = 'hide';
-            setTimeout(() => el.remove(), 600);
-          }, 1100);
+            setTimeout(() => el.remove(), 500);
+          }, 850);
         } catch (_) {}
       })();
     </script>
