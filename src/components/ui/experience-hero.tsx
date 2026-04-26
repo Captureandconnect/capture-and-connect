@@ -147,7 +147,7 @@ export const ExperienceHero = () => {
             {
               id: "001",
               title: "AVAILABILITY",
-              val: "Now booking",
+              val: "Open for projects",
               type: "progress" as const,
             },
             {
