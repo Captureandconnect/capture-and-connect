@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Lightbox from '../components/ui/Lightbox.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
+import EventsArchive from '../components/sections/EventsArchive.astro';
 import { portfolioItems } from '../data/portfolio.ts';
 
 const mediaSections = [
@@ -142,7 +143,12 @@ const webDesignFeatures = [
 
   <!-- ── Media sections (Content Creation + Social Media) ─────────────── -->
   {mediaSections.map((section) => {
-    const items = portfolioItems.filter((item) => item.category === section.id);
+    const allItems = portfolioItems.filter((item) => item.category === section.id);
+    // Hide event-* items inside content-creation (they live in EventsArchive now)
+    const items =
+      section.id === 'content-creation'
+        ? allItems.filter((item) => !item.id.startsWith('event-'))
+        : allItems;
 
     return (
       <section
@@ -276,6 +282,25 @@ const webDesignFeatures = [
                   </a>
                 ))}
               </div>
+            </div>
+          )}
+
+          <!-- Events archive (content-creation only) -->
+          {section.id === 'content-creation' && <EventsArchive />}
+
+          <!-- Section sub-header: artist work -->
+          {section.id === 'content-creation' && items.length > 0 && (
+            <div class="flex items-end justify-between flex-wrap gap-4 mb-6 pb-5 border-b border-white/[0.06]">
+              <div class="flex items-baseline gap-4">
+                <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.25em]">— Artist work</span>
+                <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
+                  <span class="w-3 h-px bg-white/20"></span>
+                  Promo · viral · campaign
+                </span>
+              </div>
+              <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+                {items.length} {items.length === 1 ? 'work' : 'works'}
+              </span>
             </div>
           )}
 

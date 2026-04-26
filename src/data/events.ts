@@ -1,0 +1,103 @@
+export interface EventDJ {
+  name: string;
+  role?: string;           // e.g. "Multicam Recording"
+  handle?: string;         // e.g. "thedopedoctor_official"
+  instagramPost: string;   // direct URL to the IG post / reel
+}
+
+export interface EventCard {
+  id: string;
+  name: string;
+  edition?: string;        // e.g. "Austria 2026"
+  date: string;
+  venue: string;
+  cover: string;
+  tag: string;
+  djs: EventDJ[];
+}
+
+// NB: voeg per event de DJ's toe met een directe Instagram POST/REEL URL.
+// Format: https://www.instagram.com/p/XXXXX/  of  https://www.instagram.com/reel/XXXXX/
+export const events: EventCard[] = [
+  {
+    id: 'masters-of-hardcore-2026',
+    name: 'Masters Of Hardcore',
+    edition: 'Netherlands 2026',
+    date: 'April 2026',
+    venue: 'Brabanthallen, Den Bosch',
+    cover: '/images/portfolio/cover-moh-2026.jpg',
+    tag: 'Festival · Indoor',
+    djs: [
+      {
+        name: 'Furyan vs The Viper',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWhJ2ucDcpu/',
+      },
+      {
+        name: 'The Dope Doctor',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWg230xiFNu/',
+      },
+      {
+        name: 'Chaotic Hostility',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWjWRnHDERl/',
+      },
+      {
+        name: 'F.Noize',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DWg-5MniND3/',
+      },
+    ],
+  },
+  {
+    id: 'masters-of-hardcore-austria-2026',
+    name: 'Masters Of Hardcore',
+    edition: 'Austria 2026',
+    date: 'July 2026',
+    venue: 'Salzburgring, AT',
+    cover: '/images/portfolio/cover-moh-austria.jpg',
+    tag: 'Festival · Outdoor',
+    djs: [],
+  },
+  {
+    id: 'bkjn-vs-partyraiser-2026',
+    name: 'BKJN vs Partyraiser',
+    edition: '2026',
+    date: 'October 2026',
+    venue: 'Brabanthallen, Den Bosch',
+    cover: '/images/portfolio/cover-majorconspiracy.jpg',
+    tag: 'Festival · Indoor',
+    djs: [],
+  },
+  {
+    id: 'reverze-2026',
+    name: 'Reverze',
+    edition: '2026',
+    date: 'February 2026',
+    venue: 'Sportpaleis, Antwerpen',
+    cover: '/images/portfolio/cover-majorconspiracy.jpg',
+    tag: 'Festival · Belgium',
+    djs: [],
+  },
+  {
+    id: 'paaspop-2026',
+    name: 'Paaspop',
+    edition: '2026',
+    date: 'April 2026',
+    venue: 'Schijndel, NL',
+    cover: '/images/portfolio/cover-dopedoctor.jpg',
+    tag: 'Festival · Outdoor',
+    djs: [],
+  },
+  {
+    id: 'rebirth-2026',
+    name: 'Rebirth Festival',
+    edition: '2026',
+    date: 'April 2026',
+    venue: 'Haaksbergen, NL',
+    cover: '/images/portfolio/cover-dopedoctor.jpg',
+    tag: 'Festival · Outdoor',
+    djs: [],
+  },
+];
