@@ -14,6 +14,7 @@ interface Props {
 const { title, description, ogImage = '/og-default.jpg' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://captureandconnect.nl');
 const pageTitle = `${title} | Capture & Connect`;
+const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 ---
 
 <!doctype html>
@@ -71,6 +72,15 @@ const pageTitle = `${title} | Capture & Connect`;
     <script>
       import('../scripts/animations.ts');
     </script>
+
+    {cfBeaconToken && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={`{"token": "${cfBeaconToken}"}`}
+      />
+    )}
 
     <!-- Global cursor spotlight tracker -->
     <script>
