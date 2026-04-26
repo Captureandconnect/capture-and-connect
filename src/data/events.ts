@@ -58,7 +58,28 @@ export const events: EventCard[] = [
     venue: 'Salzburgring, AT',
     cover: '/images/portfolio/cover-moh-austria-v2.jpg',
     tag: 'Festival · Outdoor',
-    djs: [],
+    djs: [
+      {
+        name: 'Lil Texas',
+        role: 'Multicam Recording',
+        instagramPost: 'https://vm.tiktok.com/ZGdH6fcA5/',
+      },
+      {
+        name: 'Anime',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/reel/DVd4uFzgmzX/',
+      },
+      {
+        name: 'F.Noize',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DU3PnVnCNj0/',
+      },
+      {
+        name: 'Barber vs Unproven',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DU3geW7Ahbx/',
+      },
+    ],
   },
   {
     id: 'bkjn-vs-partyraiser-2026',
