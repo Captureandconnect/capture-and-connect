@@ -187,7 +187,7 @@ export const ExperienceHero = () => {
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Accounts managed</span>
+                    <span>Currently managing</span>
                     <span>9</span>
                   </div>
                 </div>
