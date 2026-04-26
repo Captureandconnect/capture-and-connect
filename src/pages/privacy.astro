@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = '26 April 2026';
+
+const sections = [
+  {
+    id: '01',
+    title: 'Who we are',
+    body: [
+      'Capture & Connect is a content, social media and web design studio based in the Netherlands.',
+      'For all privacy matters you can reach us at info@captureandconnect.nl.',
+    ],
+    meta: [
+      { label: 'Trade name', value: 'Capture & Connect' },
+      { label: 'KVK', value: '90315790' },
+      { label: 'VAT', value: 'NL004804916B78' },
+      { label: 'Email', value: 'info@captureandconnect.nl' },
+    ],
+  },
+  {
+    id: '02',
+    title: 'What we collect',
+    body: [
+      'When you submit the contact form on this site we receive your name, email address, organisation (optional) and the message you send us.',
+      'When you email us directly, we receive whatever information you put in your message.',
+      'We do not sell, rent or share your personal data with third parties for marketing purposes.',
+    ],
+  },
+  {
+    id: '03',
+    title: 'Why we use it',
+    body: [
+      'We process your data only to respond to your enquiry, scope a possible engagement and follow up on it. The legal basis is your consent (you contact us) and our legitimate interest in running our business.',
+    ],
+  },
+  {
+    id: '04',
+    title: 'How long we keep it',
+    body: [
+      'Enquiries that do not turn into projects: deleted within 12 months.',
+      'Project correspondence with active and former clients: kept for the duration of the engagement plus 7 years to meet Dutch tax retention requirements.',
+    ],
+  },
+  {
+    id: '05',
+    title: 'Who processes it for us',
+    body: [
+      'We use a small number of trusted providers to operate our site and email. They process data only on our instructions.',
+    ],
+    meta: [
+      { label: 'Hosting', value: 'Cloudflare Pages (EU/global edge)' },
+      { label: 'Email — info@', value: 'Hostnet (Netherlands)' },
+      { label: 'Email — ryan@', value: 'Google Workspace' },
+      { label: 'Analytics', value: 'Cloudflare Web Analytics (cookieless)' },
+    ],
+  },
+  {
+    id: '06',
+    title: 'Cookies & tracking',
+    body: [
+      'This site does not use advertising cookies, tracking pixels or third-party analytics that profile you.',
+      'We use Cloudflare Web Analytics, which is cookieless and does not fingerprint visitors. Only essential cookies needed to deliver the site may be set.',
+    ],
+  },
+  {
+    id: '07',
+    title: 'Your rights',
+    body: [
+      'Under the GDPR you can ask us to access, correct or delete your personal data, restrict or object to processing, or receive a copy in a portable format.',
+      'Email info@captureandconnect.nl with your request and we will respond within 30 days.',
+    ],
+  },
+  {
+    id: '08',
+    title: 'Complaints',
+    body: [
+      'If you believe we are mishandling your data, please contact us first so we can put it right.',
+      'You also have the right to lodge a complaint with the Dutch Data Protection Authority — Autoriteit Persoonsgegevens, autoriteitpersoonsgegevens.nl.',
+    ],
+  },
+  {
+    id: '09',
+    title: 'Changes',
+    body: [
+      'We may update this policy when our tools or processes change. Material updates will be reflected in the date below.',
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Privacy"
+  description="How Capture & Connect collects, uses and protects your personal data. Cookieless analytics, no third-party tracking."
+>
+
+  <!-- Page Hero -->
+  <section class="relative bg-[#020202] pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+        <div class="md:col-span-8">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="relative w-2 h-2 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+            </span>
+            009 // PRIVACY
+          </span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Your data,<br/><span class="text-outline not-italic">handled.</span>
+          </h1>
+        </div>
+        <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
+          Plain language. No dark patterns. No third-party tracking. Just what we collect, why, and how to remove it.
+        </p>
+      </div>
+      <div class="mt-10 flex items-center gap-3">
+        <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em]">Last updated</span>
+        <span class="h-px flex-1 bg-white/10 max-w-[200px]"></span>
+        <span class="font-mono text-[10px] text-white/65 uppercase tracking-[0.25em]">{lastUpdated}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sections -->
+  <section class="relative bg-[#020202] pb-24 md:pb-32 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 pt-12 md:pt-16">
+      <div class="flex flex-col gap-8 md:gap-10 max-w-3xl">
+        {sections.map((s) => (
+          <article class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-8 md:pb-10 border-b border-white/[0.06] last:border-b-0">
+            <div class="md:col-span-3 flex items-baseline gap-3">
+              <span class="font-mono text-[10px] text-white/45 tracking-[0.25em]">{s.id}</span>
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">Section</span>
+            </div>
+            <div class="md:col-span-9 flex flex-col gap-4">
+              <h2 class="text-2xl md:text-3xl font-black italic uppercase tracking-tighter text-white leading-[0.95]">
+                {s.title}
+              </h2>
+              {s.body.map((p) => (
+                <p class="text-[15px] text-white/65 leading-relaxed">{p}</p>
+              ))}
+              {s.meta && (
+                <dl class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.15em]">
+                  {s.meta.map((m) => (
+                    <div class="flex items-baseline gap-3 py-1 border-b border-white/[0.05]">
+                      <dt class="text-white/45">{m.label}</dt>
+                      <dd class="ml-auto text-white/75">{m.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
