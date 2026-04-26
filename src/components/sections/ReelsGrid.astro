@@ -34,7 +34,18 @@ if (reels.length === 0) return;
             class="reel-tile group relative block overflow-hidden bg-[#0a0a0a] border border-white/[0.06] hover:border-white/25 transition-colors duration-500 aspect-[9/16]"
             aria-label={!isPlaceholder ? `@${reel.account} — ${reel.caption}` : undefined}
           >
-            {reel.thumbnail ? (
+            {reel.video ? (
+              <video
+                class="reel-video absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+                src={reel.video}
+                poster={reel.thumbnail}
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-hidden="true"
+              ></video>
+            ) : reel.thumbnail ? (
               <img
                 src={reel.thumbnail}
                 alt=""
@@ -95,12 +106,14 @@ if (reels.length === 0) return;
   .reel-tile { transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease; }
 
   @media (hover: hover) {
-    .reel-tile:hover .reel-img { transform: scale(1.03); }
+    .reel-tile:hover .reel-img,
+    .reel-tile:hover .reel-video { transform: scale(1.03); }
     .reel-tile:hover { border-color: rgba(255, 255, 255, 0.25); }
   }
 
   @media (hover: none) {
-    .reel-tile:active .reel-img { transform: scale(1.03); }
+    .reel-tile:active .reel-img,
+    .reel-tile:active .reel-video { transform: scale(1.03); }
   }
 
   .reel-grain {
@@ -109,3 +122,39 @@ if (reels.length === 0) return;
     background-size: 128px 128px;
   }
 </style>
+
+<script>
+  // Reel videos: hover-to-play (desktop) + intersection autoplay (mobile)
+  const tiles = document.querySelectorAll<HTMLElement>('.reel-tile');
+  const isTouch = window.matchMedia('(hover: none)').matches;
+
+  tiles.forEach((tile) => {
+    const video = tile.querySelector<HTMLVideoElement>('.reel-video');
+    if (!video) return;
+
+    if (isTouch) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting && e.intersectionRatio > 0.55) {
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: [0, 0.55, 1] }
+      );
+      io.observe(tile);
+    } else {
+      tile.addEventListener('mouseenter', () => {
+        video.currentTime = 0;
+        video.play().catch(() => {});
+      });
+      tile.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+    }
+  });
+</script>
