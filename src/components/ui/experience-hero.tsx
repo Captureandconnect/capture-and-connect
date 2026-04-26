@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useMemo } from "react";
+import React, { useRef, useEffect, useMemo, useState } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Float, MeshDistortMaterial } from "@react-three/drei";
 import * as THREE from "three";
@@ -74,6 +74,16 @@ export const ExperienceHero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const revealRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
+  const [enable3D, setEnable3D] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px) and (pointer: fine)");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setEnable3D(mq.matches && !reduced);
+    const onChange = (e: MediaQueryListEvent) => setEnable3D(e.matches && !reduced);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -132,13 +142,32 @@ export const ExperienceHero = () => {
       ref={containerRef}
       className="relative min-h-screen w-full bg-[#020202] flex flex-col selection:bg-white selection:text-black overflow-hidden"
     >
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <Canvas camera={{ position: [0, 0, 60], fov: 35 }} dpr={[1, 1.5]}>
-          <ambientLight intensity={0.4} />
-          <spotLight position={[50, 50, 50]} intensity={3} />
-          <LiquidBackground />
-          <Monolith />
-        </Canvas>
+      <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+        {enable3D ? (
+          <Canvas camera={{ position: [0, 0, 60], fov: 35 }} dpr={[1, 1.5]}>
+            <ambientLight intensity={0.4} />
+            <spotLight position={[50, 50, 50]} intensity={3} />
+            <LiquidBackground />
+            <Monolith />
+          </Canvas>
+        ) : (
+          <div className="absolute inset-0 bg-[#020202]">
+            <div
+              className="absolute inset-0"
+              style={{
+                background:
+                  "radial-gradient(ellipse 70% 55% at 70% 45%, rgba(255,255,255,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 30% 70%, rgba(255,255,255,0.04) 0%, transparent 65%), linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.95) 100%)",
+              }}
+            />
+            <div
+              className="absolute inset-0 opacity-[0.04] mix-blend-overlay"
+              style={{
+                backgroundImage:
+                  "url('data:image/svg+xml,%3Csvg viewBox%3D%220 0 256 256%22 xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter id%3D%22n%22%3E%3CfeTurbulence type%3D%22fractalNoise%22 baseFrequency%3D%220.9%22 numOctaves%3D%224%22 stitchTiles%3D%22stitch%22%2F%3E%3C%2Ffilter%3E%3Crect width%3D%22100%25%22 height%3D%22100%25%22 filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E')",
+              }}
+            />
+          </div>
+        )}
       </div>
 
       <div
