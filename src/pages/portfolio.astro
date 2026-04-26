@@ -94,7 +94,7 @@ const webDesignFeatures = [
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
         <div class="md:col-span-8">
-          <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
             <span class="relative w-2 h-2 bg-white rounded-full">
               <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
             </span>
@@ -129,11 +129,11 @@ const webDesignFeatures = [
               'portfolio-tab inline-flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] border transition-all duration-300 cursor-pointer select-none whitespace-nowrap',
               i === 0
                 ? 'border-white text-white bg-white/[0.04]'
-                : 'border-white/10 text-white/40 hover:border-white/40 hover:text-white',
+                : 'border-white/10 text-white/55 hover:border-white/40 hover:text-white',
             ]}
             data-tab={tab.id}
           >
-            <span class="text-[9px] text-white/40">{tab.n}</span>
+            <span class="text-[9px] text-white/55">{tab.n}</span>
             <span>{tab.label}</span>
           </a>
         ))}
@@ -169,7 +169,7 @@ const webDesignFeatures = [
                 {section.description}
               </p>
               <span class="hidden md:block w-8 h-px bg-white/10"></span>
-              <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em] shrink-0">
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em] shrink-0">
                 {portfolioItems.filter((i) => i.category === section.id).length} works
               </span>
             </div>
@@ -177,7 +177,7 @@ const webDesignFeatures = [
             <!-- Social Media: split layout, solid italic (no outline repeat) -->
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-10 md:mb-12 items-start">
               <div class="md:col-span-4 flex flex-col gap-5">
-                <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] flex items-center gap-3">
+                <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] flex items-center gap-3">
                   <span class="relative w-1.5 h-1.5 rounded-full bg-white">
                     <span class="absolute inset-0 rounded-full bg-white animate-ping opacity-30"></span>
                   </span>
@@ -193,14 +193,14 @@ const webDesignFeatures = [
               </div>
               <div class="md:col-span-8 grid grid-cols-2 gap-px bg-white/[0.04] border border-white/[0.05] self-stretch">
                 <div class="bg-[#020202] p-6 flex flex-col justify-between gap-3">
-                  <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">— ACCOUNTS LIVE</span>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">— ACCOUNTS LIVE</span>
                   <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">{managedAccounts.length}</h3>
-                  <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em]">Currently managing</span>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">Currently managing</span>
                 </div>
                 <div class="bg-[#020202] p-6 flex flex-col justify-between gap-3">
-                  <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">— COMBINED REACH</span>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">— COMBINED REACH</span>
                   <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">22M+</h3>
-                  <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em]">Across IG · TT · YT</span>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">Across IG · TT · YT</span>
                 </div>
               </div>
             </div>
@@ -210,10 +210,10 @@ const webDesignFeatures = [
           {section.id === 'social-media' && (
             <div class="mb-10 md:mb-12">
               <div class="flex items-end justify-between flex-wrap gap-4 mb-6">
-                <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.25em]">
+                <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">
                   — Currently managing
                 </span>
-                <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+                <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
                   Click any cell to open the live profile
                 </span>
               </div>
@@ -229,7 +229,7 @@ const webDesignFeatures = [
                   >
                     <!-- ID + dot -->
                     <div class="flex items-center justify-between">
-                      <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">
+                      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">
                         {account.id} // {account.role.toUpperCase()}
                       </span>
                       <span class="relative w-1.5 h-1.5 rounded-full bg-white">
@@ -242,7 +242,7 @@ const webDesignFeatures = [
                       <h3 class="text-3xl md:text-[2.4rem] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
                         {account.name}
                       </h3>
-                      <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.2em]">
+                      <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em]">
                         @{account.handle}
                       </span>
                     </div>
@@ -263,14 +263,14 @@ const webDesignFeatures = [
                       {account.stats.map((s) => (
                         <div class="bg-[#020202] p-3 flex flex-col gap-1">
                           <span class="text-base font-black italic tracking-tighter text-white leading-none">{s.value}</span>
-                          <span class="font-mono text-[8px] text-white/40 uppercase tracking-[0.15em] leading-tight">{s.label}</span>
+                          <span class="font-mono text-[8px] text-white/55 uppercase tracking-[0.15em] leading-tight">{s.label}</span>
                         </div>
                       ))}
                     </div>
 
                     <!-- Footer: platforms + arrow -->
                     <div class="flex items-center justify-between pt-3 border-t border-white/[0.06]">
-                      <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em]">
+                      <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
                         IG · TT
                       </span>
                       <span class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white transition-all duration-500">
@@ -292,13 +292,13 @@ const webDesignFeatures = [
           {section.id === 'content-creation' && items.length > 0 && (
             <div class="flex items-end justify-between flex-wrap gap-4 mb-6 pb-5 border-b border-white/[0.06]">
               <div class="flex items-baseline gap-4">
-                <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.25em]">— Artist work</span>
-                <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
+                <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">— Artist work</span>
+                <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
                   <span class="w-3 h-px bg-white/20"></span>
                   Promo · viral · campaign
                 </span>
               </div>
-              <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
                 {items.length} {items.length === 1 ? 'work' : 'works'}
               </span>
             </div>
@@ -356,7 +356,7 @@ const webDesignFeatures = [
                       </h3>
                       <div class="flex items-center justify-between">
                         <span class="font-mono text-[10px] text-white/50 uppercase tracking-[0.2em]">{item.client}</span>
-                        <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] flex items-center gap-2">
+                        <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] flex items-center gap-2">
                           View
                           <span class="w-3 h-px bg-white/30 group-hover:w-6 group-hover:bg-white transition-all duration-500"></span>
                         </span>
@@ -370,7 +370,7 @@ const webDesignFeatures = [
 
           <!-- Section CTA -->
           <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-            <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] max-w-md">
+            <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
               — {section.ctaNote}
             </p>
             <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
@@ -405,7 +405,7 @@ const webDesignFeatures = [
           <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">WEB DESIGN</span>
         </div>
         <p class="text-[clamp(1.5rem,3vw,2.5rem)] font-medium leading-[1.15] tracking-tight text-white max-w-4xl">
-          Custom code. <span class="text-white/30">No templates.</span><br/>
+          Custom code. <span class="text-white/55">No templates.</span><br/>
           Six things every site we ship<br/>does <em class="font-black italic text-white">right.</em>
         </p>
       </div>
@@ -415,7 +415,7 @@ const webDesignFeatures = [
         {webDesignFeatures.map((feature) => (
           <li class="feature-row group grid grid-cols-12 gap-4 md:gap-8 items-baseline border-b border-white/[0.06] py-7 md:py-9 hover:bg-white/[0.015] transition-colors duration-500 cursor-default">
             <div class="col-span-2 md:col-span-1 flex items-baseline">
-              <span class="font-mono text-[11px] text-white/30 group-hover:text-white tracking-[0.25em] transition-colors duration-500">
+              <span class="font-mono text-[11px] text-white/55 group-hover:text-white tracking-[0.25em] transition-colors duration-500">
                 {feature.id}
               </span>
             </div>
@@ -435,7 +435,7 @@ const webDesignFeatures = [
 
       <!-- CTA -->
       <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] max-w-md">
+        <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
           — From first sketch to live in as little as two weeks.
         </p>
         <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
@@ -476,7 +476,7 @@ const webDesignFeatures = [
 
   if (tabs.length && sections.length) {
     const activeClasses = ['border-white', 'text-white', 'bg-white/[0.04]'];
-    const inactiveClasses = ['border-white/10', 'text-white/40', 'hover:border-white/40', 'hover:text-white'];
+    const inactiveClasses = ['border-white/10', 'text-white/55', 'hover:border-white/40', 'hover:text-white'];
 
     function setActiveTab(activeId: string) {
       tabs.forEach((tab) => {

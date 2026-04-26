@@ -19,12 +19,12 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center justify-between h-16 lg:h-20">
 
       <!-- Logo + live dot -->
-      <a href="/" class="flex items-center gap-3 group" aria-label="Capture & Connect — Home">
-        <div class="relative w-2 h-2 bg-white rounded-full">
+      <a href="/" class="flex items-center gap-3 group">
+        <div class="relative w-2 h-2 bg-white rounded-full" aria-hidden="true">
           <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></div>
         </div>
         <span class="font-mono text-[11px] font-bold text-white tracking-[0.2em] uppercase">
-          CAPTURE&AMP;CONNECT
+          Capture&amp;Connect
         </span>
       </a>
 
@@ -40,7 +40,7 @@ const currentPath = Astro.url.pathname;
               href={link.href}
               class:list={[
                 'group/link relative flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.2em] transition-colors duration-300',
-                isActive ? 'text-white' : 'text-white/40 hover:text-white',
+                isActive ? 'text-white' : 'text-white/55 hover:text-white',
               ]}
             >
               <span class="text-[9px] text-white/25 group-hover/link:text-white/60 transition-colors">
@@ -89,6 +89,7 @@ const currentPath = Astro.url.pathname;
   id="mobile-menu"
   class="fixed inset-0 z-40 bg-[#020202] flex flex-col opacity-0 pointer-events-none transition-opacity duration-300"
   aria-hidden="true"
+  inert
 >
   <div class="flex-1 flex flex-col justify-center px-8 gap-2">
     {navLinks.map((link, i) => {
@@ -105,7 +106,7 @@ const currentPath = Astro.url.pathname;
           ]}
           style={`--delay: ${i * 60}ms`}
         >
-          <span class="font-mono text-[10px] tracking-widest text-white/30">{link.id}</span>
+          <span class="font-mono text-[10px] tracking-widest text-white/55">{link.id}</span>
           <span class="text-3xl font-black italic uppercase tracking-tighter">
             {link.label}
           </span>
@@ -188,6 +189,7 @@ const currentPath = Astro.url.pathname;
     mobileMenu.classList.remove('opacity-0', 'pointer-events-none');
     mobileMenu.classList.add('open', 'opacity-100');
     mobileMenu.setAttribute('aria-hidden', 'false');
+    mobileMenu.removeAttribute('inert');
     hamburger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   };
@@ -197,6 +199,7 @@ const currentPath = Astro.url.pathname;
     mobileMenu.classList.add('opacity-0', 'pointer-events-none');
     mobileMenu.classList.remove('open', 'opacity-100');
     mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenu.setAttribute('inert', '');
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   };
