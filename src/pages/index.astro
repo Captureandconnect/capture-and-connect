@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HeroSection from '../components/sections/HeroSection.astro';
+import { ExperienceHero } from '../components/ui/experience-hero';
 import ServicesOverview from '../components/sections/ServicesOverview.astro';
 import ResultsHighlight from '../components/sections/ResultsHighlight.astro';
 import PortfolioPreview from '../components/sections/PortfolioPreview.astro';
@@ -11,17 +11,13 @@ import Lightbox from '../components/ui/Lightbox.astro';
 
 <BaseLayout
   title="Home"
-  description="Capture & Connect is a creative agency for artists, events and brands. We film events, create cinematic content, build custom websites and manage social media to grow your audience."
+  description="Capture & Connect is a creative agency for artists, events and brands. We film events, create cinematic content, manage social media and build custom websites to grow your audience."
 >
-  <HeroSection />
+  <ExperienceHero client:load />
 
-  <div class="py-10">
-    <ServicesOverview />
-  </div>
+  <ServicesOverview />
 
-  <div class="py-10">
-    <ResultsHighlight />
-  </div>
+  <ResultsHighlight />
 
   <PortfolioPreview />
 

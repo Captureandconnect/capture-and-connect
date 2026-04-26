@@ -11,24 +11,24 @@ import { services } from '../data/services';
 >
 
   <!-- Page Hero -->
-  <section class="pt-40 pb-20 text-center">
-    <div class="container mx-auto px-6 md:px-12 max-w-4xl" data-stagger>
-
-      <!-- Label -->
-      <p class="text-xs font-semibold tracking-widest uppercase text-white/40 mb-6">
-        Our Services
-      </p>
-
-      <!-- H1 -->
-      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black italic uppercase tracking-tight text-white leading-none mb-8">
-        Everything your brand needs to grow
-      </h1>
-
-      <!-- Subtitle -->
-      <p class="text-base sm:text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">
-        From filming events to editing viral content to managing your socials and building your website. One team. One system. Zero gaps.
-      </p>
-
+  <section class="relative bg-[#020202] pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+        <div class="md:col-span-8">
+          <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="relative w-2 h-2 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+            </span>
+            002 // SERVICES
+          </span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Everything<br/>to <span class="text-outline not-italic">grow.</span>
+          </h1>
+        </div>
+        <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
+          From filming events to editing viral content to managing socials and building websites. One team. One system. Zero gaps.
+        </p>
+      </div>
     </div>
   </section>
 
@@ -42,112 +42,53 @@ import { services } from '../data/services';
     ))}
   </div>
 
-  <!-- Why Choose Us -->
-  <section class="py-16 md:py-20 border-b border-white/[0.04]">
-    <div class="container mx-auto px-6 md:px-12 max-w-7xl">
-
-      <!-- Section label -->
-      <div class="text-center mb-16" data-animate>
-        <p class="text-xs font-semibold tracking-widest uppercase text-white/40 mb-4">
-          Why Us
+  <!-- Why Us — command-cell row -->
+  <section class="relative bg-[#020202] py-20 md:py-24 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
+        <div class="md:col-span-7">
+          <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="inline-block w-8 h-px bg-white/30"></span>
+            007 // WHY US
+          </span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Built<br/>for <span class="text-outline not-italic">results.</span>
+          </h2>
+        </div>
+        <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
+          One in-house team. One workflow. Three reasons brands choose us.
         </p>
-        <h2 class="text-3xl md:text-4xl font-bold italic tracking-tight text-white">
-          Built different. Built for results.
-        </h2>
       </div>
 
-      <!-- Three columns -->
-      <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
-        data-stagger
-      >
-
-        <!-- All In-House -->
-        <div class="flex flex-col gap-5 p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl">
-          <!-- Icon -->
-          <div class="w-12 h-12 flex items-center justify-center bg-white/[0.04] border border-white/[0.08] rounded-lg shrink-0">
-            <svg
-              class="w-5 h-5 text-white/60"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.75"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-              <circle cx="9" cy="7" r="4" />
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-            </svg>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.04] border border-white/[0.05]">
+        {[
+          { id: '001', title: 'In-house team',     body: 'No freelancers, no delays. One team handles everything — from filming on location to the final post.' },
+          { id: '002', title: 'Built for virality', body: 'We don’t just film and post. We craft cinematic content engineered for reach and real growth.' },
+          { id: '003', title: 'Artist & event experts', body: 'From mainstages to club nights, we’ve filmed and grown the biggest names in the scene.' },
+        ].map((why) => (
+          <div class="why-cell group bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-5 min-h-[260px]">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">
+                {why.id} // ADVANTAGE
+              </span>
+              <span class="w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white transition-colors duration-500"></span>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+              {why.title}
+            </h3>
+            <div class="h-px w-12 bg-white/10 group-hover:w-full group-hover:bg-white/30 transition-all duration-700"></div>
+            <p class="text-[14px] text-white/55 leading-relaxed">{why.body}</p>
           </div>
-          <h3 class="text-xl font-bold italic text-white tracking-tight">
-            All In-House
-          </h3>
-          <p class="text-sm text-white/50 leading-relaxed">
-            No freelancers, no delays. One team handles everything from filming on location to the final post.
-          </p>
-        </div>
-
-        <!-- Built for Virality -->
-        <div class="flex flex-col gap-5 p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl">
-          <!-- Icon -->
-          <div class="w-12 h-12 flex items-center justify-center bg-white/[0.04] border border-white/[0.08] rounded-lg shrink-0">
-            <svg
-              class="w-5 h-5 text-white/60"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.75"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold italic text-white tracking-tight">
-            Built for Virality
-          </h3>
-          <p class="text-sm text-white/50 leading-relaxed">
-            We don't just film and post. We create cinematic content engineered for reach and real growth.
-          </p>
-        </div>
-
-        <!-- Artist & Event Experts -->
-        <div class="flex flex-col gap-5 p-8 border border-white/[0.06] bg-white/[0.02] rounded-xl">
-          <!-- Icon -->
-          <div class="w-12 h-12 flex items-center justify-center bg-white/[0.04] border border-white/[0.08] rounded-lg shrink-0">
-            <svg
-              class="w-5 h-5 text-white/60"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.75"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-            >
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
-          </div>
-          <h3 class="text-xl font-bold italic text-white tracking-tight">
-            Artist &amp; Event Experts
-          </h3>
-          <p class="text-sm text-white/50 leading-relaxed">
-            From mainstages to club nights, we've filmed and grown the biggest names in the scene.
-          </p>
-        </div>
-
+        ))}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <CtaBlock
-    headline="Your brand deserves to be seen"
+    headline="Deserve to be seen?"
     subtext="Book a free strategy call and see how we'd grow your brand."
-    buttonText="Book a Free Strategy Call"
+    buttonText="Book a strategy call"
   />
 
 </BaseLayout>

@@ -44,17 +44,56 @@ const pageTitle = `${title} | Capture & Connect`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
 
-  <body class="bg-black text-white font-sans antialiased overflow-x-hidden">
+  <body class="bg-[#020202] text-white font-sans antialiased overflow-x-hidden">
+    <!-- Global cursor spotlight (desktop only) -->
+    <div
+      id="cursor-spot"
+      class="pointer-events-none fixed top-0 left-0 z-[5] hidden md:block w-[480px] h-[480px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 transition-opacity duration-500 will-change-transform"
+      style="background: radial-gradient(closest-side, rgba(255,255,255,0.06), transparent 70%); mix-blend-mode: screen;"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Subtle global grain -->
+    <div
+      class="pointer-events-none fixed inset-0 z-[4] opacity-[0.04] mix-blend-overlay"
+      style='background-image: url("data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22220%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/></svg>");'
+      aria-hidden="true"
+    ></div>
+
     <Nav />
     <main>
       <slot />
     </main>
     <Footer />
 
-
     <!-- GSAP animations -->
     <script>
       import('../scripts/animations.ts');
+    </script>
+
+    <!-- Global cursor spotlight tracker -->
+    <script>
+      const spot = document.getElementById('cursor-spot') as HTMLElement | null;
+      if (spot) {
+        let x = window.innerWidth / 2;
+        let y = window.innerHeight / 2;
+        let tx = x, ty = y;
+        const onMove = (e: MouseEvent) => {
+          tx = e.clientX;
+          ty = e.clientY;
+          spot.style.opacity = '1';
+        };
+        const onLeave = () => { spot.style.opacity = '0'; };
+        const loop = () => {
+          x += (tx - x) * 0.12;
+          y += (ty - y) * 0.12;
+          spot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+          requestAnimationFrame(loop);
+        };
+        window.addEventListener('mousemove', onMove);
+        document.addEventListener('mouseleave', onLeave);
+        loop();
+      }
     </script>
   </body>
 </html>

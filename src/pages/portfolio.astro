@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import VideoCard from '../components/ui/VideoCard.astro';
 import Lightbox from '../components/ui/Lightbox.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import { portfolioItems } from '../data/portfolio.ts';
@@ -8,145 +7,357 @@ import { portfolioItems } from '../data/portfolio.ts';
 const mediaSections = [
   {
     id: 'content-creation',
+    n: '001',
     label: 'Content Creation',
+    headline: ['Cinematic', 'content.'],
     description: 'Cinematic event coverage, festival aftermovies, artist visuals and high-energy edits.',
-    ctaText: 'Book Your Shoot',
+    ctaText: 'Book a shoot',
     ctaNote: 'From single Reels to full event coverage.',
   },
   {
     id: 'social-media',
+    n: '002',
     label: 'Social Media',
+    headline: ['Socials', 'we run.'],
     description: 'Full social media management, content calendars and community-driven campaigns.',
-    ctaText: 'Grow Your Socials',
+    ctaText: 'Grow your socials',
     ctaNote: 'Consistent posting, real growth, zero guesswork.',
   },
 ] as const;
 
+const managedAccounts = [
+  {
+    id: '001',
+    handle: 'thedopedoctor_official',
+    name: 'The Dope Doctor',
+    role: 'Artist',
+    instagram: 'https://www.instagram.com/thedopedoctor_official/',
+    tiktok: 'https://www.tiktok.com/@thedopedoctor_official',
+    highlight: '20M+ views',
+    summary: 'One viral promo. Zero paid boost.',
+    stats: [
+      { value: '20M+', label: 'Organic views' },
+      { value: '85K+', label: 'New followers' },
+      { value: '48 hr', label: 'To viral' },
+    ],
+  },
+  {
+    id: '002',
+    handle: 'majorconspiracyofficial',
+    name: 'Major Conspiracy',
+    role: 'Uptempo Duo',
+    instagram: 'https://www.instagram.com/majorconspiracyofficial/',
+    tiktok: 'https://www.tiktok.com/@majorconspiracyofficial',
+    highlight: '3K → 120K',
+    summary: 'From invisible to in-demand in five months.',
+    stats: [
+      { value: '40x',  label: 'Follower growth' },
+      { value: '320K', label: 'Avg. Reel reach' },
+      { value: '€0',   label: 'Paid spend' },
+    ],
+  },
+  {
+    id: '003',
+    handle: 'harddancestore',
+    name: 'Hard Dance Store',
+    role: 'Brand',
+    instagram: 'https://www.instagram.com/harddancestore/',
+    tiktok: 'https://www.tiktok.com/@harddancestore',
+    highlight: '+210% revenue',
+    summary: 'Organic posts pulling paid-level returns.',
+    stats: [
+      { value: '+210%', label: 'Revenue uplift' },
+      { value: '1.8M',  label: 'Organic reach' },
+      { value: '-58%',  label: 'CPM reduction' },
+    ],
+  },
+];
+
 const webDesignFeatures = [
-  {
-    title: 'Custom Design',
-    description: 'No templates. Every website is designed from scratch to match your brand, your style and your goals.',
-    icon: 'M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zM4 13a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-6zM16 13a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-6z',
-  },
-  {
-    title: 'Mobile-First',
-    description: 'Your audience scrolls on their phone. Every site we build looks and feels perfect on any screen size.',
-    icon: 'M12 18h.01M8 21h8a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z',
-  },
-  {
-    title: 'Lightning Fast',
-    description: 'Optimized for speed and SEO. Your site loads instantly and ranks where it should.',
-    icon: 'M13 10V3L4 14h7v7l9-11h-7z',
-  },
-  {
-    title: 'Landing Pages',
-    description: 'Campaign-specific landing pages and microsites built to convert traffic into leads and sales.',
-    icon: 'M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122',
-  },
-  {
-    title: 'Domain & Hosting',
-    description: 'We handle the technical setup. Domain registration, hosting configuration, SSL, everything.',
-    icon: 'M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9H3m9 9a9 9 0 0 1-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 0 1 9-9',
-  },
-  {
-    title: 'Fully Yours',
-    description: 'No subscriptions, no lock-in. We build it, hand it over and you own everything.',
-    icon: 'M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0 1 12 2.944a11.955 11.955 0 0 1-8.618 3.04A12.02 12.02 0 0 0 3 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z',
-  },
+  { id: '001', title: 'Custom design',     body: 'No templates. Every website is designed from scratch to match your brand, your style and your goals.' },
+  { id: '002', title: 'Mobile-first',      body: 'Your audience scrolls on their phone. Every site we build looks and feels perfect on any screen size.' },
+  { id: '003', title: 'Lightning fast',    body: 'Optimised for speed and SEO. Your site loads instantly and ranks where it should.' },
+  { id: '004', title: 'Landing pages',     body: 'Campaign-specific landing pages and microsites built to convert traffic into leads and sales.' },
+  { id: '005', title: 'Domain & hosting',  body: 'We handle the technical setup. Domain registration, hosting configuration, SSL — everything.' },
+  { id: '006', title: 'Fully yours',       body: 'No subscriptions, no lock-in. We build it, hand it over and you own everything.' },
 ];
 ---
 
 <BaseLayout
   title="Portfolio"
-  description="Browse the full Capture & Connect portfolio. Content creation, social media management and web design, all built for impact."
+  description="Browse the full Capture & Connect portfolio. Content creation, social media management and web design — all built for impact."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────── -->
-  <section class="pt-40 pb-16 text-center px-6">
-    <p class="text-white/40 text-xs font-semibold tracking-widest uppercase mb-5">
-      Our Work
-    </p>
-    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black italic tracking-tight text-white leading-none mb-6">
-      Content that speaks<br class="hidden sm:block" /> for itself
-    </h1>
-    <p class="text-white/50 text-base sm:text-lg leading-relaxed max-w-xl mx-auto">
-      Content creation, social media and web design, all built for impact.
-    </p>
+  <section class="relative bg-[#020202] pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+        <div class="md:col-span-8">
+          <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="relative w-2 h-2 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+            </span>
+            003 // PORTFOLIO
+          </span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Work that<br/><span class="text-outline not-italic">speaks.</span>
+          </h1>
+        </div>
+        <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
+          Content creation, social media and web design — all built for impact. Filter by discipline below.
+        </p>
+      </div>
+    </div>
   </section>
 
-  <!-- ── Sticky navigation tabs ───────────────────────────────────────── -->
+  <!-- ── Sticky tabs ──────────────────────────────────────────────────── -->
   <nav
     id="portfolio-nav"
-    class="sticky top-0 z-40 bg-black/80 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300"
+    class="sticky top-0 z-40 bg-[#020202]/80 backdrop-blur-xl border-y border-white/[0.06] transition-all duration-300"
   >
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 overflow-x-auto scrollbar-hide">
-      <div class="flex gap-1 py-3 min-w-max">
+    <div class="max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 overflow-x-auto scrollbar-hide">
+      <div class="flex gap-2 py-4 min-w-max">
         {[
-          { id: 'content-creation', label: 'Content Creation' },
-          { id: 'social-media', label: 'Social Media' },
-          { id: 'web-design', label: 'Web Design' },
+          { id: 'content-creation', label: 'Content Creation', n: '01' },
+          { id: 'social-media',     label: 'Social Media',     n: '02' },
+          { id: 'web-design',       label: 'Web Design',       n: '03' },
         ].map((tab, i) => (
           <a
             href={`#${tab.id}`}
             class:list={[
-              'portfolio-tab inline-flex items-center px-4 py-2 text-sm font-medium tracking-wide border rounded-full transition-all duration-200 cursor-pointer select-none whitespace-nowrap',
+              'portfolio-tab inline-flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] border transition-all duration-300 cursor-pointer select-none whitespace-nowrap',
               i === 0
-                ? 'border-white text-white bg-white/10'
-                : 'border-white/20 text-white/50 hover:border-white/50 hover:text-white/80',
+                ? 'border-white text-white bg-white/[0.04]'
+                : 'border-white/10 text-white/40 hover:border-white/40 hover:text-white',
             ]}
             data-tab={tab.id}
           >
-            {tab.label}
+            <span class="text-[9px] text-white/40">{tab.n}</span>
+            <span>{tab.label}</span>
           </a>
         ))}
       </div>
     </div>
   </nav>
 
-  <!-- ── Media sections (Content Creation & Social Media) ───────────── -->
+  <!-- ── Media sections (Content Creation + Social Media) ─────────────── -->
   {mediaSections.map((section) => {
     const items = portfolioItems.filter((item) => item.category === section.id);
 
     return (
       <section
         id={section.id}
-        class="portfolio-section py-14 md:py-18 border-b border-white/[0.04] scroll-mt-16"
+        class="portfolio-section relative bg-[#020202] py-20 md:py-24 overflow-hidden border-t border-white/[0.05] scroll-mt-24"
       >
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
 
-          <div class="mb-12 md:mb-16 max-w-2xl" data-reveal="fade-up">
-            <h2 class="text-3xl md:text-5xl font-black italic leading-none tracking-tight text-white mb-4">
-              {section.label}
-            </h2>
-            <p class="text-white/50 text-base sm:text-lg leading-relaxed">
-              {section.description}
+          {section.id === 'content-creation' ? (
+            <!-- Content Creation: thin horizontal header bar, gallery-first -->
+            <div class="mb-10 md:mb-12 flex flex-col md:flex-row md:items-end gap-4 md:gap-8 border-b border-white/[0.06] pb-6">
+              <div class="flex items-center gap-4 shrink-0">
+                <span class="font-mono text-[11px] text-white tracking-[0.25em]">{section.n}</span>
+                <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">{section.label}</span>
+              </div>
+              <span class="hidden md:block flex-1 h-px bg-white/10"></span>
+              <p class="md:max-w-md text-[13px] text-white/50 leading-relaxed">
+                {section.description}
+              </p>
+              <span class="hidden md:block w-8 h-px bg-white/10"></span>
+              <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em] shrink-0">
+                {portfolioItems.filter((i) => i.category === section.id).length} works
+              </span>
+            </div>
+          ) : (
+            <!-- Social Media: split layout, solid italic (no outline repeat) -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-10 md:mb-12 items-start">
+              <div class="md:col-span-4 flex flex-col gap-5">
+                <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] flex items-center gap-3">
+                  <span class="relative w-1.5 h-1.5 rounded-full bg-white">
+                    <span class="absolute inset-0 rounded-full bg-white animate-ping opacity-30"></span>
+                  </span>
+                  {section.n} / {section.label.toUpperCase()}
+                </span>
+                <h2 class="text-[clamp(2rem,5vw,4rem)] font-black italic uppercase leading-[0.9] tracking-tighter text-white">
+                  Socials,<br/>actually<br/>run.
+                </h2>
+                <div class="h-px w-16 bg-white/20"></div>
+                <p class="text-[14px] text-white/55 leading-relaxed max-w-sm">
+                  {section.description}
+                </p>
+              </div>
+              <div class="md:col-span-8 grid grid-cols-2 gap-px bg-white/[0.04] border border-white/[0.05] self-stretch">
+                <div class="bg-[#020202] p-6 flex flex-col justify-between gap-3">
+                  <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">— ACCOUNTS LIVE</span>
+                  <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">{managedAccounts.length}</h3>
+                  <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em]">Currently managing</span>
+                </div>
+                <div class="bg-[#020202] p-6 flex flex-col justify-between gap-3">
+                  <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">— COMBINED REACH</span>
+                  <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">22M+</h3>
+                  <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em]">Across IG · TT · YT</span>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <!-- Managed accounts deck (Social Media only) -->
+          {section.id === 'social-media' && (
+            <div class="mb-10 md:mb-12">
+              <div class="flex items-end justify-between flex-wrap gap-4 mb-6">
+                <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.25em]">
+                  — Currently managing
+                </span>
+                <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+                  Click any cell to open the live profile
+                </span>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.04] border border-white/[0.05]">
+                {managedAccounts.map((account) => (
+                  <a
+                    href={account.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="account-cell group relative bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-7 md:p-9 flex flex-col gap-5 min-h-[360px]"
+                    aria-label={`Open Instagram profile of ${account.name}`}
+                  >
+                    <!-- ID + dot -->
+                    <div class="flex items-center justify-between">
+                      <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">
+                        {account.id} // {account.role.toUpperCase()}
+                      </span>
+                      <span class="relative w-1.5 h-1.5 rounded-full bg-white">
+                        <span class="absolute inset-0 rounded-full bg-white animate-ping opacity-30"></span>
+                      </span>
+                    </div>
+
+                    <!-- Name + handle -->
+                    <div class="flex flex-col gap-2">
+                      <h3 class="text-3xl md:text-[2.4rem] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+                        {account.name}
+                      </h3>
+                      <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.2em]">
+                        @{account.handle}
+                      </span>
+                    </div>
+
+                    <!-- Headline highlight -->
+                    <div class="flex items-baseline gap-2">
+                      <span class="text-2xl font-black italic tracking-tighter text-white">{account.highlight}</span>
+                    </div>
+
+                    <!-- Hairline grows on hover -->
+                    <div class="h-px w-12 bg-white/10 group-hover:w-full group-hover:bg-white/30 transition-all duration-700"></div>
+
+                    <!-- Summary -->
+                    <p class="text-[13px] text-white/55 leading-relaxed">{account.summary}</p>
+
+                    <!-- Stats row -->
+                    <div class="mt-auto grid grid-cols-3 gap-px bg-white/[0.04] border border-white/[0.05]">
+                      {account.stats.map((s) => (
+                        <div class="bg-[#020202] p-3 flex flex-col gap-1">
+                          <span class="text-base font-black italic tracking-tighter text-white leading-none">{s.value}</span>
+                          <span class="font-mono text-[8px] text-white/40 uppercase tracking-[0.15em] leading-tight">{s.label}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <!-- Footer: platforms + arrow -->
+                    <div class="flex items-center justify-between pt-3 border-t border-white/[0.06]">
+                      <span class="font-mono text-[10px] text-white/40 uppercase tracking-[0.2em]">
+                        IG · TT
+                      </span>
+                      <span class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white transition-all duration-500">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" class="group-hover:stroke-black stroke-white/70 transition-colors duration-500">
+                          <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Item grid: monolith asymmetric -->
+          {items.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5">
+              {items.map((item, idx) => {
+                const number = String(idx + 1).padStart(3, '0');
+                const span = idx === 0 ? 'md:col-span-4' : 'md:col-span-2';
+                const aspect = idx === 0 ? 'aspect-[16/9]' : 'aspect-[4/5]';
+                const isExternal = item.video?.startsWith('http');
+                const href = item.video ?? '#';
+                return (
+                  <a
+                    href={href}
+                    target={isExternal ? '_blank' : undefined}
+                    rel={isExternal ? 'noopener noreferrer' : undefined}
+                    class={`portfolio-cell group relative block ${span} overflow-hidden bg-[#0a0a0a] border border-white/[0.06] hover:border-white/20 transition-all duration-700`}
+                  >
+                    <div class={`relative ${aspect} overflow-hidden`}>
+                      <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        loading="lazy"
+                        class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                      />
+                      <div class="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/50 to-transparent opacity-90"></div>
+
+                      {item.stats && (
+                        <div class="absolute top-4 right-4 glass-panel px-3 py-1.5">
+                          <span class="font-mono text-[10px] text-white uppercase tracking-[0.15em]">{item.stats}</span>
+                        </div>
+                      )}
+
+                      <div class="absolute top-4 left-4">
+                        <span class="font-mono text-[10px] text-white/60 uppercase tracking-[0.25em]">
+                          {number} // {item.category === 'content-creation' ? 'CONTENT' : 'SOCIAL'}
+                        </span>
+                      </div>
+
+                      <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="w-16 h-16 md:w-20 md:h-20 rounded-full glass-panel flex items-center justify-center backdrop-blur-md">
+                          <svg width="22" height="22" viewBox="0 0 24 24" fill="white" class="ml-1">
+                            <path d="M5 4l14 8-14 8z"/>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col gap-2">
+                      <h3 class="text-xl md:text-2xl font-black italic uppercase leading-[1] tracking-tighter text-white">
+                        {item.title}
+                      </h3>
+                      <div class="flex items-center justify-between">
+                        <span class="font-mono text-[10px] text-white/50 uppercase tracking-[0.2em]">{item.client}</span>
+                        <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] flex items-center gap-2">
+                          View
+                          <span class="w-3 h-px bg-white/30 group-hover:w-6 group-hover:bg-white transition-all duration-500"></span>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          )}
+
+          <!-- Section CTA -->
+          <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] max-w-md">
+              — {section.ctaNote}
             </p>
-          </div>
-
-          <div
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            data-reveal="stagger"
-          >
-            {items.map((item) => (
-              <VideoCard
-                title={item.title}
-                category={item.category}
-                thumbnail={item.thumbnail}
-                video={item.video}
-                stats={item.stats}
-              />
-            ))}
-          </div>
-
-          <!-- CTA -->
-          <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6" data-reveal="fade-up">
-            <a
-              href="mailto:info@captureandconnect.nl"
-              class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
-            >
-              {section.ctaText}
+            <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
+              <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500">
+                  <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
+                {section.ctaText}
+              </span>
             </a>
-            <p class="text-white/40 text-sm">{section.ctaNote}</p>
           </div>
 
         </div>
@@ -154,76 +365,84 @@ const webDesignFeatures = [
     );
   })}
 
-
   <!-- ── Web Design ───────────────────────────────────────────────────── -->
   <section
     id="web-design"
-    class="portfolio-section py-14 md:py-18 border-b border-white/[0.04] scroll-mt-16"
+    class="portfolio-section relative bg-[#020202] py-20 md:py-24 overflow-hidden border-t border-white/[0.05] scroll-mt-24"
   >
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
 
-      <div class="mb-12 md:mb-16 max-w-2xl" data-reveal="fade-up">
-        <h2 class="text-3xl md:text-5xl font-black italic leading-none tracking-tight text-white mb-4">
-          Web Design
-        </h2>
-        <p class="text-white/50 text-base sm:text-lg leading-relaxed">
-          Custom websites that match your brand identity. Fast, mobile-first and built to convert visitors into clients.
+      <!-- Manifesto-style header: solid italic (no outline repeat), editorial pull-quote -->
+      <div class="mb-12 md:mb-16 flex flex-col gap-6">
+        <div class="flex items-center gap-4">
+          <span class="font-mono text-[11px] text-white tracking-[0.25em]">003</span>
+          <span class="h-px flex-1 bg-white/10"></span>
+          <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">WEB DESIGN</span>
+        </div>
+        <p class="text-[clamp(1.5rem,3vw,2.5rem)] font-medium leading-[1.15] tracking-tight text-white max-w-4xl">
+          Custom code. <span class="text-white/30">No templates.</span><br/>
+          Six things every site we ship<br/>does <em class="font-black italic text-white">right.</em>
         </p>
       </div>
 
-      <!-- Feature cards -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-reveal="stagger">
+      <!-- Horizontal feature stripes: editorial spec sheet -->
+      <ol class="border-t border-white/[0.06]">
         {webDesignFeatures.map((feature) => (
-          <div
-            class="flex flex-col gap-4 bg-white/[0.02] border border-white/[0.06] rounded-xl p-8 transition-all duration-300 hover:border-white/[0.14] hover:bg-white/[0.04]"
-            data-reveal="fade-up"
-          >
-            <div class="w-10 h-10 flex items-center justify-center bg-white/[0.06] border border-white/[0.10] rounded-lg">
-              <svg class="w-5 h-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d={feature.icon} />
-              </svg>
+          <li class="feature-row group grid grid-cols-12 gap-4 md:gap-8 items-baseline border-b border-white/[0.06] py-7 md:py-9 hover:bg-white/[0.015] transition-colors duration-500 cursor-default">
+            <div class="col-span-2 md:col-span-1 flex items-baseline">
+              <span class="font-mono text-[11px] text-white/30 group-hover:text-white tracking-[0.25em] transition-colors duration-500">
+                {feature.id}
+              </span>
             </div>
-            <h3 class="text-lg font-bold text-white tracking-tight">{feature.title}</h3>
-            <p class="text-sm text-white/50 leading-relaxed">{feature.description}</p>
-          </div>
+            <div class="col-span-10 md:col-span-4">
+              <h3 class="text-2xl md:text-3xl lg:text-4xl font-black italic uppercase leading-[1] tracking-tighter text-white">
+                {feature.title}
+              </h3>
+            </div>
+            <div class="col-span-12 md:col-span-7 md:pl-6">
+              <p class="text-[14px] md:text-[15px] text-white/55 leading-relaxed max-w-2xl md:text-right md:ml-auto">
+                {feature.body}
+              </p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
 
       <!-- CTA -->
-      <div class="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6" data-reveal="fade-up">
-        <a
-          href="mailto:info@captureandconnect.nl"
-          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
-        >
-          Start Your Website
+      <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] max-w-md">
+          — From first sketch to live in as little as two weeks.
+        </p>
+        <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
+          <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500">
+              <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
+            Start your website
+          </span>
         </a>
-        <p class="text-white/40 text-sm">From first sketch to live in as little as two weeks.</p>
       </div>
-
     </div>
   </section>
 
-  <!-- ── Lightbox ───────────────────────────────────────────────────────── -->
   <Lightbox />
 
-  <!-- ── CTA ────────────────────────────────────────────────────────────── -->
   <CtaBlock
     headline="Like what you see?"
     subtext="Let's create something for your brand."
-    buttonText="Get In Touch"
+    buttonText="Get in touch"
   />
 
 </BaseLayout>
 
 <style>
-  /* Hide scrollbar on tab nav */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
 </style>
 
 <script>
@@ -231,8 +450,8 @@ const webDesignFeatures = [
   const sections = document.querySelectorAll<HTMLElement>('.portfolio-section');
 
   if (tabs.length && sections.length) {
-    const activeClasses = ['border-white', 'text-white', 'bg-white/10'];
-    const inactiveClasses = ['border-white/20', 'text-white/50', 'hover:border-white/50', 'hover:text-white/80'];
+    const activeClasses = ['border-white', 'text-white', 'bg-white/[0.04]'];
+    const inactiveClasses = ['border-white/10', 'text-white/40', 'hover:border-white/40', 'hover:text-white'];
 
     function setActiveTab(activeId: string) {
       tabs.forEach((tab) => {
@@ -247,7 +466,6 @@ const webDesignFeatures = [
       });
     }
 
-    // Smooth scroll on click
     tabs.forEach((tab) => {
       tab.addEventListener('click', (e) => {
         e.preventDefault();
@@ -261,21 +479,26 @@ const webDesignFeatures = [
       });
     });
 
-    // Update active tab on scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveTab(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveTab(entry.target.id);
         });
       },
-      {
-        rootMargin: '-20% 0px -60% 0px',
-        threshold: 0,
-      }
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
     );
-
     sections.forEach((section) => observer.observe(section));
   }
+
+  // Subtle 3D tilt on account cells
+  const accountCells = document.querySelectorAll<HTMLElement>('.account-cell');
+  accountCells.forEach((cell) => {
+    cell.addEventListener('mousemove', (e) => {
+      const r = cell.getBoundingClientRect();
+      const rx = (((e.clientY - r.top) / r.height) - 0.5) * -4;
+      const ry = (((e.clientX - r.left) / r.width) - 0.5) * 4;
+      cell.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    cell.addEventListener('mouseleave', () => { cell.style.transform = ''; });
+  });
 </script>

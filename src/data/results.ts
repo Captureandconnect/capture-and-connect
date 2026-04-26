@@ -72,18 +72,18 @@ export const caseStudies: CaseStudy[] = [
     id: 'case-004',
     client: 'Hard Dance Store',
     category: 'Brand',
-    headline: 'Content-first e-commerce: 320% ROAS from organic hooks',
+    headline: 'From generic ads to a content-first brand engine',
     problem:
-      'Hard Dance Store was spending on ads but losing money, creative was generic and not converting.',
+      'Hard Dance Store was running paid ads with generic creative that wasn’t converting their target audience.',
     approach:
       'We scrapped the old ad formats and built a new content system using native-style short-form hooks, community shoutouts, and product drop hype videos.',
     result:
-      'ROAS jumped to 320% within the first month of the new content strategy, with organic posts pulling paid-level results.',
+      'Organic posts started pulling paid-level results within the first month, and the brand’s reach more than tripled across Instagram and TikTok.',
     stats: [
-      { label: 'ROAS', value: '320%' },
-      { label: 'CPM reduction', value: '-58%' },
       { label: 'Organic reach', value: '1.8M' },
       { label: 'Revenue uplift', value: '+210%' },
+      { label: 'Avg. engagement', value: '+185%' },
+      { label: 'Posting cadence', value: '4x / week' },
     ],
     featured: false,
   },
@@ -94,7 +94,6 @@ export const aggregateStats = [
   { value: '500+', label: 'Projects' },
   { value: '2x', label: 'Average Growth in Reach' },
   { value: '150+', label: 'Happy Clients' },
-  { value: '320%', label: 'Peak ROAS' },
 ];
 
 export const featuredCaseStudies = caseStudies.filter((cs) => cs.featured);

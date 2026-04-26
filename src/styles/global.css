@@ -254,3 +254,45 @@
   white-space: nowrap;
   border-width: 0;
 }
+
+/* ============================================================
+   Experience Hero — 3D + glass deck utilities
+   ============================================================ */
+
+.text-outline {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85);
+  color: transparent;
+}
+
+.glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.04) 0%,
+    rgba(255, 255, 255, 0.015) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border-radius: 14px;
+  transition: border-color 0.4s ease, transform 0.4s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.bento-mask {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+@keyframes loading-slide {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(220%); }
+}
+
+.animate-loading {
+  animation: loading-slide 2.6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}

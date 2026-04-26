@@ -1,108 +1,88 @@
 ---
-// HowWeWork.astro — Process section for home page
-
 const steps = [
-  {
-    number: '01',
-    title: 'Discovery',
-    description: 'We learn your brand, your events and your goals',
-  },
-  {
-    number: '02',
-    title: 'Strategy',
-    description: 'We plan the shoots, content roadmap and digital presence',
-  },
-  {
-    number: '03',
-    title: 'Create',
-    description: 'We film, edit, design your website and build your brand online',
-  },
-  {
-    number: '04',
-    title: 'Grow',
-    description: 'We post, manage your socials and scale what works',
-  },
+  { id: '001', title: 'Discovery', description: 'We learn your brand, your events and your goals.', detail: 'Calls · briefs · audit' },
+  { id: '002', title: 'Strategy',  description: 'We map shoots, content roadmaps and digital presence.', detail: 'Plan · roadmap · KPIs' },
+  { id: '003', title: 'Create',    description: 'We film, edit, design websites and build your brand online.', detail: 'Shoot · edit · ship' },
+  { id: '004', title: 'Grow',      description: 'We post, manage your socials and scale what works.', detail: 'Post · iterate · scale' },
 ];
 ---
 
 <section
-  class="py-16 md:py-20 bg-black border-t border-white/[0.04]"
+  class="relative bg-[#020202] py-20 md:py-24 overflow-hidden border-t border-white/[0.05]"
   aria-labelledby="process-heading"
 >
-  <div class="container mx-auto px-6 md:px-12 max-w-7xl">
 
-    <!-- Section header -->
-    <div
-      class="opacity-0 mb-16 md:mb-20 max-w-2xl"
-      data-reveal="fade-up"
-    >
-      <span class="text-sm uppercase tracking-[0.25em] text-white/40 font-medium block mb-4">
-        Process
-      </span>
-      <h2
-        id="process-heading"
-        class="text-4xl md:text-6xl font-black italic leading-none tracking-tight text-white"
-      >
-        How We Work
-      </h2>
-    </div>
-
-    <!-- Steps grid with connecting line on desktop -->
-    <div class="relative">
-
-
-      <div
-        class="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8"
-        data-reveal="stagger"
-      >
-        {steps.map((step) => (
-          <div class="opacity-0 flex flex-col gap-5 relative" data-reveal="fade-up">
-
-            <!-- Step number with dot on the line -->
-            <div class="flex flex-col items-start md:items-center gap-3">
-              <!-- Circle marker on connecting line -->
-              <div class="relative flex items-center justify-center">
-                <div class="w-[1.125rem] h-[1.125rem] rounded-full border border-white/30 bg-black flex items-center justify-center z-10">
-                  <div class="w-1.5 h-1.5 rounded-full bg-white/80"></div>
-                </div>
-              </div>
-
-              <!-- Large step number -->
-              <span class="text-[4rem] md:text-[5rem] font-black leading-none tracking-tighter text-white/[0.15] select-none block md:text-center">
-                {step.number}
-              </span>
-            </div>
-
-            <!-- Text content -->
-            <div class="flex flex-col gap-2 md:text-center">
-              <h3 class="text-lg font-bold text-white tracking-tight">
-                {step.title}
-              </h3>
-              <p class="text-sm text-white/60 leading-relaxed">
-                {step.description}
-              </p>
-            </div>
-
-          </div>
-        ))}
+  <!-- Section header -->
+  <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 mb-12 md:mb-14">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+      <div class="md:col-span-7">
+        <span class="font-mono text-[11px] text-white/40 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+          <span class="inline-block w-8 h-px bg-white/30"></span>
+          005 // PROCESS
+        </span>
+        <h2
+          id="process-heading"
+          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white"
+        >
+          How we<br/><span class="text-outline not-italic">work.</span>
+        </h2>
       </div>
+      <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
+        From first call to first post or website launch, most clients see results within 30 days. Four steps, no surprises.
+      </p>
+    </div>
+  </div>
+
+  <!-- Steps as command rail -->
+  <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.05]">
+      {steps.map((step) => (
+        <div class="step-cell group bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-6 min-h-[280px]">
+
+          <!-- ID + dot -->
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em]">
+              {step.id} // STEP
+            </span>
+            <span class="relative w-1.5 h-1.5 rounded-full bg-white/30 group-hover:bg-white transition-colors duration-500"></span>
+          </div>
+
+          <!-- Massive title -->
+          <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            {step.title}
+          </h3>
+
+          <!-- Hairline divider -->
+          <div class="h-px w-12 bg-white/10 group-hover:w-full group-hover:bg-white/30 transition-all duration-700"></div>
+
+          <!-- Description -->
+          <p class="text-[14px] text-white/55 leading-relaxed">
+            {step.description}
+          </p>
+
+          <!-- Detail tag -->
+          <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em] mt-auto">
+            {step.detail}
+          </span>
+        </div>
+      ))}
     </div>
 
     <!-- Bottom CTA -->
-    <div
-      class="opacity-0 mt-20 pt-12 border-t border-white/[0.06] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
-      data-reveal="fade-up"
-    >
-      <p class="text-white/55 text-sm leading-relaxed max-w-sm">
-        From first call to first post or website launch, most clients see results within 30 days.
+    <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <p class="font-mono text-[11px] text-white/30 uppercase tracking-[0.2em] max-w-md">
+        — From first call to first post in under 30 days.
       </p>
-      <a
-        href="mailto:info@captureandconnect.nl"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none shrink-0"
-      >
-        Start the Process
+      <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
+        <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500">
+            <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
+          Start the process
+        </span>
       </a>
     </div>
-
   </div>
 </section>

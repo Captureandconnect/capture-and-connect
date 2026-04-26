@@ -1,120 +1,149 @@
 ---
-const quickLinks = [
-  { label: 'Services', href: '/services' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Results', href: '/results' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
+const navLinks = [
+  { id: '01', label: 'Index',     href: '/' },
+  { id: '02', label: 'Services',  href: '/services' },
+  { id: '03', label: 'Portfolio', href: '/portfolio' },
+  { id: '04', label: 'Results',   href: '/results' },
+  { id: '05', label: 'About',     href: '/about' },
+  { id: '06', label: 'Contact',   href: '/contact' },
 ];
 
 const year = new Date().getFullYear();
 ---
 
-<footer style="background-color: #0a0a0a;" class="border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-16 pb-8">
+<footer class="relative bg-[#020202] border-t border-white/[0.06] overflow-hidden">
 
-    <!-- Three columns -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+  <!-- Massive italic word watermark, mouse-reactive -->
+  <div
+    id="footer-watermark"
+    class="pointer-events-none absolute -bottom-8 left-0 right-0 select-none transition-transform duration-700 ease-out will-change-transform"
+    aria-hidden="true"
+  >
+    <h2 class="text-[18vw] md:text-[14vw] leading-[0.85] font-black italic uppercase tracking-tighter text-white/[0.04] whitespace-nowrap text-center">
+      CAPTURE&amp;CONNECT
+    </h2>
+  </div>
 
-      <!-- Column 1: Logo + tagline -->
-      <div class="flex flex-col gap-4">
-        <a href="/" aria-label="Capture & Connect — Home" class="inline-block">
-          <span class="text-white font-black italic tracking-tight text-xl uppercase leading-none select-none">
-            CAPTURE<span class="font-normal">&thinsp;&amp;&thinsp;</span>CONNECT
+  <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 pt-20 pb-10">
+
+    <!-- Top row: brand + tagline + meta -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-16">
+
+      <!-- Brand cell -->
+      <div class="md:col-span-5 flex flex-col gap-5">
+        <div class="flex items-center gap-3">
+          <div class="relative w-2 h-2 bg-white rounded-full">
+            <div class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></div>
+          </div>
+          <span class="font-mono text-[10px] text-white/50 uppercase tracking-[0.25em]">
+            001 // STUDIO
           </span>
+        </div>
+        <h3 class="text-3xl md:text-4xl font-black italic uppercase tracking-tighter text-white leading-[0.95]">
+          From lens<br/>to <span class="text-outline not-italic">likes</span>.
+        </h3>
+        <p class="text-sm text-white/40 leading-relaxed max-w-xs">
+          Premium content creation, social media management and web design for artists, festivals and brands ready to scale.
+        </p>
+      </div>
+
+      <!-- Index links -->
+      <div class="md:col-span-3 flex flex-col gap-4">
+        <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em] mb-2">
+          002 // INDEX
+        </span>
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="group/foot flex items-baseline gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300"
+          >
+            <span class="text-[9px] text-white/20 group-hover/foot:text-white/50 transition-colors">{link.id}</span>
+            <span>{link.label}</span>
+            <span class="ml-auto opacity-0 -translate-x-2 group-hover/foot:opacity-100 group-hover/foot:translate-x-0 transition-all duration-300">→</span>
+          </a>
+        ))}
+      </div>
+
+      <!-- Connect cell -->
+      <div class="md:col-span-4 flex flex-col gap-4">
+        <span class="font-mono text-[10px] text-white/30 uppercase tracking-[0.25em] mb-2">
+          003 // CONNECT
+        </span>
+        <a href="mailto:info@captureandconnect.nl" class="group/c flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300">
+          <span class="font-mono text-[10px] text-white/30 group-hover/c:text-white/60 transition-colors">EMAIL</span>
+          <span class="h-px flex-1 bg-white/5 group-hover/c:bg-white/30 transition-colors"></span>
+          <span class="font-mono text-[11px] tracking-[0.15em]">info@captureandconnect.nl</span>
         </a>
-        <p class="text-white/50 text-sm leading-relaxed max-w-xs">
-          From lens to likes.
-        </p>
-        <p class="text-white/30 text-xs mt-2 leading-relaxed max-w-xs">
-          Premium content creation and social media agency for brands that want to grow.
-        </p>
-      </div>
-
-      <!-- Column 2: Quick links -->
-      <div class="flex flex-col gap-4">
-        <h3 class="text-white text-xs font-semibold tracking-widest uppercase">
-          Quick Links
-        </h3>
-        <nav aria-label="Footer navigation">
-          <ul class="flex flex-col gap-3">
-            {quickLinks.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-white/50 text-sm hover:text-white transition-colors duration-200"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      </div>
-
-      <!-- Column 3: Connect -->
-      <div class="flex flex-col gap-4">
-        <h3 class="text-white text-xs font-semibold tracking-widest uppercase">
-          Connect
-        </h3>
-        <ul class="flex flex-col gap-3">
-          <li>
-            <a
-              href="mailto:info@captureandconnect.nl"
-              class="inline-flex items-center gap-2.5 text-white/50 text-sm hover:text-white transition-colors duration-200 group"
-            >
-              <!-- Email icon -->
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="text-white/30 group-hover:text-white transition-colors duration-200 flex-shrink-0"
-                aria-hidden="true"
-              >
-                <rect width="20" height="16" x="2" y="4" rx="2"/>
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-              </svg>
-              info@captureandconnect.nl
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://www.instagram.com/captureandconnect_"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2.5 text-white/50 text-sm hover:text-white transition-colors duration-200 group"
-            >
-              <!-- Instagram icon -->
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                class="text-white/30 group-hover:text-white transition-colors duration-200 flex-shrink-0"
-                aria-hidden="true"
-              >
-                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-              </svg>
-              Instagram
-            </a>
-          </li>
-        </ul>
+        <a href="https://www.instagram.com/captureandconnect_" target="_blank" rel="noopener noreferrer" class="group/c flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300">
+          <span class="font-mono text-[10px] text-white/30 group-hover/c:text-white/60 transition-colors">SOCIAL</span>
+          <span class="h-px flex-1 bg-white/5 group-hover/c:bg-white/30 transition-colors"></span>
+          <span class="font-mono text-[11px] tracking-[0.15em]">@captureandconnect_</span>
+        </a>
+        <div class="group/c flex items-center gap-3 text-white/60">
+          <span class="font-mono text-[10px] text-white/30">LOCAL</span>
+          <span class="h-px flex-1 bg-white/5"></span>
+          <span class="font-mono text-[11px] tracking-[0.15em]" id="footer-clock">— : — NL</span>
+        </div>
+        <div class="group/c flex items-center gap-3 text-white/60">
+          <span class="font-mono text-[10px] text-white/30">STATUS</span>
+          <span class="h-px flex-1 bg-white/5"></span>
+          <span class="font-mono text-[11px] tracking-[0.15em] flex items-center gap-2">
+            <span class="relative w-1.5 h-1.5 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-40"></span>
+            </span>
+            Open for Q3
+          </span>
+        </div>
       </div>
     </div>
 
     <!-- Bottom bar -->
-    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p class="text-white/30 text-xs">
-        &copy; {year} Capture &amp; Connect. All rights reserved.
+    <div class="border-t border-white/[0.06] pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <p class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+        © {year} CAPTURE &amp; CONNECT — ALL RIGHTS RESERVED
       </p>
-      <p class="text-white/20 text-xs">
-        Based in the Netherlands
+      <p class="font-mono text-[10px] text-white/30 uppercase tracking-[0.2em]">
+        Crafted in the Netherlands · v2.0
       </p>
     </div>
   </div>
 </footer>
+
+<script>
+  // Live local clock
+  const clockEl = document.getElementById('footer-clock');
+  if (clockEl) {
+    const tick = () => {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      clockEl.textContent = `${h}:${m}:${s} CET`;
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // Mouse-reactive watermark drift
+  const watermark = document.getElementById('footer-watermark') as HTMLElement | null;
+  if (watermark) {
+    let x = 0;
+    let tx = 0;
+    const ease = 0.06;
+    const onMove = (e: MouseEvent) => {
+      const r = watermark.getBoundingClientRect();
+      const inside =
+        e.clientY > r.top - 100 &&
+        e.clientY < r.bottom + 100;
+      if (!inside) return;
+      tx = ((e.clientX / window.innerWidth) - 0.5) * 80;
+    };
+    const loop = () => {
+      x += (tx - x) * ease;
+      watermark.style.transform = `translate3d(${x}px, 0, 0)`;
+      requestAnimationFrame(loop);
+    };
+    window.addEventListener('mousemove', onMove);
+    loop();
+  }
+</script>
