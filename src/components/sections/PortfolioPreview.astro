@@ -6,6 +6,9 @@ type Project = {
   href: string;
   stats?: string;
   external?: boolean;
+  // 'photo' = full-bleed crop (default). 'design' = mockup/screenshot cover —
+  // anchored to the top so device frames don't get cropped on narrow viewports.
+  coverStyle?: 'photo' | 'design';
 };
 
 const projects: Project[] = [
@@ -20,24 +23,25 @@ const projects: Project[] = [
   {
     title: 'Rebirth 2026',
     category: 'Event',
-    thumbnail: '/images/portfolio/cover-festival-crowd.jpg',
+    thumbnail: '/images/portfolio/cover-rebirth.jpg',
     href: '/portfolio#content-creation',
     stats: '2026',
   },
   {
     title: 'Hard Dance Store — Campaign & Content (Barber)',
     category: 'Brand',
-    thumbnail: '/images/portfolio/cover-barber-tee.jpg',
+    thumbnail: '/images/portfolio/cover-barber-tee-v2.jpg',
     href: 'https://www.instagram.com/harddancestore/',
     stats: '320% ROAS',
     external: true,
   },
   {
-    title: 'BKJN vs Partyraiser 2026',
-    category: 'Event',
-    thumbnail: '/images/portfolio/cover-dopedoctor.jpg',
-    href: '/portfolio#content-creation',
-    stats: '2026',
+    title: 'Aftermovie Ground Zero Festival 2025',
+    category: 'Event Film',
+    thumbnail: '/images/portfolio/cover-aftermovie.jpg',
+    href: 'https://www.youtube.com/watch?v=wMICv0W9h8o',
+    stats: 'Aftermovie',
+    external: true,
   },
   {
     title: 'Major Conspiracy — Visual Identity',
@@ -50,10 +54,11 @@ const projects: Project[] = [
   {
     title: 'Hairmoment — Kapsalon Noordwijk',
     category: 'Web Design',
-    thumbnail: '/images/portfolio/cover-hairmoment-v3.jpg',
+    thumbnail: '/images/portfolio/cover-hairmoment-v4.jpg',
     href: 'https://hairmoment.nl/',
     stats: 'Live',
     external: true,
+    coverStyle: 'design',
   },
 ];
 ---
@@ -107,10 +112,22 @@ const projects: Project[] = [
                 src={project.thumbnail}
                 alt=""
                 loading="lazy"
-                class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
+                class:list={[
+                  'absolute inset-0 w-full h-full object-cover transition-transform duration-1000',
+                  project.coverStyle === 'design'
+                    ? 'object-top scale-100 group-hover:scale-[1.02]'
+                    : 'object-center scale-105 group-hover:scale-100',
+                ]}
               />
-              <!-- Gradient overlay -->
-              <div class="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/60 to-transparent opacity-95"></div>
+              <!-- Gradient overlay — stronger bottom on design covers for caption legibility -->
+              <div
+                class:list={[
+                  'absolute inset-0',
+                  project.coverStyle === 'design'
+                    ? 'bg-gradient-to-t from-[#020202] from-30% via-[#020202]/55 to-transparent opacity-95'
+                    : 'bg-gradient-to-t from-[#020202] via-[#020202]/60 to-transparent opacity-95',
+                ]}
+              ></div>
 
               <!-- Top: number + stats -->
               <div class="absolute top-4 left-4 right-4 flex items-start justify-between gap-3 z-10">

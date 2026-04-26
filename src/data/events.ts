@@ -56,7 +56,7 @@ export const events: EventCard[] = [
     edition: 'Austria 2026',
     date: 'July 2026',
     venue: 'Salzburgring, AT',
-    cover: '/images/portfolio/cover-moh-austria.jpg',
+    cover: '/images/portfolio/cover-moh-austria-v2.jpg',
     tag: 'Festival · Outdoor',
     djs: [],
   },
@@ -96,8 +96,39 @@ export const events: EventCard[] = [
     edition: '2026',
     date: 'April 2026',
     venue: 'Haaksbergen, NL',
-    cover: '/images/portfolio/cover-dopedoctor.jpg',
+    cover: '/images/portfolio/cover-rebirth.jpg',
     tag: 'Festival · Outdoor',
-    djs: [],
+    djs: [
+      {
+        name: 'Revellers LIVE',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DXHn-yRDBBS/',
+      },
+      {
+        name: 'More Kords',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DXE8LPqjDke/',
+      },
+      {
+        name: 'Tharoza LIVE',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DXKEas3CHBG/',
+      },
+      {
+        name: 'The Dope Doctor',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/reel/DXHgcTJiJuc/',
+      },
+      {
+        name: 'Barber vs Partyraiser',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DXKK6BtDRjr/',
+      },
+      {
+        name: 'Spiady',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DXFAasyjIt9/',
+      },
+    ],
   },
 ];

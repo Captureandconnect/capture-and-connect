@@ -27,7 +27,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-moh-austria-2026',
     title: 'Masters Of Hardcore Austria 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-moh-austria.jpg',
+    thumbnail: '/images/portfolio/cover-moh-austria-v2.jpg',
     stats: 'Event 2026',
     description:
       'Full event coverage at Masters Of Hardcore Austria. Stage energy, artist booth shots and high-impact recap edits.',
@@ -71,7 +71,7 @@ export const portfolioItems: PortfolioItem[] = [
     id: 'event-rebirth-2026',
     title: 'Rebirth 2026',
     category: 'content-creation',
-    thumbnail: '/images/portfolio/cover-rave-lights.jpg',
+    thumbnail: '/images/portfolio/cover-rebirth.jpg',
     stats: 'Event 2026',
     description:
       'Filming at Rebirth Festival 2026. Cinematic stage shots, crowd energy, and high-energy recap content.',
