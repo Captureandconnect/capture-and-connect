@@ -19,11 +19,11 @@ export const publicProof: PublicProof[] = [
     id: 'proof-dope-doctor-viral',
     client: 'The Dope Doctor',
     category: 'Artist · Viral Promo',
-    headline: 'A single promo clip crossed 20M views',
+    headline: 'One promo clip. 20 million views. Zero ad spend.',
     context:
-      'A short artist promo we directed and shipped from the Capture & Connect lane.',
+      'Artist promo directed and shipped end-to-end by Capture & Connect.',
     detail:
-      'Open the post on Instagram, the play count is right there on the public reel.',
+      'Open the post on Instagram — the play count is right there on the public reel.',
     proofLabel: 'Public reel',
     proofValue: '20M+',
     url: 'https://www.instagram.com/reel/DKcUyZgog7I/',
@@ -36,7 +36,7 @@ export const publicProof: PublicProof[] = [
     category: 'Event Film · Aftermovie',
     headline: 'Official 2025 aftermovie shipped on YouTube',
     context:
-      'Multicam recording, edit and color, delivered as the official festival aftermovie.',
+      'Multicam, edit and color — delivered as the official festival aftermovie.',
     detail:
       'Public YouTube upload on the Ground Zero channel. Open the video to watch the full edit.',
     proofLabel: 'YouTube upload',
@@ -49,11 +49,11 @@ export const publicProof: PublicProof[] = [
     id: 'proof-hairmoment-live',
     client: 'Hairmoment',
     category: 'Web Design · Live Site',
-    headline: 'Hair salon site shipped from sketch to live in two weeks',
+    headline: 'Salon site shipped from sketch to live in two weeks.',
     context:
-      'Custom Astro build with booking flow, mobile-first. New visual identity for a Noordwijk salon.',
+      'Custom build, mobile-first booking flow, new visual identity for a Noordwijk salon.',
     detail:
-      'Hairmoment.nl is live, no template, no WordPress.',
+      'Hairmoment.nl is live. No template. No WordPress. Built to convert.',
     proofLabel: 'Live website',
     proofValue: 'hairmoment.nl',
     url: 'https://hairmoment.nl/',
@@ -64,9 +64,9 @@ export const publicProof: PublicProof[] = [
     id: 'proof-cc-self',
     client: 'Capture & Connect',
     category: 'Web Design · In-House',
-    headline: 'This site, custom-built',
+    headline: 'This site. Hand-coded.',
     context:
-      'No drag and drop, no template. The site you are reading right now is fully hand-coded.',
+      'No drag-and-drop. No template. The site you are reading was built line by line.',
     detail:
       'Astro plus React, deployed on Cloudflare Pages, custom typography and motion throughout.',
     proofLabel: 'Live website',
@@ -84,9 +84,9 @@ export const featuredPublicProof = publicProof.filter((p) => p.featured);
 // - public YouTube uploads
 // - live websites
 export const aggregateStats = [
-  { value: '65M+', label: 'Total reach',          note: 'Cumulative organic reach across content shipped from this lane.' },
-  { value: '20M+', label: 'Public viral views',   note: 'Single Dope Doctor reel, view count visible on Instagram.' },
+  { value: '65M+', label: 'Total reach',          note: 'Cumulative organic reach generated across our roster.' },
+  { value: '20M+', label: 'Views on one video',   note: 'Single Dope Doctor reel. View count visible on Instagram.' },
   { value: '25+',  label: 'Events filmed 2026',   note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
-  { value: '9',    label: 'Currently managing',   note: '6 Instagram, 3 TikTok live right now. Active roster, not lifetime total.' },
-  { value: '2',    label: 'Live websites shipped', note: 'Hairmoment.nl and this site, both fully custom.' },
+  { value: '9',    label: 'Accounts growing',     note: '6 Instagram, 3 TikTok live right now. Growing every month.' },
+  { value: '2',    label: 'Live websites built',  note: 'Hairmoment.nl and this site. Both fully custom, both converting.' },
 ];

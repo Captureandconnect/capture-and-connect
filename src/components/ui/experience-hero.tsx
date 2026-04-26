@@ -12,12 +12,11 @@ export const ExperienceHero = () => {
     const ctx = gsap.context(() => {
       gsap.fromTo(
         revealRef.current,
-        { filter: "blur(30px)", opacity: 0, scale: 1.02 },
+        { filter: "blur(12px)", scale: 1.02 },
         {
           filter: "blur(0px)",
-          opacity: 1,
           scale: 1,
-          duration: 2.2,
+          duration: 1.6,
           ease: "expo.out",
         }
       );
@@ -32,30 +31,37 @@ export const ExperienceHero = () => {
         clearProps: "all",
       });
 
-      const handleMouseMove = (e: MouseEvent) => {
-        if (!ctaRef.current) return;
-        const rect = ctaRef.current.getBoundingClientRect();
-        const dist = Math.hypot(
-          e.clientX - (rect.left + rect.width / 2),
-          e.clientY - (rect.top + rect.height / 2)
-        );
-        if (dist < 150) {
-          gsap.to(ctaRef.current, {
-            x: (e.clientX - (rect.left + rect.width / 2)) * 0.4,
-            y: (e.clientY - (rect.top + rect.height / 2)) * 0.4,
-            duration: 0.6,
-          });
-        } else {
-          gsap.to(ctaRef.current, {
-            x: 0,
-            y: 0,
-            duration: 0.8,
-            ease: "elastic.out(1, 0.3)",
-          });
-        }
+      const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      let cleanupMouse: (() => void) | undefined;
+      if (hasFinePointer) {
+        const handleMouseMove = (e: MouseEvent) => {
+          if (!ctaRef.current) return;
+          const rect = ctaRef.current.getBoundingClientRect();
+          const dist = Math.hypot(
+            e.clientX - (rect.left + rect.width / 2),
+            e.clientY - (rect.top + rect.height / 2)
+          );
+          if (dist < 150) {
+            gsap.to(ctaRef.current, {
+              x: (e.clientX - (rect.left + rect.width / 2)) * 0.4,
+              y: (e.clientY - (rect.top + rect.height / 2)) * 0.4,
+              duration: 0.6,
+            });
+          } else {
+            gsap.to(ctaRef.current, {
+              x: 0,
+              y: 0,
+              duration: 0.8,
+              ease: "elastic.out(1, 0.3)",
+            });
+          }
+        };
+        window.addEventListener("mousemove", handleMouseMove);
+        cleanupMouse = () => window.removeEventListener("mousemove", handleMouseMove);
+      }
+      return () => {
+        if (cleanupMouse) cleanupMouse();
       };
-      window.addEventListener("mousemove", handleMouseMove);
-      return () => window.removeEventListener("mousemove", handleMouseMove);
     }, containerRef);
     return () => ctx.revert();
   }, []);
@@ -65,7 +71,7 @@ export const ExperienceHero = () => {
       ref={containerRef}
       className="relative min-h-screen w-full bg-[#020202] flex flex-col selection:bg-white selection:text-black overflow-hidden"
     >
-      <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden="true">
+      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
         <div className="absolute inset-0 bg-[#020202]">
           <div
             className="absolute inset-0"
@@ -89,23 +95,22 @@ export const ExperienceHero = () => {
         className="relative z-10 w-full flex flex-col md:flex-row p-8 md:p-14 lg:p-20 pt-28 md:pt-32 lg:pt-36 min-h-screen items-center md:items-stretch gap-10"
       >
         <div className="flex-1 min-w-0 flex flex-col justify-between pb-12 md:pb-8 w-full">
-          <div className="flex items-center gap-3">
-            <div className="relative w-2.5 h-2.5 bg-white rounded-full">
-              <div className="absolute inset-0 bg-white rounded-full animate-ping opacity-30" />
-            </div>
-            <span className="font-mono text-[11px] font-bold text-white tracking-[0.2em] uppercase">
-              CAPTUREANDCONNECT.NL
+          <div className="invisible flex items-center gap-3" aria-hidden="true">
+            <div className="relative w-2.5 h-2.5 rounded-full" />
+            <span className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase">
+              &nbsp;
             </span>
           </div>
 
           <div className="max-w-4xl lg:-translate-y-8 pr-0 md:pr-12">
-            <h1 className="text-[clamp(3.5rem,9.5vw,11.5rem)] font-black leading-[0.87] tracking-tighter text-white uppercase italic">
-              CREATIVE <br />
-              <span className="text-outline not-italic">AGENCY</span>
+            <h1 className="text-[clamp(2.5rem,6.5vw,7.5rem)] font-black leading-[0.92] tracking-tighter text-white uppercase italic">
+              BUILD A BRAND <br />
+              PEOPLE FOLLOW <br />
+              <span className="text-outline not-italic">AND BUY FROM</span>
             </h1>
             <p className="mt-8 font-mono text-[11px] text-white/55 uppercase tracking-[0.35em] max-w-md leading-relaxed">
-              Content Creation, Social Media Management &amp; Web Design for
-              artists, festivals and brands ready to scale.
+              Content, social media &amp; strategy that turn attention into
+              views, followers and revenue.
             </p>
           </div>
 
@@ -132,7 +137,7 @@ export const ExperienceHero = () => {
               </svg>
             </div>
             <span className="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
-              Start a Project
+              Get Your Growth Plan
             </span>
           </a>
         </div>
@@ -142,19 +147,19 @@ export const ExperienceHero = () => {
             {
               id: "001",
               title: "AVAILABILITY",
-              val: "Open",
+              val: "Now booking",
               type: "progress" as const,
             },
             {
               id: "002",
               title: "PUBLIC PROOF",
-              val: "20M+ Viral",
+              val: "20M+ views",
               type: "data" as const,
             },
             {
               id: "003",
-              title: "EXPERTISE",
-              val: "Creative Dev",
+              title: "POSITIONING",
+              val: "Growth Partner",
               type: "text" as const,
             },
           ].map((item) => (
@@ -177,7 +182,7 @@ export const ExperienceHero = () => {
               ) : item.type === "data" ? (
                 <div className="mt-4 flex flex-col gap-3">
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Public viral</span>
+                    <span>Views generated</span>
                     <span>20M+</span>
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
@@ -187,14 +192,14 @@ export const ExperienceHero = () => {
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Currently managing</span>
+                    <span>Accounts growing</span>
                     <span>9</span>
                   </div>
                 </div>
               ) : (
                 <p className="text-sm font-medium text-white/70 mt-3 leading-snug">
-                  Content · Social · Web. One team building narrative systems
-                  for artists, events and brands.
+                  Content · Social · Strategy. One team turning artists,
+                  events and brands into content machines.
                 </p>
               )}
             </div>
