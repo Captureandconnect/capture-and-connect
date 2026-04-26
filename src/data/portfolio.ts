@@ -41,7 +41,7 @@ export const portfolioItems: PortfolioItem[] = [
     thumbnail: '/images/portfolio/cover-reverze.jpg',
     stats: 'Event 2026',
     description:
-      'On-site filming at Reverze 2026 — capturing the full-arena production design, crowd reactions and headliner sets.',
+      'On-site filming at Reverze 2026, capturing the full-arena production design, crowd reactions and headliner sets.',
     client: 'Reverze',
     featured: false,
   },
@@ -63,7 +63,7 @@ export const portfolioItems: PortfolioItem[] = [
     thumbnail: '/images/portfolio/cover-paaspop.jpg',
     stats: 'Event 2026',
     description:
-      'Festival coverage at Paaspop 2026 — capturing crowd energy, multi-stage performances and artist moments.',
+      'Festival coverage at Paaspop 2026, capturing crowd energy, multi-stage performances and artist moments.',
     client: 'Paaspop',
     featured: false,
   },
@@ -82,7 +82,7 @@ export const portfolioItems: PortfolioItem[] = [
   // ── Content Creation — Artist work ────────────────────────────────────
   {
     id: 'artist-dope-doctor-viral',
-    title: 'The Dope Doctor — Viral Promo',
+    title: 'The Dope Doctor · Monster Viral',
     category: 'content-creation',
     thumbnail: '/images/portfolio/cover-dopedoctor-viral.jpg',
     video: 'https://www.instagram.com/reel/DKcUyZgog7I/',

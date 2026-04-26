@@ -11,7 +11,7 @@ const mediaSections = [
     n: '001',
     label: 'Content Creation',
     headline: ['Cinematic', 'content.'],
-    description: 'Cinematic event coverage, festival aftermovies, artist visuals and high-energy edits.',
+    description: 'Multicam recording, liveshots, festival aftermovies, artist visuals and high-energy edits.',
     ctaText: 'Book a shoot',
     ctaNote: 'From single Reels to full event coverage.',
   },
@@ -32,14 +32,15 @@ const managedAccounts = [
     handle: 'thedopedoctor_official',
     name: 'The Dope Doctor',
     role: 'Artist',
+    avatar: '/images/portfolio/avatar-dopedoctor.jpg',
     instagram: 'https://www.instagram.com/thedopedoctor_official/',
     tiktok: 'https://www.tiktok.com/@thedopedoctor_official',
-    highlight: '20M+ views',
-    summary: 'One viral promo. Zero paid boost.',
+    highlight: 'Viral moments',
+    summary: 'Cinematic artist content built around the live shows and the booth.',
     stats: [
-      { value: '20M+', label: 'Organic views' },
-      { value: '85K+', label: 'New followers' },
-      { value: '48 hr', label: 'To viral' },
+      { value: 'Live',   label: 'Always-on content' },
+      { value: 'IG·TT',  label: 'Both platforms' },
+      { value: 'Daily',  label: 'Posting cadence' },
     ],
   },
   {
@@ -47,14 +48,15 @@ const managedAccounts = [
     handle: 'majorconspiracyofficial',
     name: 'Major Conspiracy',
     role: 'Uptempo Duo',
+    avatar: '/images/portfolio/avatar-majorconspiracy.jpg',
     instagram: 'https://www.instagram.com/majorconspiracyofficial/',
     tiktok: 'https://www.tiktok.com/@majorconspiracyofficial',
-    highlight: '3K → 120K',
-    summary: 'From invisible to in-demand in five months.',
+    highlight: 'Audience build',
+    summary: 'Full management for an uptempo duo on the rise. Brand, content and posting.',
     stats: [
-      { value: '40x',  label: 'Follower growth' },
-      { value: '320K', label: 'Avg. Reel reach' },
-      { value: '€0',   label: 'Paid spend' },
+      { value: 'Reels',  label: 'Short-form first' },
+      { value: 'IG·TT',  label: 'Both platforms' },
+      { value: 'Weekly', label: 'New content drop' },
     ],
   },
   {
@@ -62,14 +64,15 @@ const managedAccounts = [
     handle: 'harddancestore',
     name: 'Hard Dance Store',
     role: 'Brand',
+    avatar: '/images/portfolio/avatar-harddancestore.jpg',
     instagram: 'https://www.instagram.com/harddancestore/',
     tiktok: 'https://www.tiktok.com/@harddancestore',
-    highlight: '+210% revenue',
-    summary: 'Organic posts pulling paid-level returns.',
+    highlight: 'Brand voice',
+    summary: 'Lifestyle content for a hard dance apparel brand. Product drops, on-event posts and community.',
     stats: [
-      { value: '+210%', label: 'Revenue uplift' },
-      { value: '1.8M',  label: 'Organic reach' },
-      { value: '-58%',  label: 'CPM reduction' },
+      { value: 'Drops', label: 'Campaign rollouts' },
+      { value: 'IG·TT', label: 'Both platforms' },
+      { value: 'UGC',   label: 'Community-led' },
     ],
   },
 ];
@@ -79,14 +82,14 @@ const webDesignFeatures = [
   { id: '002', title: 'Mobile-first',      body: 'Your audience scrolls on their phone. Every site we build looks and feels perfect on any screen size.' },
   { id: '003', title: 'Lightning fast',    body: 'Optimised for speed and SEO. Your site loads instantly and ranks where it should.' },
   { id: '004', title: 'Landing pages',     body: 'Campaign-specific landing pages and microsites built to convert traffic into leads and sales.' },
-  { id: '005', title: 'Domain & hosting',  body: 'We handle the technical setup. Domain registration, hosting configuration, SSL — everything.' },
+  { id: '005', title: 'Domain & hosting',  body: 'We handle the technical setup. Domain registration, hosting configuration, SSL, everything covered.' },
   { id: '006', title: 'Fully yours',       body: 'No subscriptions, no lock-in. We build it, hand it over and you own everything.' },
 ];
 ---
 
 <BaseLayout
   title="Portfolio"
-  description="Browse the full Capture & Connect portfolio. Content creation, social media management and web design — all built for impact."
+  description="Browse the full Capture & Connect portfolio. Content creation, social media management and web design, all built for impact."
 >
 
   <!-- ── Hero ─────────────────────────────────────────────────────────── -->
@@ -105,7 +108,7 @@ const webDesignFeatures = [
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
-          Content creation, social media and web design — all built for impact. Filter by discipline below.
+          Three disciplines, one team. Hop between content, socials and web work, every project shipped from in-house.
         </p>
       </div>
     </div>
@@ -193,14 +196,14 @@ const webDesignFeatures = [
               </div>
               <div class="md:col-span-8 grid grid-cols-2 gap-px bg-white/[0.04] border border-white/[0.05] self-stretch">
                 <div class="bg-[#020202] p-6 flex flex-col justify-between gap-3">
-                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">— ACCOUNTS LIVE</span>
-                  <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">{managedAccounts.length}</h3>
-                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">Currently managing</span>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// ACCOUNTS LIVE</span>
+                  <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">6</h3>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">3 Instagram, 3 TikTok</span>
                 </div>
                 <div class="bg-[#020202] p-6 flex flex-col justify-between gap-3">
-                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">— COMBINED REACH</span>
-                  <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">22M+</h3>
-                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">Across IG · TT · YT</span>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// COMBINED REACH</span>
+                  <h3 class="text-5xl md:text-6xl font-black italic tracking-tighter text-white leading-none">16M+</h3>
+                  <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">Across IG · TT</span>
                 </div>
               </div>
             </div>
@@ -211,7 +214,7 @@ const webDesignFeatures = [
             <div class="mb-10 md:mb-12">
               <div class="flex items-end justify-between flex-wrap gap-4 mb-6">
                 <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">
-                  — Currently managing
+                  // Currently managing
                 </span>
                 <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
                   Click any cell to open the live profile
@@ -237,14 +240,22 @@ const webDesignFeatures = [
                       </span>
                     </div>
 
-                    <!-- Name + handle -->
-                    <div class="flex flex-col gap-2">
-                      <h3 class="text-3xl md:text-[2.4rem] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
-                        {account.name}
-                      </h3>
-                      <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em]">
-                        @{account.handle}
-                      </span>
+                    <!-- Avatar + name + handle -->
+                    <div class="flex items-center gap-4">
+                      <img
+                        src={account.avatar}
+                        alt=""
+                        loading="lazy"
+                        class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-white/15 shrink-0"
+                      />
+                      <div class="flex flex-col gap-1.5 min-w-0">
+                        <h3 class="text-2xl md:text-[2rem] font-black italic uppercase leading-[0.95] tracking-tighter text-white break-words">
+                          {account.name}
+                        </h3>
+                        <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] truncate">
+                          @{account.handle}
+                        </span>
+                      </div>
                     </div>
 
                     <!-- Headline highlight -->
@@ -292,7 +303,7 @@ const webDesignFeatures = [
           {section.id === 'content-creation' && items.length > 0 && (
             <div class="flex items-end justify-between flex-wrap gap-4 mb-6 pb-5 border-b border-white/[0.06]">
               <div class="flex items-baseline gap-4">
-                <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">— Artist work</span>
+                <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// Artist work</span>
                 <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] hidden md:inline-flex items-center gap-2">
                   <span class="w-3 h-px bg-white/20"></span>
                   Promo · viral · campaign
@@ -371,7 +382,7 @@ const webDesignFeatures = [
           <!-- Section CTA -->
           <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
-              — {section.ctaNote}
+              // {section.ctaNote}
             </p>
             <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
               <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
@@ -413,7 +424,7 @@ const webDesignFeatures = [
       <!-- Live Websites — case grid -->
       <div class="mb-16 md:mb-20">
         <div class="flex items-center gap-4 mb-8 md:mb-10">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em]">— Live Websites</span>
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em]">// Live Websites</span>
           <span class="h-px flex-1 bg-white/[0.06]"></span>
           <span class="font-mono text-[11px] text-white/45 tracking-[0.25em]">2</span>
         </div>
@@ -421,7 +432,7 @@ const webDesignFeatures = [
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
           {[
             {
-              title: 'Hairmoment — Hair Salon Noordwijk',
+              title: 'Hairmoment · Hair Salon Noordwijk',
               tag: 'Hospitality · Local Business',
               cover: '/images/portfolio/cover-hairmoment-v4.jpg',
               href: 'https://hairmoment.nl/',
@@ -429,12 +440,12 @@ const webDesignFeatures = [
               note: 'New visual identity and booking flow. From first sketch to live in two weeks.',
             },
             {
-              title: 'Capture & Connect — This Site',
+              title: 'Capture & Connect · This Site',
               tag: 'Creative Agency · In-House',
               cover: '/images/portfolio/cover-captureandconnect.jpg',
               href: 'https://captureandconnect.nl/',
-              meta: ['Astro + React', 'Cloudflare Pages', 'Custom design — no template'],
-              note: 'Yes, this site was built entirely in-house. No WordPress, no drag & drop — pure code, custom typography and motion.',
+              meta: ['Astro + React', 'Cloudflare Pages', 'Custom design, no template'],
+              note: 'Yes, this site was built entirely in-house. No WordPress, no drag & drop, just pure code, custom typography and motion.',
             },
           ].map((site, idx) => {
             const number = String(idx + 1).padStart(2, '0');
@@ -521,7 +532,7 @@ const webDesignFeatures = [
       <!-- CTA -->
       <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
-          — From first sketch to live in as little as two weeks.
+          // From first sketch to live in as little as two weeks.
         </p>
         <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
           <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">

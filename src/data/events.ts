@@ -75,7 +75,7 @@ export const events: EventCard[] = [
         instagramPost: 'https://www.instagram.com/p/DUQtHjDjMuG/',
       },
       {
-        name: 'The Dope Doctor — FINAL X-RAY',
+        name: 'The Dope Doctor · FINAL X-RAY',
         role: 'Multicam Recording',
         instagramPost: 'https://www.instagram.com/p/DUQmUXsCLv8/',
       },
