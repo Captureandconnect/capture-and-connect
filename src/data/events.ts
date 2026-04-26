@@ -20,64 +20,43 @@ export interface EventCard {
 // Format: https://www.instagram.com/p/XXXXX/  of  https://www.instagram.com/reel/XXXXX/
 export const events: EventCard[] = [
   {
-    id: 'masters-of-hardcore-2026',
-    name: 'Masters Of Hardcore',
-    edition: 'Netherlands 2026',
+    id: 'rebirth-2026',
+    name: 'Rebirth Festival',
+    edition: '2026',
     date: 'April 2026',
-    venue: 'Brabanthallen, Den Bosch',
-    cover: '/images/portfolio/cover-moh-2026.jpg',
-    tag: 'Festival · Indoor',
+    venue: 'Haaksbergen, NL',
+    cover: '/images/portfolio/cover-rebirth.jpg',
+    tag: 'Festival · Outdoor',
     djs: [
       {
-        name: 'Furyan vs The Viper',
+        name: 'Revellers LIVE',
         role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DWhJ2ucDcpu/',
+        instagramPost: 'https://www.instagram.com/p/DXHn-yRDBBS/',
+      },
+      {
+        name: 'More Kords',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DXE8LPqjDke/',
+      },
+      {
+        name: 'Tharoza LIVE',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DXKEas3CHBG/',
       },
       {
         name: 'The Dope Doctor',
         role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DWg230xiFNu/',
+        instagramPost: 'https://www.instagram.com/reel/DXHgcTJiJuc/',
       },
       {
-        name: 'Chaotic Hostility',
+        name: 'Barber vs Partyraiser',
         role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DWjWRnHDERl/',
+        instagramPost: 'https://www.instagram.com/p/DXKK6BtDRjr/',
       },
       {
-        name: 'F.Noize',
+        name: 'Spiady',
         role: 'Single Camera Recording',
-        instagramPost: 'https://www.instagram.com/p/DWg-5MniND3/',
-      },
-    ],
-  },
-  {
-    id: 'masters-of-hardcore-austria-2026',
-    name: 'Masters Of Hardcore',
-    edition: 'Austria 2026',
-    date: 'July 2026',
-    venue: 'Salzburgring, AT',
-    cover: '/images/portfolio/cover-moh-austria-v2.jpg',
-    tag: 'Festival · Outdoor',
-    djs: [
-      {
-        name: 'Lil Texas',
-        role: 'Multicam Recording',
-        instagramPost: 'https://vm.tiktok.com/ZGdH6fcA5/',
-      },
-      {
-        name: 'Anime',
-        role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/reel/DVd4uFzgmzX/',
-      },
-      {
-        name: 'F.Noize',
-        role: 'Single Camera Recording',
-        instagramPost: 'https://www.instagram.com/p/DU3PnVnCNj0/',
-      },
-      {
-        name: 'Barber vs Unproven',
-        role: 'Single Camera Recording',
-        instagramPost: 'https://www.instagram.com/p/DU3geW7Ahbx/',
+        instagramPost: 'https://www.instagram.com/p/DXFAasyjIt9/',
       },
     ],
   },
@@ -118,6 +97,37 @@ export const events: EventCard[] = [
     ],
   },
   {
+    id: 'masters-of-hardcore-austria-2026',
+    name: 'Masters Of Hardcore',
+    edition: 'Austria 2026',
+    date: 'July 2026',
+    venue: 'Salzburgring, AT',
+    cover: '/images/portfolio/cover-moh-austria-v2.jpg',
+    tag: 'Festival · Outdoor',
+    djs: [
+      {
+        name: 'Lil Texas',
+        role: 'Multicam Recording',
+        instagramPost: 'https://vm.tiktok.com/ZGdH6fcA5/',
+      },
+      {
+        name: 'Anime',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/reel/DVd4uFzgmzX/',
+      },
+      {
+        name: 'F.Noize',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DU3PnVnCNj0/',
+      },
+      {
+        name: 'Barber vs Unproven',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DU3geW7Ahbx/',
+      },
+    ],
+  },
+  {
     id: 'reverze-2026',
     name: 'Reverze',
     edition: '2026',
@@ -139,6 +149,37 @@ export const events: EventCard[] = [
     ],
   },
   {
+    id: 'masters-of-hardcore-2026',
+    name: 'Masters Of Hardcore',
+    edition: 'Netherlands 2026',
+    date: 'April 2026',
+    venue: 'Brabanthallen, Den Bosch',
+    cover: '/images/portfolio/cover-moh-2026.jpg',
+    tag: 'Festival · Indoor',
+    djs: [
+      {
+        name: 'Furyan vs The Viper',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWhJ2ucDcpu/',
+      },
+      {
+        name: 'The Dope Doctor',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWg230xiFNu/',
+      },
+      {
+        name: 'Chaotic Hostility',
+        role: 'Multicam Recording',
+        instagramPost: 'https://www.instagram.com/p/DWjWRnHDERl/',
+      },
+      {
+        name: 'F.Noize',
+        role: 'Single Camera Recording',
+        instagramPost: 'https://www.instagram.com/p/DWg-5MniND3/',
+      },
+    ],
+  },
+  {
     id: 'paaspop-2026',
     name: 'Paaspop',
     edition: '2026',
@@ -156,47 +197,6 @@ export const events: EventCard[] = [
         name: 'Gezellige Uptempo',
         role: 'Multicam Recording',
         instagramPost: 'https://www.instagram.com/p/DWy4kjIjHOc/',
-      },
-    ],
-  },
-  {
-    id: 'rebirth-2026',
-    name: 'Rebirth Festival',
-    edition: '2026',
-    date: 'April 2026',
-    venue: 'Haaksbergen, NL',
-    cover: '/images/portfolio/cover-rebirth.jpg',
-    tag: 'Festival · Outdoor',
-    djs: [
-      {
-        name: 'Revellers LIVE',
-        role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DXHn-yRDBBS/',
-      },
-      {
-        name: 'More Kords',
-        role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DXE8LPqjDke/',
-      },
-      {
-        name: 'Tharoza LIVE',
-        role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DXKEas3CHBG/',
-      },
-      {
-        name: 'The Dope Doctor',
-        role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/reel/DXHgcTJiJuc/',
-      },
-      {
-        name: 'Barber vs Partyraiser',
-        role: 'Multicam Recording',
-        instagramPost: 'https://www.instagram.com/p/DXKK6BtDRjr/',
-      },
-      {
-        name: 'Spiady',
-        role: 'Single Camera Recording',
-        instagramPost: 'https://www.instagram.com/p/DXFAasyjIt9/',
       },
     ],
   },
