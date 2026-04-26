@@ -13,4 +13,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
   compressHTML: true,
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'hover',
+  },
 });

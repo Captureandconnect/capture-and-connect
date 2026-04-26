@@ -152,6 +152,28 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       );
     }
 
+    // Length limits — reject obviously broken / abusive payloads
+    if (
+      name.length > 120 ||
+      email.length > 200 ||
+      company.length > 200 ||
+      service.length > 100 ||
+      message.length > 5000
+    ) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Submission too long. Please shorten your message.' }),
+        { status: 413, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    }
+
+    // Min message length — filters out 'test' / 'hi' bot submissions
+    if (message.length < 10) {
+      return new Response(
+        JSON.stringify({ success: false, error: 'Please add a few more details about your project.' }),
+        { status: 400, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+      );
+    }
+
     // Basic email validation
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return new Response(

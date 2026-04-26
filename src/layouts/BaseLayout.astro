@@ -9,12 +9,37 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description, ogImage = '/og-default.jpg' } = Astro.props;
+const { title, description, ogImage = '/og-default.jpg', jsonLd } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://captureandconnect.nl');
 const pageTitle = `${title} | Capture & Connect`;
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Capture & Connect',
+  url: 'https://captureandconnect.nl',
+  logo: 'https://captureandconnect.nl/apple-touch-icon.png',
+  email: 'info@captureandconnect.nl',
+  founder: { '@type': 'Person', name: 'Ryan van der Niet' },
+  sameAs: ['https://www.instagram.com/captureandconnect_'],
+  address: { '@type': 'PostalAddress', addressCountry: 'NL' },
+  vatID: 'NL004804916B78',
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Capture & Connect',
+  url: 'https://captureandconnect.nl',
+  inLanguage: 'en',
+};
+
+const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
 ---
 
 <!doctype html>
@@ -44,9 +69,20 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#020202" />
+
+    <!-- JSON-LD: Organization + WebSite + page-specific -->
+    {allSchemas.map((schema) => (
+      <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    ))}
   </head>
 
   <body class="bg-[#020202] text-white font-sans antialiased overflow-x-hidden">
+    <!-- Skip-to-main link, visible only on keyboard focus -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
     <!-- Global cursor spotlight (desktop only) -->
     <div
       id="cursor-spot"
@@ -63,7 +99,7 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     ></div>
 
     <Nav />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer />

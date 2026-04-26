@@ -38,12 +38,23 @@ const faq = [
     a: 'Retainers run monthly in advance. Projects split 50% on signing, 50% on delivery. Bank transfer, EUR. Invoices include KvK and BTW.',
   },
 ];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
 ---
 
 <BaseLayout
   title="Pricing"
   description="Custom quote, every project. We don't list prices because every brand has a different starting point. Tell us what you need — we send a proposal within a few days."
   ogImage="/og-services.jpg"
+  jsonLd={faqSchema}
 >
 
   <!-- Page Hero -->
