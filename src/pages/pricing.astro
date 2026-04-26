@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/sections/CtaBlock.astro';
+
+const inputs = [
+  { id: '001', title: 'Scope',     body: 'How many platforms, how many shoots, how much content per month. The more we ship, the lower the per-output cost.' },
+  { id: '002', title: 'Cadence',   body: 'One-off project or ongoing partnership. Retainers unlock priority booking and lower rates over time.' },
+  { id: '003', title: 'Production', body: 'Liveshots and event days carry travel and crew cost. Studio shoots and edits are leaner.' },
+  { id: '004', title: 'Outcome',   body: 'Awareness, growth or conversion. Each goal shapes the playbook, the volume and the team mix.' },
+];
+
+const includes = [
+  { id: '001', title: 'Strategy + planning', body: 'Discovery call, content plan, channel map, posting cadence. We align on what success looks like before we shoot.' },
+  { id: '002', title: 'Production',          body: 'Shoot days, multicam recording, edit, color, motion, copy. Everything from raw capture to ready-to-publish.' },
+  { id: '003', title: 'Management',          body: 'Posting, scheduling, community replies and monthly performance review. You stay in your lane, we run the rest.' },
+  { id: '004', title: 'Reporting',           body: 'Monthly numbers, public proof, what worked, what we are doubling down on next month.' },
+];
+
+const faq = [
+  {
+    q: 'Why no prices on the site?',
+    a: 'Every brand brings a different starting point, scope and goal. A landing page rebuild is a different job than running three platforms for a touring artist. A custom quote keeps the price honest and the scope right.',
+  },
+  {
+    q: 'How does it work?',
+    a: 'Book a call. Tell us where you are, where you want to go, what you have in hand. Within a few days you get a written proposal with scope, deliverables, timeline and a fixed monthly or project number. No surprises.',
+  },
+  {
+    q: 'Project, retainer or one-off?',
+    a: 'Web design and event films are project-based. Social media management and content production run on monthly retainers, three-month minimum. One-off shoots and edits stand on their own.',
+  },
+  {
+    q: 'Travel, gear, third-party costs?',
+    a: 'Anything outside our standard scope (e.g. paid ads spend, external talent, props, venue fees) is passed through at cost and listed in the proposal up front. No hidden line items.',
+  },
+  {
+    q: 'How do payments work?',
+    a: 'Retainers run monthly in advance. Projects split 50% on signing, 50% on delivery. Bank transfer, EUR. Invoices include KvK and BTW.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pricing"
+  description="Custom quote, every project. We don't list prices because every brand has a different starting point. Tell us what you need — we send a proposal within a few days."
+  ogImage="/og-services.jpg"
+>
+
+  <!-- Page Hero -->
+  <section class="relative bg-[#020202] pt-32 pb-16 md:pt-40 md:pb-20 overflow-hidden">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+        <div class="md:col-span-8">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="relative w-2 h-2 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+            </span>
+            009 // PRICING
+          </span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Custom<br/><span class="text-outline not-italic">quote.</span>
+          </h1>
+        </div>
+        <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
+          Every brand has a different starting point. So we don't list prices. Tell us what you need, get a tailored proposal.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What shapes the quote -->
+  <section class="relative bg-[#020202] pt-12 md:pt-16 pb-20 md:pb-24 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
+        <div class="md:col-span-7">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="inline-block w-8 h-px bg-white/30"></span>
+            010 // WHAT SHAPES THE QUOTE
+          </span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Four<br/><span class="text-outline not-italic">inputs.</span>
+          </h2>
+        </div>
+        <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
+          Same four levers on every proposal. They decide the number on the bottom line.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.05]">
+        {inputs.map((it) => (
+          <div class="bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-5 min-h-[240px]">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">{it.id} // INPUT</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+              {it.title}
+            </h3>
+            <div class="h-px w-10 bg-white/10"></div>
+            <p class="text-[13px] text-white/55 leading-relaxed">{it.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- What's always included -->
+  <section class="relative bg-[#020202] py-20 md:py-24 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
+        <div class="md:col-span-7">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="inline-block w-8 h-px bg-white/30"></span>
+            011 // ALWAYS INCLUDED
+          </span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            What's<br/>in <span class="text-outline not-italic">scope.</span>
+          </h2>
+        </div>
+        <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
+          The baseline on every proposal. Specifics scale with the brief.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.05]">
+        {includes.map((it) => (
+          <div class="bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-5 min-h-[240px]">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">{it.id} // STAGE</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-white/30"></span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+              {it.title}
+            </h3>
+            <div class="h-px w-10 bg-white/10"></div>
+            <p class="text-[13px] text-white/55 leading-relaxed">{it.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="relative bg-[#020202] py-20 md:py-24 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
+        <div class="md:col-span-7">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="inline-block w-8 h-px bg-white/30"></span>
+            012 // FAQ
+          </span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Common<br/><span class="text-outline not-italic">questions.</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="border-t border-white/[0.06]">
+        {faq.map((item, idx) => (
+          <details class="group/faq border-b border-white/[0.06]">
+            <summary class="flex items-center gap-6 py-7 md:py-8 cursor-pointer list-none">
+              <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em] w-12 shrink-0">
+                {String(idx + 1).padStart(2, '0')}
+              </span>
+              <span class="flex-1 text-xl md:text-2xl font-black italic tracking-tight text-white">
+                {item.q}
+              </span>
+              <span class="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center shrink-0 transition-transform duration-300 group-open/faq:rotate-45">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" class="stroke-white/70">
+                  <path d="M12 5v14M5 12h14" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </summary>
+            <div class="pb-8 pl-[4.5rem] pr-20 max-w-3xl">
+              <p class="text-[14px] text-white/55 leading-relaxed">{item.a}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <CtaBlock
+    headline="Ready for a custom quote?"
+    subtext="Tell us your scope, goals and timeline. We send a tailored proposal within a few business days."
+    buttonText="Request Your Quote"
+  />
+
+</BaseLayout>

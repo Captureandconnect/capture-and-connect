@@ -43,6 +43,80 @@ import { services } from '../data/services';
     ))}
   </div>
 
+  <!-- Who this is for / Not for -->
+  <section class="relative bg-[#020202] py-20 md:py-24 border-t border-white/[0.05]">
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
+        <div class="md:col-span-7">
+          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+            <span class="inline-block w-8 h-px bg-white/30"></span>
+            006 // FIT CHECK
+          </span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
+            Right<br/><span class="text-outline not-italic">fit?</span>
+          </h2>
+        </div>
+        <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
+          We do our best work with brands that want a partner, not a vendor. Read both sides before you book.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/[0.04] border border-white/[0.05]">
+        <!-- Built for -->
+        <div class="bg-[#020202] p-8 md:p-10 lg:p-12 flex flex-col gap-6">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[10px] text-white uppercase tracking-[0.25em]">// BUILT FOR</span>
+            <span class="w-2 h-2 rounded-full bg-white"></span>
+          </div>
+          <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Brands ready<br/>to <span class="text-outline not-italic">grow.</span>
+          </h3>
+          <ul class="flex flex-col gap-0 mt-2">
+            {[
+              'Artists, festivals and event brands ready to scale beyond word-of-mouth',
+              'Local businesses with a real product or service that converts when seen',
+              'Founders who want one team handling content, socials and the website',
+              'Brands committed to consistent posting for 3+ months, not a one-off post',
+              'People who treat marketing as investment, not expense',
+            ].map((b) => (
+              <li class="flex items-start gap-4 py-3.5 border-t border-white/[0.06] text-[14px] text-white/75 leading-relaxed">
+                <span class="font-mono text-[11px] text-white shrink-0 mt-0.5">+</span>
+                <span>{b}</span>
+              </li>
+            ))}
+            <li class="border-t border-white/[0.06]"></li>
+          </ul>
+        </div>
+
+        <!-- Not for -->
+        <div class="bg-[#020202] p-8 md:p-10 lg:p-12 flex flex-col gap-6">
+          <div class="flex items-center justify-between">
+            <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// NOT FOR</span>
+            <span class="w-2 h-2 rounded-full border border-white/30"></span>
+          </div>
+          <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white/85">
+            Probably<br/>not <span class="text-outline not-italic">us.</span>
+          </h3>
+          <ul class="flex flex-col gap-0 mt-2">
+            {[
+              'Anyone looking for the cheapest option (we are not it)',
+              'Brands wanting one viral video and disappearing — growth needs cadence',
+              'Clients who expect to micro-manage every shot and caption',
+              'Projects with no clear goal, no audience, no offer',
+              'Anything illegal, exploitative or off-brand for our roster',
+            ].map((b) => (
+              <li class="flex items-start gap-4 py-3.5 border-t border-white/[0.06] text-[14px] text-white/55 leading-relaxed">
+                <span class="font-mono text-[11px] text-white/40 shrink-0 mt-0.5">−</span>
+                <span>{b}</span>
+              </li>
+            ))}
+            <li class="border-t border-white/[0.06]"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Why Us — command-cell row -->
   <section class="relative bg-[#020202] py-20 md:py-24 border-t border-white/[0.05]">
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
