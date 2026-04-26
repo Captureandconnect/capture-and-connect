@@ -84,8 +84,9 @@ export const featuredPublicProof = publicProof.filter((p) => p.featured);
 // - public YouTube uploads
 // - live websites
 export const aggregateStats = [
-  { value: '20M+', label: 'Public viral views', note: 'Single Dope Doctor reel, view count visible on Instagram.' },
-  { value: '25+',  label: 'Events filmed in 2026', note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
-  { value: '9',    label: 'Currently managing', note: '6 Instagram, 3 TikTok live right now. Many more handled in the past, this is the active roster.' },
+  { value: '65M+', label: 'Total reach',          note: 'Cumulative organic reach across content shipped from this lane.' },
+  { value: '20M+', label: 'Public viral views',   note: 'Single Dope Doctor reel, view count visible on Instagram.' },
+  { value: '25+',  label: 'Events filmed 2026',   note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
+  { value: '9',    label: 'Currently managing',   note: '6 Instagram, 3 TikTok live right now. Active roster, not lifetime total.' },
   { value: '2',    label: 'Live websites shipped', note: 'Hairmoment.nl and this site, both fully custom.' },
 ];

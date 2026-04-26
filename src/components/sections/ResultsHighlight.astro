@@ -1,9 +1,10 @@
 ---
 const stats = [
-  { id: '001', target: 20, suffix: 'M+', label: 'Public viral views', note: 'One Dope Doctor reel, view count visible on Instagram.' },
-  { id: '002', target: 25, suffix: '+',  label: 'Events filmed 2026', note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
-  { id: '003', target: 9,  suffix: '',   label: 'Currently managing', note: '6 Instagram, 3 TikTok live right now. Active roster, not lifetime total.' },
-  { id: '004', target: 2,  suffix: '',   label: 'Live sites shipped', note: 'Hairmoment.nl and this site, both fully custom.' },
+  { id: '001', target: 65, suffix: 'M+', label: 'Total reach',         note: 'Cumulative organic reach across content shipped from this lane.' },
+  { id: '002', target: 20, suffix: 'M+', label: 'Public viral views',  note: 'One Dope Doctor reel, view count visible on Instagram.' },
+  { id: '003', target: 25, suffix: '+',  label: 'Events filmed 2026',  note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
+  { id: '004', target: 9,  suffix: '',   label: 'Currently managing',  note: '6 Instagram, 3 TikTok live right now. Active roster, not lifetime total.' },
+  { id: '005', target: 2,  suffix: '',   label: 'Live sites shipped',  note: 'Hairmoment.nl and this site, both fully custom.' },
 ];
 ---
 
@@ -17,13 +18,13 @@ const stats = [
     <div class="marquee flex whitespace-nowrap items-center gap-12 font-mono text-[11px] uppercase tracking-[0.25em] text-white/55">
       {[...Array(2)].map(() => (
         <div class="flex items-center gap-12 shrink-0">
-          <span class="text-white">20M+ PUBLIC VIRAL</span>
+          <span class="text-white">65M+ TOTAL REACH</span>
           <span>·</span>
-          <span>25+ EVENTS FILMED 2026</span>
+          <span>20M+ PUBLIC VIRAL</span>
           <span>·</span>
-          <span class="text-white">9 ACCOUNTS LIVE NOW</span>
+          <span class="text-white">25+ EVENTS FILMED 2026</span>
           <span>·</span>
-          <span>2 LIVE SITES SHIPPED</span>
+          <span>9 ACCOUNTS LIVE NOW</span>
           <span>·</span>
           <span class="text-white">BASED IN NL</span>
           <span>·</span>
@@ -57,7 +58,7 @@ const stats = [
 
   <!-- Stat tickers -->
   <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.05]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-white/[0.04] border border-white/[0.05]">
       {stats.map((stat) => (
         <div
           class="stat-cell group relative bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-6 min-h-[260px]"
