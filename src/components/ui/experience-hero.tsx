@@ -153,7 +153,7 @@ export const ExperienceHero = () => {
             {
               id: "002",
               title: "PUBLIC PROOF",
-              val: "20M+ views",
+              val: "65M+ reach",
               type: "data" as const,
             },
             {
@@ -182,8 +182,8 @@ export const ExperienceHero = () => {
               ) : item.type === "data" ? (
                 <div className="mt-4 flex flex-col gap-3">
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Views generated</span>
-                    <span>20M+</span>
+                    <span>Total reach</span>
+                    <span>65M+</span>
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
