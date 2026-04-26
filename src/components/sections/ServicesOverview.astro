@@ -1,5 +1,18 @@
 ---
 import { services } from '../../data/services';
+
+function titleLines(title: string): string[] {
+  const words = title.split(' ');
+  const lines: string[] = [];
+  for (const w of words) {
+    if (lines.length && lines[lines.length - 1] === '&') {
+      lines[lines.length - 1] = '& ' + w;
+    } else {
+      lines.push(w);
+    }
+  }
+  return lines;
+}
 ---
 
 <section
@@ -57,14 +70,7 @@ import { services } from '../../data/services';
 
             <!-- Massive italic title -->
             <h3 class="relative text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white mb-6">
-              {service.title.split(' ').reduce<string[]>((acc, w) => {
-                if (acc.length && acc[acc.length - 1] === '&') {
-                  acc[acc.length - 1] = '& ' + w;
-                } else {
-                  acc.push(w);
-                }
-                return acc;
-              }, []).map((w, i) => i === 0 ? w : <><br/>{w}</>)}
+              {titleLines(service.title).map((w, i) => i === 0 ? w : <><br/>{w}</>)}
             </h3>
 
             <!-- Description -->
