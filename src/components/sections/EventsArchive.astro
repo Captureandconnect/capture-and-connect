@@ -57,7 +57,7 @@ import { events } from '../../data/events.ts';
               </div>
 
               <!-- Center: expand indicator on hover -->
-              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+              <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 pointer-events-none">
                 <span class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/30 flex items-center justify-center expand-indicator transition-transform duration-500">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path class="plus-v transition-opacity duration-300" d="M12 5v14"/>
@@ -120,7 +120,7 @@ import { events } from '../../data/events.ts';
                           href={dj.instagramPost}
                           target="_blank"
                           rel="noopener noreferrer"
-                          class="dj-link group/dj flex items-center justify-between gap-3 py-3 border-b border-white/[0.06] last:border-b-0 hover:pl-2 transition-all duration-300"
+                          class="dj-link group/dj flex items-center justify-between gap-3 py-3 min-h-[44px] border-b border-white/[0.06] last:border-b-0 hover:pl-2 transition-all duration-300"
                         >
                           <div class="flex items-baseline gap-3 min-w-0">
                             <span class="font-mono text-[9px] text-white/55 tracking-[0.2em]">
@@ -145,7 +145,7 @@ import { events } from '../../data/events.ts';
                           </div>
                           <span class="shrink-0 inline-flex items-center gap-2 font-mono text-[10px] text-white/50 uppercase tracking-[0.2em] group-hover/dj:text-white transition-colors duration-300">
                             <span>IG</span>
-                            <span class="w-7 h-7 rounded-full border border-white/15 flex items-center justify-center group-hover/dj:bg-white transition-all duration-300">
+                            <span class="w-9 h-9 rounded-full border border-white/15 flex items-center justify-center group-hover/dj:bg-white transition-all duration-300">
                               <svg width="11" height="11" viewBox="0 0 24 24" fill="none" class="group-hover/dj:stroke-black stroke-white/70 transition-colors duration-300">
                                 <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
                               </svg>

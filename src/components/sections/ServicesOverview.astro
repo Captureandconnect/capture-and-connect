@@ -24,7 +24,7 @@ import { services } from '../../data/services';
         </h2>
       </div>
       <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
-        Three disciplines, one system. Hover any cell for the full bullet list. Every service is built for one goal: making artists, events and brands impossible to ignore.
+        Three disciplines. One system. Built for one outcome: more views, more reach, more customers. From artists and festivals to brands and local businesses.
       </p>
     </div>
   </div>
@@ -37,7 +37,7 @@ import { services } from '../../data/services';
         return (
           <a
             href={`/services#${service.id}`}
-            class="service-cell glass-panel group relative flex flex-col p-7 md:p-9 min-h-[440px] overflow-hidden cursor-pointer"
+            class="service-cell glass-panel group relative flex flex-col p-7 md:p-9 min-h-[360px] md:min-h-[440px] overflow-hidden cursor-pointer"
             data-tilt
           >
             <!-- Hover spotlight follows cursor -->
@@ -68,7 +68,7 @@ import { services } from '../../data/services';
             <!-- Bullet list with hairline dividers -->
             <ul class="relative mt-auto flex flex-col gap-0">
               {service.bullets.slice(0, 4).map((b) => (
-                <li class="flex items-center gap-3 py-2.5 border-t border-white/[0.06] text-[12px] font-mono text-white/55 uppercase tracking-[0.1em]">
+                <li class="flex items-center gap-3 py-2.5 border-t border-white/[0.06] text-[13px] md:text-[12px] font-mono text-white/55 uppercase tracking-[0.1em]">
                   <span class="w-1 h-1 bg-white/40 rounded-full"></span>
                   <span>{b}</span>
                 </li>
@@ -83,7 +83,7 @@ import { services } from '../../data/services';
     <!-- Bottom CTA row -->
     <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
       <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em]">
-        // Three services. One team. Zero gaps.
+        // Three services. One team. One outcome: growth.
       </p>
       <a href="/services" class="group/cta inline-flex items-center gap-4">
         <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
@@ -92,7 +92,7 @@ import { services } from '../../data/services';
           </svg>
         </span>
         <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
-          Explore all services
+          See How We Grow Brands
         </span>
       </a>
     </div>

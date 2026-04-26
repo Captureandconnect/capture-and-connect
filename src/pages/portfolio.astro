@@ -11,8 +11,8 @@ const mediaSections = [
     n: '001',
     label: 'Content Creation',
     headline: ['Cinematic', 'content.'],
-    description: 'Multicam recording, liveshots, festival aftermovies, artist visuals and high-energy edits.',
-    ctaText: 'Book a shoot',
+    description: 'High-impact visuals from artists, events and brands. Built to perform on TikTok, Instagram and YouTube.',
+    ctaText: 'Start Growing Your Brand',
     ctaNote: 'From single Reels to full event coverage.',
   },
   {
@@ -20,9 +20,9 @@ const mediaSections = [
     n: '002',
     label: 'Social Media',
     headline: ['Socials', 'we run.'],
-    description: 'Full social media management, content calendars and community-driven campaigns.',
-    ctaText: 'Grow your socials',
-    ctaNote: 'Consistent posting, real growth, zero guesswork.',
+    description: 'Accounts we manage and grow every day. Real growth, real numbers, no guesswork.',
+    ctaText: 'Start Growing Your Brand',
+    ctaNote: 'Consistent posting. Real growth. Zero guesswork.',
   },
 ] as const;
 
@@ -36,7 +36,7 @@ const managedAccounts = [
     instagram: 'https://www.instagram.com/thedopedoctor_official/',
     tiktok: 'https://www.tiktok.com/@thedopedoctor_official',
     highlight: 'Viral moments',
-    summary: 'Cinematic artist content built around the live shows and the booth.',
+    summary: 'Cinematic artist content built around live shows, the booth and the scroll.',
     stats: [
       { value: 'Live',   label: 'Always-on content' },
       { value: 'IG·TT',  label: 'Both platforms' },
@@ -52,7 +52,7 @@ const managedAccounts = [
     instagram: 'https://www.instagram.com/majorconspiracyofficial/',
     tiktok: 'https://www.tiktok.com/@majorconspiracyofficial',
     highlight: 'Audience build',
-    summary: 'Full management for an uptempo duo on the rise. Brand, content and posting.',
+    summary: 'Full management for a rising uptempo duo. Brand, content, posting, growth.',
     stats: [
       { value: 'Reels',  label: 'Short-form first' },
       { value: 'IG·TT',  label: 'Both platforms' },
@@ -68,7 +68,7 @@ const managedAccounts = [
     instagram: 'https://www.instagram.com/harddancestore/',
     tiktok: 'https://www.tiktok.com/@harddancestore',
     highlight: 'Brand voice',
-    summary: 'Lifestyle content for a hard dance apparel brand. Product drops, on-event posts and community.',
+    summary: 'Lifestyle content for a hard dance apparel brand. Drops, events and community-led posts.',
     stats: [
       { value: 'Drops', label: 'Campaign rollouts' },
       { value: 'IG·TT', label: 'Both platforms' },
@@ -78,18 +78,18 @@ const managedAccounts = [
 ];
 
 const webDesignFeatures = [
-  { id: '001', title: 'Custom design',     body: 'No templates. Every website is designed from scratch to match your brand, your style and your goals.' },
-  { id: '002', title: 'Mobile-first',      body: 'Your audience scrolls on their phone. Every site we build looks and feels perfect on any screen size.' },
-  { id: '003', title: 'Lightning fast',    body: 'Optimised for speed and SEO. Your site loads instantly and ranks where it should.' },
-  { id: '004', title: 'Landing pages',     body: 'Campaign-specific landing pages and microsites built to convert traffic into leads and sales.' },
-  { id: '005', title: 'Domain & hosting',  body: 'We handle the technical setup. Domain registration, hosting configuration, SSL, everything covered.' },
-  { id: '006', title: 'Fully yours',       body: 'No subscriptions, no lock-in. We build it, hand it over and you own everything.' },
+  { id: '001', title: 'Custom design',     body: 'No templates. Every site designed from scratch around your brand and your goals.' },
+  { id: '002', title: 'Mobile-first',      body: 'Your audience lives on mobile. Every site we ship looks flawless on any screen.' },
+  { id: '003', title: 'Lightning fast',    body: 'Built for speed and SEO. Loads instantly. Ranks where it should.' },
+  { id: '004', title: 'Conversion pages',  body: 'Landing pages and microsites engineered to turn traffic into leads, bookings and sales.' },
+  { id: '005', title: 'Domain & hosting',  body: 'Domain, hosting, SSL — fully handled. You stay focused on the business.' },
+  { id: '006', title: 'Fully yours',       body: 'No subscriptions, no lock-in. We build it. You own it. Forever.' },
 ];
 ---
 
 <BaseLayout
   title="Portfolio"
-  description="Browse the full Capture & Connect portfolio. Content creation, social media management and web design, all built for impact."
+  description="Browse the work — content, socials and websites built to grow artists, festivals and brands."
   ogImage="/og-portfolio.jpg"
 >
 
@@ -105,11 +105,11 @@ const webDesignFeatures = [
             003 // PORTFOLIO
           </span>
           <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Work that<br/><span class="text-outline not-italic">speaks.</span>
+            Work that<br/><span class="text-outline not-italic">performs.</span>
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
-          Three disciplines, one team. Hop between content, socials and web work, every project shipped from in-house.
+          Real content. Real results. Everything you see is live and verifiable.
         </p>
       </div>
     </div>
@@ -130,7 +130,7 @@ const webDesignFeatures = [
           <a
             href={`#${tab.id}`}
             class:list={[
-              'portfolio-tab inline-flex items-center gap-2 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] border transition-all duration-300 cursor-pointer select-none whitespace-nowrap',
+              'portfolio-tab inline-flex items-center gap-2 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] border transition-all duration-300 cursor-pointer select-none whitespace-nowrap',
               i === 0
                 ? 'border-white text-white bg-white/[0.04]'
                 : 'border-white/10 text-white/55 hover:border-white/40 hover:text-white',
@@ -188,7 +188,7 @@ const webDesignFeatures = [
                   {section.n} / {section.label.toUpperCase()}
                 </span>
                 <h2 class="text-[clamp(2rem,5vw,4rem)] font-black italic uppercase leading-[0.9] tracking-tighter text-white">
-                  Socials,<br/>actually<br/>run.
+                  Socials<br/>built to<br/>grow.
                 </h2>
                 <div class="h-px w-16 bg-white/20"></div>
                 <p class="text-[14px] text-white/55 leading-relaxed max-w-sm">
@@ -218,7 +218,7 @@ const webDesignFeatures = [
                   // Featured · 3 of 9
                 </span>
                 <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
-                  Click any cell to open the live profile
+                  Tap any cell to see the live work
                 </span>
               </div>
 
@@ -417,8 +417,8 @@ const webDesignFeatures = [
           <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">WEB DESIGN</span>
         </div>
         <p class="text-[clamp(1.5rem,3vw,2.5rem)] font-medium leading-[1.15] tracking-tight text-white max-w-4xl">
-          Custom code. <span class="text-white/55">No templates.</span><br/>
-          Six things every site we ship<br/>does <em class="font-black italic text-white">right.</em>
+          Websites built to <span class="text-white/55">convert.</span><br/>
+          Six reasons every site we<br/>ship <em class="font-black italic text-white">performs.</em>
         </p>
       </div>
 
@@ -438,7 +438,7 @@ const webDesignFeatures = [
               cover: '/images/portfolio/cover-hairmoment-v4.jpg',
               href: 'https://hairmoment.nl/',
               meta: ['Custom Astro build', 'Mobile-first', 'Live at hairmoment.nl'],
-              note: 'New visual identity and booking flow. From first sketch to live in two weeks.',
+              note: 'New visual identity and booking flow. From first sketch to live in two weeks. Built to convert.',
             },
             {
               title: 'Capture & Connect · This Site',
@@ -446,7 +446,7 @@ const webDesignFeatures = [
               cover: '/images/portfolio/cover-captureandconnect.jpg',
               href: 'https://captureandconnect.nl/',
               meta: ['Astro + React', 'Cloudflare Pages', 'Custom design, no template'],
-              note: 'Yes, this site was built entirely in-house. No WordPress, no drag & drop, just pure code, custom typography and motion.',
+              note: 'Built entirely in-house. No WordPress, no drag-and-drop. Just custom code, custom motion, custom typography.',
             },
           ].map((site, idx) => {
             const number = String(idx + 1).padStart(2, '0');
@@ -542,7 +542,7 @@ const webDesignFeatures = [
             </svg>
           </span>
           <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
-            Start your website
+            Start Your Website
           </span>
         </a>
       </div>
@@ -552,9 +552,9 @@ const webDesignFeatures = [
   <Lightbox />
 
   <CtaBlock
-    headline="Like what you see?"
-    subtext="Let's create something for your brand."
-    buttonText="Get in touch"
+    headline="Want this for your brand?"
+    subtext="Get a plan that turns content into views, followers and paying customers. Limited spots available each month."
+    buttonText="Start Growing Your Brand"
   />
 
 </BaseLayout>

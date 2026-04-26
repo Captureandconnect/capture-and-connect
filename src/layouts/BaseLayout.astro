@@ -68,9 +68,14 @@ const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
     </main>
     <Footer />
 
-    <!-- GSAP animations -->
+    <!-- GSAP animations — deferred to browser idle so they never block LCP -->
     <script>
-      import('../scripts/animations.ts');
+      const loadAnimations = () => import('../scripts/animations.ts');
+      if ('requestIdleCallback' in window) {
+        (window as any).requestIdleCallback(loadAnimations, { timeout: 2000 });
+      } else {
+        setTimeout(loadAnimations, 200);
+      }
     </script>
 
     {cfBeaconToken && (

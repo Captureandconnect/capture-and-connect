@@ -25,7 +25,7 @@ const year = new Date().getFullYear();
     </span>
   </div>
 
-  <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 pt-20 pb-10">
+  <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 pt-20 pb-[max(2.5rem,env(safe-area-inset-bottom))]">
 
     <!-- Top row: brand + tagline + meta -->
     <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-16">
@@ -44,7 +44,7 @@ const year = new Date().getFullYear();
           From lens<br/>to <span class="text-outline not-italic">likes</span>.
         </h3>
         <p class="text-sm text-white/55 leading-relaxed max-w-xs">
-          Premium content creation, social media management and web design for artists, festivals and brands ready to scale.
+          Content, social media and strategy built to turn attention into views, followers and revenue.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ const year = new Date().getFullYear();
         {navLinks.map((link) => (
           <a
             href={link.href}
-            class="group/foot flex items-baseline gap-3 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300"
+            class="group/foot flex items-baseline gap-3 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300"
           >
             <span class="text-[9px] text-white/55 group-hover/foot:text-white transition-colors">{link.id}</span>
             <span>{link.label}</span>
@@ -92,7 +92,7 @@ const year = new Date().getFullYear();
             <span class="relative w-1.5 h-1.5 bg-white rounded-full">
               <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-40"></span>
             </span>
-            Available for projects
+            Now booking · Q3 / Q4
           </span>
         </div>
       </div>
