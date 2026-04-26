@@ -57,7 +57,14 @@ import { services } from '../../data/services';
 
             <!-- Massive italic title -->
             <h3 class="relative text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white mb-6">
-              {service.title.split(' ').map((w, i) => i === 0 ? w : <><br/>{w}</>)}
+              {service.title.split(' ').reduce<string[]>((acc, w) => {
+                if (acc.length && acc[acc.length - 1] === '&') {
+                  acc[acc.length - 1] = '& ' + w;
+                } else {
+                  acc.push(w);
+                }
+                return acc;
+              }, []).map((w, i) => i === 0 ? w : <><br/>{w}</>)}
             </h3>
 
             <!-- Description -->
