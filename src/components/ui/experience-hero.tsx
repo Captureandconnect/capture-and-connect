@@ -147,8 +147,8 @@ export const ExperienceHero = () => {
             },
             {
               id: "002",
-              title: "STUDIO STATS",
-              val: "65M+ Views",
+              title: "PUBLIC PROOF",
+              val: "20M+ Viral",
               type: "data" as const,
             },
             {
@@ -177,18 +177,18 @@ export const ExperienceHero = () => {
               ) : item.type === "data" ? (
                 <div className="mt-4 flex flex-col gap-3">
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Total Views</span>
-                    <span>65M+</span>
+                    <span>Public viral</span>
+                    <span>20M+</span>
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Projects Delivered</span>
-                    <span>500+</span>
+                    <span>Events filmed 2026</span>
+                    <span>6</span>
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
-                    <span>Happy Clients</span>
-                    <span>150+</span>
+                    <span>Accounts managed</span>
+                    <span>6</span>
                   </div>
                 </div>
               ) : (

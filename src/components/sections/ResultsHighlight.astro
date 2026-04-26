@@ -1,9 +1,9 @@
 ---
 const stats = [
-  { id: '001', target: 65,  suffix: 'M+', label: 'Total Views',   note: 'Organic reach across client accounts.' },
-  { id: '002', target: 500, suffix: '+',  label: 'Projects',      note: 'From single Reels to full campaigns.' },
-  { id: '003', target: 2,   suffix: 'x',  label: 'Avg Growth',    note: 'In account reach within 45 days.' },
-  { id: '004', target: 150, suffix: '+',  label: 'Happy Clients', note: 'Artists, events and brands across NL.' },
+  { id: '001', target: 20, suffix: 'M+', label: 'Public viral views', note: 'One Dope Doctor reel, view count visible on Instagram.' },
+  { id: '002', target: 6,  suffix: '',   label: 'Events filmed 2026', note: 'BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
+  { id: '003', target: 6,  suffix: '',   label: 'Accounts managed',   note: '3 Instagram, 3 TikTok across artist and brand.' },
+  { id: '004', target: 2,  suffix: '',   label: 'Live sites shipped', note: 'Hairmoment.nl and this site, both fully custom.' },
 ];
 ---
 
@@ -17,17 +17,17 @@ const stats = [
     <div class="marquee flex whitespace-nowrap items-center gap-12 font-mono text-[11px] uppercase tracking-[0.25em] text-white/55">
       {[...Array(2)].map(() => (
         <div class="flex items-center gap-12 shrink-0">
-          <span class="text-white">+ 65M VIEWS</span>
+          <span class="text-white">20M+ PUBLIC VIRAL</span>
           <span>·</span>
-          <span>500 PROJECTS DELIVERED</span>
+          <span>6 EVENTS FILMED 2026</span>
           <span>·</span>
-          <span class="text-white">+ 150 HAPPY CLIENTS</span>
+          <span class="text-white">6 ACCOUNTS MANAGED</span>
           <span>·</span>
-          <span>2X AVG GROWTH</span>
+          <span>2 LIVE SITES SHIPPED</span>
           <span>·</span>
           <span class="text-white">BASED IN NL</span>
           <span>·</span>
-          <span>AVAILABLE FOR PROJECTS</span>
+          <span>AVAILABLE FOR REQUESTS</span>
           <span>·</span>
         </div>
       ))}
@@ -50,7 +50,7 @@ const stats = [
         </h2>
       </div>
       <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
-        Real numbers from real clients. Every figure reflects organic reach, no paid shortcuts. Hover any cell to see the full breakdown.
+        Public numbers only. Each figure points to something you can open and verify, a public reel, a live site or a public event archive.
       </p>
     </div>
   </div>
@@ -97,7 +97,7 @@ const stats = [
     <!-- Footer row -->
     <div class="mt-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
       <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
-        Real results from real clients. No paid shortcuts.
+        Public proof only. Open the link, verify the work.
       </p>
       <a href="/results" class="group/cta inline-flex items-center gap-4">
         <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
@@ -106,7 +106,7 @@ const stats = [
           </svg>
         </span>
         <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
-          Read case studies
+          See public proof
         </span>
       </a>
     </div>

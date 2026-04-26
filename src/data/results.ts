@@ -1,80 +1,91 @@
-export interface CaseStudy {
+export interface PublicProof {
   id: string;
   client: string;
   category: string;
   headline: string;
-  problem: string;
-  approach: string;
-  result: string;
-  stats: { label: string; value: string }[];
+  context: string;
+  detail: string;
+  proofLabel: string;
+  proofValue: string;
+  url: string;
+  thumbnail: string;
   featured: boolean;
 }
 
-export const caseStudies: CaseStudy[] = [
+// Every entry below points to something publicly visible (a public IG reel,
+// YouTube upload, live website or public IG profile). No private client metrics.
+export const publicProof: PublicProof[] = [
   {
-    id: 'case-001',
+    id: 'proof-dope-doctor-viral',
     client: 'The Dope Doctor',
-    category: 'Artist',
-    headline: 'From 0 to 20M views in 48 hours',
-    problem:
-      'The artist had strong music but zero social traction, no viral moment, no algorithm momentum.',
-    approach:
-      'We identified the right hook format for the track, shot a single high-energy promo clip, and timed the release to peak platform activity.',
-    result:
-      'The video hit 20 million organic views in 48 hours and became the artist\'s biggest-ever content moment.',
-    stats: [
-      { label: 'Views', value: '20M+' },
-      { label: 'Time to viral', value: '48 hrs' },
-      { label: 'New followers', value: '85K+' },
-      { label: 'Shares', value: '210K+' },
-    ],
+    category: 'Artist · Viral Promo',
+    headline: 'A single promo clip crossed 20M views',
+    context:
+      'A short artist promo we directed and shipped from the Capture & Connect lane.',
+    detail:
+      'Open the post on Instagram, the play count is right there on the public reel.',
+    proofLabel: 'Public reel',
+    proofValue: '20M+',
+    url: 'https://www.instagram.com/reel/DKcUyZgog7I/',
+    thumbnail: '/images/portfolio/cover-dopedoctor-viral.jpg',
     featured: true,
   },
   {
-    id: 'case-002',
-    client: 'Major Conspiracy',
-    category: 'Artist Growth',
-    headline: 'Uptempo duo goes from 3K to 120K followers in 5 months',
-    problem:
-      'The duo had consistent bookings and real talent but an almost invisible online presence.',
-    approach:
-      'We built a visual identity from scratch, launched a content system of weekly reels and behind-the-scenes stories, and optimized every post for platform reach.',
-    result:
-      'The account grew from 3,000 to 120,000 followers in five months with no paid advertising.',
-    stats: [
-      { label: 'Follower growth', value: '40x' },
-      { label: 'Time frame', value: '5 months' },
-      { label: 'Avg. Reel reach', value: '320K' },
-      { label: 'Paid spend', value: '€0' },
-    ],
+    id: 'proof-aftermovie-ground-zero',
+    client: 'Ground Zero Festival 2025',
+    category: 'Event Film · Aftermovie',
+    headline: 'Official 2025 aftermovie shipped on YouTube',
+    context:
+      'Multicam recording, edit and color, delivered as the official festival aftermovie.',
+    detail:
+      'Public YouTube upload on the Ground Zero channel. Open the video to watch the full edit.',
+    proofLabel: 'YouTube upload',
+    proofValue: 'Live',
+    url: 'https://www.youtube.com/watch?v=wMICv0W9h8o',
+    thumbnail: '/images/portfolio/cover-aftermovie.jpg',
     featured: true,
   },
   {
-    id: 'case-003',
-    client: 'Hard Dance Store',
-    category: 'Brand',
-    headline: 'From generic ads to a content-first brand engine',
-    problem:
-      'Hard Dance Store was running paid ads with generic creative that wasn’t converting their target audience.',
-    approach:
-      'We scrapped the old ad formats and built a new content system using native-style short-form hooks, community shoutouts, and product drop hype videos.',
-    result:
-      'Organic posts started pulling paid-level results within the first month, and the brand’s reach more than tripled across Instagram and TikTok.',
-    stats: [
-      { label: 'Organic reach', value: '1.8M' },
-      { label: 'Revenue uplift', value: '+210%' },
-      { label: 'Avg. engagement', value: '+185%' },
-      { label: 'Posting cadence', value: '4x / week' },
-    ],
+    id: 'proof-hairmoment-live',
+    client: 'Hairmoment',
+    category: 'Web Design · Live Site',
+    headline: 'Hair salon site shipped from sketch to live in two weeks',
+    context:
+      'Custom Astro build with booking flow, mobile-first. New visual identity for a Noordwijk salon.',
+    detail:
+      'Hairmoment.nl is live, no template, no WordPress.',
+    proofLabel: 'Live website',
+    proofValue: 'hairmoment.nl',
+    url: 'https://hairmoment.nl/',
+    thumbnail: '/images/portfolio/cover-hairmoment-v4.jpg',
+    featured: true,
+  },
+  {
+    id: 'proof-cc-self',
+    client: 'Capture & Connect',
+    category: 'Web Design · In-House',
+    headline: 'This site, custom-built',
+    context:
+      'No drag and drop, no template. The site you are reading right now is fully hand-coded.',
+    detail:
+      'Astro plus React, deployed on Cloudflare Pages, custom typography and motion throughout.',
+    proofLabel: 'Live website',
+    proofValue: 'captureandconnect.nl',
+    url: 'https://captureandconnect.nl/',
+    thumbnail: '/images/portfolio/cover-captureandconnect.jpg',
     featured: false,
   },
 ];
 
-export const aggregateStats = [
-  { value: '65M+', label: 'Views' },
-  { value: '500+', label: 'Projects' },
-  { value: '2x', label: 'Average Growth in Reach' },
-  { value: '150+', label: 'Happy Clients' },
-];
+export const featuredPublicProof = publicProof.filter((p) => p.featured);
 
-export const featuredCaseStudies = caseStudies.filter((cs) => cs.featured);
+// Public, verifiable totals only. Each number can be checked against:
+// - public IG reels and profiles
+// - public YouTube uploads
+// - live websites
+export const aggregateStats = [
+  { value: '20M+', label: 'Public viral views', note: 'Single Dope Doctor reel, view count visible on Instagram.' },
+  { value: '6',    label: 'Events filmed in 2026', note: 'BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
+  { value: '6',    label: 'Accounts under management', note: '3 Instagram, 3 TikTok across artist and brand.' },
+  { value: '2',    label: 'Live websites shipped', note: 'Hairmoment.nl and this site, both fully custom.' },
+];
