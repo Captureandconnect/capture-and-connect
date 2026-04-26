@@ -86,6 +86,6 @@ export const featuredPublicProof = publicProof.filter((p) => p.featured);
 export const aggregateStats = [
   { value: '20M+', label: 'Public viral views', note: 'Single Dope Doctor reel, view count visible on Instagram.' },
   { value: '20+',  label: 'Events filmed in 2026', note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
-  { value: '6',    label: 'Accounts under management', note: '3 Instagram, 3 TikTok across artist and brand.' },
+  { value: '9',    label: 'Accounts under management', note: '6 Instagram, 3 TikTok across artist and brand. Largest are featured on this site.' },
   { value: '2',    label: 'Live websites shipped', note: 'Hairmoment.nl and this site, both fully custom.' },
 ];
