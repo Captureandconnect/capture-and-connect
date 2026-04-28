@@ -1,0 +1,200 @@
+---
+// CookieBanner.astro
+// AVG/GDPR-compliant dismissable cookie notice.
+// Anonymous CF Insights only — no granular toggles needed.
+// Hidden by default; inline script reveals it if localStorage key is absent.
+---
+
+<div
+  id="cnc-cookie-banner"
+  role="region"
+  aria-label="Cookie notice"
+  hidden
+  class="cnc-cookie-banner"
+>
+  <p class="cnc-cookie-label">// PRIVACY</p>
+  <p class="cnc-cookie-copy">
+    We use anonymous analytics to improve the site.
+    No tracking, no ads, no personal data collected.
+  </p>
+  <div class="cnc-cookie-actions">
+    <a href="/privacy" class="cnc-cookie-link">Privacy policy</a>
+    <button
+      id="cnc-cookie-ack-btn"
+      class="cnc-cookie-btn"
+      type="button"
+    >
+      Got it
+    </button>
+  </div>
+</div>
+
+<style>
+  .cnc-cookie-banner {
+    position: fixed;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    z-index: 200;
+    max-width: 22rem;
+    width: calc(100vw - 2.5rem);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem 1.25rem 1.125rem;
+    color: #fff;
+    opacity: 1;
+    /* Fade-out transition — only when banner is being dismissed */
+    transition: opacity 0.3s ease;
+  }
+
+  /* Respect prefers-reduced-motion — skip the fade */
+  @media (prefers-reduced-motion: reduce) {
+    .cnc-cookie-banner {
+      transition: none;
+    }
+  }
+
+  .cnc-cookie-banner.is-hiding {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .cnc-cookie-label {
+    font-family: ui-monospace, 'Courier New', monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0 0 0.5rem;
+  }
+
+  .cnc-cookie-copy {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 0 0.875rem;
+  }
+
+  .cnc-cookie-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .cnc-cookie-link {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .cnc-cookie-link:hover,
+  .cnc-cookie-link:focus-visible {
+    color: rgba(255, 255, 255, 0.85);
+    outline: none;
+  }
+
+  .cnc-cookie-btn {
+    margin-left: auto;
+    background: #fff;
+    color: #020202;
+    border: none;
+    border-radius: 0;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    /* Keyboard focus ring */
+    outline-offset: 2px;
+  }
+
+  .cnc-cookie-btn:hover {
+    opacity: 0.88;
+  }
+
+  .cnc-cookie-btn:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.7);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cnc-cookie-link,
+    .cnc-cookie-btn {
+      transition: none;
+    }
+  }
+
+  /* Mobile: full-width strip anchored to bottom */
+  @media (max-width: 480px) {
+    .cnc-cookie-banner {
+      right: 0;
+      bottom: 0;
+      max-width: 100%;
+      width: 100%;
+      border-left: none;
+      border-right: none;
+      border-bottom: none;
+      border-radius: 0;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var STORAGE_KEY = 'cnc-cookie-ack';
+
+    function applyBannerState() {
+      var banner = document.getElementById('cnc-cookie-banner');
+      if (!banner) return;
+
+      // Already acknowledged — keep hidden
+      try {
+        if (localStorage.getItem(STORAGE_KEY) === '1') {
+          banner.setAttribute('hidden', '');
+          return;
+        }
+      } catch (_) {
+        // localStorage blocked — keep banner hidden to avoid GDPR noise
+        banner.setAttribute('hidden', '');
+        return;
+      }
+
+      // Show banner
+      banner.removeAttribute('hidden');
+
+      // Wire up the "Got it" button (guard against double-binding on re-runs)
+      var btn = document.getElementById('cnc-cookie-ack-btn');
+      if (!btn || btn.dataset.bound) return;
+      btn.dataset.bound = '1';
+
+      btn.addEventListener('click', function () {
+        try {
+          localStorage.setItem(STORAGE_KEY, '1');
+        } catch (_) {}
+
+        var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduced) {
+          banner.setAttribute('hidden', '');
+          banner.remove();
+          return;
+        }
+
+        banner.classList.add('is-hiding');
+        banner.addEventListener(
+          'transitionend',
+          function () {
+            banner.remove();
+          },
+          { once: true }
+        );
+      });
+    }
+
+    // Run on initial load and after every ClientRouter view transition
+    document.addEventListener('astro:page-load', applyBannerState);
+  })();
+</script>

@@ -125,6 +125,13 @@ function titleLines(title: string): string[] {
     transform-style: preserve-3d;
     will-change: transform;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-cell {
+      transition: none !important;
+      will-change: auto;
+    }
+  }
 </style>
 
 <script>
