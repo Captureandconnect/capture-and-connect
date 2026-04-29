@@ -4,8 +4,6 @@ interface Props {
   subtext?: string;
   buttonText?: string;
   buttonHref?: string;
-  secondaryLinkText?: string;
-  secondaryLinkHref?: string;
   showWatermark?: boolean;
 }
 
@@ -14,8 +12,6 @@ const {
   subtext = 'Get a plan that turns content into views, followers and paying customers. Limited spots available each month.',
   buttonText = 'Get Your Growth Plan',
   buttonHref = '/contact',
-  secondaryLinkText = 'Book Your Call',
-  secondaryLinkHref = 'mailto:info@captureandconnect.nl',
   showWatermark = true,
 } = Astro.props;
 ---
@@ -68,12 +64,6 @@ const {
             {buttonText}
           </span>
         </a>
-
-        {secondaryLinkText && secondaryLinkHref && (
-          <a href={secondaryLinkHref} class="font-mono text-[11px] text-white/55 hover:text-white uppercase tracking-[0.2em] transition-colors duration-300" data-event="cta_book_call" data-event-location="cta_block">
-            {secondaryLinkText}
-          </a>
-        )}
       </div>
     </div>
 
