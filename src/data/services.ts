@@ -26,7 +26,7 @@ export const services: Service[] = [
     description:
       'We run your socials. You focus on your work. Everything is built around growth, consistency and results.',
     bullets: [
-      '3 to 5 posts per week',
+      '2 to 10 posts per week',
       'Content planning and strategy',
       'Instagram, TikTok and YouTube',
       'Community and engagement',
