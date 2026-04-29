@@ -153,7 +153,7 @@ export const ExperienceHero = () => {
             {
               id: "002",
               title: "PUBLIC PROOF",
-              val: "65M+ reach",
+              val: "125M+ reach",
               type: "data" as const,
             },
             {
@@ -183,7 +183,7 @@ export const ExperienceHero = () => {
                 <div className="mt-4 flex flex-col gap-3">
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
                     <span>Total reach</span>
-                    <span>65M+</span>
+                    <span>125M+</span>
                   </div>
                   <div className="h-[1px] w-full bg-white/5" />
                   <div className="flex justify-between text-[10px] font-mono text-white/50">
