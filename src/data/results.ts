@@ -84,7 +84,7 @@ export const featuredPublicProof = publicProof.filter((p) => p.featured);
 // - public YouTube uploads
 // - live websites
 export const aggregateStats = [
-  { value: '65M+', label: 'Total reach',          note: 'Cumulative organic reach generated across our roster.' },
+  { value: '125M+', label: 'Total reach',          note: 'Cumulative organic reach generated across our roster.' },
   { value: '20M+', label: 'Views on one video',   note: 'Single Dope Doctor reel. View count visible on Instagram.' },
   { value: '25+',  label: 'Events filmed 2026',   note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
   { value: '9',    label: 'Accounts growing',     note: '6 Instagram, 3 TikTok live right now. Growing every month.' },
