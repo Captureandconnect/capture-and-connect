@@ -239,5 +239,13 @@ export function init(): void {
   initGenericAnimate();
 }
 
-// Auto-initialise when this module is imported
+// Auto-initialise when this module is imported (initial page load)
 init();
+
+// Re-run after Astro ClientRouter view transitions swap in new DOM.
+// Without this, [data-reveal] elements on /about, /services, etc. stay at
+// opacity-0 because GSAP only ran against the homepage DOM.
+document.addEventListener('astro:after-swap', () => {
+  ScrollTrigger.getAll().forEach((st) => st.kill());
+  init();
+});

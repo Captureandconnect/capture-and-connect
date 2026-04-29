@@ -17,13 +17,14 @@
       >
         <div class="relative w-full aspect-[3/4] max-w-md mx-auto md:mx-0 rounded-xl overflow-hidden">
 
-          <!-- Ryan's photo -->
+          <!-- Ryan's photo — LCP candidate on /about, must load eagerly -->
           <img
             src="/images/ryan.jpg"
             alt="Ryan van der Niet filming at a festival"
             width="600"
             height="800"
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
             decoding="async"
             class="w-full h-full object-cover object-top"
           />
@@ -98,6 +99,8 @@
           <a
             href="mailto:info@captureandconnect.nl"
             class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold text-sm tracking-widest uppercase transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] rounded-none"
+            data-event="cta_work_with_ryan"
+            data-event-location="about_team"
           >
             Work With Ryan
           </a>

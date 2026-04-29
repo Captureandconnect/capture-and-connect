@@ -55,6 +55,8 @@ const year = new Date().getFullYear();
           <a
             href={link.href}
             class="group/foot flex items-baseline gap-3 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 hover:text-white transition-colors duration-300"
+            data-event={`nav_${link.label.toLowerCase()}`}
+            data-event-location="footer"
           >
             <span class="text-[9px] text-white/55 group-hover/foot:text-white transition-colors">{link.id}</span>
             <span>{link.label}</span>
@@ -68,12 +70,12 @@ const year = new Date().getFullYear();
         <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em] mb-2">
           003 // CONNECT
         </span>
-        <a href="mailto:info@captureandconnect.nl" class="group/c flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300">
+        <a href="mailto:info@captureandconnect.nl" class="group/c flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300" data-event="contact_email" data-event-location="footer">
           <span class="font-mono text-[10px] text-white/55 group-hover/c:text-white/60 transition-colors">EMAIL</span>
           <span class="h-px flex-1 bg-white/5 group-hover/c:bg-white/30 transition-colors"></span>
           <span class="font-mono text-[11px] tracking-[0.15em]">info@captureandconnect.nl</span>
         </a>
-        <a href="https://www.instagram.com/captureandconnect_" target="_blank" rel="noopener noreferrer" class="group/c flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300">
+        <a href="https://www.instagram.com/captureandconnect_" target="_blank" rel="noopener noreferrer" class="group/c flex items-center gap-3 text-white/60 hover:text-white transition-colors duration-300" data-event="social_instagram" data-event-location="footer">
           <span class="font-mono text-[10px] text-white/55 group-hover/c:text-white/60 transition-colors">SOCIAL</span>
           <span class="h-px flex-1 bg-white/5 group-hover/c:bg-white/30 transition-colors"></span>
           <span class="font-mono text-[11px] tracking-[0.15em]">@captureandconnect_</span>
@@ -104,7 +106,7 @@ const year = new Date().getFullYear();
       <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">
         BTW <span class="text-white/75">NL004804916B78</span>
       </span>
-      <a href="/privacy" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.2em] transition-colors py-2 -my-2">
+      <a href="/privacy" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.2em] transition-colors py-2 -my-2" data-event="footer_privacy">
         Privacy
       </a>
     </div>

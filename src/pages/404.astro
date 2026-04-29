@@ -3,10 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Page not found"
+  title="Page Not Found"
   description="That page doesn't exist. Head back to the homepage or browse the work."
   ogImage="/og-404.jpg"
 >
+
+  <script is:inline>
+    // Prevent search engines from indexing 404 pages
+    const m = document.createElement('meta');
+    m.name = 'robots';
+    m.content = 'noindex, nofollow';
+    document.head.appendChild(m);
+  </script>
 
   <section class="relative bg-[#020202] min-h-[100svh] flex items-center pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 w-full">
@@ -14,7 +22,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <div class="md:col-span-8">
           <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="relative w-2 h-2 bg-white rounded-full"></span>
+            <span class="relative w-2 h-2 bg-white rounded-full">
+              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+            </span>
             ERR // 404
           </span>
           <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">

@@ -134,23 +134,16 @@
     transform: translateY(-200%);
     transition: transform 0.15s ease;
   }
-  .skip-link:focus {
+  /* Use :focus-visible so the skip-link reveal is keyboard-only */
+  .skip-link:focus-visible {
     transform: translateY(0);
     outline: 2px solid #fff;
-    outline-offset: 2px;
-  }
-
-  /* Visible focus rings for keyboard nav, suppressed for mouse users */
-  :focus-visible {
-    outline: 2px solid rgba(255, 255, 255, 0.85);
     outline-offset: 3px;
-    border-radius: 2px;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
   }
-  /* Inputs already have their own focus state — don't double-up */
-  input:focus-visible,
-  textarea:focus-visible,
-  select:focus-visible {
-    outline: none;
+  /* Keep plain :focus as a fallback for older browsers / assistive tech */
+  .skip-link:focus {
+    transform: translateY(0);
   }
 
   /* --- Heading scale --- */
@@ -268,18 +261,39 @@
 }
 
 /* ============================================================
-   Focus Visible — Accessibility with accent color
+   Focus Visible — Accessible keyboard navigation
+   White outline + halo for clarity on the dark (#020202) background.
+   Targets every interactive element explicitly so transition-all on
+   components cannot suppress the ring.
    ============================================================ */
 
-:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 3px;
-  border-radius: var(--radius-sm);
+/* Suppress the default browser outline for mouse/touch users */
+*:focus {
+  outline: none;
 }
 
-/* Remove focus ring for mouse/touch users */
-:focus:not(:focus-visible) {
-  outline: none;
+/* Keyboard-only focus ring — all interactive elements */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  border-radius: 2px;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+}
+
+/* Inputs / textareas get a slightly tighter halo so they don't look
+   like error states — the border already provides context */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.15);
 }
 
 /* ============================================================

@@ -121,6 +121,12 @@ if (reels.length === 0) return;
     background-repeat: repeat;
     background-size: 128px 128px;
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reel-tile {
+      transition: none !important;
+    }
+  }
 </style>
 
 <script>

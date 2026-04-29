@@ -137,6 +137,7 @@ const webDesignFeatures = [
                 : 'border-white/10 text-white/55 hover:border-white/40 hover:text-white',
             ]}
             data-tab={tab.id}
+            data-event={`portfolio_filter_${tab.id}`}
           >
             <span class="text-[9px] text-white/55">{tab.n}</span>
             <span>{tab.label}</span>
@@ -231,6 +232,9 @@ const webDesignFeatures = [
                     rel="noopener noreferrer"
                     class="account-cell group relative bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-7 md:p-9 flex flex-col gap-5 min-h-[360px]"
                     aria-label={`Open Instagram profile of ${account.name}`}
+                    data-event="portfolio_tile_click"
+                    data-event-id={account.handle}
+                    data-event-location="social_media_accounts"
                   >
                     <!-- ID + dot -->
                     <div class="flex items-center justify-between">
@@ -335,6 +339,9 @@ const webDesignFeatures = [
                     target={isExternal ? '_blank' : undefined}
                     rel={isExternal ? 'noopener noreferrer' : undefined}
                     class={`portfolio-cell group relative block ${span} overflow-hidden bg-[#0a0a0a] border border-white/[0.06] hover:border-white/20 transition-all duration-700`}
+                    data-event="portfolio_tile_click"
+                    data-event-id={item.id}
+                    data-event-location={section.id}
                   >
                     <div class={`relative ${aspect} overflow-hidden`}>
                       <img
@@ -389,7 +396,7 @@ const webDesignFeatures = [
             <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
               // {section.ctaNote}
             </p>
-            <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
+            <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4" data-event="cta_book_call" data-event-location={`portfolio_${section.id}`}>
               <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500">
                   <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -460,6 +467,9 @@ const webDesignFeatures = [
                 target="_blank"
                 rel="noopener noreferrer"
                 class="group relative block overflow-hidden bg-[#0a0a0a] border border-white/[0.06] hover:border-white/25 transition-all duration-700"
+                data-event="portfolio_tile_click"
+                data-event-id={site.href.replace('https://', '').replace('/', '')}
+                data-event-location="web_design"
               >
                 <span class="absolute top-0 left-0 h-px w-12 bg-white transition-all duration-700 group-hover:w-full z-20" aria-hidden="true"></span>
 
@@ -539,7 +549,7 @@ const webDesignFeatures = [
         <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
           // From first sketch to live in as little as two weeks.
         </p>
-        <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
+        <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4" data-event="cta_book_call" data-event-location="portfolio_web_design">
           <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500">
               <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
