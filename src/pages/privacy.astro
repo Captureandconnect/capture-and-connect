@@ -94,6 +94,7 @@ const sections = [
   description="How Capture & Connect collects, uses and protects your personal data. Cookieless analytics, no third-party tracking."
   ogImage="/og-privacy.jpg"
 >
+  <Fragment set:html="<!--email_off-->" />
 
   <!-- Page Hero -->
   <section class="relative bg-[#020202] pt-32 pb-12 md:pt-40 md:pb-16 overflow-hidden">
@@ -158,5 +159,6 @@ const sections = [
       </div>
     </div>
   </section>
+  <Fragment set:html="<!--/email_off-->" />
 
 </BaseLayout>
