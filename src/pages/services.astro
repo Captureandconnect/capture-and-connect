@@ -3,12 +3,63 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceDetail from '../components/sections/ServiceDetail.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import { services } from '../data/services';
+
+const faq = [
+  {
+    q: 'How fast can we get content live?',
+    a: 'From first call to first post is under 30 days. Strategy and shoot scheduling in week one, production and editing in week two, polish and publish in week three.',
+  },
+  {
+    q: 'Will you travel for shoots and events?',
+    a: 'Yes. We shoot across the Netherlands as standard. Travel beyond NL, gear rental and venue fees are passed through at cost and listed in the proposal up front — no hidden line items.',
+  },
+  {
+    q: 'Can I book a single shoot, or do I have to commit to a retainer?',
+    a: 'Both. Event films, aftermovies and web builds are project-based. Social media management and ongoing content production run on monthly retainers with a three-month minimum. One-off shoots and edits stand on their own.',
+  },
+  {
+    q: 'Do you build the strategy or just execute?',
+    a: 'Both. Every engagement opens with a discovery call, content plan, channel map and posting cadence before we shoot anything. Strategy and planning are part of the scope on every proposal — not an upsell.',
+  },
+  {
+    q: 'What does the production workflow look like, shoot to publish?',
+    a: 'Multicam capture, edit, color, motion and copy — all in-house. You get a ready-to-publish file, or the post itself if we run your channels. No subcontractors, no handoffs, no broken cadence.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const serviceSchemas = services.map((service) => ({
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: service.title,
+  description: service.description,
+  serviceType: service.title,
+  provider: {
+    '@type': 'Organization',
+    name: 'Capture & Connect',
+    url: 'https://captureandconnect.nl',
+  },
+  areaServed: { '@type': 'Country', name: 'Netherlands' },
+  url: `https://captureandconnect.nl/services#${service.id}`,
+}));
+
+const pageSchemas = [faqSchema, ...serviceSchemas];
 ---
 
 <BaseLayout
   title="Services"
   description="Content creation, social media management and conversion-focused web design. One team, one system, built for growth."
   ogImage="/og-services.jpg"
+  jsonLd={pageSchemas}
 >
 
   <!-- Page Hero -->
