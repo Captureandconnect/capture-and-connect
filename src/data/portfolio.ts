@@ -97,22 +97,22 @@ export const portfolioItems: PortfolioItem[] = [
     external: false,
     displayCategory: 'Event',
   },
-  // 6
-  {
-    id: 'web-hairmoment-noordwijk',
-    title: 'Hairmoment · Hair Salon Noordwijk',
-    category: 'social-media',
-    thumbnail: '/images/portfolio/cover-hairmoment-v4.jpg',
-    stats: 'Live',
-    description:
-      'Full website design and build for Hairmoment hair salon in Noordwijk. Live on hairmoment.nl.',
-    client: 'Hairmoment Noordwijk',
-    featured: true,
-    href: 'https://hairmoment.nl/',
-    external: true,
-    coverStyle: 'design',
-    displayCategory: 'Web Design',
-  },
+  // 6 — Hairmoment hidden from social-media grid; still shown in Web Design Live Websites section. Re-enable by uncommenting.
+  // {
+  //   id: 'web-hairmoment-noordwijk',
+  //   title: 'Hairmoment · Hair Salon Noordwijk',
+  //   category: 'social-media',
+  //   thumbnail: '/images/portfolio/cover-hairmoment-v4.jpg',
+  //   stats: 'Live',
+  //   description:
+  //     'Full website design and build for Hairmoment hair salon in Noordwijk. Live on hairmoment.nl.',
+  //   client: 'Hairmoment Noordwijk',
+  //   featured: true,
+  //   href: 'https://hairmoment.nl/',
+  //   external: true,
+  //   coverStyle: 'design',
+  //   displayCategory: 'Web Design',
+  // },
 
   // ── Additional content-creation items (not on homepage) ──────────────────
 
