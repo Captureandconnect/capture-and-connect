@@ -160,8 +160,11 @@ const currentPath = Astro.url.pathname;
 </div>
 
 <style>
+  header {
+    background: linear-gradient(to bottom, rgb(2 2 2 / 0.85) 0%, rgb(2 2 2 / 0.6) 70%, rgb(2 2 2 / 0) 100%);
+  }
   header.scrolled {
-    background-color: rgb(2 2 2 / 0.7);
+    background: rgb(2 2 2 / 0.92);
     backdrop-filter: blur(24px) saturate(140%);
     -webkit-backdrop-filter: blur(24px) saturate(140%);
     border-bottom: 1px solid rgb(255 255 255 / 0.05);
@@ -211,7 +214,7 @@ const currentPath = Astro.url.pathname;
   const mobileMenu = document.getElementById('mobile-menu') as HTMLElement;
 
   const handleScroll = () => {
-    if (window.scrollY > 20) header.classList.add('scrolled');
+    if (window.scrollY > 4) header.classList.add('scrolled');
     else header.classList.remove('scrolled');
   };
   window.addEventListener('scroll', handleScroll, { passive: true });
