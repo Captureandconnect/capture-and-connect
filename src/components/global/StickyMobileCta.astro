@@ -1,0 +1,38 @@
+---
+// StickyMobileCta.astro — visible only below 768px, appears after 300px scroll.
+// Hidden on /contact (the destination) via the data-no-cta attribute on <body>.
+const isContactPage = Astro.url.pathname.startsWith('/contact');
+---
+
+{!isContactPage && (
+  <a
+    id="cnc-mobile-cta"
+    href="/contact"
+    class="cnc-mobile-cta"
+    role="complementary"
+    aria-label="Sticky booking call-to-action"
+    data-event="cta_book_call"
+    data-event-location="mobile_sticky"
+  >
+    <span class="cnc-mobile-cta__label">Ready to grow?</span>
+    <span class="cnc-mobile-cta__btn">
+      Book Free Call
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-left: 6px;">
+        <path d="M7 17L17 7M17 7H8M17 7V16" />
+      </svg>
+    </span>
+  </a>
+)}
+
+<script is:inline>
+  (() => {
+    const cta = document.getElementById('cnc-mobile-cta');
+    if (!cta) return;
+    const onScroll = () => {
+      if (window.scrollY > 300) cta.setAttribute('data-visible', '1');
+      else cta.removeAttribute('data-visible');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>

@@ -56,10 +56,15 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
 ---
 
 <BaseLayout
-  title="Services"
-  description="Content creation, social media management and conversion-focused web design. One team, one system, built for growth."
+  title="Content, Social Media & Web Design Services | Capture & Connect"
+  fullTitle={true}
+  description="Three services, one growth system: content creation, social media management and conversion-focused web design — for artists, festivals and brands in NL."
   ogImage="/og-services.jpg"
   jsonLd={pageSchemas}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services/' },
+  ]}
 >
 
   <!-- Page Hero -->
@@ -73,8 +78,8 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
             </span>
             002 // SERVICES
           </span>
-          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Everything to<br/><span class="text-outline not-italic">grow.</span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Everything to <br/><span class="text-outline not-italic">grow.</span>
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
@@ -103,8 +108,8 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
             <span class="inline-block w-8 h-px bg-white/30"></span>
             006 // FIT CHECK
           </span>
-          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Right<br/><span class="text-outline not-italic">fit?</span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Right <br/><span class="text-outline not-italic">fit?</span>
           </h2>
         </div>
         <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
@@ -120,7 +125,7 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
             <span class="w-2 h-2 rounded-full bg-white"></span>
           </div>
           <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white">
-            Brands ready to<br/><span class="text-outline not-italic">grow.</span>
+            Brands ready to <br/><span class="text-outline not-italic">grow.</span>
           </h3>
           <ul class="flex flex-col gap-0 mt-2">
             {[
@@ -146,7 +151,7 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
             <span class="w-2 h-2 rounded-full border border-white/30"></span>
           </div>
           <h3 class="text-3xl md:text-4xl font-black italic uppercase leading-[0.95] tracking-tighter text-white/85">
-            Probably<br/><span class="text-outline not-italic">not us.</span>
+            Probably <br/><span class="text-outline not-italic">not us.</span>
           </h3>
           <ul class="flex flex-col gap-0 mt-2">
             {[
@@ -177,8 +182,8 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
             <span class="inline-block w-8 h-px bg-white/30"></span>
             007 // WHY US
           </span>
-          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Built for<br/><span class="text-outline not-italic">results.</span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Built for <br/><span class="text-outline not-italic">results.</span>
           </h2>
         </div>
         <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">

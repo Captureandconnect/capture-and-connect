@@ -42,9 +42,9 @@ const stats = [
         </span>
         <h2
           id="results-heading"
-          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white"
+          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white"
         >
-          Numbers don't<br/><span class="text-outline not-italic">lie.</span>
+          Numbers don't <br/><span class="text-outline not-italic">lie.</span>
         </h2>
       </div>
       <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
@@ -70,13 +70,14 @@ const stats = [
             </span>
           </div>
 
-          <!-- Counter -->
+          <!-- Counter — final value is the initial SSR text so a no-JS or
+               slow-firing observer never strands users on a "0". -->
           <div class="flex items-baseline gap-1 mt-auto">
             <span
               class="counter text-6xl md:text-7xl lg:text-[5.5rem] font-black italic leading-none tracking-tighter text-white tabular-nums"
               data-target={stat.target}
               data-suffix={stat.suffix}
-            >0</span>
+            >{stat.target}</span>
             <span class="text-3xl md:text-4xl font-black italic text-white/55 tracking-tighter">{stat.suffix}</span>
           </div>
 
@@ -129,8 +130,25 @@ const stats = [
 </style>
 
 <script>
-  // Counter animation, runs once per element when scrolled into view
+  // Counter animation. Final value is the SSR/initial text content (set in the
+  // template) — so even if the script never runs or the IO never fires, the
+  // user sees the correct number. We only animate when the element is below
+  // the fold AND prefers-reduced-motion is not set.
   const counters = document.querySelectorAll<HTMLElement>('.counter');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduced) {
+    counters.forEach((el) => {
+      const rect = el.getBoundingClientRect();
+      const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
+      if (alreadyVisible) {
+        el.dataset.done = '1';
+        return; // SSR text is already on screen — don't reset to 0.
+      }
+      // Below the fold — safe to reset to 0 so the count-up animation reads.
+      el.textContent = '0';
+    });
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (!entry.isIntersecting) return;

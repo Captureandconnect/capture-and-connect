@@ -146,10 +146,13 @@
     transform: translateY(0);
   }
 
-  /* --- Heading scale --- */
+  /* --- Heading scale ---
+     Heavily italic display headlines need a min line-height of ~1.0 so
+     ascenders/descenders never clip. Component-level Tailwind classes can
+     still tighten via leading-[0.9] etc., but never below 0.95. */
   h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
-    line-height: 1.2;
+    line-height: 1.05;
     letter-spacing: -0.02em;
   }
 
@@ -326,6 +329,76 @@ select:focus-visible {
   white-space: nowrap;
   border-width: 0;
 }
+
+/* Tap-target booster — adds invisible padding so a small icon/text link still
+   meets WCAG 2.5.5 (44×44 CSS px) without changing visual size. Use on any
+   <a>/<button> whose visible art is smaller than 44px on a side. */
+.tap-target {
+  position: relative;
+}
+.tap-target::before {
+  content: "";
+  position: absolute;
+  inset: 50% 50% 50% 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  pointer-events: auto;
+}
+
+/* Sticky mobile booking CTA — only on small viewports. Pinned to the bottom,
+   does not appear on /contact or /404 (page-level opt-out via [data-no-cta]). */
+.cnc-mobile-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.875rem;
+  padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+  background: rgba(2, 2, 2, 0.86);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  transform: translateY(110%);
+  transition: transform 0.4s var(--ease-out-expo);
+  pointer-events: none;
+}
+.cnc-mobile-cta[data-visible="1"] {
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.cnc-mobile-cta__label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.3;
+}
+.cnc-mobile-cta__btn {
+  background: #fff;
+  color: #020202;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0 18px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .cnc-mobile-cta { display: none; }
+}
+[data-no-cta] .cnc-mobile-cta { display: none !important; }
 
 /* ============================================================
    Experience Hero — 3D + glass deck utilities

@@ -8,15 +8,16 @@
   action="/api/contact"
   class="w-full space-y-6"
 >
-  <!-- Honeypot — hidden from humans, catches bots -->
+  <!-- Honeypot — hidden from humans + screen readers, catches bots -->
   <div class="hidden" aria-hidden="true">
-    <label for="website">Website (leave blank)</label>
+    <label for="website" aria-hidden="true">Website (leave blank)</label>
     <input
       type="text"
       id="website"
       name="website"
       tabindex="-1"
       autocomplete="off"
+      aria-hidden="true"
     />
   </div>
 
@@ -24,9 +25,9 @@
   <div class="flex flex-col gap-2">
     <label
       for="name"
-      class="text-sm font-semibold tracking-widest uppercase text-white/60"
+      class="text-sm font-semibold tracking-widest uppercase text-white/65"
     >
-      Name <span class="text-white/55">*</span>
+      Name <span class="text-white/55" aria-hidden="true">*</span>
     </label>
     <input
       type="text"
@@ -34,8 +35,10 @@
       name="name"
       required
       autocomplete="name"
+      inputmode="text"
+      autocapitalize="words"
       placeholder="Your name"
-      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 min-h-[44px]"
     />
   </div>
 
@@ -54,8 +57,10 @@
       required
       autocomplete="email"
       inputmode="email"
+      autocapitalize="off"
+      spellcheck="false"
       placeholder="your@email.com"
-      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 min-h-[44px]"
     />
   </div>
 
@@ -72,8 +77,9 @@
       id="company"
       name="company"
       autocomplete="organization"
+      inputmode="text"
       placeholder="Your company or brand"
-      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200"
+      class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 min-h-[44px]"
     />
   </div>
 
@@ -89,7 +95,8 @@
       <select
         id="service"
         name="service"
-        class="w-full appearance-none bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 cursor-pointer"
+        autocomplete="off"
+        class="w-full appearance-none bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 cursor-pointer min-h-[44px]"
       >
         <option value="" class="bg-[#0a0a0a] text-white/55">Select a service…</option>
         <option value="Content Creation" class="bg-[#0a0a0a] text-white">Content Creation</option>
@@ -129,6 +136,8 @@
       name="message"
       required
       rows="4"
+      autocomplete="off"
+      inputmode="text"
       placeholder="Tell us about your goals and where you want to be in 6 months…"
       class="bg-transparent border border-white/10 rounded-lg px-4 py-3 text-base text-white placeholder:text-white/55 focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/20 transition-colors duration-200 resize-none"
     ></textarea>
@@ -138,10 +147,10 @@
   <button
     id="submit-btn"
     type="submit"
-    class="w-full bg-white text-black font-bold tracking-wide py-4 rounded-lg hover:bg-white/90 active:scale-[0.98] transition-all duration-200 text-sm uppercase"
+    class="w-full bg-white text-black font-bold tracking-wide py-4 min-h-[52px] rounded-lg hover:bg-white/90 active:scale-[0.98] transition-all duration-200 text-sm uppercase"
     data-event="contact_form_submit"
   >
-    Get My Growth Plan
+    Send My Brief →
   </button>
 
   <!-- Status message -->

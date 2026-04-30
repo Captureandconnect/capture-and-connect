@@ -51,10 +51,15 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="Pricing"
-  description="Custom quote, every project. We don't list prices because every brand has a different starting point. Tell us what you need — we send a proposal within a few days."
+  title="Pricing — Custom Quote, Honest Scope | Capture & Connect"
+  fullTitle={true}
+  description="Tailored proposals for every brand. Content retainers, project work and event films — written quote within a few days, no hidden line items."
   ogImage="/og-pricing.jpg"
   jsonLd={faqSchema}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Pricing', href: '/pricing/' },
+  ]}
 >
 
   <!-- Page Hero -->
@@ -68,14 +73,45 @@ const faqSchema = {
             </span>
             009 // PRICING
           </span>
-          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Custom<br/><span class="text-outline not-italic">quote.</span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Custom <br/><span class="text-outline not-italic">quote.</span>
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
-          Every brand has a different starting point. So we don't list prices. Tell us what you need, get a tailored proposal.
+          Every brand has a different starting point. So we don't list fixed prices. Tell us what you need, get a tailored proposal.
         </p>
       </div>
+    </div>
+  </section>
+
+  <!-- Starting-from anchor band — qualifies leads, removes "is this in our budget?" friction -->
+  <section
+    class="relative bg-[#020202] border-t border-white/[0.05]"
+    aria-label="Starting price ranges"
+  >
+    <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 py-10 md:py-14">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.04] border border-white/[0.05]">
+        <div class="bg-[#020202] p-7 md:p-8 flex flex-col gap-3">
+          <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// CONTENT &amp; SOCIAL · STARTING FROM</span>
+          <h3 class="text-3xl md:text-4xl font-black italic tracking-tighter text-white leading-none">
+            €750<span class="text-white/55 text-2xl md:text-3xl">/mo</span>
+          </h3>
+          <p class="text-[13px] text-white/55 leading-relaxed">Monthly retainer. Strategy, shoots and posting on one or two platforms.</p>
+        </div>
+        <div class="bg-[#020202] p-7 md:p-8 flex flex-col gap-3">
+          <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// EVENT FILM · STARTING FROM</span>
+          <h3 class="text-3xl md:text-4xl font-black italic tracking-tighter text-white leading-none">€1,500</h3>
+          <p class="text-[13px] text-white/55 leading-relaxed">Per event. Multicam capture, recap edit and a delivery-ready aftermovie.</p>
+        </div>
+        <div class="bg-[#020202] p-7 md:p-8 flex flex-col gap-3">
+          <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// CUSTOM WEBSITE · STARTING FROM</span>
+          <h3 class="text-3xl md:text-4xl font-black italic tracking-tighter text-white leading-none">€2,500</h3>
+          <p class="text-[13px] text-white/55 leading-relaxed">One-off project. Custom design, mobile-first build, domain &amp; hosting handled.</p>
+        </div>
+      </div>
+      <p class="font-mono text-[10px] text-white/45 uppercase tracking-[0.2em] mt-5 max-w-2xl">
+        // Anchors only. Final scope and number land in your written proposal.
+      </p>
     </div>
   </section>
 
@@ -88,8 +124,8 @@ const faqSchema = {
             <span class="inline-block w-8 h-px bg-white/30"></span>
             010 // WHAT SHAPES THE QUOTE
           </span>
-          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Four<br/><span class="text-outline not-italic">inputs.</span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Four <br/><span class="text-outline not-italic">inputs.</span>
           </h2>
         </div>
         <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
@@ -124,8 +160,8 @@ const faqSchema = {
             <span class="inline-block w-8 h-px bg-white/30"></span>
             011 // ALWAYS INCLUDED
           </span>
-          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            What's in<br/><span class="text-outline not-italic">scope.</span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            What's in <br/><span class="text-outline not-italic">scope.</span>
           </h2>
         </div>
         <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
@@ -160,8 +196,8 @@ const faqSchema = {
             <span class="inline-block w-8 h-px bg-white/30"></span>
             012 // FAQ
           </span>
-          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Common<br/><span class="text-outline not-italic">questions.</span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Common <br/><span class="text-outline not-italic">questions.</span>
           </h2>
         </div>
       </div>

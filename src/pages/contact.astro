@@ -4,9 +4,14 @@ import ContactForm from '../components/forms/ContactForm.astro';
 ---
 
 <BaseLayout
-  title="Contact"
-  description="Book your call with Capture & Connect. Growth partner for artists, festivals and brands. We reply within 24 hours."
+  title="Contact — Book a Free Growth Call | Capture & Connect"
+  fullTitle={true}
+  description="Tell us where your brand is and where you want it to be. Capture & Connect replies to every brief within 24 hours, weekdays."
   ogImage="/og-contact.jpg"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Contact', href: '/contact/' },
+  ]}
 >
 
   <!-- Page Hero -->
@@ -20,8 +25,8 @@ import ContactForm from '../components/forms/ContactForm.astro';
             </span>
             006 // CONTACT
           </span>
-          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Start your<br/><span class="text-outline not-italic">growth.</span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Start your <br/><span class="text-outline not-italic">growth.</span>
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">

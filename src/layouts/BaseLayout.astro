@@ -4,6 +4,7 @@ import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
 import SoundToggle from '../components/global/SoundToggle.astro';
 import CookieBanner from '../components/global/CookieBanner.astro';
+import StickyMobileCta from '../components/global/StickyMobileCta.astro';
 
 import '../styles/global.css';
 import '../styles/animations.css';
@@ -13,11 +14,25 @@ interface Props {
   description: string;
   ogImage?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** When true, render `title` as-is (used for keyword-led titles that already include the brand). */
+  fullTitle?: boolean;
+  /** Optional breadcrumb trail — emits BreadcrumbList JSON-LD automatically. */
+  breadcrumbs?: { name: string; href: string }[];
+  /** Override <html lang>. Defaults to 'en'. The /privacy/nl page sets 'nl'. */
+  lang?: string;
 }
 
-const { title, description, ogImage = '/og-default.jpg', jsonLd } = Astro.props;
+const {
+  title,
+  description,
+  ogImage = '/og-default.jpg',
+  jsonLd,
+  fullTitle = false,
+  breadcrumbs,
+  lang = 'en',
+} = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://captureandconnect.nl');
-const pageTitle = `${title} | Capture & Connect`;
+const pageTitle = fullTitle ? title : `${title} | Capture & Connect`;
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 
 const organizationSchema = {
@@ -42,11 +57,25 @@ const websiteSchema = {
 };
 
 const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
-const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
+
+const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
+  ? [{
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.name,
+        item: new URL(crumb.href, 'https://captureandconnect.nl').toString(),
+      })),
+    }]
+  : [];
+
+const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...pageSchemas];
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -73,11 +102,15 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <!-- Theme color -->
+    <!-- Theme color + dark color-scheme to suppress white flash before CSS loads -->
     <meta name="theme-color" content="#020202" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="format-detection" content="telephone=no" />
 
     <!-- Inter Variable preload — stable filename, served from /public/fonts -->
+    <!-- Both regular and italic preloaded: H1/H2 across the site use the italic variant. -->
     <link rel="preload" href="/fonts/inter-latin-wght.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+    <link rel="preload" href="/fonts/inter-latin-wght-italic.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
     <!-- Cross-page crossfade transitions (Astro 4+) -->
     <ClientRouter fallback="swap" />
@@ -133,6 +166,7 @@ const allSchemas = [organizationSchema, websiteSchema, ...pageSchemas];
     </main>
     <Footer />
     <SoundToggle />
+    <StickyMobileCta />
     <CookieBanner />
 
     <!-- GSAP animations — deferred to browser idle so they never block LCP -->

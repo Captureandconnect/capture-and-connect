@@ -20,9 +20,9 @@ const projects = portfolioItems.filter((p) => p.featured).slice(0, 6);
         </span>
         <h2
           id="portfolio-heading"
-          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white"
+          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white"
         >
-          Selected<br/><span class="text-outline not-italic">work.</span>
+          Selected <br/><span class="text-outline not-italic">work.</span>
         </h2>
       </div>
       <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
@@ -53,7 +53,7 @@ const projects = portfolioItems.filter((p) => p.featured).slice(0, 6);
             <div class="relative aspect-[4/5] overflow-hidden">
               <img
                 src={project.thumbnail}
-                alt=""
+                alt={`${project.title} — ${displayCategory} content by Capture & Connect`}
                 width="800"
                 height="1000"
                 loading={idx === 0 ? 'eager' : 'lazy'}

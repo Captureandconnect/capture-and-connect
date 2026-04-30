@@ -12,9 +12,14 @@ const values = [
 ---
 
 <BaseLayout
-  title="About"
-  description="Capture & Connect — growth partner for artists, festivals and brands. Built by Ryan van der Niet, from solo creator to full-service team."
+  title="About Capture & Connect — Growth Partner for Artists & Brands"
+  fullTitle={true}
+  description="Capture & Connect is a Netherlands-based creative agency built by Ryan van der Niet. Content, social media and strategy that turn attention into measurable growth."
   ogImage="/og-about.jpg"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about/' },
+  ]}
 >
 
   <!-- Page Hero -->
@@ -28,8 +33,8 @@ const values = [
             </span>
             005 // ABOUT
           </span>
-          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            Built for<br/><span class="text-outline not-italic">growth.</span>
+          <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            Built for <br/><span class="text-outline not-italic">growth.</span>
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
@@ -51,8 +56,8 @@ const values = [
             <span class="inline-block w-8 h-px bg-white/30"></span>
             006 // VALUES
           </span>
-          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white">
-            What<br/><span class="text-outline not-italic">drives us.</span>
+          <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
+            What <br/><span class="text-outline not-italic">drives us.</span>
           </h2>
         </div>
         <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">

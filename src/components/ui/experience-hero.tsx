@@ -92,10 +92,10 @@ export const ExperienceHero = () => {
 
       <div
         ref={revealRef}
-        className="relative z-10 w-full flex flex-col md:flex-row p-8 md:p-14 lg:p-20 pt-28 md:pt-32 lg:pt-36 min-h-screen items-center md:items-stretch gap-10"
+        className="relative z-10 w-full flex flex-col md:flex-row px-6 md:px-14 lg:px-20 pb-10 md:pb-14 pt-24 md:pt-28 lg:pt-32 min-h-[100svh] items-center md:items-stretch gap-8 md:gap-10"
       >
-        <div className="flex-1 min-w-0 flex flex-col justify-between pb-12 md:pb-8 w-full">
-          <div className="invisible flex items-center gap-3" aria-hidden="true">
+        <div className="flex-1 min-w-0 flex flex-col justify-center md:justify-between gap-8 md:gap-0 md:pb-8 w-full">
+          <div className="hidden md:flex invisible items-center gap-3" aria-hidden="true">
             <div className="relative w-2.5 h-2.5 rounded-full" />
             <span className="font-mono text-[11px] font-bold tracking-[0.2em] uppercase">
               &nbsp;
@@ -103,12 +103,12 @@ export const ExperienceHero = () => {
           </div>
 
           <div className="max-w-4xl lg:-translate-y-8 pr-0 md:pr-12">
-            <h1 className="text-[clamp(2.5rem,6.5vw,7.5rem)] font-black leading-[0.92] tracking-tighter text-white uppercase italic">
+            <h1 className="text-[clamp(2.75rem,6.5vw,7.5rem)] font-black leading-[0.95] md:leading-[0.92] tracking-tighter text-white uppercase italic">
               BUILD A BRAND <br />
               PEOPLE FOLLOW <br />
               <span className="text-outline not-italic">AND BUY FROM</span>
             </h1>
-            <p className="mt-8 font-mono text-[11px] text-white/55 uppercase tracking-[0.35em] max-w-md leading-relaxed">
+            <p className="mt-6 md:mt-8 text-base md:text-[15px] text-white/75 max-w-md leading-relaxed">
               Content, social media &amp; strategy that turn attention into
               views, followers and revenue.
             </p>
@@ -117,7 +117,10 @@ export const ExperienceHero = () => {
           <a
             ref={ctaRef}
             href="/contact"
-            className="w-fit flex items-center gap-6 group lg:-translate-y-20"
+            className="w-fit inline-flex items-center gap-5 group lg:-translate-y-20 min-h-[56px] py-2 -my-2"
+            data-event="cta_book_call"
+            data-event-location="hero"
+            aria-label="Book a free growth call"
           >
             <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white transition-all duration-500 overflow-hidden">
               <svg
@@ -127,6 +130,7 @@ export const ExperienceHero = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 className="group-hover:stroke-black stroke-white transition-colors duration-500"
+                aria-hidden="true"
               >
                 <path
                   d="M7 17L17 7M17 7H8M17 7V16"
@@ -136,8 +140,8 @@ export const ExperienceHero = () => {
                 />
               </svg>
             </div>
-            <span className="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
-              Get Your Growth Plan
+            <span className="font-mono text-[12px] font-bold text-white uppercase tracking-[0.18em]">
+              Book Your Free Call
             </span>
           </a>
         </div>

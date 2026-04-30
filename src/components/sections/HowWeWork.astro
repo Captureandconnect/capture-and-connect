@@ -22,9 +22,9 @@ const steps = [
         </span>
         <h2
           id="process-heading"
-          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.87] tracking-tighter text-white"
+          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white"
         >
-          How we<br/><span class="text-outline not-italic">work.</span>
+          How we <br/><span class="text-outline not-italic">work.</span>
         </h2>
       </div>
       <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
@@ -73,14 +73,19 @@ const steps = [
       <p class="font-mono text-[11px] text-white/55 uppercase tracking-[0.2em] max-w-md">
         // From first call to first post in under 30 days.
       </p>
-      <a href="mailto:info@captureandconnect.nl" class="group/cta inline-flex items-center gap-4">
+      <a
+        href="/contact"
+        class="group/cta inline-flex items-center gap-4 min-h-[44px]"
+        data-event="cta_book_call"
+        data-event-location="how_we_work"
+      >
         <span class="w-12 h-12 rounded-full border border-white/15 flex items-center justify-center group-hover/cta:bg-white transition-all duration-500">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover/cta:stroke-black stroke-white transition-colors duration-500" aria-hidden="true">
             <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
         <span class="font-mono text-[11px] font-bold text-white uppercase tracking-[0.2em]">
-          Book Your Call
+          Start With Discovery
         </span>
       </a>
     </div>
