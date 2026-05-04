@@ -1,7 +1,7 @@
 export interface PortfolioItem {
   id: string;
   title: string;
-  category: 'content-creation' | 'social-media';
+  category: 'content-creation' | 'social-media' | 'web-design';
   thumbnail: string;
   video?: string;
   stats?: string;
@@ -97,22 +97,24 @@ export const portfolioItems: PortfolioItem[] = [
     external: false,
     displayCategory: 'Event',
   },
-  // 6 — Hairmoment hidden from social-media grid; still shown in Web Design Live Websites section. Re-enable by uncommenting.
-  // {
-  //   id: 'web-hairmoment-noordwijk',
-  //   title: 'Hairmoment · Hair Salon Noordwijk',
-  //   category: 'social-media',
-  //   thumbnail: 'cover-hairmoment-v4.jpg',
-  //   stats: 'Live',
-  //   description:
-  //     'Full website design and build for Hairmoment hair salon in Noordwijk. Live on hairmoment.nl.',
-  //   client: 'Hairmoment Noordwijk',
-  //   featured: true,
-  //   href: 'https://hairmoment.nl/',
-  //   external: true,
-  //   coverStyle: 'design',
-  //   displayCategory: 'Web Design',
-  // },
+  // 6 — Hairmoment fills slot 6 on the homepage. Category is web-design so it
+  // does not show up in the /portfolio social-media filter (which only matches
+  // category === 'social-media').
+  {
+    id: 'web-hairmoment-noordwijk',
+    title: 'Hairmoment · Hair Salon Noordwijk',
+    category: 'web-design',
+    thumbnail: 'cover-hairmoment-v4.jpg',
+    stats: 'Live',
+    description:
+      'Full website design and build for Hairmoment hair salon in Noordwijk. Live on hairmoment.nl.',
+    client: 'Hairmoment Noordwijk',
+    featured: true,
+    href: 'https://hairmoment.nl/',
+    external: true,
+    coverStyle: 'design',
+    displayCategory: 'Web Design',
+  },
 
   // ── Additional content-creation items (not on homepage) ──────────────────
 
