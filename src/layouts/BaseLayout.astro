@@ -2,7 +2,6 @@
 import { ClientRouter } from 'astro:transitions';
 import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
-import SoundToggle from '../components/global/SoundToggle.astro';
 import CookieBanner from '../components/global/CookieBanner.astro';
 import StickyMobileCta from '../components/global/StickyMobileCta.astro';
 
@@ -165,7 +164,6 @@ const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...p
       <slot />
     </main>
     <Footer transition:persist="cnc-footer" />
-    <SoundToggle transition:persist="cnc-sound" />
     <StickyMobileCta transition:persist="cnc-mobile-cta" />
     <CookieBanner transition:persist="cnc-cookie" />
 
