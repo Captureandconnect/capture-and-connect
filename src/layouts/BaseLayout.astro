@@ -160,14 +160,14 @@ const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...p
       aria-hidden="true"
     ></div>
 
-    <Nav />
+    <Nav transition:persist="cnc-nav" />
     <main id="main">
       <slot />
     </main>
-    <Footer />
-    <SoundToggle />
-    <StickyMobileCta />
-    <CookieBanner />
+    <Footer transition:persist="cnc-footer" />
+    <SoundToggle transition:persist="cnc-sound" />
+    <StickyMobileCta transition:persist="cnc-mobile-cta" />
+    <CookieBanner transition:persist="cnc-cookie" />
 
     <!-- GSAP animations — deferred to browser idle so they never block LCP -->
     <script>
@@ -197,6 +197,17 @@ const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...p
         data-cf-beacon={`{"token": "${cfBeaconToken}"}`}
       />
     )}
+
+    <script is:inline>
+      if ('serviceWorker' in navigator && location.protocol === 'https:') {
+        const reg = () => navigator.serviceWorker.register('/sw.js').catch(() => {});
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(reg, { timeout: 4000 });
+        } else {
+          window.addEventListener('load', () => setTimeout(reg, 1500));
+        }
+      }
+    </script>
 
   </body>
 </html>

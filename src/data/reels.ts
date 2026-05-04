@@ -15,7 +15,7 @@ export const reels: Reel[] = [
     caption: 'Reel · TBD',
     url: '#',
     video: '/videos/reels/reel-01.mp4',
-    thumbnail: '/images/reels/reel-01.jpg',
+    thumbnail: 'reel-01.jpg',
   },
   {
     id: '002',
@@ -23,7 +23,7 @@ export const reels: Reel[] = [
     caption: 'Bomberjacket drop',
     url: '#',
     video: '/videos/reels/reel-02.mp4',
-    thumbnail: '/images/reels/reel-02.jpg',
+    thumbnail: 'reel-02.jpg',
   },
   {
     id: '003',

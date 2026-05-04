@@ -28,7 +28,7 @@ export const events: EventCard[] = [
     edition: '2026',
     date: 'April 2026',
     venue: 'Haaksbergen, NL',
-    cover: '/images/portfolio/cover-rebirth.jpg',
+    cover: 'cover-rebirth.jpg',
     tag: 'Festival · Outdoor',
     totalArtists: 7,
     djs: [
@@ -70,7 +70,7 @@ export const events: EventCard[] = [
     edition: '2026',
     date: 'October 2026',
     venue: 'Brabanthallen, Den Bosch',
-    cover: '/images/portfolio/cover-majorconspiracy.jpg',
+    cover: 'cover-majorconspiracy.jpg',
     tag: 'Festival · Indoor',
     totalArtists: 7,
     djs: [
@@ -107,7 +107,7 @@ export const events: EventCard[] = [
     edition: 'Austria 2026',
     date: 'July 2026',
     venue: 'Salzburgring, AT',
-    cover: '/images/portfolio/cover-moh-austria-v2.jpg',
+    cover: 'cover-moh-austria-v2.jpg',
     tag: 'Festival · Outdoor',
     totalArtists: 5,
     djs: [
@@ -139,7 +139,7 @@ export const events: EventCard[] = [
     edition: '2026',
     date: 'February 2026',
     venue: 'Sportpaleis, Antwerpen',
-    cover: '/images/portfolio/cover-reverze.jpg',
+    cover: 'cover-reverze.jpg',
     tag: 'Festival · Belgium',
     totalArtists: 3,
     djs: [
@@ -161,7 +161,7 @@ export const events: EventCard[] = [
     edition: 'Netherlands 2026',
     date: 'April 2026',
     venue: 'Brabanthallen, Den Bosch',
-    cover: '/images/portfolio/cover-moh-2026.jpg',
+    cover: 'cover-moh-2026.jpg',
     tag: 'Festival · Indoor',
     totalArtists: 5,
     djs: [
@@ -193,7 +193,7 @@ export const events: EventCard[] = [
     edition: '2026',
     date: 'April 2026',
     venue: 'Schijndel, NL',
-    cover: '/images/portfolio/cover-paaspop.jpg',
+    cover: 'cover-paaspop.jpg',
     tag: 'Festival · Outdoor',
     djs: [
       {

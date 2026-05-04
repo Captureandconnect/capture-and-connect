@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { reels } from '../../data/reels';
+import { reelImage } from '../../lib/portfolioImages';
 
 if (reels.length === 0) return;
 ---
@@ -38,7 +40,7 @@ if (reels.length === 0) return;
               <video
                 class="reel-video absolute inset-0 w-full h-full object-cover transition-transform duration-700"
                 src={reel.video}
-                poster={reel.thumbnail}
+                poster={reel.thumbnail ? reelImage(reel.thumbnail).src : undefined}
                 muted
                 loop
                 playsinline
@@ -46,13 +48,14 @@ if (reels.length === 0) return;
                 aria-hidden="true"
               ></video>
             ) : reel.thumbnail ? (
-              <img
-                src={reel.thumbnail}
+              <Picture
+                src={reelImage(reel.thumbnail)}
                 alt=""
-                width="540"
-                height="960"
+                widths={[270, 540, 810]}
+                sizes="(min-width: 768px) 33vw, 50vw"
                 loading="lazy"
                 decoding="async"
+                formats={['avif', 'webp']}
                 class="absolute inset-0 w-full h-full object-cover reel-img transition-transform duration-700"
               />
             ) : (

@@ -1,7 +1,9 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import { publicProof, aggregateStats } from '../data/results';
+import { portfolioImage } from '../lib/portfolioImages';
 ---
 
 <BaseLayout
@@ -95,10 +97,14 @@ import { publicProof, aggregateStats } from '../data/results';
 
               <!-- Cover -->
               <div class="md:col-span-5 relative aspect-[16/10] md:aspect-auto md:min-h-[280px] overflow-hidden">
-                <img
-                  src={p.thumbnail}
+                <Picture
+                  src={portfolioImage(p.thumbnail)}
                   alt=""
                   loading="lazy"
+                  decoding="async"
+                  widths={[400, 800, 1200]}
+                  sizes="(min-width: 768px) 42vw, 100vw"
+                  formats={['avif', 'webp']}
                   class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#020202] via-[#020202]/60 to-transparent opacity-90"></div>

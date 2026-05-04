@@ -410,13 +410,28 @@ select:focus-visible {
   paint-order: stroke fill;
 }
 
-/* Lens cursor over images — only on devices with a real pointer.
-   Hot-spot at 24,24 (centre of the SVG). Falls back to native zoom-in. */
+/* Lens cursor over images and image-driven cards — only on devices with a real
+   pointer. Hot-spot at 24,24 (centre of the SVG). Falls back to native zoom-in.
+   Applies to portfolio cells, reel tiles, video cards, and lightbox triggers. */
 @media (hover: hover) and (pointer: fine) {
   a img,
   a picture,
-  picture a {
+  picture a,
+  a.project-cell,
+  a.project-cell *,
+  .reel-tile,
+  .reel-tile *,
+  .video-card,
+  .video-card *,
+  [data-lightbox],
+  [data-lightbox] * {
     cursor: url('/cursors/lens.svg') 24 24, zoom-in;
+  }
+  /* Buttons inside cells should still feel clickable, not zoomable. */
+  a.project-cell button,
+  .reel-tile button,
+  .video-card button {
+    cursor: pointer;
   }
 }
 

@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { portfolioItems } from '../../data/portfolio';
+import { portfolioImage } from '../../lib/portfolioImages';
 
 // Hard cap at 6 — homepage rule: exactly 6 tiles, always.
 const projects = portfolioItems.filter((p) => p.featured).slice(0, 6);
@@ -51,14 +53,15 @@ const projects = portfolioItems.filter((p) => p.featured).slice(0, 6);
 
             <!-- Image -->
             <div class="relative aspect-[4/5] overflow-hidden">
-              <img
-                src={project.thumbnail}
+              <Picture
+                src={portfolioImage(project.thumbnail)}
                 alt={`${project.title} — ${displayCategory} content by Capture & Connect`}
-                width="800"
-                height="1000"
+                widths={[400, 600, 800, 1200]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 loading={idx === 0 ? 'eager' : 'lazy'}
-                fetchpriority={idx === 0 ? 'high' : undefined}
+                {...(idx === 0 ? { fetchpriority: 'high' } : {})}
                 decoding="async"
+                formats={['avif', 'webp']}
                 class:list={[
                   'absolute inset-0 w-full h-full object-cover transition-transform duration-1000',
                   project.coverStyle === 'design'

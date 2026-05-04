@@ -27,7 +27,7 @@ export const publicProof: PublicProof[] = [
     proofLabel: 'Public reel',
     proofValue: '20M+',
     url: 'https://www.instagram.com/reel/DKcUyZgog7I/',
-    thumbnail: '/images/portfolio/cover-dopedoctor-viral.jpg',
+    thumbnail: 'cover-dopedoctor-viral.jpg',
     featured: true,
   },
   {
@@ -42,7 +42,7 @@ export const publicProof: PublicProof[] = [
     proofLabel: 'YouTube upload',
     proofValue: 'Live',
     url: 'https://www.youtube.com/watch?v=wMICv0W9h8o',
-    thumbnail: '/images/portfolio/cover-aftermovie.jpg',
+    thumbnail: 'cover-aftermovie.jpg',
     featured: true,
   },
   {
@@ -57,7 +57,7 @@ export const publicProof: PublicProof[] = [
     proofLabel: 'Live website',
     proofValue: 'hairmoment.nl',
     url: 'https://hairmoment.nl/',
-    thumbnail: '/images/portfolio/cover-hairmoment-v4.jpg',
+    thumbnail: 'cover-hairmoment-v4.jpg',
     featured: true,
   },
   {
@@ -72,7 +72,7 @@ export const publicProof: PublicProof[] = [
     proofLabel: 'Live website',
     proofValue: 'captureandconnect.nl',
     url: 'https://captureandconnect.nl/',
-    thumbnail: '/images/portfolio/cover-captureandconnect.jpg',
+    thumbnail: 'cover-captureandconnect.jpg',
     featured: false,
   },
 ];

@@ -1,5 +1,7 @@
 ---
+import { Picture } from 'astro:assets';
 import { events } from '../../data/events.ts';
+import { portfolioImage } from '../../lib/portfolioImages';
 ---
 
 <div class="events-archive mb-14 md:mb-16">
@@ -37,10 +39,14 @@ import { events } from '../../data/events.ts';
             aria-expanded="false"
           >
             <div class="relative aspect-[4/5] overflow-hidden">
-              <img
-                src={ev.cover}
+              <Picture
+                src={portfolioImage(ev.cover)}
                 alt={`${ev.name}${ev.edition ? ' · ' + ev.edition : ''}`}
                 loading="lazy"
+                decoding="async"
+                widths={[400, 800, 1200]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                formats={['avif', 'webp']}
                 class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/55 to-transparent opacity-95"></div>

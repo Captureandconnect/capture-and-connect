@@ -1,6 +1,7 @@
 ---
 // TeamBlock.astro, About page Ryan section
-
+import { Picture } from 'astro:assets';
+import ryanPortrait from '../../assets/team/ryan.jpg';
 ---
 
 <section
@@ -18,14 +19,15 @@
         <div class="relative w-full aspect-[3/4] max-w-md mx-auto md:mx-0 rounded-xl overflow-hidden">
 
           <!-- Ryan's photo — LCP candidate on /about, must load eagerly -->
-          <img
-            src="/images/ryan.jpg"
+          <Picture
+            src={ryanPortrait}
             alt="Ryan van der Niet filming at a festival"
-            width="600"
-            height="800"
+            widths={[400, 600, 900]}
+            sizes="(min-width: 768px) 50vw, 100vw"
             loading="eager"
             fetchpriority="high"
             decoding="async"
+            formats={['avif', 'webp']}
             class="w-full h-full object-cover object-top"
           />
 

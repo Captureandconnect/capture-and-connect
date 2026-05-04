@@ -1,10 +1,12 @@
 ---
+import { Picture } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Lightbox from '../components/ui/Lightbox.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import EventsArchive from '../components/sections/EventsArchive.astro';
 import ReelsGrid from '../components/sections/ReelsGrid.astro';
 import { portfolioItems } from '../data/portfolio.ts';
+import { portfolioImage } from '../lib/portfolioImages';
 
 const mediaSections = [
   {
@@ -33,7 +35,7 @@ const managedAccounts = [
     handle: 'thedopedoctor_official',
     name: 'The Dope Doctor',
     role: 'Artist',
-    avatar: '/images/portfolio/avatar-dopedoctor.jpg',
+    avatar: 'avatar-dopedoctor.jpg',
     instagram: 'https://www.instagram.com/thedopedoctor_official/',
     tiktok: 'https://www.tiktok.com/@thedopedoctor_official',
     highlight: 'Viral moments',
@@ -49,7 +51,7 @@ const managedAccounts = [
     handle: 'majorconspiracyofficial',
     name: 'Major Conspiracy',
     role: 'Uptempo Duo',
-    avatar: '/images/portfolio/avatar-majorconspiracy.jpg',
+    avatar: 'avatar-majorconspiracy.jpg',
     instagram: 'https://www.instagram.com/majorconspiracyofficial/',
     tiktok: 'https://www.tiktok.com/@majorconspiracyofficial',
     highlight: 'Audience build',
@@ -65,7 +67,7 @@ const managedAccounts = [
     handle: 'harddancestore',
     name: 'Hard Dance Store',
     role: 'Brand',
-    avatar: '/images/portfolio/avatar-harddancestore.jpg',
+    avatar: 'avatar-harddancestore.jpg',
     instagram: 'https://www.instagram.com/harddancestore/',
     tiktok: 'https://www.tiktok.com/@harddancestore',
     highlight: 'Brand voice',
@@ -254,13 +256,14 @@ const webDesignFeatures = [
 
                     <!-- Avatar + name + handle -->
                     <div class="flex items-center gap-4">
-                      <img
-                        src={account.avatar}
+                      <Picture
+                        src={portfolioImage(account.avatar)}
                         alt={`${account.name} — Instagram profile`}
                         loading="lazy"
                         decoding="async"
-                        width="64"
-                        height="64"
+                        widths={[64, 128]}
+                        sizes="64px"
+                        formats={['avif', 'webp']}
                         class="w-14 h-14 md:w-16 md:h-16 rounded-full object-cover border border-white/15 shrink-0"
                       />
                       <div class="flex flex-col gap-1.5 min-w-0">
@@ -353,13 +356,14 @@ const webDesignFeatures = [
                     data-event-location={section.id}
                   >
                     <div class={`relative ${aspect} overflow-hidden`}>
-                      <img
-                        src={item.thumbnail}
+                      <Picture
+                        src={portfolioImage(item.thumbnail)}
                         alt={`${item.title} — ${item.client} ${section.id === 'content-creation' ? 'content' : 'social'} by Capture & Connect`}
                         loading="lazy"
                         decoding="async"
-                        width="1200"
-                        height={idx === 0 ? '675' : '1500'}
+                        widths={[400, 800, 1200]}
+                        sizes={idx === 0 ? '(min-width: 768px) 66vw, 100vw' : '(min-width: 768px) 33vw, 100vw'}
+                        formats={['avif', 'webp']}
                         class="absolute inset-0 w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-1000"
                       />
                       <div class="absolute inset-0 bg-gradient-to-t from-[#020202] via-[#020202]/50 to-transparent opacity-90"></div>
@@ -458,7 +462,7 @@ const webDesignFeatures = [
             {
               title: 'Hairmoment · Hair Salon Noordwijk',
               tag: 'Hospitality · Local Business',
-              cover: '/images/portfolio/cover-hairmoment-v4.jpg',
+              cover: 'cover-hairmoment-v4.jpg',
               href: 'https://hairmoment.nl/',
               meta: ['Custom Astro build', 'Mobile-first', 'Live at hairmoment.nl'],
               note: 'New visual identity and booking flow. From first sketch to live in two weeks. Built to convert.',
@@ -466,7 +470,7 @@ const webDesignFeatures = [
             {
               title: 'Capture & Connect · This Site',
               tag: 'Creative Agency · In-House',
-              cover: '/images/portfolio/cover-captureandconnect-v2.jpg',
+              cover: 'cover-captureandconnect-v2.jpg',
               href: 'https://captureandconnect.nl/',
               meta: ['Astro + React', 'Cloudflare Pages', 'Custom design, no template'],
               note: 'Built entirely in-house. No WordPress, no drag-and-drop. Just custom code, custom motion, custom typography.',
@@ -486,13 +490,14 @@ const webDesignFeatures = [
                 <span class="absolute top-0 left-0 h-px w-12 bg-white transition-all duration-700 group-hover:w-full z-20" aria-hidden="true"></span>
 
                 <div class="relative aspect-[4/5] md:aspect-[5/6] overflow-hidden">
-                  <img
-                    src={site.cover}
+                  <Picture
+                    src={portfolioImage(site.cover)}
                     alt={`${site.title} — website by Capture & Connect`}
                     loading="lazy"
                     decoding="async"
-                    width="1200"
-                    height="1440"
+                    widths={[400, 800, 1200]}
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    formats={['avif', 'webp']}
                     class="absolute inset-0 w-full h-full object-cover object-top scale-100 group-hover:scale-[1.02] transition-transform duration-1000"
                   />
                   <div class="absolute inset-0 bg-gradient-to-t from-[#020202] from-30% via-[#020202]/55 to-transparent opacity-95"></div>
