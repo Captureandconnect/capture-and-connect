@@ -1,9 +1,45 @@
 ---
-const brands = [
-  { name: 'The Dope Doctor', role: 'Artist' },
-  { name: 'Major Conspiracy', role: 'Duo' },
-  { name: 'Hard Dance Store', role: 'Brand' },
-  { name: 'Hairmoment', role: 'Studio' },
+import { Picture } from 'astro:assets';
+import { portfolioImage } from '../../lib/portfolioImages';
+
+interface Brand {
+  name: string;
+  role: string;
+  /** Filename in src/assets/portfolio (used as Picture source). */
+  avatar?: string;
+  /** Optional public link — IG profile or website. */
+  href?: string;
+  /** Optional IG deeplink companion (mobile app open). */
+  igDeeplink?: string;
+}
+
+const brands: Brand[] = [
+  {
+    name: 'The Dope Doctor',
+    role: 'Artist',
+    avatar: 'avatar-dopedoctor.jpg',
+    href: 'https://www.instagram.com/thedopedoctor_official/',
+    igDeeplink: 'instagram://user?username=thedopedoctor_official',
+  },
+  {
+    name: 'Major Conspiracy',
+    role: 'Duo',
+    avatar: 'avatar-majorconspiracy.jpg',
+    href: 'https://www.instagram.com/majorconspiracyofficial/',
+    igDeeplink: 'instagram://user?username=majorconspiracyofficial',
+  },
+  {
+    name: 'Hard Dance Store',
+    role: 'Brand',
+    avatar: 'avatar-harddancestore.jpg',
+    href: 'https://www.instagram.com/harddancestore/',
+    igDeeplink: 'instagram://user?username=harddancestore',
+  },
+  {
+    name: 'Hairmoment',
+    role: 'Studio',
+    href: 'https://hairmoment.nl/',
+  },
   { name: 'BKJN vs Partyraiser', role: 'Event' },
   { name: 'Masters Of Hardcore', role: 'Festival' },
 ];
@@ -32,22 +68,63 @@ const brands = [
         const isLastInRow2Col = (idx + 1) % 2 === 0;
         const isLastInRow3Col = (idx + 1) % 3 === 0;
         const isLastOverall = idx === brands.length - 1;
-        return (
-          <div
-            class:list={[
-              'brand-cell group relative flex flex-col items-center justify-center min-h-[88px] p-5 gap-2 transition-colors duration-300',
-              !isLastOverall && 'border-b border-white/[0.06] lg:border-b-0',
-              !isLastInRow2Col && 'border-r border-white/[0.06] md:border-r-0',
-              !isLastInRow3Col && 'md:border-r md:border-white/[0.06] lg:border-r-0',
-              idx !== brands.length - 1 && 'lg:border-r lg:border-white/[0.06]',
-            ]}
-          >
-            <span class="wordmark font-black italic uppercase tracking-[-0.04em] text-center text-[clamp(0.65rem,1.5vw,0.9rem)] leading-tight transition-colors duration-300 ease-out">
+        const cellClasses = [
+          'brand-cell group relative flex flex-col items-center justify-center min-h-[120px] p-5 gap-3 transition-colors duration-300',
+          !isLastOverall && 'border-b border-white/[0.06] lg:border-b-0',
+          !isLastInRow2Col && 'border-r border-white/[0.06] md:border-r-0',
+          !isLastInRow3Col && 'md:border-r md:border-white/[0.06] lg:border-r-0',
+          idx !== brands.length - 1 && 'lg:border-r lg:border-white/[0.06]',
+        ];
+        const inner = (
+          <>
+            {brand.avatar ? (
+              <span class="brand-avatar w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-white/15 shrink-0">
+                <Picture
+                  src={portfolioImage(brand.avatar)}
+                  alt=""
+                  widths={[48, 96]}
+                  sizes="48px"
+                  loading="lazy"
+                  decoding="async"
+                  formats={['avif', 'webp']}
+                  class="w-full h-full object-cover"
+                />
+              </span>
+            ) : (
+              <span class="brand-avatar brand-avatar--mono w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/15 flex items-center justify-center font-mono text-[10px] tracking-[0.2em] text-white/55">
+                {brand.name
+                  .split(' ')
+                  .filter((w) => /^[A-Z]/.test(w))
+                  .map((w) => w[0])
+                  .slice(0, 3)
+                  .join('')}
+              </span>
+            )}
+            <span class="wordmark font-black italic uppercase tracking-[-0.04em] text-center text-[clamp(0.7rem,1.5vw,0.95rem)] leading-tight transition-colors duration-300 ease-out">
               {brand.name}
             </span>
             <span class="font-mono text-[9px] text-white/55 uppercase tracking-[0.25em]">
               {brand.role}
             </span>
+          </>
+        );
+
+        return brand.href ? (
+          <a
+            href={brand.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={cellClasses}
+            aria-label={`${brand.name} — open profile`}
+            data-event="trusted_by_click"
+            data-event-id={brand.name}
+            data-ig-deeplink={brand.igDeeplink}
+          >
+            {inner}
+          </a>
+        ) : (
+          <div class:list={cellClasses}>
+            {inner}
           </div>
         );
       })}
@@ -65,11 +142,8 @@ const brands = [
     .brand-cell:hover .wordmark {
       color: rgba(255, 255, 255, 1);
     }
-  }
-
-  @media (hover: none) {
-    .brand-cell .wordmark {
-      color: rgba(255, 255, 255, 0.55);
+    a.brand-cell:hover .brand-avatar {
+      border-color: rgba(255, 255, 255, 0.4);
     }
   }
 </style>

@@ -198,6 +198,26 @@ const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...p
       />
     )}
 
+    <!-- Site-wide IG deeplink swap: on mobile, click on any [data-ig-deeplink] link
+         opens the IG app via the deeplink, with a web URL fallback after 500ms.
+         Uses event delegation so it survives view transitions. -->
+    <script is:inline>
+      (() => {
+        if (!/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) return;
+        document.addEventListener('click', (e) => {
+          const a = e.target.closest && e.target.closest('a[data-ig-deeplink]');
+          if (!a) return;
+          const deep = a.getAttribute('data-ig-deeplink');
+          const web = a.href;
+          if (!deep) return;
+          e.preventDefault();
+          const t = setTimeout(() => { window.location.href = web; }, 500);
+          window.addEventListener('pagehide', () => clearTimeout(t), { once: true });
+          window.location.href = deep;
+        });
+      })();
+    </script>
+
     <script is:inline>
       if ('serviceWorker' in navigator && location.protocol === 'https:') {
         const reg = () => navigator.serviceWorker.register('/sw.js').catch(() => {});
