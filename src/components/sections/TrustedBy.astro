@@ -1,52 +1,44 @@
 ---
 import { Picture } from 'astro:assets';
-import { portfolioImage } from '../../lib/portfolioImages';
+import type { ImageMetadata } from 'astro';
 
 interface Brand {
   name: string;
-  role: string;
-  /** Filename in src/assets/portfolio (used as Picture source). */
-  avatar?: string;
-  /** Optional public link — IG profile or website. */
+  src: ImageMetadata;
   href?: string;
-  /** Optional IG deeplink companion (mobile app open). */
-  igDeeplink?: string;
 }
 
+// Eager-import every logo file so Astro processes and ships them at build time.
+const logoMap = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets/logos/*.{svg,png,webp,jpg}',
+  { eager: true }
+);
+const logo = (filename: string): ImageMetadata => {
+  const key = `../../assets/logos/${filename}`;
+  const mod = logoMap[key];
+  if (!mod) throw new Error(`TrustedBy: missing src/assets/logos/${filename}`);
+  return mod.default;
+};
+
 const brands: Brand[] = [
-  {
-    name: 'The Dope Doctor',
-    role: 'Artist',
-    avatar: 'avatar-dopedoctor.jpg',
-    href: 'https://www.instagram.com/thedopedoctor_official/',
-    igDeeplink: 'instagram://user?username=thedopedoctor_official',
-  },
-  {
-    name: 'Major Conspiracy',
-    role: 'Duo',
-    avatar: 'avatar-majorconspiracy.jpg',
-    href: 'https://www.instagram.com/majorconspiracyofficial/',
-    igDeeplink: 'instagram://user?username=majorconspiracyofficial',
-  },
-  {
-    name: 'Hard Dance Store',
-    role: 'Brand',
-    avatar: 'avatar-harddancestore.jpg',
-    href: 'https://www.instagram.com/harddancestore/',
-    igDeeplink: 'instagram://user?username=harddancestore',
-  },
-  {
-    name: 'Hairmoment',
-    role: 'Studio',
-    href: 'https://hairmoment.nl/',
-  },
-  { name: 'BKJN vs Partyraiser', role: 'Event' },
-  { name: 'Masters Of Hardcore', role: 'Festival' },
+  { name: 'Tomorrowland',         src: logo('tomorrowland.svg'),         href: 'https://www.tomorrowland.com/' },
+  { name: 'Defqon.1',             src: logo('defqon1.svg'),              href: 'https://www.defqon1.com/' },
+  { name: 'Masters Of Hardcore',  src: logo('masters-of-hardcore.svg'),  href: 'https://www.mastersofhardcore.com/' },
+  { name: 'Rebirth Festival',     src: logo('rebirth.svg'),              href: 'https://www.rebirth-festival.nl/' },
+  { name: 'Reverze',              src: logo('reverze.png'),              href: 'https://www.reverze.be/' },
+  { name: 'Paaspop',              src: logo('paaspop.png'),              href: 'https://www.paaspop.nl/' },
+  { name: 'Ground Zero',          src: logo('ground-zero.webp'),         href: 'https://www.groundzerofestival.nl/' },
+  { name: 'BKJN Events',          src: logo('bkjn.png'),                 href: 'https://bkjn.nl/' },
+  { name: 'Dimitri K',            src: logo('dimitri-k.png'),            href: 'https://dimitrikofficial.com/' },
+  { name: 'Hard Dance Store',     src: logo('hard-dance-store.png'),     href: 'https://harddancestore.com/' },
 ];
+
+// Duplicate the track twice so the CSS animation can loop seamlessly.
+const track = [...brands, ...brands];
 ---
 
 <section
-  class="relative bg-[#020202] py-16 md:py-20 border-t border-white/[0.05]"
+  class="relative bg-[#020202] py-16 md:py-20 border-t border-white/[0.05] overflow-hidden"
   aria-labelledby="trusted-heading"
 >
   <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
@@ -57,93 +49,107 @@ const brands: Brand[] = [
         <span class="inline-block w-8 h-px bg-white/30" aria-hidden="true"></span>
         005 // TRUSTED BY
       </span>
-      <p id="trusted-heading" class="text-[15px] text-white/55 leading-relaxed">
-        The brands and artists we've helped grow.
+      <p id="trusted-heading" class="text-[15px] text-white/55 leading-relaxed max-w-md">
+        Festivals, brands and artists we've worked with. Real names, real stages, real reach.
       </p>
     </div>
 
-    <!-- Logo wall -->
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 border border-white/[0.05]">
-      {brands.map((brand, idx) => {
-        const isLastInRow2Col = (idx + 1) % 2 === 0;
-        const isLastInRow3Col = (idx + 1) % 3 === 0;
-        const isLastOverall = idx === brands.length - 1;
-        const cellClasses = [
-          'brand-cell group relative flex flex-col items-center justify-center min-h-[120px] p-5 gap-3 transition-colors duration-300',
-          !isLastOverall && 'border-b border-white/[0.06] lg:border-b-0',
-          !isLastInRow2Col && 'border-r border-white/[0.06] md:border-r-0',
-          !isLastInRow3Col && 'md:border-r md:border-white/[0.06] lg:border-r-0',
-          idx !== brands.length - 1 && 'lg:border-r lg:border-white/[0.06]',
-        ];
-        const inner = (
-          <>
-            {brand.avatar ? (
-              <span class="brand-avatar w-10 h-10 md:w-12 md:h-12 rounded-full overflow-hidden border border-white/15 shrink-0">
-                <Picture
-                  src={portfolioImage(brand.avatar)}
-                  alt=""
-                  widths={[48, 96]}
-                  sizes="48px"
-                  loading="lazy"
-                  decoding="async"
-                  formats={['avif', 'webp']}
-                  class="w-full h-full object-cover"
-                />
-              </span>
-            ) : (
-              <span class="brand-avatar brand-avatar--mono w-10 h-10 md:w-12 md:h-12 rounded-full border border-white/15 flex items-center justify-center font-mono text-[10px] tracking-[0.2em] text-white/55">
-                {brand.name
-                  .split(' ')
-                  .filter((w) => /^[A-Z]/.test(w))
-                  .map((w) => w[0])
-                  .slice(0, 3)
-                  .join('')}
-              </span>
-            )}
-            <span class="wordmark font-black italic uppercase tracking-[-0.04em] text-center text-[clamp(0.7rem,1.5vw,0.95rem)] leading-tight transition-colors duration-300 ease-out">
-              {brand.name}
-            </span>
-            <span class="font-mono text-[9px] text-white/55 uppercase tracking-[0.25em]">
-              {brand.role}
-            </span>
-          </>
-        );
+  </div>
 
-        return brand.href ? (
-          <a
-            href={brand.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class:list={cellClasses}
-            aria-label={`${brand.name} — open profile`}
+  <!-- Marquee — full bleed, edge-fades on the sides -->
+  <div class="logo-marquee" aria-hidden="false">
+    <div class="logo-marquee__track">
+      {track.map((brand, i) => {
+        const Cell = brand.href ? 'a' : 'div';
+        return (
+          <Cell
+            class="logo-marquee__cell"
+            {...(brand.href
+              ? { href: brand.href, target: '_blank', rel: 'noopener noreferrer' }
+              : {})}
             data-event="trusted_by_click"
             data-event-id={brand.name}
-            data-ig-deeplink={brand.igDeeplink}
+            aria-label={i < brands.length ? `${brand.name} — open site` : undefined}
+            aria-hidden={i >= brands.length ? 'true' : undefined}
+            tabindex={i >= brands.length ? -1 : undefined}
           >
-            {inner}
-          </a>
-        ) : (
-          <div class:list={cellClasses}>
-            {inner}
-          </div>
+            <Picture
+              src={brand.src}
+              alt={i < brands.length ? brand.name : ''}
+              widths={[160, 320]}
+              sizes="160px"
+              loading="lazy"
+              decoding="async"
+              formats={['avif', 'webp']}
+              class="logo-marquee__img"
+            />
+          </Cell>
         );
       })}
     </div>
-
   </div>
 </section>
 
 <style>
-  .brand-cell .wordmark {
-    color: rgba(255, 255, 255, 0.55);
+  .logo-marquee {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Soft edge-fade so logos don't pop in/out abruptly. */
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+            mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
 
-  @media (hover: hover) {
-    .brand-cell:hover .wordmark {
-      color: rgba(255, 255, 255, 1);
-    }
-    a.brand-cell:hover .brand-avatar {
-      border-color: rgba(255, 255, 255, 0.4);
-    }
+  .logo-marquee__track {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    width: max-content;
+    padding: 0 2rem;
+    animation: logo-scroll 50s linear infinite;
+  }
+
+  /* Pause when the user hovers, so they can read a logo before it slides off. */
+  .logo-marquee:hover .logo-marquee__track {
+    animation-play-state: paused;
+  }
+
+  .logo-marquee__cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    flex-shrink: 0;
+    /* Render every logo white so the wall reads as one set, not a mix of brands. */
+    filter: brightness(0) invert(1);
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+  }
+  a.logo-marquee__cell:hover { opacity: 1; }
+
+  .logo-marquee__img {
+    height: 100%;
+    width: auto;
+    max-width: 220px;
+    object-fit: contain;
+  }
+
+  /* Halve the gap on small screens so more logos are visible. */
+  @media (max-width: 640px) {
+    .logo-marquee__track { gap: 2.5rem; }
+    .logo-marquee__cell { height: 48px; }
+    .logo-marquee__img  { max-width: 160px; }
+  }
+
+  /* Respect reduced-motion: freeze the marquee. */
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee__track { animation: none; }
+  }
+
+  /* Track moves by exactly half its width — because we render the brand list
+     twice, that lands the second copy seamlessly where the first started. */
+  @keyframes logo-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
   }
 </style>
