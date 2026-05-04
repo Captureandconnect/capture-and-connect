@@ -44,13 +44,21 @@ const track = [...brands, ...brands];
   <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
 
     <!-- Section header -->
-    <div class="mb-10 md:mb-12">
-      <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-4 flex items-center gap-3">
-        <span class="inline-block w-8 h-px bg-white/30" aria-hidden="true"></span>
-        005 // TRUSTED BY
-      </span>
-      <p id="trusted-heading" class="text-[15px] text-white/55 leading-relaxed max-w-md">
-        Festivals, brands and artists we've worked with. Real names, real stages, real reach.
+    <div class="mb-12 md:mb-14 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
+      <div class="md:col-span-7">
+        <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
+          <span class="inline-block w-8 h-px bg-white/30" aria-hidden="true"></span>
+          005 // TRUSTED BY
+        </span>
+        <h2
+          id="trusted-heading"
+          class="text-[clamp(3rem,8vw,7.5rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white"
+        >
+          Worked <br/><span class="text-outline not-italic">with.</span>
+        </h2>
+      </div>
+      <p class="md:col-span-4 md:col-start-9 text-[15px] text-white/50 leading-relaxed">
+        Festivals, brands and artists we've helped grow. Real names, real stages, real reach.
       </p>
     </div>
 
@@ -118,8 +126,10 @@ const track = [...brands, ...brands];
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 64px;
+    height: 84px;
+    width: 200px;
     flex-shrink: 0;
+    padding: 8px 0;
     /* Render every logo white so the wall reads as one set, not a mix of brands. */
     filter: brightness(0) invert(1);
     opacity: 0.55;
@@ -127,18 +137,28 @@ const track = [...brands, ...brands];
   }
   a.logo-marquee__cell:hover { opacity: 1; }
 
-  .logo-marquee__img {
+  /* The Astro <Picture> wrapper needs to fill the cell so the inner <img>'s
+     height: 100% has something to measure against; otherwise some logos paint
+     at their intrinsic size and overflow the cell. */
+  .logo-marquee__cell picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
     height: 100%;
+  }
+  .logo-marquee__img {
+    max-height: 100%;
+    max-width: 100%;
     width: auto;
-    max-width: 220px;
+    height: auto;
     object-fit: contain;
   }
 
   /* Halve the gap on small screens so more logos are visible. */
   @media (max-width: 640px) {
     .logo-marquee__track { gap: 2.5rem; }
-    .logo-marquee__cell { height: 48px; }
-    .logo-marquee__img  { max-width: 160px; }
+    .logo-marquee__cell { height: 64px; width: 150px; }
   }
 
   /* Respect reduced-motion: freeze the marquee. */
