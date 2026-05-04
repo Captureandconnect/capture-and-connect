@@ -30,38 +30,6 @@ export const ExperienceHero = () => {
         delay: 1,
         clearProps: "all",
       });
-
-      const hasFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-      let cleanupMouse: (() => void) | undefined;
-      if (hasFinePointer) {
-        const handleMouseMove = (e: MouseEvent) => {
-          if (!ctaRef.current) return;
-          const rect = ctaRef.current.getBoundingClientRect();
-          const dist = Math.hypot(
-            e.clientX - (rect.left + rect.width / 2),
-            e.clientY - (rect.top + rect.height / 2)
-          );
-          if (dist < 150) {
-            gsap.to(ctaRef.current, {
-              x: (e.clientX - (rect.left + rect.width / 2)) * 0.4,
-              y: (e.clientY - (rect.top + rect.height / 2)) * 0.4,
-              duration: 0.6,
-            });
-          } else {
-            gsap.to(ctaRef.current, {
-              x: 0,
-              y: 0,
-              duration: 0.8,
-              ease: "elastic.out(1, 0.3)",
-            });
-          }
-        };
-        window.addEventListener("mousemove", handleMouseMove);
-        cleanupMouse = () => window.removeEventListener("mousemove", handleMouseMove);
-      }
-      return () => {
-        if (cleanupMouse) cleanupMouse();
-      };
     }, containerRef);
     return () => ctx.revert();
   }, []);
