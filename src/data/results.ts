@@ -36,7 +36,7 @@ export const publicProof: PublicProof[] = [
     category: 'Event Film · Aftermovie',
     headline: 'Official 2025 aftermovie shipped on YouTube',
     context:
-      'Multicam, edit and color — delivered as the official festival aftermovie.',
+      'Multicam, edit and colour — delivered as the official festival aftermovie.',
     detail:
       'Public YouTube upload on the RuhrGBeat Events channel. Open the video to watch the full edit.',
     proofLabel: 'YouTube upload',

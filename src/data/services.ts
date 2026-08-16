@@ -26,12 +26,12 @@ export const services: Service[] = [
     description:
       'We run your socials. You focus on your work. Everything is built around growth, consistency and results.',
     bullets: [
-      '2 to 10 posts per week',
+      'A posting cadence built around your scale',
       'Content planning and strategy',
       'Instagram, TikTok and YouTube',
       'Community and engagement',
       'Monthly performance tracking',
-      'Reel sequencing and growth loops',
+      'Series and formats built to be watched back to back',
     ],
     icon: 'M4 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5zm0 6a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8zm10 0a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-4zm0 7a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1z',
   },

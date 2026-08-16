@@ -171,7 +171,7 @@ export const ExperienceHero = () => {
               ) : (
                 <p className="text-sm font-medium text-white/70 mt-3 leading-snug">
                   Content · Social · Strategy. One team turning artists,
-                  events and brands into content machines.
+                  events and brands into names people follow.
                 </p>
               )}
             </div>
