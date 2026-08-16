@@ -6,12 +6,32 @@ import { publicProof, aggregateStats } from '../data/results';
 import { portfolioImage } from '../lib/portfolioImages';
 import SectionLabel from '../components/ui/SectionLabel.astro';
 import { REPLY_PROMISE } from '../data/promises';
+
+// The one piece of work on this page that is a video, so it gets a VideoObject.
+// Title, channel and upload date read off the public YouTube page.
+const aftermovieSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: 'Aftermovie RGB | Ground Zero Festival 2025: The Final Night',
+  description:
+    'Official aftermovie for Ground Zero Festival 2025, produced end to end by Capture & Connect: multicam capture, edit and colour.',
+  thumbnailUrl: 'https://i.ytimg.com/vi/wMICv0W9h8o/hqdefault.jpg',
+  uploadDate: '2026-01-05',
+  contentUrl: 'https://www.youtube.com/watch?v=wMICv0W9h8o',
+  embedUrl: 'https://www.youtube.com/embed/wMICv0W9h8o',
+  creator: { '@id': 'https://captureandconnect.nl/#organization' },
+};
 ---
 
 <BaseLayout
   title="Results"
   description="Real numbers, public sources. Viral moments, live aftermovies and shipped websites — every result verifiable."
   ogImage="/og-results.jpg"
+  jsonLd={aftermovieSchema}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Results', href: '/results/' },
+  ]}
 >
 
   <!-- Page Hero -->

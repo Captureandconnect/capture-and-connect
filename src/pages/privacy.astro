@@ -94,6 +94,10 @@ const sections = [
   title="Privacy"
   description="How Capture & Connect collects, uses and protects your personal data. Cookieless analytics, no third-party tracking."
   ogImage="/og-privacy.jpg"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Privacy', href: '/privacy/' },
+  ]}
 >
 
   <!-- Page Hero -->
@@ -114,7 +118,7 @@ const sections = [
         <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em]">Last updated</span>
         <span class="h-px flex-1 bg-white/10 max-w-[200px]"></span>
         <span class="font-mono text-[10px] text-white/65 uppercase tracking-[0.25em]">{lastUpdated}</span>
-        <a href="/privacy/nl" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.25em] transition-colors ml-auto">
+        <a href="/privacy/nl/" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.25em] transition-colors ml-auto">
           NL ↗
         </a>
       </div>

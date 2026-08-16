@@ -34,17 +34,53 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://capturea
 const pageTitle = fullTitle ? title : `${title} | Capture & Connect`;
 const cfBeaconToken = import.meta.env.PUBLIC_CF_BEACON_TOKEN;
 
+// TODO(owner): add the TikTok, YouTube and LinkedIn profile URLs here. Both are
+// sold as services on /services, so leaving them out of sameAs costs us the
+// entity link. Not guessed — needs the real handles.
+const sameAs = ['https://www.instagram.com/captureandconnect_'];
+
 const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
+  '@id': 'https://captureandconnect.nl/#organization',
   name: 'Capture & Connect',
   url: 'https://captureandconnect.nl',
   logo: 'https://captureandconnect.nl/apple-touch-icon.png',
   email: 'info@captureandconnect.nl',
   founder: { '@type': 'Person', name: 'Ryan van der Niet' },
-  sameAs: ['https://www.instagram.com/captureandconnect_'],
+  sameAs,
   address: { '@type': 'PostalAddress', addressCountry: 'NL' },
   vatID: 'NL004804916B78',
+};
+
+// Separate node from Organization so the service-business signals (what we do,
+// where, at what kind of price) are explicit rather than inferred.
+const professionalServiceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': 'https://captureandconnect.nl/#business',
+  name: 'Capture & Connect',
+  url: 'https://captureandconnect.nl',
+  image: 'https://captureandconnect.nl/og-home.jpg',
+  logo: 'https://captureandconnect.nl/apple-touch-icon.png',
+  email: 'info@captureandconnect.nl',
+  description:
+    'Content production, social media management and conversion-built websites for artists, festivals and brands.',
+  parentOrganization: { '@id': 'https://captureandconnect.nl/#organization' },
+  founder: { '@type': 'Person', name: 'Ryan van der Niet' },
+  sameAs,
+  // TODO(owner): addressLocality would strengthen local search. Country-only
+  // for now because the site never states a city.
+  address: { '@type': 'PostalAddress', addressCountry: 'NL' },
+  areaServed: [
+    { '@type': 'Country', name: 'Netherlands' },
+    { '@type': 'Country', name: 'Belgium' },
+    { '@type': 'Country', name: 'Austria' },
+  ],
+  // Every engagement is scoped individually — see /pricing.
+  priceRange: 'Quote on request',
+  vatID: 'NL004804916B78',
+  knowsLanguage: ['en', 'nl'],
 };
 
 const websiteSchema = {
@@ -53,6 +89,7 @@ const websiteSchema = {
   name: 'Capture & Connect',
   url: 'https://captureandconnect.nl',
   inLanguage: 'en',
+  publisher: { '@id': 'https://captureandconnect.nl/#organization' },
 };
 
 const pageSchemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
@@ -70,7 +107,13 @@ const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
     }]
   : [];
 
-const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...pageSchemas];
+const allSchemas = [
+  organizationSchema,
+  professionalServiceSchema,
+  websiteSchema,
+  ...breadcrumbSchema,
+  ...pageSchemas,
+];
 ---
 
 <!doctype html>
@@ -100,6 +143,7 @@ const allSchemas = [organizationSchema, websiteSchema, ...breadcrumbSchema, ...p
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Theme color + dark color-scheme to suppress white flash before CSS loads -->
     <meta name="theme-color" content="#020202" />

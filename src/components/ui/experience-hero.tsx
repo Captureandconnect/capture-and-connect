@@ -84,7 +84,7 @@ export const ExperienceHero = () => {
 
           <a
             ref={ctaRef}
-            href="/contact"
+            href="/contact/"
             className="w-fit inline-flex items-center gap-5 group lg:-translate-y-20 min-h-[56px] py-2 -my-2"
             data-event="cta_book_call"
             data-event-location="hero"

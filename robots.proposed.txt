@@ -1,0 +1,34 @@
+# PROPOSAL — not served. See the audit report, section C1.
+#
+# The AI-crawler blocks currently on captureandconnect.nl/robots.txt do NOT
+# come from this repo. They are injected by Cloudflare between the markers
+# "# BEGIN Cloudflare Managed content" and "# END Cloudflare Managed Content".
+# Turn them off in the Cloudflare dashboard:
+#   captureandconnect.nl -> AI Crawl Control / Scrape Shield -> managed robots.txt
+#
+# What Cloudflare currently blocks site-wide:
+#   Amazonbot, Applebot-Extended, Bytespider, CCBot, ClaudeBot,
+#   CloudflareBrowserRenderingCrawler, Google-Extended, GPTBot,
+#   meta-externalagent
+#
+# For a marketing agency this means being invisible the moment someone asks
+# ChatGPT, Claude or Perplexity who films aftermovies for Dutch hard dance
+# events. The Content-Signal line below already reserves training rights, which
+# is a separate thing from being findable.
+#
+# This file is the robots.txt we would serve once the Cloudflare block is off.
+# It also drops the duplicate "User-agent: *" — today the repo adds a second
+# one underneath Cloudflare's.
+
+User-agent: *
+Content-Signal: search=yes, ai-train=no, use=reference
+Allow: /
+
+# Scrapers with no search or answer product behind them.
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://captureandconnect.nl/sitemap-index.xml
