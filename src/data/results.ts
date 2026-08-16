@@ -83,10 +83,50 @@ export const featuredPublicProof = publicProof.filter((p) => p.featured);
 // - public IG reels and profiles
 // - public YouTube uploads
 // - live websites
-export const aggregateStats = [
-  { value: '125M+', label: 'Total reach',          note: 'Cumulative organic reach generated across our roster.' },
-  { value: '20M+', label: 'Views on one video',   note: 'Single Dope Doctor reel. View count visible on Instagram.' },
-  { value: '250+', label: 'Events filmed',        note: 'Across our lifetime. Highlights: Tomorrowland, Defqon, Mysteryland, Decibel, MOH, Paaspop.' },
-  { value: '9',    label: 'Accounts growing',     note: '6 Instagram, 3 TikTok live right now. Growing every month.' },
-  { value: '2',    label: 'Live websites built',  note: 'Hairmoment.nl and this site. Both fully custom, both converting.' },
+export interface AggregateStat {
+  value: string;
+  label: string;
+  note: string;
+  /** Where a visitor can go to check the number themselves. */
+  href?: string;
+  /** Accessible name for that link — says where it goes. */
+  linkLabel?: string;
+  external?: boolean;
+}
+
+export const aggregateStats: AggregateStat[] = [
+  {
+    value: '125M+',
+    label: 'Total reach',
+    note: 'Total reach across all content we have produced, including event and festival work.',
+  },
+  {
+    value: '20M+',
+    label: 'Views on one video',
+    note: 'Single Dope Doctor reel. View count visible on Instagram.',
+    href: 'https://www.instagram.com/reel/DKcUyZgog7I/',
+    linkLabel: 'Open the Dope Doctor reel on Instagram',
+    external: true,
+  },
+  {
+    value: '250+',
+    label: 'Events filmed',
+    note: 'Across our lifetime. Highlights: Masters Of Hardcore, Rebirth, Reverze, Paaspop, Ground Zero.',
+    href: '/portfolio/#content-creation',
+    linkLabel: 'Browse the event archive in our portfolio',
+  },
+  {
+    value: '9',
+    label: 'Accounts growing',
+    note: 'Reach of the nine accounts we manage day to day: 6 Instagram, 3 TikTok.',
+    href: '/portfolio/#social-media',
+    linkLabel: 'See the accounts we manage',
+  },
+  {
+    value: '2',
+    label: 'Live websites built',
+    note: 'Hairmoment.nl and this site. Both fully custom, both converting.',
+    href: '/portfolio/#web-design',
+    linkLabel: 'See the websites we have shipped',
+  },
 ];

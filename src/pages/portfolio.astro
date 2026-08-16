@@ -6,6 +6,7 @@ import CtaBlock from '../components/sections/CtaBlock.astro';
 import EventsArchive from '../components/sections/EventsArchive.astro';
 import ReelsGrid from '../components/sections/ReelsGrid.astro';
 import { portfolioItems } from '../data/portfolio.ts';
+import { events } from '../data/events.ts';
 import { portfolioImage } from '../lib/portfolioImages';
 
 const mediaSections = [
@@ -184,7 +185,7 @@ const webDesignFeatures = [
               </p>
               <span class="hidden md:block w-8 h-px bg-white/10"></span>
               <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em] shrink-0">
-                {portfolioItems.filter((i) => i.category === section.id).length} works
+                {events.length + items.length} works
               </span>
             </div>
           ) : (

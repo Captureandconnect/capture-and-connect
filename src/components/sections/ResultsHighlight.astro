@@ -1,9 +1,44 @@
 ---
+// Every card links to something a visitor can open — that is the promise made
+// in the intro paragraph below, so a card without a destination does not belong
+// in this grid.
 const stats = [
-  { id: '001', target: 125, suffix: 'M+', label: 'Total reach',         note: 'Cumulative organic reach generated across our roster.' },
-  { id: '002', target: 250, suffix: '+',  label: 'Events filmed',  note: 'Across our lifetime. Highlights: Tomorrowland, Defqon, Mysteryland, Decibel, MOH, Paaspop.' },
-  { id: '003', target: 9,  suffix: '',   label: 'Accounts growing',    note: '6 Instagram, 3 TikTok live right now. Growing every month.' },
-  { id: '004', target: 2,  suffix: '',   label: 'Live websites built', note: 'Hairmoment.nl and this site. Both fully custom, both converting.' },
+  {
+    id: '01',
+    target: 125,
+    suffix: 'M+',
+    label: 'Total reach',
+    note: 'Total reach across all content we have produced, including event and festival work.',
+    href: '/results/',
+    linkLabel: 'See the public sources behind our total reach',
+  },
+  {
+    id: '02',
+    target: 250,
+    suffix: '+',
+    label: 'Events filmed',
+    note: 'Across our lifetime. Highlights: Masters Of Hardcore, Rebirth, Reverze, Paaspop, Ground Zero.',
+    href: '/portfolio/#content-creation',
+    linkLabel: 'Browse the event archive in our portfolio',
+  },
+  {
+    id: '03',
+    target: 9,
+    suffix: '',
+    label: 'Accounts growing',
+    note: '6 Instagram, 3 TikTok live right now. Growing every month.',
+    href: '/portfolio/#social-media',
+    linkLabel: 'See the accounts we manage',
+  },
+  {
+    id: '04',
+    target: 2,
+    suffix: '',
+    label: 'Live websites built',
+    note: 'Hairmoment.nl and this site. Both fully custom, both converting.',
+    href: '/portfolio/#web-design',
+    linkLabel: 'See the websites we have shipped',
+  },
 ];
 ---
 
@@ -57,8 +92,10 @@ const stats = [
   <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.04] border border-white/[0.05]">
       {stats.map((stat) => (
-        <div
-          class="stat-cell group relative bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-6 min-h-[260px]"
+        <a
+          href={stat.href}
+          aria-label={stat.linkLabel}
+          class="stat-cell group relative bg-[#020202] hover:bg-[#070707] transition-colors duration-500 p-8 md:p-10 flex flex-col gap-6 min-h-[260px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#020202]"
         >
           <!-- ID label -->
           <div class="flex items-center justify-between">
@@ -89,7 +126,7 @@ const stats = [
 
           <!-- Bottom hairline grows on hover -->
           <span class="absolute bottom-0 left-0 h-px w-0 bg-white group-hover:w-full transition-all duration-700"></span>
-        </div>
+        </a>
       ))}
     </div>
 

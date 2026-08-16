@@ -48,8 +48,9 @@ export const portfolioItems: PortfolioItem[] = [
       'Filming at Rebirth Festival 2026. Cinematic stage shots, crowd energy, and high-energy recap content.',
     client: 'Rebirth Festival',
     featured: true,
-    href: '/portfolio#content-creation',
-    external: false,
+    // Strongest public post from the Rebirth 2026 set (see data/events.ts).
+    href: 'https://www.instagram.com/p/DXKK6BtDRjr/',
+    external: true,
     displayCategory: 'Event',
   },
   // 3
@@ -58,9 +59,9 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Hard Dance Store · Brand Content',
     category: 'content-creation',
     thumbnail: 'cover-barber-tee-v2.jpg',
-    stats: '320% ROAS',
+    stats: 'Apparel',
     description:
-      'Brand content strategy and creative production for Hard Dance Store, delivering 320% return on ad spend.',
+      'Brand content strategy and creative production for Hard Dance Store — drops, campaigns and community-led posts.',
     client: 'Hard Dance Store',
     featured: true,
     href: 'https://www.instagram.com/harddancestore/',
@@ -93,8 +94,9 @@ export const portfolioItems: PortfolioItem[] = [
       'On-site coverage of BKJN vs Partyraiser 2026. Multi-cam crowd, stage and booth captures cut into recap reels and aftermovie.',
     client: 'BKJN vs Partyraiser',
     featured: true,
-    href: '/portfolio#content-creation',
-    external: false,
+    // Strongest public post from the BKJN 2026 set (see data/events.ts).
+    href: 'https://www.instagram.com/p/DUQmUXsCLv8/',
+    external: true,
     displayCategory: 'Event',
   },
   // 6 — Hairmoment fills slot 6 on the homepage. Category is web-design so it
