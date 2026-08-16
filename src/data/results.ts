@@ -86,7 +86,7 @@ export const featuredPublicProof = publicProof.filter((p) => p.featured);
 export const aggregateStats = [
   { value: '125M+', label: 'Total reach',          note: 'Cumulative organic reach generated across our roster.' },
   { value: '20M+', label: 'Views on one video',   note: 'Single Dope Doctor reel. View count visible on Instagram.' },
-  { value: '25+',  label: 'Events filmed 2026',   note: 'Highlights: BKJN, MOH NL, MOH Austria, Reverze, Paaspop, Rebirth.' },
+  { value: '250+', label: 'Events filmed',        note: 'Across our lifetime. Highlights: Tomorrowland, Defqon, Mysteryland, Decibel, MOH, Paaspop.' },
   { value: '9',    label: 'Accounts growing',     note: '6 Instagram, 3 TikTok live right now. Growing every month.' },
   { value: '2',    label: 'Live websites built',  note: 'Hairmoment.nl and this site. Both fully custom, both converting.' },
 ];
