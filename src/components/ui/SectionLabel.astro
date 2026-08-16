@@ -1,0 +1,48 @@
+---
+/**
+ * SectionLabel — the `NNN // LABEL` marker above every page section.
+ *
+ * Numbering system (site-wide):
+ *   NNN // LABEL  (three digits)  = a page-level section. One ascending
+ *                                   counter per page, in DOM order, starting
+ *                                   at 001 on the hero. Shared blocks (the CTA)
+ *                                   take their number as a prop so they slot
+ *                                   into whatever page they land on.
+ *   NN // LABEL   (two digits)    = an item inside a section (cards, steps,
+ *                                   rows). A local index, never a section.
+ *   // LABEL      (no digits)     = chrome that repeats on every page and so
+ *                                   cannot join a per-page counter (footer,
+ *                                   sub-panels inside a section).
+ *
+ * The digit width keeps the two series visually distinct, which is what stops
+ * "002 // SERVICES" and "002 // PUBLIC PROOF" from colliding again.
+ */
+interface Props {
+  /** Position of this section on its page, 1-based. */
+  n: number;
+  label: string;
+  /** Leading mark: pulsing dot for page heroes, hairline for in-page sections. */
+  marker?: 'dot' | 'rule' | 'none';
+  class?: string;
+}
+
+const { n, label, marker = 'rule', class: className = '' } = Astro.props;
+const num = String(n).padStart(3, '0');
+---
+
+<span
+  class:list={[
+    'font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] flex items-center gap-3',
+    className,
+  ]}
+>
+  {marker === 'dot' && (
+    <span class="relative w-2 h-2 bg-white rounded-full shrink-0" aria-hidden="true">
+      <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
+    </span>
+  )}
+  {marker === 'rule' && (
+    <span class="inline-block w-8 h-px bg-white/30 shrink-0" aria-hidden="true"></span>
+  )}
+  <span>{num} // {label}</span>
+</span>

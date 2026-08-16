@@ -1,18 +1,23 @@
 ---
+import SectionLabel from '../ui/SectionLabel.astro';
+
 interface Props {
   headline?: string;
   subtext?: string;
   buttonText?: string;
   buttonHref?: string;
   showWatermark?: boolean;
+  /** Position of this block on the page it is used on — see SectionLabel. */
+  sectionNumber: number;
 }
 
 const {
   headline = 'Ready to grow your brand?',
-  subtext = 'Get a plan that turns content into views, followers and paying customers. Limited spots available each month.',
+  subtext = 'Get a plan that turns content into views, followers and paying customers.',
   buttonText = 'Get Your Growth Plan',
-  buttonHref = '/contact',
+  buttonHref = '/contact/',
   showWatermark = true,
+  sectionNumber,
 } = Astro.props;
 ---
 
@@ -31,12 +36,7 @@ const {
   <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
 
     <div class="md:col-span-7 flex flex-col gap-8">
-      <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] flex items-center gap-3">
-        <span class="relative w-2 h-2 bg-white rounded-full">
-          <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
-        </span>
-        006 // GET IN TOUCH
-      </span>
+      <SectionLabel n={sectionNumber} label="Get in touch" marker="dot" />
 
       <h2 class="text-[clamp(3rem,8vw,8rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
         {headline.split(' ').slice(0, -1).join(' ')} <br/>
@@ -71,7 +71,7 @@ const {
     <div class="md:col-span-5 flex flex-col gap-3">
       <div class="glass-panel p-6 md:p-7">
         <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em] block mb-3">
-          007 // RESPONSE TIME
+          // RESPONSE TIME
         </span>
         <h3 class="text-3xl font-black italic tracking-tighter text-white">&lt; 24 HRS</h3>
         <p class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] mt-3">
@@ -80,7 +80,7 @@ const {
       </div>
       <div class="glass-panel p-6 md:p-7">
         <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em] block mb-3">
-          008 // AVAILABILITY
+          // AVAILABILITY
         </span>
         <div class="flex items-center gap-3">
           <span class="relative w-2 h-2 bg-white rounded-full">

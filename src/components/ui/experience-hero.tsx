@@ -117,19 +117,19 @@ export const ExperienceHero = () => {
         <div className="w-full md:w-80 lg:w-96 flex-shrink-0 flex flex-col gap-4 justify-center z-20">
           {[
             {
-              id: "001",
+              id: "01",
               title: "AVAILABILITY",
               val: "Open for projects",
               type: "progress" as const,
             },
             {
-              id: "002",
+              id: "02",
               title: "PUBLIC PROOF",
               val: "125M+ reach",
               type: "data" as const,
             },
             {
-              id: "003",
+              id: "03",
               title: "POSITIONING",
               val: "Growth Partner",
               type: "text" as const,

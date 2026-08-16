@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionLabel from '../components/ui/SectionLabel.astro';
 
 const lastUpdated = '26 April 2026';
 
@@ -100,12 +101,7 @@ const sections = [
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
         <div class="md:col-span-8">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="relative w-2 h-2 bg-white rounded-full">
-              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
-            </span>
-            009 // PRIVACY
-          </span>
+          <SectionLabel n={1} label="Privacy" marker="dot" class="mb-6" />
           <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
             Your data, <br/><span class="text-outline not-italic">handled.</span>
           </h1>

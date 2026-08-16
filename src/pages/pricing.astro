@@ -1,19 +1,20 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
+import SectionLabel from '../components/ui/SectionLabel.astro';
 
 const inputs = [
-  { id: '001', title: 'Scope',     body: 'How many platforms, how many shoots, how much content per month. The more we ship, the lower the per-output cost.' },
-  { id: '002', title: 'Cadence',   body: 'One-off project or ongoing partnership. Retainers unlock priority booking and lower rates over time.' },
-  { id: '003', title: 'Production', body: 'Liveshots and event days carry travel and crew cost. Studio shoots and edits are leaner.' },
-  { id: '004', title: 'Outcome',   body: 'Awareness, growth or conversion. Each goal shapes the playbook, the volume and the team mix.' },
+  { id: '01', title: 'Scope',     body: 'How many platforms, how many shoots, how much content per month. The more we ship, the lower the per-output cost.' },
+  { id: '02', title: 'Cadence',   body: 'One-off project or ongoing partnership. Retainers unlock priority booking and lower rates over time.' },
+  { id: '03', title: 'Production', body: 'Liveshots and event days carry travel and crew cost. Studio shoots and edits are leaner.' },
+  { id: '04', title: 'Outcome',   body: 'Awareness, growth or conversion. Each goal shapes the playbook, the volume and the team mix.' },
 ];
 
 const includes = [
-  { id: '001', title: 'Strategy + planning', body: 'Discovery call, content plan, channel map, posting cadence. We align on what success looks like before we shoot.' },
-  { id: '002', title: 'Production',          body: 'Shoot days, multicam recording, edit, color, motion, copy. Everything from raw capture to ready-to-publish.' },
-  { id: '003', title: 'Management',          body: 'Posting, scheduling, community replies and monthly performance review. You stay in your lane, we run the rest.' },
-  { id: '004', title: 'Reporting',           body: 'Monthly numbers, public proof, what worked, what we are doubling down on next month.' },
+  { id: '01', title: 'Strategy + planning', body: 'Discovery call, content plan, channel map, posting cadence. We align on what success looks like before we shoot.' },
+  { id: '02', title: 'Production',          body: 'Shoot days, multicam recording, edit, color, motion, copy. Everything from raw capture to ready-to-publish.' },
+  { id: '03', title: 'Management',          body: 'Posting, scheduling, community replies and monthly performance review. You stay in your lane, we run the rest.' },
+  { id: '04', title: 'Reporting',           body: 'Monthly numbers, public proof, what worked, what we are doubling down on next month.' },
 ];
 
 const faq = [
@@ -67,12 +68,7 @@ const faqSchema = {
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
         <div class="md:col-span-8">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="relative w-2 h-2 bg-white rounded-full">
-              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
-            </span>
-            009 // PRICING
-          </span>
+          <SectionLabel n={1} label="Pricing" marker="dot" class="mb-6" />
           <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
             Custom <br/><span class="text-outline not-italic">quote.</span>
           </h1>
@@ -121,10 +117,7 @@ const faqSchema = {
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
         <div class="md:col-span-7">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="inline-block w-8 h-px bg-white/30"></span>
-            010 // WHAT SHAPES THE QUOTE
-          </span>
+          <SectionLabel n={2} label="What shapes the quote" class="mb-6" />
           <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
             Four <br/><span class="text-outline not-italic">inputs.</span>
           </h2>
@@ -157,10 +150,7 @@ const faqSchema = {
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
         <div class="md:col-span-7">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="inline-block w-8 h-px bg-white/30"></span>
-            011 // ALWAYS INCLUDED
-          </span>
+          <SectionLabel n={3} label="Always included" class="mb-6" />
           <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
             What's in <br/><span class="text-outline not-italic">scope.</span>
           </h2>
@@ -193,10 +183,7 @@ const faqSchema = {
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-12 md:mb-14 items-end">
         <div class="md:col-span-7">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="inline-block w-8 h-px bg-white/30"></span>
-            012 // FAQ
-          </span>
+          <SectionLabel n={4} label="FAQ" class="mb-6" />
           <h2 class="text-[clamp(2.5rem,7vw,6rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
             Common <br/><span class="text-outline not-italic">questions.</span>
           </h2>
@@ -233,6 +220,7 @@ const faqSchema = {
     headline="Ready for a custom quote?"
     subtext="Tell us your scope, goals and timeline. We send a tailored proposal within a few business days."
     buttonText="Request Your Quote"
+    sectionNumber={5}
   />
 
 </BaseLayout>

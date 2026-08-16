@@ -8,11 +8,12 @@ import ReelsGrid from '../components/sections/ReelsGrid.astro';
 import { portfolioItems } from '../data/portfolio.ts';
 import { events } from '../data/events.ts';
 import { portfolioImage } from '../lib/portfolioImages';
+import SectionLabel from '../components/ui/SectionLabel.astro';
 
 const mediaSections = [
   {
     id: 'content-creation',
-    n: '001',
+    n: 2,
     label: 'Content Creation',
     headline: ['Cinematic', 'content.'],
     description: 'High-impact visuals from artists, events and brands. Built to perform on TikTok, Instagram and YouTube.',
@@ -21,7 +22,7 @@ const mediaSections = [
   },
   {
     id: 'social-media',
-    n: '002',
+    n: 3,
     label: 'Social Media',
     headline: ['Socials', 'we run.'],
     description: 'Accounts we manage and grow every day. Real growth, real numbers, no guesswork.',
@@ -32,7 +33,7 @@ const mediaSections = [
 
 const managedAccounts = [
   {
-    id: '001',
+    id: '01',
     handle: 'thedopedoctor_official',
     name: 'The Dope Doctor',
     role: 'Artist',
@@ -48,7 +49,7 @@ const managedAccounts = [
     ],
   },
   {
-    id: '002',
+    id: '02',
     handle: 'majorconspiracyofficial',
     name: 'Major Conspiracy',
     role: 'Uptempo Duo',
@@ -64,7 +65,7 @@ const managedAccounts = [
     ],
   },
   {
-    id: '003',
+    id: '03',
     handle: 'harddancestore',
     name: 'Hard Dance Store',
     role: 'Brand',
@@ -82,12 +83,12 @@ const managedAccounts = [
 ];
 
 const webDesignFeatures = [
-  { id: '001', title: 'Custom design',     body: 'No templates. Every site designed from scratch around your brand and your goals.' },
-  { id: '002', title: 'Mobile-first',      body: 'Your audience lives on mobile. Every site we ship looks flawless on any screen.' },
-  { id: '003', title: 'Lightning fast',    body: 'Built for speed and SEO. Loads instantly. Ranks where it should.' },
-  { id: '004', title: 'Conversion pages',  body: 'Landing pages and microsites engineered to turn traffic into leads, bookings and sales.' },
-  { id: '005', title: 'Domain & hosting',  body: 'Domain, hosting, SSL — fully handled. You stay focused on the business.' },
-  { id: '006', title: 'Fully yours',       body: 'No subscriptions, no lock-in. We build it. You own it. Forever.' },
+  { id: '01', title: 'Custom design',     body: 'No templates. Every site designed from scratch around your brand and your goals.' },
+  { id: '02', title: 'Mobile-first',      body: 'Your audience lives on mobile. Every site we ship looks flawless on any screen.' },
+  { id: '03', title: 'Lightning fast',    body: 'Built for speed and SEO. Loads instantly. Ranks where it should.' },
+  { id: '04', title: 'Conversion pages',  body: 'Landing pages and microsites engineered to turn traffic into leads, bookings and sales.' },
+  { id: '05', title: 'Domain & hosting',  body: 'Domain, hosting, SSL — fully handled. You stay focused on the business.' },
+  { id: '06', title: 'Fully yours',       body: 'No subscriptions, no lock-in. We build it. You own it. Forever.' },
 ];
 ---
 
@@ -107,12 +108,7 @@ const webDesignFeatures = [
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
       <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-end">
         <div class="md:col-span-8">
-          <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] mb-6 flex items-center gap-3">
-            <span class="relative w-2 h-2 bg-white rounded-full">
-              <span class="absolute inset-0 bg-white rounded-full animate-ping opacity-30"></span>
-            </span>
-            003 // PORTFOLIO
-          </span>
+          <SectionLabel n={1} label="Portfolio" marker="dot" class="mb-6" />
           <h1 class="text-[clamp(3.5rem,9vw,9rem)] font-black italic uppercase leading-[0.95] tracking-tighter text-white">
             Work that <br/><span class="text-outline not-italic">performs.</span>
           </h1>
@@ -176,8 +172,9 @@ const webDesignFeatures = [
             <!-- Content Creation: thin horizontal header bar, gallery-first -->
             <div class="mb-10 md:mb-12 flex flex-col md:flex-row md:items-end gap-4 md:gap-8 border-b border-white/[0.06] pb-6">
               <div class="flex items-center gap-4 shrink-0">
-                <span class="font-mono text-[11px] text-white tracking-[0.25em]">{section.n}</span>
-                <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">{section.label}</span>
+                <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">
+                  {String(section.n).padStart(3, '0')} // {section.label}
+                </span>
               </div>
               <span class="hidden md:block flex-1 h-px bg-white/10"></span>
               <p class="md:max-w-md text-[13px] text-white/50 leading-relaxed">
@@ -193,10 +190,10 @@ const webDesignFeatures = [
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 mb-10 md:mb-12 items-start">
               <div class="md:col-span-4 flex flex-col gap-5">
                 <span class="font-mono text-[11px] text-white/55 uppercase tracking-[0.25em] flex items-center gap-3">
-                  <span class="relative w-1.5 h-1.5 rounded-full bg-white">
+                  <span class="relative w-1.5 h-1.5 rounded-full bg-white shrink-0">
                     <span class="absolute inset-0 rounded-full bg-white animate-ping opacity-30"></span>
                   </span>
-                  {section.n} / {section.label.toUpperCase()}
+                  <span>{String(section.n).padStart(3, '0')} // {section.label.toUpperCase()}</span>
                 </span>
                 <h2 class="text-[clamp(2rem,5vw,4rem)] font-black italic uppercase leading-[0.9] tracking-tighter text-white">
                   Socials <br/>built to <br/>grow.
@@ -341,7 +338,7 @@ const webDesignFeatures = [
           {items.length > 0 && (
             <div class="grid grid-cols-1 md:grid-cols-6 gap-4 md:gap-5">
               {items.map((item, idx) => {
-                const number = String(idx + 1).padStart(3, '0');
+                const number = String(idx + 1).padStart(2, '0');
                 const span = idx === 0 ? 'md:col-span-4' : 'md:col-span-2';
                 const aspect = idx === 0 ? 'aspect-[16/9]' : 'aspect-[4/5]';
                 const isExternal = item.video?.startsWith('http');
@@ -440,9 +437,8 @@ const webDesignFeatures = [
       <!-- Manifesto-style header: solid italic (no outline repeat), editorial pull-quote -->
       <div class="mb-12 md:mb-16 flex flex-col gap-6">
         <div class="flex items-center gap-4">
-          <span class="font-mono text-[11px] text-white tracking-[0.25em]">003</span>
+          <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">004 // WEB DESIGN</span>
           <span class="h-px flex-1 bg-white/10"></span>
-          <span class="font-mono text-[11px] text-white uppercase tracking-[0.25em]">WEB DESIGN</span>
         </div>
         <p class="text-[clamp(1.5rem,3vw,2.5rem)] font-medium leading-[1.15] tracking-tight text-white max-w-4xl">
           Websites built to <span class="text-white/55">convert.</span><br/>
@@ -587,6 +583,7 @@ const webDesignFeatures = [
     headline="Want this for your brand?"
     subtext="Get a plan that turns content into views, followers and paying customers. Limited spots available each month."
     buttonText="Start Growing Your Brand"
+    sectionNumber={5}
   />
 
 </BaseLayout>
