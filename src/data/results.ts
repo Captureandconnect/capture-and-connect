@@ -38,7 +38,7 @@ export const publicProof: PublicProof[] = [
     context:
       'Multicam, edit and colour — delivered as the official festival aftermovie.',
     detail:
-      'Public YouTube upload on the RuhrGBeat Events channel. Open the video to watch the full edit.',
+      'Public YouTube upload on the Ground Zero channel. Open the video to watch the full edit.',
     proofLabel: 'YouTube upload',
     proofValue: 'Live',
     url: 'https://www.youtube.com/watch?v=wMICv0W9h8o',

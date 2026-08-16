@@ -18,8 +18,13 @@ export const REPLY_PROMISE_QUALIFIER = 'On weekdays';
 export const PROPOSAL_PROMISE = 'You get a written proposal within three business days.';
 export const PROPOSAL_WINDOW = 'within three business days';
 
-/** Where we work. Kept to what the portfolio actually evidences: NL, BE, AT. */
-export const AREA_SERVED = 'across the Netherlands, Belgium and beyond';
+/**
+ * Where we work. Reinstated at the owner's request after the August 2026 audit
+ * proposed narrowing it to the countries the portfolio shows (NL, BE, AT).
+ * Kept as one constant so every page says the same thing.
+ */
+export const AREA_SERVED = 'around the world';
+export const AREA_SERVED_SHORT = 'worldwide';
 
 /**
  * Primary CTA. It goes to /contact/, which is a brief form — not a calendar —
