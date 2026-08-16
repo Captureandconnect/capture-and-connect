@@ -172,7 +172,11 @@ const stats = [
   // the fold AND prefers-reduced-motion is not set.
   const counters = document.querySelectorAll<HTMLElement>('.counter');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!reduced) {
+  if (reduced) {
+    // Reduced motion means no count-up at all. Without this the observer still
+    // animated from 0, because nothing had been marked done.
+    counters.forEach((el) => { el.dataset.done = '1'; });
+  } else {
     counters.forEach((el) => {
       const rect = el.getBoundingClientRect();
       const alreadyVisible = rect.top < window.innerHeight && rect.bottom > 0;
