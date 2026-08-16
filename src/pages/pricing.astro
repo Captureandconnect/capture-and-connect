@@ -88,6 +88,7 @@ const faqSchema = {
     aria-label="Service overview"
   >
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14 py-10 md:py-14">
+      <h2 class="sr-only">Service overview</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/[0.04] border border-white/[0.05]">
         <div class="bg-[#020202] p-7 md:p-8 flex flex-col gap-3">
           <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">// CONTENT &amp; SOCIAL</span>
@@ -107,7 +108,7 @@ const faqSchema = {
           <p class="text-[13px] text-white/55 leading-relaxed">One-off project. Custom design, mobile-first build, domain &amp; hosting handled.</p>
         </div>
       </div>
-      <p class="font-mono text-[10px] text-white/45 uppercase tracking-[0.2em] mt-5 max-w-2xl">
+      <p class="font-mono text-[10px] text-white/50 uppercase tracking-[0.2em] mt-5 max-w-2xl">
         // Every brief is different. Tell us the scope, get a written proposal.
       </p>
     </div>
@@ -195,7 +196,7 @@ const faqSchema = {
         {faq.map((item, idx) => (
           <details class="group/faq border-b border-white/[0.06]">
             <summary class="flex items-center gap-6 py-7 md:py-8 cursor-pointer list-none">
-              <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em] w-12 shrink-0">
+              <span class="font-mono text-[10px] text-white/50 uppercase tracking-[0.25em] w-12 shrink-0">
                 {String(idx + 1).padStart(2, '0')}
               </span>
               <span class="flex-1 text-xl md:text-2xl font-black italic tracking-tight text-white">

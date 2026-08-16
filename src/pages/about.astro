@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import TeamBlock from '../components/sections/TeamBlock.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import SectionLabel from '../components/ui/SectionLabel.astro';
+import { CTA_PRIMARY } from '../data/promises';
 
 const values = [
   { id: '01', title: 'Quality over quantity', body: 'Everything we create is built to perform. No filler. No throwaway posts.' },
@@ -80,7 +81,7 @@ const values = [
   <CtaBlock
     headline="Ready to grow your brand?"
     subtext="Get a plan that turns content into views, followers and paying customers."
-    buttonText="Book Your Call"
+    buttonText={CTA_PRIMARY}
     showWatermark={false}
     sectionNumber={3}
   />

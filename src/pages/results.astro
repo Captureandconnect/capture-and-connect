@@ -5,7 +5,7 @@ import CtaBlock from '../components/sections/CtaBlock.astro';
 import { publicProof, aggregateStats } from '../data/results';
 import { portfolioImage } from '../lib/portfolioImages';
 import SectionLabel from '../components/ui/SectionLabel.astro';
-import { REPLY_PROMISE } from '../data/promises';
+import { REPLY_PROMISE, CTA_PRIMARY } from '../data/promises';
 
 // The one piece of work on this page that is a video, so it gets a VideoObject.
 // Title, channel and upload date read off the public YouTube page.
@@ -52,8 +52,9 @@ const aftermovieSchema = {
   </section>
 
   <!-- Aggregate Stats: 4-up bento, public-only -->
-  <section class="relative bg-[#020202] py-10 md:py-12 border-t border-white/[0.05]">
+  <section class="relative bg-[#020202] py-10 md:py-12 border-t border-white/[0.05]" aria-labelledby="totals-heading">
     <div class="relative max-w-[1600px] mx-auto px-6 md:px-10 lg:px-14">
+      <h2 id="totals-heading" class="sr-only">The totals, and where to check them</h2>
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-px bg-white/[0.04] border border-white/[0.05]">
         {aggregateStats.map((stat, idx) => {
           const id = String(idx + 1).padStart(2, '0');
@@ -183,7 +184,7 @@ const aftermovieSchema = {
       </div>
 
       <!-- Footnote -->
-      <p class="mt-12 font-mono text-[11px] text-white/45 uppercase tracking-[0.2em] max-w-2xl">
+      <p class="mt-12 font-mono text-[11px] text-white/50 uppercase tracking-[0.2em] max-w-2xl">
         // No private dashboards. No projected numbers. If it's on this page, it lives on a public URL.
       </p>
     </div>
@@ -192,7 +193,7 @@ const aftermovieSchema = {
   <CtaBlock
     headline="Want results like this?"
     subtext={`Tell us where you are. We'll show you exactly how we'd get you there. ${REPLY_PROMISE}`}
-    buttonText="Book Your Call"
+    buttonText={CTA_PRIMARY}
     sectionNumber={3}
   />
 

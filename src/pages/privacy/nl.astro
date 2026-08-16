@@ -23,7 +23,7 @@ const sections = [
     id: '02',
     title: 'Welke gegevens we verzamelen',
     body: [
-      'Wanneer je het contactformulier op deze site gebruikt, ontvangen wij je naam, e-mailadres, organisatie (optioneel) en het bericht dat je achterlaat.',
+      'Wanneer je het contactformulier op deze site gebruikt, ontvangen wij je naam, e-mailadres, organisatie (optioneel), de dienst waarin je geïnteresseerd bent (optioneel) en het bericht dat je achterlaat.',
       'Als je ons rechtstreeks mailt, ontvangen we de informatie die je in dat bericht zet.',
       'Wij verkopen, verhuren of delen jouw persoonsgegevens niet met derden voor marketingdoeleinden.',
     ],
@@ -84,7 +84,7 @@ const sections = [
     id: '09',
     title: 'Wijzigingen',
     body: [
-      'We werken dit beleid bij wanneer onze tools of processen veranderen. Belangrijke wijzigingen worden in de datum hieronder weergegeven.',
+      'We werken dit beleid bij wanneer onze tools of processen veranderen. Belangrijke wijzigingen worden in de datum bovenaan deze pagina weergegeven.',
     ],
   },
 ];
@@ -116,7 +116,7 @@ const sections = [
         </p>
       </div>
       <div class="mt-10 flex flex-wrap items-center gap-3">
-        <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em]">Laatst bijgewerkt</span>
+        <span class="font-mono text-[10px] text-white/50 uppercase tracking-[0.25em]">Laatst bijgewerkt</span>
         <span class="h-px flex-1 bg-white/10 max-w-[200px]"></span>
         <span class="font-mono text-[10px] text-white/65 uppercase tracking-[0.25em]">{lastUpdated}</span>
         <a href="/privacy/" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.25em] transition-colors ml-auto">
@@ -132,7 +132,7 @@ const sections = [
         {sections.map((s) => (
           <article class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-8 md:pb-10 border-b border-white/[0.06] last:border-b-0">
             <div class="md:col-span-3 flex items-baseline gap-3">
-              <span class="font-mono text-[10px] text-white/45 tracking-[0.25em]">{s.id}</span>
+              <span class="font-mono text-[10px] text-white/50 tracking-[0.25em]">{s.id}</span>
               <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">Sectie</span>
             </div>
             <div class="md:col-span-9 flex flex-col gap-4">
@@ -146,7 +146,7 @@ const sections = [
                 <dl class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.15em]">
                   {s.meta.map((m) => (
                     <div class="flex items-baseline gap-3 py-1 border-b border-white/[0.05]">
-                      <dt class="text-white/45">{m.label}</dt>
+                      <dt class="text-white/50">{m.label}</dt>
                       <dd class="ml-auto text-white/75">{m.value}</dd>
                     </div>
                   ))}

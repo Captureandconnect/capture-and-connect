@@ -88,7 +88,7 @@ export const ExperienceHero = () => {
             className="w-fit inline-flex items-center gap-5 group lg:-translate-y-20 min-h-[56px] py-2 -my-2"
             data-event="cta_book_call"
             data-event-location="hero"
-            aria-label="Book a free growth call"
+            aria-label="Request a free growth call"
           >
             <div className="w-14 h-14 rounded-full border border-white/15 flex items-center justify-center group-hover:bg-white transition-all duration-500 overflow-hidden">
               <svg
@@ -109,7 +109,7 @@ export const ExperienceHero = () => {
               </svg>
             </div>
             <span className="font-mono text-[12px] font-bold text-white uppercase tracking-[0.18em]">
-              Book Your Free Call
+              Request Your Free Call
             </span>
           </a>
         </div>

@@ -23,7 +23,7 @@ const sections = [
     id: '02',
     title: 'What we collect',
     body: [
-      'When you submit the contact form on this site we receive your name, email address, organisation (optional) and the message you send us.',
+      'When you submit the contact form on this site we receive your name, email address, organisation (optional), the service you are interested in (optional) and the message you send us.',
       'When you email us directly, we receive whatever information you put in your message.',
       'We do not sell, rent or share your personal data with third parties for marketing purposes.',
     ],
@@ -32,7 +32,7 @@ const sections = [
     id: '03',
     title: 'Why we use it',
     body: [
-      'We process your data only to respond to your enquiry, scope a possible engagement and follow up on it. The legal basis is your consent (you contact us) and our legitimate interest in running our business.',
+      'We process your data only to respond to your enquiry, scope a possible engagement and follow up on it. The legal bases are your consent (you contact us) and our legitimate interest in running our business.',
     ],
   },
   {
@@ -84,7 +84,7 @@ const sections = [
     id: '09',
     title: 'Changes',
     body: [
-      'We may update this policy when our tools or processes change. Material updates will be reflected in the date below.',
+      'We may update this policy when our tools or processes change. Material updates will be reflected in the date at the top of this page.',
     ],
   },
 ];
@@ -115,7 +115,7 @@ const sections = [
         </p>
       </div>
       <div class="mt-10 flex flex-wrap items-center gap-3">
-        <span class="font-mono text-[10px] text-white/45 uppercase tracking-[0.25em]">Last updated</span>
+        <span class="font-mono text-[10px] text-white/50 uppercase tracking-[0.25em]">Last updated</span>
         <span class="h-px flex-1 bg-white/10 max-w-[200px]"></span>
         <span class="font-mono text-[10px] text-white/65 uppercase tracking-[0.25em]">{lastUpdated}</span>
         <a href="/privacy/nl/" class="font-mono text-[10px] text-white/55 hover:text-white uppercase tracking-[0.25em] transition-colors ml-auto">
@@ -132,7 +132,7 @@ const sections = [
         {sections.map((s) => (
           <article class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 pb-8 md:pb-10 border-b border-white/[0.06] last:border-b-0">
             <div class="md:col-span-3 flex items-baseline gap-3">
-              <span class="font-mono text-[10px] text-white/45 tracking-[0.25em]">{s.id}</span>
+              <span class="font-mono text-[10px] text-white/50 tracking-[0.25em]">{s.id}</span>
               <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">Section</span>
             </div>
             <div class="md:col-span-9 flex flex-col gap-4">
@@ -146,7 +146,7 @@ const sections = [
                 <dl class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 font-mono text-[11px] uppercase tracking-[0.15em]">
                   {s.meta.map((m) => (
                     <div class="flex items-baseline gap-3 py-1 border-b border-white/[0.05]">
-                      <dt class="text-white/45">{m.label}</dt>
+                      <dt class="text-white/50">{m.label}</dt>
                       <dd class="ml-auto text-white/75">{m.value}</dd>
                     </div>
                   ))}

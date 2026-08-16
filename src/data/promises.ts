@@ -20,3 +20,11 @@ export const PROPOSAL_WINDOW = 'within three business days';
 
 /** Where we work. Kept to what the portfolio actually evidences: NL, BE, AT. */
 export const AREA_SERVED = 'across the Netherlands, Belgium and beyond';
+
+/**
+ * Primary CTA. It goes to /contact/, which is a brief form — not a calendar —
+ * so it says "request", not "book".
+ */
+export const CTA_PRIMARY = 'Request Your Free Call';
+export const CTA_PRIMARY_ARIA = 'Request a free growth call';
+export const CTA_PRIMARY_SHORT = 'Request Free Call';

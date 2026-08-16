@@ -1,6 +1,8 @@
 ---
 // StickyMobileCta.astro — visible only below 768px, appears after 300px scroll.
 // Hidden on /contact (the destination) via the data-no-cta attribute on <body>.
+import { CTA_PRIMARY_SHORT, CTA_PRIMARY_ARIA } from '../../data/promises';
+
 const isContactPage = Astro.url.pathname.startsWith('/contact');
 ---
 
@@ -32,11 +34,11 @@ const isContactPage = Astro.url.pathname.startsWith('/contact');
     <a
       href="/contact/"
       class="cnc-mobile-cta__book"
-      aria-label="Book a free growth call"
+      aria-label={CTA_PRIMARY_ARIA}
       data-event="cta_book_call"
       data-event-location="mobile_sticky"
     >
-      <span class="cnc-mobile-cta__book-text">Book Free Call</span>
+      <span class="cnc-mobile-cta__book-text">{CTA_PRIMARY_SHORT}</span>
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M7 17L17 7M17 7H8M17 7V16" />
       </svg>

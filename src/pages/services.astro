@@ -4,6 +4,7 @@ import ServiceDetail from '../components/sections/ServiceDetail.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import { services } from '../data/services';
 import SectionLabel from '../components/ui/SectionLabel.astro';
+import { CTA_PRIMARY } from '../data/promises';
 
 const faq = [
   {
@@ -209,7 +210,7 @@ const pageSchemas = [faqSchema, ...serviceSchemas];
   <CtaBlock
     headline="Ready to grow your brand?"
     subtext="Book a free growth call. We'll map exactly how we'd scale you."
-    buttonText="Book Your Growth Call"
+    buttonText={CTA_PRIMARY}
     sectionNumber={4}
   />
 

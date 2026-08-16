@@ -177,18 +177,17 @@ const allSchemas = [
           const seen = sessionStorage.getItem('cnc-seen');
           const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
           const saveData = navigator.connection && navigator.connection.saveData;
-          // Skip the curtain for headless audits (Lighthouse, bots) — it's a
-          // first-impression flourish, not content; auditors shouldn't pay for it.
-          const isAuditor = /HeadlessChrome|Lighthouse|PageSpeed|GTmetrix|Speedlify/i.test(navigator.userAgent);
+          // No auditor exemption: if the curtain costs a first-time visitor
+          // time, it has to cost the score too.
           const el = document.getElementById('cnc-loader');
           if (!el) return;
-          if (seen || reduced || saveData || isAuditor) return;
+          if (seen || reduced || saveData) return;
           el.removeAttribute('hidden');
           sessionStorage.setItem('cnc-seen', '1');
           setTimeout(() => {
             el.dataset.state = 'hide';
             setTimeout(() => el.remove(), 500);
-          }, 850);
+          }, 400);
         } catch (_) {}
       })();
     </script>

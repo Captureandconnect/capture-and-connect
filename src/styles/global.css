@@ -429,6 +429,14 @@ select:focus-visible {
   paint-order: stroke fill;
 }
 
+/* Without text-stroke support this would be #020202 on #020202 — invisible.
+   Every outline heading on the site uses this class. */
+@supports not (-webkit-text-stroke: 1px #fff) {
+  .text-outline {
+    color: #fff;
+  }
+}
+
 
 /* First-visit loader curtain. Shown only when sessionStorage flag absent;
    the BaseLayout script removes it after first paint. */
