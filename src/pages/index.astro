@@ -7,6 +7,7 @@ import PortfolioPreview from '../components/sections/PortfolioPreview.astro';
 import HowWeWork from '../components/sections/HowWeWork.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import Lightbox from '../components/ui/Lightbox.astro';
+import { PROPOSAL_WINDOW } from '../data/promises';
 ---
 
 <BaseLayout
@@ -27,7 +28,7 @@ import Lightbox from '../components/ui/Lightbox.astro';
 
   <CtaBlock
     headline="Ready to grow?"
-    subtext="Stop blending in. Tell us where you want your brand in 6 months — we send a written growth plan within a few days."
+    subtext={`Stop blending in. Tell us where you want your brand in 6 months — we send a written growth plan ${PROPOSAL_WINDOW}.`}
     buttonText="Book Your Free Call"
     sectionNumber={5}
   />

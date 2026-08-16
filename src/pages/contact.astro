@@ -2,12 +2,13 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactForm from '../components/forms/ContactForm.astro';
 import SectionLabel from '../components/ui/SectionLabel.astro';
+import { REPLY_PROMISE, REPLY_PROMISE_SHORT, REPLY_PROMISE_QUALIFIER } from '../data/promises';
 ---
 
 <BaseLayout
   title="Contact — Book a Free Growth Call | Capture & Connect"
   fullTitle={true}
-  description="Tell us where your brand is and where you want it to be. Capture & Connect replies to every brief within 24 hours, weekdays."
+  description="Tell us where your brand is and where you want it to be. Capture & Connect replies to every brief within 24 hours on weekdays."
   ogImage="/og-contact.jpg"
   breadcrumbs={[
     { name: 'Home', href: '/' },
@@ -26,7 +27,7 @@ import SectionLabel from '../components/ui/SectionLabel.astro';
           </h1>
         </div>
         <p class="md:col-span-4 text-[15px] text-white/50 leading-relaxed">
-          Tell us where you are and where you want to go. We reply within 24 hours.
+          Tell us where you are and where you want to go. {REPLY_PROMISE}
         </p>
       </div>
     </div>
@@ -53,7 +54,7 @@ import SectionLabel from '../components/ui/SectionLabel.astro';
             <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em]">PRIMARY · EMAIL</span>
             <h3 class="text-3xl font-black italic tracking-tighter text-white">info@captureandconnect.nl</h3>
             <div class="flex items-center justify-between mt-2">
-              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">&lt; 24 hr response</span>
+              <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em]">{REPLY_PROMISE_SHORT} · {REPLY_PROMISE_QUALIFIER}</span>
               <span class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-white transition-all duration-500">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" class="group-hover:stroke-black stroke-white/70 transition-colors duration-500">
                   <path d="M7 17L17 7M17 7H8M17 7V16" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -99,7 +100,7 @@ import SectionLabel from '../components/ui/SectionLabel.astro';
               </span>
               <h3 class="text-3xl font-black italic tracking-tighter text-white">Open</h3>
             </div>
-            <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] mt-2">Taking briefs now · Limited spots</span>
+            <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] mt-2">Taking briefs now</span>
           </div>
         </div>
       </div>

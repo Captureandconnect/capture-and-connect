@@ -5,6 +5,7 @@ import CtaBlock from '../components/sections/CtaBlock.astro';
 import { publicProof, aggregateStats } from '../data/results';
 import { portfolioImage } from '../lib/portfolioImages';
 import SectionLabel from '../components/ui/SectionLabel.astro';
+import { REPLY_PROMISE } from '../data/promises';
 ---
 
 <BaseLayout
@@ -170,7 +171,7 @@ import SectionLabel from '../components/ui/SectionLabel.astro';
 
   <CtaBlock
     headline="Want results like this?"
-    subtext="Tell us where you are. We'll show you exactly how we'd get you there. Reply within 24 hours."
+    subtext={`Tell us where you are. We'll show you exactly how we'd get you there. ${REPLY_PROMISE}`}
     buttonText="Book Your Call"
     sectionNumber={3}
   />

@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import CtaBlock from '../components/sections/CtaBlock.astro';
 import SectionLabel from '../components/ui/SectionLabel.astro';
+import { PROPOSAL_WINDOW, PROPOSAL_PROMISE } from '../data/promises';
 
 const inputs = [
   { id: '01', title: 'Scope',     body: 'How many platforms, how many shoots, how much content per month. The more we ship, the lower the per-output cost.' },
@@ -24,7 +25,7 @@ const faq = [
   },
   {
     q: 'How does it work?',
-    a: 'Book a call. Tell us where you are, where you want to go, what you have in hand. Within a few days you get a written proposal with scope, deliverables, timeline and a fixed monthly or project number. No surprises.',
+    a: `Book a call. Tell us where you are, where you want to go, what you have in hand. ${PROPOSAL_WINDOW.charAt(0).toUpperCase()}${PROPOSAL_WINDOW.slice(1)} you get a written proposal with scope, deliverables, timeline and a fixed monthly or project number. No surprises.`,
   },
   {
     q: 'Project, retainer or one-off?',
@@ -54,7 +55,7 @@ const faqSchema = {
 <BaseLayout
   title="Pricing — Custom Quote, Honest Scope | Capture & Connect"
   fullTitle={true}
-  description="Tailored proposals for every brand. Content retainers, project work and event films — written quote within a few days, no hidden line items."
+  description="Tailored proposals for every brand. Content retainers, project work and event films — written quote within three business days, no hidden line items."
   ogImage="/og-pricing.jpg"
   jsonLd={faqSchema}
   breadcrumbs={[
@@ -218,7 +219,7 @@ const faqSchema = {
   <!-- CTA -->
   <CtaBlock
     headline="Ready for a custom quote?"
-    subtext="Tell us your scope, goals and timeline. We send a tailored proposal within a few business days."
+    subtext={`Tell us your scope, goals and timeline. ${PROPOSAL_PROMISE}`}
     buttonText="Request Your Quote"
     sectionNumber={5}
   />

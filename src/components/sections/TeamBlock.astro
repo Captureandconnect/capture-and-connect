@@ -2,6 +2,7 @@
 // TeamBlock.astro, About page Ryan section
 import { Picture } from 'astro:assets';
 import ryanPortrait from '../../assets/team/ryan.jpg';
+import { AREA_SERVED } from '../../data/promises';
 ---
 
 <section
@@ -78,8 +79,8 @@ import ryanPortrait from '../../assets/team/ryan.jpg';
           </p>
 
           <p class="text-base text-white/60 leading-relaxed">
-            Over the years he worked with major artists and festivals around the world,
-            earning a reputation for content that feels real, hits hard and was built for the scroll.
+            Over the years he worked with major artists and festivals {AREA_SERVED},
+            earning a reputation for content that feels real, hits hard and is built for the scroll.
           </p>
 
           <p class="text-base text-white/60 leading-relaxed">
@@ -113,7 +114,7 @@ import ryanPortrait from '../../assets/team/ryan.jpg';
           <!-- Quick credential -->
           <p class="text-xs text-white/55 leading-relaxed">
             Based in the Netherlands<br />
-            Serving artists &amp; brands worldwide
+            Working with artists &amp; brands {AREA_SERVED}
           </p>
         </div>
 

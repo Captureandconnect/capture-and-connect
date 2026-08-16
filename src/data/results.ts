@@ -118,7 +118,7 @@ export const aggregateStats: AggregateStat[] = [
   {
     value: '9',
     label: 'Accounts growing',
-    note: 'Reach of the nine accounts we manage day to day: 6 Instagram, 3 TikTok.',
+    note: '6 Instagram, 3 TikTok live right now. Growing every month.',
     href: '/portfolio/#social-media',
     linkLabel: 'See the accounts we manage',
   },

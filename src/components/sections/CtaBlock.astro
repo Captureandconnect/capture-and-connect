@@ -1,5 +1,6 @@
 ---
 import SectionLabel from '../ui/SectionLabel.astro';
+import { REPLY_PROMISE_SHORT, REPLY_PROMISE_QUALIFIER } from '../../data/promises';
 
 interface Props {
   headline?: string;
@@ -73,9 +74,9 @@ const {
         <span class="font-mono text-[10px] text-white/55 uppercase tracking-[0.25em] block mb-3">
           // RESPONSE TIME
         </span>
-        <h3 class="text-3xl font-black italic tracking-tighter text-white">&lt; 24 HRS</h3>
+        <h3 class="text-3xl font-black italic tracking-tighter text-white">{REPLY_PROMISE_SHORT}</h3>
         <p class="font-mono text-[10px] text-white/55 uppercase tracking-[0.2em] mt-3">
-          On weekdays · Same day for urgent
+          {REPLY_PROMISE_QUALIFIER}
         </p>
       </div>
       <div class="glass-panel p-6 md:p-7">
